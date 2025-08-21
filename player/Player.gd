@@ -40,6 +40,3 @@ func update_facing_direction(direction: float):
 		sprite.flip_h = true
 	elif direction > 0:
 		sprite.flip_h = false
-
-func change_state(new_state: State):
-	state_machine.change_state(new_state)

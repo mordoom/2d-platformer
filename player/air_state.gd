@@ -21,7 +21,7 @@ func state_input(event: InputEvent):
 func double_jump():
 	player.velocity.y = double_jump_velocity
 	has_double_jumped = true
-	playback.travel("jump 2")
+	playback.travel("jump")
 
 func on_exit():
 	if (next_state == landing_state):
