@@ -3,11 +3,14 @@ extends State
 class_name GroundState
 
 @export var air_state: State
+@export var ground_attack_state: State
 @export var jump_velocity = -400.0
 
 func state_input(event: InputEvent):
 	if event.is_action_pressed("jump"):
 		jump()
+	elif event.is_action_pressed("attack"):
+		next_state = ground_attack_state
 		
 func state_process(delta):
 	if (!player.is_on_floor()):
