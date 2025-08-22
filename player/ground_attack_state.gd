@@ -3,43 +3,30 @@ extends State
 class_name GroundAttackState
 
 @export var ground_state: State
-@export var combo_timeout: float = 0.1
-
-var current_attack_combo = 1
-var can_combo = false
+@onready var timer = $Timer
 
 func on_enter():
-	current_attack_combo = 1
-	can_combo = false
 	playback.travel("attack")
 
 func state_input(event: InputEvent):
-	if event.is_action_pressed("attack") && can_combo:
-		if current_attack_combo == 1:
-			advance_combo("attack2")
-		elif current_attack_combo == 2:
-			advance_combo("attack3")
-
-func advance_combo(animation_name: String):
-	current_attack_combo = current_attack_combo + 1
-	playback.travel(animation_name)
-	can_combo = false
+	if event.is_action_pressed("attack"):
+		timer.start()
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "attack":
-		await begin_combo()
-		if current_attack_combo == 1:
+		if timer.is_stopped():
 			end_combo()
+		else:
+			timer.stop()
+			playback.travel("attack2")
 	elif anim_name == "attack2":
-		await begin_combo()
-		if current_attack_combo == 2:
+		if timer.is_stopped():
 			end_combo()
+		else:
+			timer.stop()
+			playback.travel("attack3")
 	elif anim_name == "attack3":
 		end_combo()
-
-func begin_combo():
-	can_combo = true
-	await get_tree().create_timer(combo_timeout).timeout
 
 func end_combo():
 	next_state = ground_state

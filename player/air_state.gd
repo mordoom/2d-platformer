@@ -6,7 +6,7 @@ class_name AirState
 @export var double_jump_velocity: float = -300
 var has_double_jumped = false
 
-func state_process(delta):
+func state_process(_delta):
 	if player.is_on_floor():
 		playback.travel("landing")
 		next_state = landing_state

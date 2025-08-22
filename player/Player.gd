@@ -27,13 +27,13 @@ func _physics_process(delta):
 func get_direction():
 	return Input.get_axis("left", "right")
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	var direction = get_direction()
 	update_animation(direction)
 	update_facing_direction(direction)
 
 func update_animation(direction: float = 0):
-	animation_tree.set("parameters/Move/blend_position", direction)
+	animation_tree.set("parameters/move/blend_position", direction)
 
 func update_facing_direction(direction: float):
 	if direction < 0:

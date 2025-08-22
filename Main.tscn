@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://bkoh78sq1mtcr"]
+[gd_scene load_steps=7 format=4 uid="uid://bkoh78sq1mtcr"]
 
 [ext_resource type="PackedScene" uid="uid://b7o8xkqx8kprr" path="res://player/Player.tscn" id="1_6m3wk"]
 [ext_resource type="Texture2D" uid="uid://bxrbskqrqwo0j" path="res://assets/PixelFantasy_Caves_1.0/mainlev_build.png" id="3_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://dtb6ujcdawf23" path="res://parallax_background.tscn" id="4_cm0pq"]
+[ext_resource type="PackedScene" uid="uid://cioby1n27ryow" path="res://enemies/skeleton/skeleton2.tscn" id="4_fos0i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3dxm6"]
 texture = ExtResource("3_cm0pq")
@@ -2101,3 +2102,6 @@ tile_set = SubResource("TileSet_lgr22")
 [node name="ParallaxBackground" parent="." instance=ExtResource("4_cm0pq")]
 offset = Vector2(300, 300)
 transform = Transform2D(1, 0, 0, 1, 300, 300)
+
+[node name="Skeleton2" parent="." instance=ExtResource("4_fos0i")]
+position = Vector2(210, 307)
