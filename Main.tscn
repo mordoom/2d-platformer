@@ -2093,7 +2093,7 @@ sources/0 = SubResource("TileSetAtlasSource_3dxm6")
 
 [node name="Player" parent="." instance=ExtResource("1_6m3wk")]
 z_index = 1
-position = Vector2(100, 300)
+position = Vector2(100, 308)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(17, 19)

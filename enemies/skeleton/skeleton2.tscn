@@ -234,18 +234,17 @@ script = ExtResource("2_j5ywc")
 
 [node name="CharacterStateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state", "player", "animation_tree")]
 script = ExtResource("4_uxv5g")
-current_state = NodePath("Walk")
+current_state = NodePath("Patrol")
 player = NodePath("..")
 animation_tree = NodePath("../AnimationTree")
 metadata/_custom_type_script = "uid://dmurjk74xkpdn"
 
-[node name="Walk" type="Node" parent="CharacterStateMachine"]
+[node name="Patrol" type="Node" parent="CharacterStateMachine"]
 script = ExtResource("5_bfjdt")
 metadata/_custom_type_script = "uid://bc302qypp4ibv"
 
-[node name="Dead" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("hit_box")]
+[node name="Dead" type="Node" parent="CharacterStateMachine"]
 script = ExtResource("6_l7c3s")
-hit_box = NodePath("../../CollisionShape2D")
 can_move = false
 metadata/_custom_type_script = "uid://bc302qypp4ibv"
 
@@ -253,7 +252,7 @@ metadata/_custom_type_script = "uid://bc302qypp4ibv"
 script = ExtResource("6_bfjdt")
 damageable = NodePath("../../Damageable")
 dead_state = NodePath("../Dead")
-idle_state = NodePath("../Walk")
+idle_state = NodePath("../Patrol")
 can_move = false
 metadata/_custom_type_script = "uid://bc302qypp4ibv"
 

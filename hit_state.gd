@@ -18,12 +18,12 @@ func on_exit():
 	super.on_exit()
 
 func on_damageable_hit(node: Node, amount: int, direction: Vector2):
+	player.velocity = knockback_speed * direction
+
 	if (damageable.health > 0):
-		player.velocity = knockback_speed * direction
 		emit_signal("interrupt_state", self)
 		playback.travel("hit")
 	else:
-		player.velocity = knockback_speed * direction
 		emit_signal("interrupt_state", dead_state)
 
 func _on_animation_tree_animation_finished(anim_name:StringName) -> void:

@@ -7,6 +7,7 @@ class_name AirState
 @export var coyote_time: float = 0.1
 @onready var jump_buffer_timer = $Timer
 
+var jump_dust_anim = preload("res://jump_dust_anim.tscn")
 var has_double_jumped = false
 var coyote_timer: float = 0
 
@@ -42,6 +43,10 @@ func state_input(event: InputEvent):
 			jump_buffer_timer.start()
 
 func double_jump():
+	var jump_dust = jump_dust_anim.instantiate()
+	get_tree().get_root().add_child(jump_dust)
+	jump_dust.global_position = player.global_position
+
 	player.velocity.y = double_jump_velocity
 	has_double_jumped = true
 	playback.travel("jump")

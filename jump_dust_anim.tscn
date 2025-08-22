@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://bbulursrobiwa"]
+
+[ext_resource type="Script" uid="uid://bndxe1x2j3vqp" path="res://oneplay_anim.gd" id="1_3n56b"]
+[ext_resource type="Texture2D" uid="uid://bkid0dw4td1gy" path="res://assets/Pirate by seartsy/Effect-Jump-Dust-4frm.png" id="1_t6kng"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3n56b"]
+atlas = ExtResource("1_t6kng")
+region = Rect2(0, 0, 244, 186)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yteix"]
+atlas = ExtResource("1_t6kng")
+region = Rect2(244, 0, 244, 186)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pb5h2"]
+atlas = ExtResource("1_t6kng")
+region = Rect2(488, 0, 244, 186)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vwhm0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3n56b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yteix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pb5h2")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="JumpDust" type="Node2D"]
+script = ExtResource("1_3n56b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_vwhm0")
+autoplay = "default"
+frame = 2
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

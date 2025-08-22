@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__godot-mcp__get_project_info"
+    ],
+    "deny": []
+  }
+}
