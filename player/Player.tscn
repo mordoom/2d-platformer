@@ -592,6 +592,9 @@ ground_attack_state = NodePath("../GroundAttack")
 script = ExtResource("8_mhpjh")
 landing_state = NodePath("../Landing")
 
+[node name="Timer" type="Timer" parent="CharacterStateMachine/Air"]
+wait_time = 0.5
+
 [node name="Landing" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("ground_state")]
 script = ExtResource("9_ndjxb")
 ground_state = NodePath("../Ground")

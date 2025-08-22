@@ -6,6 +6,6 @@ class_name DeadState
 
 func on_enter():
     playback.travel("death")
-    if (hit_box != null):
-        hit_box.set_deferred("disabled", true)
 
+func state_physics_process(_delta):
+    player.move_and_slide()

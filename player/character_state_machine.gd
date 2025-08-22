@@ -21,6 +21,7 @@ func can_move() -> bool:
 	return current_state.can_move
 
 func _physics_process(delta: float) -> void:
+	current_state.state_physics_process(delta)
 	if (current_state.next_state != null):
 		change_state(current_state.next_state)
 

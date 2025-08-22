@@ -16,6 +16,9 @@ func state_input(_event):
 func state_process(_delta):
 	pass
 
+func state_physics_process(_delta):
+	pass
+
 func on_enter():
 	pass
 	
