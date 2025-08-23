@@ -301,10 +301,11 @@ player = NodePath("..")
 animation_tree = NodePath("../AnimationTree")
 metadata/_custom_type_script = "uid://dmurjk74xkpdn"
 
-[node name="Patrol" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("floor_check", "wall_check")]
+[node name="Patrol" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("floor_check", "wall_check", "player_check")]
 script = ExtResource("5_2v32d")
 floor_check = NodePath("../../floor check")
 wall_check = NodePath("../../wall check")
+player_check = NodePath("../../player check")
 metadata/_custom_type_script = "uid://bc302qypp4ibv"
 
 [node name="Dead" type="Node" parent="CharacterStateMachine"]
@@ -335,5 +336,10 @@ position = Vector2(18, -7)
 [node name="wall check" type="RayCast2D" parent="."]
 position = Vector2(18, -7)
 target_position = Vector2(12, 0)
+
+[node name="player check" type="RayCast2D" parent="."]
+rotation = -0.001484
+target_position = Vector2(1000, 0)
+collision_mask = 3
 
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Hit" method="_on_animation_tree_animation_finished"]
