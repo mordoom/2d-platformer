@@ -16,7 +16,7 @@ func on_exit():
 	character.velocity = Vector2.ZERO
 	super.on_exit()
 
-func on_damageable_hit(node: Node, amount: int, direction: Vector2):
+func on_damageable_hit(_node: Node, _amount: int, direction: Vector2):
 	hit_direction = direction
 
 	# TODO: find a better way to do knockback
@@ -31,6 +31,6 @@ func on_damageable_hit(node: Node, amount: int, direction: Vector2):
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	if (anim_name == "hit"):
 		next_state = pursue_state
-		# Set the character's direction based on hit direction (only for enemies that have this method)
+
 		if character.has_method("set_direction"):
 			character.set_direction(sign(hit_direction.x))

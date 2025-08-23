@@ -34,7 +34,6 @@ func _physics_process(delta: float) -> void:
     if (state_machine.can_move()):
         move_and_slide()
 
-# Centralized raycast cache management
 func _update_raycast_cache(delta: float):
     cache_timer -= delta
     if cache_timer <= 0:
@@ -48,7 +47,6 @@ func _update_raycast_cache(delta: float):
         cached_wall_collision = wall_check.is_colliding()
         cached_player_collision = player_check.get_collider()
 
-# Public methods for states to use
 func can_patrol() -> bool:
     return cached_floor_collision && !cached_wall_collision
 
@@ -63,7 +61,6 @@ func set_direction(new_direction: float):
 func get_current_direction() -> float:
     return current_direction
 
-# Centralized raycast flipping - only called when direction changes
 func _flip_raycasts():
     wall_check.target_position.x = abs(wall_check.target_position.x) * current_direction
     wall_check.position.x = abs(wall_check.position.x) * current_direction
