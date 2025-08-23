@@ -6,7 +6,7 @@ class_name GroundState
 @export var ground_attack_state: State
 @export var jump_velocity = GameConstants.JUMP_VELOCITY
 
-var jump_dust_anim = preload("res://jump_dust_anim.tscn")
+var jump_dust_anim = preload("res://effects/jump_dust_anim.tscn")
 # TODO: this is required for the hit state atm
 var direction
 

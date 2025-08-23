@@ -17,10 +17,10 @@
 [ext_resource type="Texture2D" uid="uid://3a5ik7ndvyrq" path="res://assets/Pirate by seartsy/Hit-3frm.png" id="10_ofhxi"]
 [ext_resource type="Script" uid="uid://bmbf8x21nlc3o" path="res://player/ground_attack_state.gd" id="11_gatk"]
 [ext_resource type="Texture2D" uid="uid://caw51tt3dwwll" path="res://assets/Pirate by seartsy/Death-4frm.png" id="11_q6miu"]
-[ext_resource type="Script" uid="uid://b76n5nhjrhsom" path="res://hit_state.gd" id="15_uewl2"]
-[ext_resource type="Script" uid="uid://bueobukvjrfag" path="res://character/weapon.gd" id="16_t8epa"]
-[ext_resource type="Script" uid="uid://bv74cjk6dv3j5" path="res://damageable.gd" id="17_w24id"]
-[ext_resource type="Script" uid="uid://buvdd3fgh12nl" path="res://dead_state.gd" id="17_yu5hk"]
+[ext_resource type="Script" uid="uid://b76n5nhjrhsom" path="res://characters/states/hit_state.gd" id="15_uewl2"]
+[ext_resource type="Script" uid="uid://bcywceit70ofw" path="res://characters/weapon.gd" id="16_t8epa"]
+[ext_resource type="Script" uid="uid://bv74cjk6dv3j5" path="res://characters/damageable.gd" id="17_w24id"]
+[ext_resource type="Script" uid="uid://buvdd3fgh12nl" path="res://characters/states/dead_state.gd" id="17_yu5hk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1qlpj"]
 size = Vector2(32, 48)

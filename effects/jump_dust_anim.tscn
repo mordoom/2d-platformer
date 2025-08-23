@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bbulursrobiwa"]
 
-[ext_resource type="Script" uid="uid://bndxe1x2j3vqp" path="res://oneplay_anim.gd" id="1_3n56b"]
+[ext_resource type="Script" uid="uid://bndxe1x2j3vqp" path="res://effects/oneplay_anim.gd" id="1_3n56b"]
 [ext_resource type="Texture2D" uid="uid://bkid0dw4td1gy" path="res://assets/Pirate by seartsy/Effect-Jump-Dust-4frm.png" id="1_t6kng"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3n56b"]

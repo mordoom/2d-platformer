@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dqkrah6boc23b"]
 
-[ext_resource type="Script" uid="uid://bndxe1x2j3vqp" path="res://oneplay_anim.gd" id="1_6u4dq"]
+[ext_resource type="Script" uid="uid://bndxe1x2j3vqp" path="res://effects/oneplay_anim.gd" id="1_6u4dq"]
 [ext_resource type="Texture2D" uid="uid://d0b5262lp1hk" path="res://assets/Pirate by seartsy/Effect-Land-Dust-7frm.png" id="2_6u4dq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tvb8s"]
