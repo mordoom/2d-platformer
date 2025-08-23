@@ -31,12 +31,13 @@ func _physics_process(delta):
         velocity.x = move_toward(velocity.x, 0, current_speed)
 
     move_and_slide()
+    SignalBus.emit_signal("on_player_position_changed", position)
 
 func handle_death(delta):
     if death_timer == null:
         death_timer = death_time
     elif death_timer <= 0:
-        get_tree().reload_current_scene()
+        GameManager.reload()
     else:
         death_timer -= delta
 

@@ -2,7 +2,7 @@ extends State
 
 class_name PursueState
 
-@onready var player = GameManager.player
+# @onready var player = GameManager.player
 
 @export var chase_speed = 120
 @export var patrol_state: State
@@ -24,7 +24,7 @@ func state_physics_process(_delta):
 	wall_check.force_raycast_update()
 	floor_check.force_raycast_update()
 	
-	var position_difference = player.position.x - character.position.x
+	var position_difference = GameManager.player_position.x - character.position.x
 	var direction_to_player = sign(position_difference)
 	var distance_to_player = abs(position_difference)
 
