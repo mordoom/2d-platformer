@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://eb3e3o2d6d5x" path="res://enemies/skeleton/attack.gd" id="9_p8ro6"]
 [ext_resource type="Texture2D" uid="uid://ufb0ajwqyft0" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Walk.png" id="10_5q7td"]
 [ext_resource type="Texture2D" uid="uid://3le6hlxbv7n0" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Attack1.png" id="12_a1dpt"]
-[ext_resource type="Script" uid="uid://bl06hhjveetp" path="res://enemies/skeleton/weapon.gd" id="14_n0m5m"]
+[ext_resource type="Script" uid="uid://bl06hhjveetp" path="res://character/weapon.gd" id="14_n0m5m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5q4d"]
 size = Vector2(27, 47)
