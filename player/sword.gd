@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var damage = 10
+@export var damage = GameConstants.SWORD_DAMAGE
 
 func _ready() -> void:
 	monitoring = false

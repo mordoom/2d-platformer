@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed: float = 300.0
+@export var speed: float = GameConstants.PLAYER_SPEED
 var current_speed = speed
 
 @onready var animation_tree: AnimationTree = $AnimationTree
@@ -10,7 +10,7 @@ var current_speed = speed
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-var death_time: float = 3
+var death_time: float = GameConstants.DEATH_TIME
 var death_timer = null
 
 func _ready():

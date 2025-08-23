@@ -4,11 +4,11 @@ class_name PursueState
 
 # @onready var player = GameManager.player
 
-@export var chase_speed = 120
+@export var chase_speed = GameConstants.SKELETON_CHASE_SPEED
 @export var patrol_state: State
 @export var attack_state: State
-@export var minChaseDifference = 50
-@export var maxChaseDifference = 500
+@export var minChaseDifference = GameConstants.SKELETON_MIN_CHASE_DISTANCE
+@export var maxChaseDifference = GameConstants.SKELETON_MAX_CHASE_DISTANCE
 
 var floor_check: RayCast2D
 var wall_check: RayCast2D

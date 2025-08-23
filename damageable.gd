@@ -4,7 +4,7 @@ class_name Damageable
 
 signal on_hit(node: Node, damage_taken: int, direction: Vector2)
 
-@export var health = 30:
+@export var health = GameConstants.DEFAULT_HEALTH:
     get:
         return health
     set(value):

@@ -5,7 +5,7 @@ class_name HitState
 @export var damageable: Damageable
 @export var dead_state: State
 @export var pursue_state: State
-@export var knockback_speed: float = 20.0
+@export var knockback_speed: float = GameConstants.KNOCKBACK_SPEED
 
 var hit_direction
 

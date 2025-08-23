@@ -5,14 +5,14 @@ class_name PatrolState
 enum States {IDLE, MOVING}
 
 @export var initial_direction = 1.0
-@export var speed: float = 50.0
+@export var speed: float = GameConstants.SKELETON_PATROL_SPEED
 @export var pursue_state: State
 
 var floor_check: RayCast2D
 var wall_check: RayCast2D
 var player_check: RayCast2D
 
-var idle_time = 3
+var idle_time = GameConstants.SKELETON_IDLE_TIME
 var idle_timer: float = 0
 var patrol_state = States.MOVING
 var direction = initial_direction
