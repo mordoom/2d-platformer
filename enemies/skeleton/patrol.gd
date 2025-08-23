@@ -9,6 +9,7 @@ enum States {IDLE, MOVING}
 @export var floor_check: RayCast2D
 @export var wall_check: RayCast2D
 @export var player_check: RayCast2D
+@export var pursue_state: State
 
 var idle_time = 3
 var idle_timer: float = 0
@@ -21,7 +22,7 @@ func state_physics_process(delta):
 
 	var player_check_collision = player_check.get_collider()
 	if (player_check_collision != null && player_check_collision.name == "Player"):
-		print_debug("I see player")
+		next_state = pursue_state
 
 	var can_patrol = floor_check.is_colliding() && !wall_check.is_colliding()
 	match patrol_state:
