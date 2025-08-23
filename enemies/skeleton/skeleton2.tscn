@@ -1,14 +1,15 @@
-[gd_scene load_steps=24 format=3 uid="uid://cioby1n27ryow"]
+[gd_scene load_steps=30 format=3 uid="uid://cioby1n27ryow"]
 
 [ext_resource type="Texture2D" uid="uid://dhg56c1lwor7w" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Idle.png" id="1_j5q4d"]
 [ext_resource type="Script" uid="uid://cur2e4n2p0pxn" path="res://enemies/skeleton/skeleton.gd" id="1_t7nm1"]
 [ext_resource type="Texture2D" uid="uid://bm8s43ddaqvhj" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Die.png" id="2_8w2ca"]
 [ext_resource type="Script" uid="uid://bv74cjk6dv3j5" path="res://damageable.gd" id="2_j5ywc"]
 [ext_resource type="Script" uid="uid://dmurjk74xkpdn" path="res://player/character_state_machine.gd" id="4_uxv5g"]
-[ext_resource type="Script" uid="uid://bc302qypp4ibv" path="res://player/state.gd" id="5_bfjdt"]
+[ext_resource type="Script" uid="uid://buxdijsixt086" path="res://enemies/skeleton/patrol.gd" id="5_2v32d"]
 [ext_resource type="Script" uid="uid://b76n5nhjrhsom" path="res://hit_state.gd" id="6_bfjdt"]
 [ext_resource type="Script" uid="uid://buvdd3fgh12nl" path="res://dead_state.gd" id="6_l7c3s"]
 [ext_resource type="Texture2D" uid="uid://dbx4fl4f4d2hd" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Hurt.png" id="9_2v32d"]
+[ext_resource type="Texture2D" uid="uid://ufb0ajwqyft0" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Walk.png" id="10_5q7td"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5q4d"]
 size = Vector2(27, 47)
@@ -19,17 +20,34 @@ animation = &"death"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2v32d"]
 animation = &"hit"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l7c3s"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5q7td"]
 animation = &"idle"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t7nm1"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wg02f"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_a1dpt"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_5q7td"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_5q7td")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_wg02f")
+blend_point_1/pos = 1.0
+blend_point_2/node = SubResource("AnimationNodeAnimation_a1dpt")
+blend_point_2/pos = -1.0
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wg02f"]
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2v32d"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a1dpt"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p8ro6"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5q7td"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wg02f"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n0m5m"]
 switch_mode = 2
 advance_mode = 2
 
@@ -39,9 +57,10 @@ states/death/node = SubResource("AnimationNodeAnimation_t7nm1")
 states/death/position = Vector2(689, 98)
 states/hit/node = SubResource("AnimationNodeAnimation_2v32d")
 states/hit/position = Vector2(512, 204)
-states/idle/node = SubResource("AnimationNodeAnimation_l7c3s")
-states/idle/position = Vector2(512, 47)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_t7nm1"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_2v32d"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_5q7td"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_wg02f")]
+states/patrol/node = SubResource("AnimationNodeBlendSpace1D_5q7td")
+states/patrol/position = Vector2(519, 3)
+transitions = ["Start", "patrol", SubResource("AnimationNodeStateMachineTransition_wg02f"), "patrol", "hit", SubResource("AnimationNodeStateMachineTransition_a1dpt"), "patrol", "death", SubResource("AnimationNodeStateMachineTransition_p8ro6"), "hit", "death", SubResource("AnimationNodeStateMachineTransition_5q7td"), "hit", "patrol", SubResource("AnimationNodeStateMachineTransition_n0m5m")]
+graph_offset = Vector2(-322, -49)
 
 [sub_resource type="Animation" id="Animation_2v32d"]
 length = 1.12501
@@ -208,12 +227,55 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
+[sub_resource type="Animation" id="Animation_a1dpt"]
+resource_name = "walk"
+length = 1.12501
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_5q7td")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1.00001),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 9]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5q7td"]
 _data = {
 &"RESET": SubResource("Animation_2v32d"),
 &"death": SubResource("Animation_5q7td"),
 &"hit": SubResource("Animation_wg02f"),
-&"idle": SubResource("Animation_t7nm1")
+&"idle": SubResource("Animation_t7nm1"),
+&"walk": SubResource("Animation_a1dpt")
 }
 
 [node name="Skeleton" type="CharacterBody2D"]
@@ -239,8 +301,10 @@ player = NodePath("..")
 animation_tree = NodePath("../AnimationTree")
 metadata/_custom_type_script = "uid://dmurjk74xkpdn"
 
-[node name="Patrol" type="Node" parent="CharacterStateMachine"]
-script = ExtResource("5_bfjdt")
+[node name="Patrol" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("floor_check", "wall_check")]
+script = ExtResource("5_2v32d")
+floor_check = NodePath("../../floor check")
+wall_check = NodePath("../../wall check")
 metadata/_custom_type_script = "uid://bc302qypp4ibv"
 
 [node name="Dead" type="Node" parent="CharacterStateMachine"]
@@ -253,16 +317,23 @@ script = ExtResource("6_bfjdt")
 damageable = NodePath("../../Damageable")
 dead_state = NodePath("../Dead")
 idle_state = NodePath("../Patrol")
-can_move = false
 metadata/_custom_type_script = "uid://bc302qypp4ibv"
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_l7c3s")
 anim_player = NodePath("../AnimationPlayer")
+parameters/patrol/blend_position = 0.64935
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_5q7td")
 }
+
+[node name="floor check" type="RayCast2D" parent="."]
+position = Vector2(18, -7)
+
+[node name="wall check" type="RayCast2D" parent="."]
+position = Vector2(18, -7)
+target_position = Vector2(12, 0)
 
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Hit" method="_on_animation_tree_animation_finished"]

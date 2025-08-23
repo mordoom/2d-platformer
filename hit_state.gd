@@ -10,9 +10,6 @@ class_name HitState
 func _ready() -> void:
 	damageable.connect("on_hit", on_damageable_hit)
 
-func state_physics_process(_delta):
-	player.move_and_slide()
-
 func on_exit():
 	player.velocity = Vector2.ZERO
 	super.on_exit()
@@ -26,6 +23,6 @@ func on_damageable_hit(node: Node, amount: int, direction: Vector2):
 	else:
 		emit_signal("interrupt_state", dead_state)
 
-func _on_animation_tree_animation_finished(anim_name:StringName) -> void:
+func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	if (anim_name == "hit"):
 		emit_signal("interrupt_state", idle_state)
