@@ -28,7 +28,8 @@ func _physics_process(delta: float) -> void:
 		change_state(current_state.next_state)
 
 func _input(event: InputEvent):
-	current_state.state_input(event)
+	if current_state.input_allowed:
+		current_state.state_input(event)
 
 func _process(delta: float) -> void:
 	current_state.state_process(delta)

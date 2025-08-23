@@ -7,6 +7,8 @@ class_name GroundState
 @export var jump_velocity = -400.0
 
 var jump_dust_anim = preload("res://jump_dust_anim.tscn")
+# TODO: this is required for the hit state atm
+var direction
 
 func on_enter():
 	playback.travel("move")
