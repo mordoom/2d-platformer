@@ -16,3 +16,6 @@ func hit(damage: int, direction: Vector2):
     emit_signal("on_hit", get_parent(), damage, direction)
     if health <= 0:
         print_debug(get_parent().name + " died")
+
+func is_dead() -> bool:
+    return health <= 0
