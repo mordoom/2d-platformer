@@ -4,7 +4,7 @@ class_name PursueState
 
 @onready var player = GameManager.player
 
-@export var chase_speed = 70
+@export var chase_speed = 120
 @export var patrol_state: State
 @export var attack_state: State
 @export var minChaseDifference = 50
