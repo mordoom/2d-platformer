@@ -4,7 +4,7 @@ class_name CharacterStateMachine
 
 var states: Array[State]
 @export var current_state: State
-@export var player: CharacterBody2D
+@export var character: CharacterBody2D
 @export var animation_tree: AnimationTree
 
 signal interrupt_state(new_state: State)
@@ -13,9 +13,11 @@ func _ready() -> void:
 	for child in get_children():
 		if (child is State):
 			states.append(child)
-			child.player = player
+			child.character = character
 			child.playback = animation_tree["parameters/playback"]
 			child.connect("interrupt_state", on_interrupt_state)
+
+	current_state.on_enter()
 
 func can_move() -> bool:
 	return current_state.can_move

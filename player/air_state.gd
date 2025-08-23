@@ -17,23 +17,23 @@ func on_enter():
 func state_process(delta):
 	coyote_timer -= delta
 
-	if player.is_on_floor():
+	if character.is_on_floor():
 		if jump_buffer_timer.is_stopped():
 			playback.travel("landing")
 			next_state = landing_state
 		else:
 			jump_buffer_timer.stop()
-			player.velocity.y = double_jump_velocity
+			character.velocity.y = double_jump_velocity
 			playback.travel("jump")
 			has_double_jumped = false
 	
-	if player.velocity.y > 0:
+	if character.velocity.y > 0:
 		playback.travel("falling")
 
 func state_input(event: InputEvent):
 	if (event.is_action_pressed("jump")):
-		if player.velocity.y > 0 && coyote_timer >= 0:
-			player.velocity.y = double_jump_velocity
+		if character.velocity.y > 0 && coyote_timer >= 0:
+			character.velocity.y = double_jump_velocity
 			playback.travel("jump")
 			return
 
@@ -45,9 +45,9 @@ func state_input(event: InputEvent):
 func double_jump():
 	var jump_dust = jump_dust_anim.instantiate()
 	get_tree().get_root().add_child(jump_dust)
-	jump_dust.global_position = player.global_position
+	jump_dust.global_position = character.global_position
 
-	player.velocity.y = double_jump_velocity
+	character.velocity.y = double_jump_velocity
 	has_double_jumped = true
 	playback.travel("jump")
 

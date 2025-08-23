@@ -1,13 +1,13 @@
 @tool
 extends MarginContainer
 
-var _id : int = 0
-var _initial_cmds : String = ""
-var _font : Font = null
-var _font_size : int = 14
-var _meta : bool = false
+var _id: int = 0
+var _initial_cmds: String = ""
+var _font: Font = null
+var _font_size: int = 14
+var _meta: bool = false
 
-func set_active(flag : bool):
+func set_active(flag: bool):
 	_apply_child_active(self, flag)
 
 func apply_themes():
@@ -96,7 +96,7 @@ func _next_id() -> int:
 	return _id
 	
 func _on_bell():
-	$player.play()
+	$character.play()
 
 func _on_new_above(node):
 	var size = node.get_size()
@@ -115,7 +115,7 @@ func _on_new_above(node):
 	vsplitter.add_child(node)
 	vsplitter.split_offset = size.y / 2.0
 	vsplitter.set_h_size_flags(SIZE_FILL)
-	vsplitter.set_v_size_flags(SIZE_FILL)	
+	vsplitter.set_v_size_flags(SIZE_FILL)
 	parent.add_child(vsplitter)
 	parent.move_child(vsplitter, child_pos)
 	new_node.apply_alt_meta(_meta)

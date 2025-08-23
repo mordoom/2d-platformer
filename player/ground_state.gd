@@ -18,18 +18,18 @@ func state_input(event: InputEvent):
 		attack()
 		
 func state_process(_delta):
-	if (!player.is_on_floor()):
+	if (!character.is_on_floor()):
 		next_state = air_state
 
 func attack():
 	next_state = ground_attack_state
 
 func jump():
-	player.velocity.y = jump_velocity
+	character.velocity.y = jump_velocity
 
 	var jump_dust = jump_dust_anim.instantiate()
 	get_tree().get_root().add_child(jump_dust)
-	jump_dust.global_position = player.global_position
+	jump_dust.global_position = character.global_position
 
 	next_state = air_state
 	playback.travel("jump")

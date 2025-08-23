@@ -8,12 +8,11 @@ signal on_hit(node: Node, damage_taken: int, direction: Vector2)
     get:
         return health
     set(value):
-        SignalBus.emit_signal("on_health_changed", get_parent(), value - health) 
+        SignalBus.emit_signal("on_health_changed", get_parent(), value - health)
         health = value
 
 func hit(damage: int, direction: Vector2):
-    if health > 0:
-        health -= damage
-        emit_signal("on_hit", get_parent(), damage, direction)
-    else:
+    health -= damage
+    emit_signal("on_hit", get_parent(), damage, direction)
+    if health <= 0:
         print_debug(get_parent().name + " died")

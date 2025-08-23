@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var sprite = $Sprite2D
 @onready var floor_check = $"floor check"
 @onready var wall_check = $"wall check"
+@onready var sword_collision = $AttackArea/CollisionShape2D
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -30,5 +31,9 @@ func update_animation(direction: float):
 func update_facing_direction(direction: float):
     if direction < 0:
         sprite.flip_h = true
+        if sign(sword_collision.position.x) == 1:
+            sword_collision.position.x *= -1
     elif direction > 0:
         sprite.flip_h = false
+        if sign(sword_collision.position.x) == -1:
+            sword_collision.position.x *= -1

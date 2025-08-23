@@ -8,7 +8,7 @@ var landing_dust_anim = preload("res://landing_dust_anim.tscn")
 func on_enter():
 	var landing_dust = landing_dust_anim.instantiate()
 	get_tree().get_root().add_child(landing_dust)
-	landing_dust.global_position = player.global_position
+	landing_dust.global_position = character.global_position
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	if (anim_name == "landing"):

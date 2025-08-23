@@ -3,7 +3,7 @@ extends Node
 class_name State
 
 @export var can_move = true
-@export var player: CharacterBody2D
+@export var character: CharacterBody2D
 
 var next_state: State
 var playback: AnimationNodeStateMachinePlayback

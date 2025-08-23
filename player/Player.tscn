@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://b7o8xkqx8kprr"]
+[gd_scene load_steps=54 format=3 uid="uid://b7o8xkqx8kprr"]
 
 [ext_resource type="Script" uid="uid://mfutwql3adrs" path="res://player/Player.gd" id="1_3xw5h"]
 [ext_resource type="Texture2D" uid="uid://hw7md603ptk8" path="res://assets/Pirate by seartsy/Fall-Down-2frm.png" id="2_cxr5p"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://ce1llr8pnomm1" path="res://player/state_debug_label.gd" id="10_ndjxb"]
 [ext_resource type="Script" uid="uid://bmbf8x21nlc3o" path="res://player/ground_attack_state.gd" id="11_gatk"]
 [ext_resource type="Script" uid="uid://bueobukvjrfag" path="res://player/sword.gd" id="16_t8epa"]
+[ext_resource type="Script" uid="uid://bv74cjk6dv3j5" path="res://damageable.gd" id="17_w24id"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1qlpj"]
 size = Vector2(32, 48)
@@ -577,10 +578,10 @@ texture_filter = 1
 texture = ExtResource("2_kpjcp")
 hframes = 5
 
-[node name="CharacterStateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state", "player", "animation_tree")]
+[node name="CharacterStateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state", "character", "animation_tree")]
 script = ExtResource("6_tdg3f")
 current_state = NodePath("Ground")
-player = NodePath("..")
+character = NodePath("..")
 animation_tree = NodePath("../AnimationTree")
 
 [node name="Ground" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("air_state", "ground_attack_state")]
@@ -626,6 +627,10 @@ script = ExtResource("16_t8epa")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sword"]
 position = Vector2(50, 6)
 shape = SubResource("RectangleShape2D_v4f8b")
+
+[node name="Damageable" type="Node" parent="."]
+script = ExtResource("17_w24id")
+metadata/_custom_type_script = "uid://bv74cjk6dv3j5"
 
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Landing" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/GroundAttack" method="_on_animation_tree_animation_finished"]
