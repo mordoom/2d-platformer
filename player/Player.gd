@@ -10,10 +10,17 @@ var current_speed = speed
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+var death_time: float = 3
+var death_timer = null
+
 func _ready():
     animation_tree.active = true
 
 func _physics_process(delta):
+    if state_machine.is_dead():
+        handle_death(delta)
+        return
+
     if not is_on_floor():
         velocity.y += gravity * delta
 
@@ -24,6 +31,14 @@ func _physics_process(delta):
         velocity.x = move_toward(velocity.x, 0, current_speed)
 
     move_and_slide()
+
+func handle_death(delta):
+    if death_timer == null:
+        death_timer = death_time
+    elif death_timer <= 0:
+        get_tree().reload_current_scene()
+    else:
+        death_timer -= delta
 
 func get_direction():
     return Input.get_axis("left", "right")

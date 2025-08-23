@@ -2110,3 +2110,12 @@ position = Vector2(200, 307)
 [node name="DamageCounter" parent="." instance=ExtResource("5_fos0i")]
 offset_left = -1.0
 offset_right = 39.0
+
+[node name="Skeleton" parent="." instance=ExtResource("4_fos0i")]
+position = Vector2(531, 339)
+
+[node name="Skeleton3" parent="." instance=ExtResource("4_fos0i")]
+position = Vector2(1027, 341)
+
+[node name="Skeleton4" parent="." instance=ExtResource("4_fos0i")]
+position = Vector2(-251, 371)

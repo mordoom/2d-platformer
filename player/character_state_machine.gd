@@ -8,6 +8,7 @@ var states: Array[State]
 @export var animation_tree: AnimationTree
 
 signal interrupt_state(new_state: State)
+signal dead()
 
 func _ready() -> void:
 	for child in get_children():
@@ -21,6 +22,9 @@ func _ready() -> void:
 
 func can_move() -> bool:
 	return current_state.can_move
+
+func is_dead() -> bool:
+	return current_state.dead
 
 func _physics_process(delta: float) -> void:
 	current_state.state_physics_process(delta)

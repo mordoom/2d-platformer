@@ -4,6 +4,7 @@ class_name State
 
 @export var can_move = true
 @export var input_allowed = true
+@export var dead = false
 @export var character: CharacterBody2D
 
 var next_state: State
