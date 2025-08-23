@@ -3,8 +3,6 @@ extends CharacterBody2D
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = $CharacterStateMachine
 @onready var sprite = $Sprite2D
-@onready var floor_check = $"floor check"
-@onready var wall_check = $"wall check"
 @onready var sword_collision = $AttackArea/CollisionShape2D
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")

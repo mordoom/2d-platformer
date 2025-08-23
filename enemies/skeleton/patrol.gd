@@ -29,6 +29,7 @@ func state_physics_process(delta):
 	var player_check_collision = player_check.get_collider()
 	if (player_check_collision != null && player_check_collision.name == "Player"):
 		next_state = pursue_state
+		pursue_state.direction = direction
 		return
 
 	var can_patrol = floor_check.is_colliding() && !wall_check.is_colliding()
@@ -40,8 +41,9 @@ func state_physics_process(delta):
 				flip_direction()
 				patrol_state = States.MOVING
 		States.MOVING:
-			character.velocity.x = direction * speed
-			if (!can_patrol):
+			if (can_patrol):
+				character.velocity.x = direction * speed
+			else:
 				idle_timer = idle_time
 				patrol_state = States.IDLE
 
