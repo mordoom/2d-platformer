@@ -18,7 +18,6 @@ func _ready():
 
 func _physics_process(delta):
     if state_machine.is_dead():
-        handle_death(delta)
         return
 
     if not is_on_floor():
@@ -32,14 +31,6 @@ func _physics_process(delta):
 
     move_and_slide()
     SignalBus.emit_signal("on_player_position_changed", position)
-
-func handle_death(delta):
-    if death_timer == null:
-        death_timer = death_time
-    elif death_timer <= 0:
-        GameManager.reload()
-    else:
-        death_timer -= delta
 
 func get_direction():
     return Input.get_axis("left", "right")
