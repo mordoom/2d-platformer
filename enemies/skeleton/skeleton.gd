@@ -12,6 +12,7 @@ extends CharacterBody2D
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var current_direction: float = 1.0
+var player_check_offset = 40
 
 # Raycast caching for performance
 var cached_floor_collision: bool = false
@@ -31,7 +32,7 @@ func _physics_process(delta: float) -> void:
 
     _update_raycast_cache(delta)
 
-    var direction = get_direction()
+    var direction = get_movement_direction()
     update_animation(direction)
     if (state_machine.can_move()):
         move_and_slide()
@@ -67,12 +68,15 @@ func get_current_direction() -> float:
 func _flip_raycasts():
     wall_check.target_position.x = abs(wall_check.target_position.x) * current_direction
     wall_check.position.x = abs(wall_check.position.x) * current_direction
+
     floor_check.position.x = abs(floor_check.position.x) * current_direction
-    player_check.position.x = abs(player_check.position.x) * current_direction
+
+    player_check.position.x = (abs(player_check.position.x) * current_direction) - (player_check_offset * current_direction)
     player_check.target_position.x = abs(player_check.target_position.x) * current_direction
+
     sword_collision.position.x = abs(sword_collision.position.x) * current_direction
 
-func get_direction():
+func get_movement_direction():
     return sign(velocity.x)
 
 func update_animation(direction: float):

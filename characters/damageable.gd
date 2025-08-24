@@ -12,9 +12,10 @@ signal on_hit(node: Node, damage_taken: int, direction: Vector2)
         health = value
 
 func hit(damage: int, direction: Vector2):
-    health -= damage
-    emit_signal("on_hit", get_parent(), damage, direction)
-    if health <= 0:
+    if health > 0:
+        health -= damage
+        emit_signal("on_hit", get_parent(), damage, direction)
+    else:
         print_debug(get_parent().name + " died")
 
 func is_dead() -> bool:

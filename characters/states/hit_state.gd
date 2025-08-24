@@ -20,7 +20,7 @@ func on_damageable_hit(_node: Node, _amount: int, direction: Vector2):
 	hit_direction = direction
 
 	# TODO: find a better way to do knockback
-	# character.velocity = knockback_speed * direction
+	character.velocity = knockback_speed * direction
 
 	if (damageable.is_dead()):
 		emit_signal("interrupt_state", dead_state)

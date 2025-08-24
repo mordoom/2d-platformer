@@ -12,13 +12,11 @@ func _on_body_entered(body: Node2D) -> void:
 			print_debug(body.name + " took " + str(damage) + " damage")
 			var direction_to_target = body.global_position - get_parent().global_position
 			var direction_sign = sign(direction_to_target.x)
-			var damage_direction: Vector2
+			var damage_direction = Vector2.ZERO
 			
 			if direction_sign > 0:
 				damage_direction = Vector2.RIGHT
 			elif direction_sign < 0:
 				damage_direction = Vector2.LEFT
-			else:
-				damage_direction = Vector2.ZERO
 			
 			child.hit(damage, damage_direction)
