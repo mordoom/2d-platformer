@@ -39,7 +39,7 @@ func setup_tests():
 	tests.append({
 		"name": "Combat Movement Test",
 		"commands": [
-			{"action": "press", "input": "right", "duration": 1.1},
+			{"action": "press", "input": "right", "duration": 2.0},
 			{"action": "release", "input": "right", "duration": 0.5},
 			{"action": "press", "input": "attack", "duration": 0.1},
 			{"action": "release", "input": "attack", "duration": 0.5},

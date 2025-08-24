@@ -12,8 +12,9 @@ func state_physics_process(_delta):
 	var position_difference = GameManager.player_position.x - character.position.x
 	var direction_to_player = sign(position_difference)
 	var distance_to_player = abs(position_difference)
+	var current_direction = character.get_current_direction()
 
-	if direction_to_player != character.get_current_direction():
+	if direction_to_player != current_direction:
 		character.set_direction(direction_to_player)
 
 	if not character.can_patrol():

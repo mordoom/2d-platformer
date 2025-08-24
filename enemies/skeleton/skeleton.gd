@@ -23,13 +23,15 @@ func _ready() -> void:
     animation_tree.active = true
 
 func _physics_process(delta: float) -> void:
-    _update_raycast_cache(delta)
-    
     if not is_on_floor():
         velocity.y += gravity * delta
 
+    if (state_machine.is_dead()):
+        return
+
+    _update_raycast_cache(delta)
+
     var direction = get_direction()
-    update_facing_direction(direction)
     update_animation(direction)
     if (state_machine.can_move()):
         move_and_slide()
@@ -57,6 +59,7 @@ func set_direction(new_direction: float):
     if new_direction != current_direction:
         current_direction = new_direction
         _flip_raycasts()
+        update_facing_direction(new_direction)
 
 func get_current_direction() -> float:
     return current_direction
@@ -67,6 +70,7 @@ func _flip_raycasts():
     floor_check.position.x = abs(floor_check.position.x) * current_direction
     player_check.position.x = abs(player_check.position.x) * current_direction
     player_check.target_position.x = abs(player_check.target_position.x) * current_direction
+    sword_collision.position.x = abs(sword_collision.position.x) * current_direction
 
 func get_direction():
     return sign(velocity.x)
@@ -75,11 +79,4 @@ func update_animation(direction: float):
     animation_tree.set("parameters/patrol/blend_position", direction)
 
 func update_facing_direction(direction: float):
-    if direction < 0:
-        sprite.flip_h = true
-        if sign(sword_collision.position.x) == 1:
-            sword_collision.position.x *= -1
-    elif direction > 0:
-        sprite.flip_h = false
-        if sign(sword_collision.position.x) == -1:
-            sword_collision.position.x *= -1
+    sprite.flip_h = false if direction > 0 else true
