@@ -16,7 +16,7 @@ func on_enter():
 
 func state_physics_process(delta):
 	var player_collision = character.get_player_collision()
-	if (player_collision != null && player_collision.name == "Player"):
+	if (player_collision != null && player_collision.is_in_group("Player")):
 		emit_change_state("pursue")
 		return
 
