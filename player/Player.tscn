@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://b7o8xkqx8kprr"]
+[gd_scene load_steps=67 format=3 uid="uid://b7o8xkqx8kprr"]
 
 [ext_resource type="Script" uid="uid://mfutwql3adrs" path="res://player/Player.gd" id="1_3xw5h"]
 [ext_resource type="Texture2D" uid="uid://hw7md603ptk8" path="res://assets/Pirate by seartsy/Fall-Down-2frm.png" id="2_cxr5p"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://bcywceit70ofw" path="res://characters/weapon.gd" id="16_t8epa"]
 [ext_resource type="Script" uid="uid://bv74cjk6dv3j5" path="res://characters/damageable.gd" id="17_w24id"]
 [ext_resource type="Script" uid="uid://buvdd3fgh12nl" path="res://characters/states/dead_state.gd" id="17_yu5hk"]
+[ext_resource type="Script" uid="uid://cqjief3xbuucb" path="res://characters/ladder.gd" id="19_mlfor"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1qlpj"]
 size = Vector2(32, 48)
@@ -649,6 +650,9 @@ graph_offset = Vector2(-392, -141)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v4f8b"]
 size = Vector2(68, 50)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6miu"]
+size = Vector2(34, 55)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
 script = ExtResource("1_3xw5h")
@@ -719,8 +723,13 @@ can_move = false
 input_allowed = false
 metadata/_custom_type_script = "uid://buvdd3fgh12nl"
 
+[node name="Ladder" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("idle_state")]
+script = ExtResource("19_mlfor")
+idle_state = NodePath("../Ground")
+can_move = false
+metadata/_custom_type_script = "uid://bc302qypp4ibv"
+
 [node name="Label" type="Label" parent="." node_paths=PackedStringArray("state_machine")]
-visible = false
 offset_left = -45.0
 offset_top = -50.0
 offset_right = 58.0
@@ -743,7 +752,17 @@ shape = SubResource("RectangleShape2D_v4f8b")
 script = ExtResource("17_w24id")
 metadata/_custom_type_script = "uid://bv74cjk6dv3j5"
 
+[node name="Interact" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interact"]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_q6miu")
+
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Landing" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/GroundAttack" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/HitState" method="_on_animation_tree_animation_finished"]
 [connection signal="body_entered" from="Sword" to="Sword" method="_on_body_entered"]
+[connection signal="area_entered" from="Interact" to="CharacterStateMachine/Ladder" method="_on_interact_area_entered"]
+[connection signal="area_exited" from="Interact" to="CharacterStateMachine/Ladder" method="_on_interact_area_exited"]

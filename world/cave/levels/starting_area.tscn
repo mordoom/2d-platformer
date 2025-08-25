@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://bsxutgda0dxhh"]
+[gd_scene load_steps=8 format=4 uid="uid://bsxutgda0dxhh"]
 
 [ext_resource type="Texture2D" uid="uid://bxrbskqrqwo0j" path="res://assets/PixelFantasy_Caves_1.0/mainlev_build.png" id="1_kfi3k"]
 [ext_resource type="Script" uid="uid://bte0vrcl1ixri" path="res://world/cave/levels/level.gd" id="1_uqlg1"]
 [ext_resource type="PackedScene" uid="uid://dtb6ujcdawf23" path="res://world/cave/parallax_background.tscn" id="2_oq5dy"]
 [ext_resource type="PackedScene" uid="uid://cioby1n27ryow" path="res://enemies/skeleton/skeleton2.tscn" id="3_uqlg1"]
+[ext_resource type="PackedScene" uid="uid://dmxcjqfiiabri" path="res://world/interactable/ladder.tscn" id="5_uqlg1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3dxm6"]
 texture = ExtResource("1_kfi3k")
@@ -2103,3 +2104,6 @@ follow_viewport_scale = 0.5
 
 [node name="Skeleton" parent="." instance=ExtResource("3_uqlg1")]
 position = Vector2(1000, 401)
+
+[node name="Ladder" parent="." instance=ExtResource("5_uqlg1")]
+position = Vector2(507, 288)

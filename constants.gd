@@ -4,6 +4,7 @@ class_name GameConstants
 
 # Player Constants
 const PLAYER_SPEED: float = 300.0
+const LADDER_SPEED: float = 150.0
 const JUMP_VELOCITY: float = -400.0
 const DOUBLE_JUMP_VELOCITY: float = -300.0
 const COYOTE_TIME: float = 0.1

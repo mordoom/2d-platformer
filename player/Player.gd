@@ -3,6 +3,9 @@ extends CharacterBody2D
 @export var speed: float = GameConstants.PLAYER_SPEED
 var current_speed = speed
 
+@export var ladder_speed = GameConstants.LADDER_SPEED
+var is_on_ladder = false
+
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var state_machine = $CharacterStateMachine
@@ -20,10 +23,14 @@ func _physics_process(delta):
     if state_machine.is_dead():
         return
 
-    if not is_on_floor():
+    if not is_on_floor() && not is_on_ladder:
         velocity.y += gravity * delta
 
-    var direction = get_direction()
+    if is_on_ladder:
+        var upward_direction = get_vertical_direction()
+        velocity.y = upward_direction * ladder_speed
+
+    var direction = get_horizontal_direction()
     if direction && state_machine.can_move():
         velocity.x = direction * current_speed
     else:
@@ -32,12 +39,15 @@ func _physics_process(delta):
     move_and_slide()
     SignalBus.emit_signal("on_player_position_changed", position)
 
-func get_direction():
+func get_vertical_direction():
+    return Input.get_axis("up", "down")
+
+func get_horizontal_direction():
     return Input.get_axis("left", "right")
 
 func _input(_event: InputEvent) -> void:
     if state_machine.current_state.input_allowed:
-        var direction = get_direction()
+        var direction = get_horizontal_direction()
         update_animation(direction)
         update_facing_direction(direction)
 
