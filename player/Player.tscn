@@ -711,16 +711,16 @@ can_move = false
 wait_time = 0.4
 one_shot = true
 
-[node name="HitState" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("damageable", "dead_state", "pursue_state")]
+[node name="Hit" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("damageable", "dead_state")]
 script = ExtResource("15_uewl2")
 damageable = NodePath("../../Damageable")
-dead_state = NodePath("../DeadState")
-pursue_state = NodePath("../Ground")
+dead_state = NodePath("../Dead")
+pursue = "ground"
 can_move = false
 input_allowed = false
 metadata/_custom_type_script = "uid://b76n5nhjrhsom"
 
-[node name="DeadState" type="Node" parent="CharacterStateMachine"]
+[node name="Dead" type="Node" parent="CharacterStateMachine"]
 script = ExtResource("17_yu5hk")
 can_move = false
 input_allowed = false
@@ -783,7 +783,7 @@ drag_bottom_margin = 0.05
 
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Landing" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/GroundAttack" method="_on_animation_tree_animation_finished"]
-[connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/HitState" method="_on_animation_tree_animation_finished"]
+[connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Hit" method="_on_animation_tree_animation_finished"]
 [connection signal="body_entered" from="Sword" to="Sword" method="_on_body_entered"]
 [connection signal="area_entered" from="Interact" to="CharacterStateMachine/Ladder" method="_on_interact_area_entered"]
 [connection signal="area_exited" from="Interact" to="CharacterStateMachine/Ladder" method="_on_interact_area_exited"]

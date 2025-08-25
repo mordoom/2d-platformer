@@ -14,13 +14,13 @@ func on_enter():
 
 func state_input(event: InputEvent):
 	if event.is_action_pressed("jump"):
-		emit_signal("on_change_state", jump_state)
+		emit_signal("on_change_state", "jump")
 	elif event.is_action_pressed("attack"):
 		attack()
 		
 func state_process(_delta):
 	if not character.is_on_floor():
-		emit_signal("on_change_state", air_state)
+		emit_signal("on_change_state", "air")
 
 func attack():
-	emit_signal("on_change_state", ground_attack_state)
+	emit_signal("on_change_state", "groundattack")

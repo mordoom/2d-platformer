@@ -4,7 +4,7 @@ class_name HitState
 
 @export var damageable: Damageable
 @export var dead_state: State
-@export var pursue_state: State
+@export var pursue: String
 @export var knockback_speed: float = GameConstants.KNOCKBACK_SPEED
 
 var hit_direction
@@ -23,14 +23,14 @@ func on_damageable_hit(_node: Node, _amount: int, direction: Vector2):
 	character.velocity = knockback_speed * direction
 
 	if (damageable.is_dead()):
-		emit_signal("on_change_state", dead_state)
+		emit_signal("on_change_state", "dead")
 	else:
-		emit_signal("on_change_state", self)
+		emit_signal("on_change_state", "hit")
 		playback.travel("hit")
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	if (anim_name == "hit"):
-		emit_signal("on_change_state", pursue_state)
+		emit_signal("on_change_state", pursue)
 
 		if character.has_method("set_direction"):
 			character.set_direction(sign(hit_direction.x))

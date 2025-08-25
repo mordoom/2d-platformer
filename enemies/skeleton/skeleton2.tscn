@@ -399,11 +399,11 @@ script = ExtResource("6_l7c3s")
 can_move = false
 metadata/_custom_type_script = "uid://bc302qypp4ibv"
 
-[node name="Hit" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("damageable", "dead_state", "pursue_state")]
+[node name="Hit" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("damageable", "dead_state")]
 script = ExtResource("6_bfjdt")
 damageable = NodePath("../../Damageable")
 dead_state = NodePath("../Dead")
-pursue_state = NodePath("../Pursue")
+pursue = "pursue"
 metadata/_custom_type_script = "uid://bc302qypp4ibv"
 
 [node name="Pursue" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("patrol_state", "attack_state")]

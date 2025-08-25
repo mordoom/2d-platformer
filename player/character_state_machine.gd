@@ -37,10 +37,11 @@ func _process(delta: float) -> void:
 	current_state.state_process(delta)
 
 func change_state(new_state: State):
-	print_debug("new_state", new_state.name)
 	current_state.on_exit()
 	current_state = new_state
 	current_state.on_enter()
 
-func _on_change_state(new_state: State):
+func _on_change_state(state_name: String):
+	var new_state = states_dict.get(state_name.to_lower())
+	assert(new_state != null, "State '" + state_name + "' not found in states_dict")
 	change_state(new_state)

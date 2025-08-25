@@ -12,7 +12,7 @@ func on_enter():
 func state_physics_process(_delta):
     if character.is_on_floor():
         playback.travel("landing")
-        emit_signal("on_change_state", landing_state)
+        emit_signal("on_change_state", "landing")
     elif character.velocity.y > 0:
             playback.travel("falling")
 
