@@ -3,6 +3,7 @@ extends Node
 class_name CharacterStateMachine
 
 var states: Array[State]
+var states_dict = {}
 @export var current_state: State
 @export var character: CharacterBody2D
 @export var animation_tree: AnimationTree
@@ -14,6 +15,7 @@ func _ready() -> void:
 	for child in get_children():
 		if (child is State):
 			states.append(child)
+			states_dict[child.name.to_lower()] = child
 			child.character = character
 			child.playback = animation_tree["parameters/playback"]
 			child.connect("interrupt_state", on_interrupt_state)

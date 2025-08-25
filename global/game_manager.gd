@@ -3,9 +3,10 @@ extends Node
 class_name GameManager
 
 var player: Node
+var player_scene = preload("res://player/Player.tscn")
 var player_position: Vector2
 var camera: Camera2D
-var player_initial_position: Vector2 = Vector2(100, 289)
+
 var death_timer: Timer
 var initial_level = preload("res://world/cave/levels/starting_area.tscn")
 var current_level: Node
@@ -20,8 +21,13 @@ func _ready() -> void:
 	SignalBus.connect("character_died", on_character_died_handler)
 
 func init():
-	player = get_tree().get_first_node_in_group("Player")
+	if (player):
+		player.queue_free()
+
+	player = player_scene.instantiate()
 	camera = player.get_node("Camera2D")
+	player.global_position = GameConstants.PLAYER_INITIAL_POSITION
+	add_child.call_deferred(player)
 	init_level(initial_level)
 
 func init_level(level: PackedScene):
@@ -74,7 +80,6 @@ func check_level_bounds():
 
 func check_and_load_next_level(level_path, entry_direction: Vector2):
 	if level_path == "":
-		player.position = player_initial_position
 		reload()
 		print_debug("no connecting level found - game over")
 	else:

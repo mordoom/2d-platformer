@@ -24,7 +24,6 @@ func test_player():
 	simulate_input_press("attack", 200)
 
 	# the player should have killed the first skeleton
-	var tree = runner.invoke("get_tree_string")
 	var skeleton = runner.invoke("get_node", "StartingArea/Skeleton")
 	assert(skeleton != null)
 	await assert_signal(SignalBus).wait_until(2000).is_emitted("character_died", [skeleton])
@@ -42,6 +41,8 @@ func test_player():
 	var player = runner.invoke("find_child", "Player")
 	await assert_signal(SignalBus).wait_until(10000).is_emitted("character_died", [player])
 	await assert_signal(SignalBus).wait_until(1000).is_emitted("game_over")
+	
+	await await_millis(1000);
 
 func spawn_skeleton(player, runner):
 	var new_skeleton = skeleton_scene.instantiate()

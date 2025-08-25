@@ -15,11 +15,11 @@ var climbing = false
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-var death_time: float = GameConstants.DEATH_TIME
-var death_timer = null
-
 func _ready():
     animation_tree.active = true
+
+func reset():
+    pass
 
 func _physics_process(delta):
     if state_machine.is_dead():
