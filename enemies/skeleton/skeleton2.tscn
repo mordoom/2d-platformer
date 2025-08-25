@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cur2e4n2p0pxn" path="res://enemies/skeleton/skeleton.gd" id="1_t7nm1"]
 [ext_resource type="Texture2D" uid="uid://bm8s43ddaqvhj" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Die.png" id="2_8w2ca"]
 [ext_resource type="Script" uid="uid://bv74cjk6dv3j5" path="res://characters/damageable.gd" id="2_j5ywc"]
-[ext_resource type="Script" uid="uid://dmurjk74xkpdn" path="res://player/character_state_machine.gd" id="4_uxv5g"]
+[ext_resource type="Script" uid="uid://dmurjk74xkpdn" path="res://characters/character_state_machine.gd" id="4_uxv5g"]
 [ext_resource type="Script" uid="uid://buxdijsixt086" path="res://enemies/skeleton/patrol.gd" id="5_2v32d"]
 [ext_resource type="Script" uid="uid://b76n5nhjrhsom" path="res://characters/states/hit_state.gd" id="6_bfjdt"]
 [ext_resource type="Script" uid="uid://buvdd3fgh12nl" path="res://characters/states/dead_state.gd" id="6_l7c3s"]

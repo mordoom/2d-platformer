@@ -44,15 +44,6 @@ func _physics_process(delta):
     move_and_slide()
     SignalBus.emit_signal("on_player_position_changed", position)
 
-func is_raycast_on_floor():
-    return floor_check.is_colliding()
-
-func get_vertical_direction():
-    return Input.get_axis("up", "down")
-
-func get_horizontal_direction():
-    return Input.get_axis("left", "right")
-
 func _input(_event: InputEvent) -> void:
     if state_machine.current_state.input_allowed:
         var direction = get_horizontal_direction()
@@ -71,3 +62,12 @@ func update_facing_direction(direction: float):
         sprite.flip_h = false
         if sign(sword_collision.position.x) == -1:
             sword_collision.position.x *= -1
+
+func is_raycast_on_floor():
+    return floor_check.is_colliding()
+
+func get_vertical_direction():
+    return Input.get_axis("up", "down")
+
+func get_horizontal_direction():
+    return Input.get_axis("left", "right")
