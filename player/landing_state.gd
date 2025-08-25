@@ -10,5 +10,5 @@ func on_enter():
 	landing_dust.global_position = character.global_position
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
-	if (anim_name == "landing"):
+	if (anim_name == "landing" && get_parent().current_state == self):
 		emit_signal("on_change_state", "ground")

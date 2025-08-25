@@ -15,7 +15,7 @@ func state_input(event: InputEvent):
 	elif event.is_action_pressed("attack"):
 		attack()
 		
-func state_process(_delta):
+func state_physics_process(_delta):
 	if not character.is_on_floor():
 		emit_signal("on_change_state", "air")
 

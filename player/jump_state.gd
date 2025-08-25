@@ -13,7 +13,7 @@ func state_physics_process(_delta):
         playback.travel("landing")
         emit_signal("on_change_state", "landing")
     elif character.velocity.y > 0:
-            playback.travel("falling")
+        playback.travel("falling")
 
 func jump():
     character.velocity.y = jump_velocity

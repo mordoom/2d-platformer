@@ -18,14 +18,9 @@ func state_physics_process(delta):
 	coyote_timer -= delta
 
 	if character.is_on_floor():
-		if jump_buffer_timer.is_stopped():
-			playback.travel("landing")
-			emit_signal("on_change_state", "landing")
-		else:
-			jump_buffer_timer.stop()
-			emit_signal("on_change_state", "jump")
-	
-	if character.velocity.y > 0:
+		playback.travel("landing")
+		emit_signal("on_change_state", "landing")
+	elif character.velocity.y > 0:
 		playback.travel("falling")
 
 func state_input(event: InputEvent):
