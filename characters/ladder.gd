@@ -3,32 +3,39 @@ extends State
 class_name LadderState
 
 @export var idle_state: State
+@export var air_state: State
 
-var character_colliding_with_ladder = false
+var on_ladder = false
 
 func on_enter():
     super.on_enter()
-    character.is_on_ladder = true
+    character.climbing = true
 
 func on_exit():
-    character.is_on_ladder = false
+    super.on_exit()
+    character.climbing = false
+
+func state_input(event):
+    if event.is_action_pressed("jump"):
+        idle_state.jump()
+        next_state = air_state
 
 func _input(_event):
     if (Input.is_action_just_pressed("up")):
-        if (character_colliding_with_ladder && not character.is_on_ladder):
+        if (on_ladder && not character.climbing):
             emit_signal("interrupt_state", self)
     elif (Input.is_action_just_pressed("down")):
-        if character_colliding_with_ladder && not character.is_on_ladder:
+        if on_ladder && not character.climbing:
             emit_signal("interrupt_state", self)
     elif (Input.is_action_just_released("down")):
-        if (character.is_on_ladder && character.is_raycast_on_floor()):
+        if (character.climbing && character.is_raycast_on_floor()):
             next_state = idle_state
 
 func _on_interact_area_entered(area: Area2D) -> void:
     if area.get_parent().is_in_group("Ladder"):
-        character_colliding_with_ladder = true
+        on_ladder = true
 
 func _on_interact_area_exited(area: Area2D) -> void:
     if area.get_parent().is_in_group("Ladder"):
-        character_colliding_with_ladder = false
+        on_ladder = false
         next_state = idle_state

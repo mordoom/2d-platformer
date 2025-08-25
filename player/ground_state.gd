@@ -15,6 +15,7 @@ func on_enter():
 
 func state_input(event: InputEvent):
 	if event.is_action_pressed("jump"):
+		next_state = air_state
 		jump()
 	elif event.is_action_pressed("attack"):
 		attack()
@@ -28,10 +29,10 @@ func attack():
 
 func jump():
 	character.velocity.y = jump_velocity
+	create_jump_dust()
+	playback.travel("jump")
 
+func create_jump_dust():
 	var jump_dust = jump_dust_anim.instantiate()
 	get_tree().get_root().add_child(jump_dust)
 	jump_dust.global_position = character.global_position
-
-	next_state = air_state
-	playback.travel("jump")

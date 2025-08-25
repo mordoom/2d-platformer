@@ -723,9 +723,10 @@ can_move = false
 input_allowed = false
 metadata/_custom_type_script = "uid://buvdd3fgh12nl"
 
-[node name="Ladder" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("idle_state")]
+[node name="Ladder" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("idle_state", "air_state")]
 script = ExtResource("19_mlfor")
 idle_state = NodePath("../Ground")
+air_state = NodePath("../Air")
 can_move = false
 metadata/_custom_type_script = "uid://bc302qypp4ibv"
 
