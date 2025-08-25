@@ -22,8 +22,7 @@ func state_physics_process(_delta):
 	pass
 
 func on_enter():
-	pass
+	next_state = null
 	
 func on_exit():
-	if (next_state):
-		next_state = null
+	next_state = null

@@ -12,9 +12,6 @@ var hit_direction
 func _ready() -> void:
 	damageable.connect("on_hit", on_damageable_hit)
 
-func on_enter():
-	character.is_on_ladder = false
-
 func on_exit():
 	character.velocity = Vector2.ZERO
 	super.on_exit()

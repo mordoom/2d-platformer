@@ -7,12 +7,12 @@ class_name LadderState
 var character_colliding_with_ladder = false
 
 func on_enter():
-    next_state = null
+    super.on_enter()
     character.is_on_ladder = true
 
 func on_exit():
-    character.is_on_ladder = false
     super.on_exit()
+    character.is_on_ladder = false
 
 func _input(_event):
     if (Input.is_action_just_pressed("up") && character_colliding_with_ladder && not character.is_on_ladder):
