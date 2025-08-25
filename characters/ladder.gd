@@ -17,7 +17,7 @@ func state_input(event):
     if event.is_action_pressed("jump"):
         emit_signal("on_change_state", "jump")
 
-func _input(_event):
+func _input(event):
     if (Input.is_action_just_pressed("up")):
         if (on_ladder && not character.climbing):
             emit_signal("on_change_state", "ladder")
@@ -34,4 +34,5 @@ func _on_interact_area_entered(area: Area2D) -> void:
 
 func _on_interact_area_exited(area: Area2D) -> void:
     if area.get_parent().is_in_group("Ladder"):
-        emit_signal("on_change_state", "ground")
+        character.climbing = false
+        on_ladder = false
