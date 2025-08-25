@@ -8,6 +8,7 @@ class_name State
 @export var character: CharacterBody2D
 
 signal on_change_state(new_state: State)
+signal reset_state()
 
 var playback: AnimationNodeStateMachinePlayback
 
@@ -19,6 +20,12 @@ func state_process(_delta):
 
 func state_physics_process(_delta):
 	pass
+
+func emit_change_state(new_state):
+	emit_signal("on_change_state", new_state)
+
+func emit_reset_state():
+	emit_signal("reset_state")
 
 func on_enter():
 	pass

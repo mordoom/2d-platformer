@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://cioby1n27ryow"]
+[gd_scene load_steps=42 format=3 uid="uid://cioby1n27ryow"]
 
 [ext_resource type="Texture2D" uid="uid://dhg56c1lwor7w" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Idle.png" id="1_j5q4d"]
 [ext_resource type="Script" uid="uid://cur2e4n2p0pxn" path="res://enemies/skeleton/skeleton.gd" id="1_t7nm1"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://ufb0ajwqyft0" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Walk.png" id="10_5q7td"]
 [ext_resource type="Texture2D" uid="uid://3le6hlxbv7n0" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Attack1.png" id="12_a1dpt"]
 [ext_resource type="Script" uid="uid://bcywceit70ofw" path="res://characters/weapon.gd" id="14_n0m5m"]
+[ext_resource type="Script" uid="uid://ce1llr8pnomm1" path="res://player/state_debug_label.gd" id="15_x1a2a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5q4d"]
 size = Vector2(27, 47)
@@ -382,9 +383,9 @@ hframes = 8
 [node name="Damageable" type="Node" parent="."]
 script = ExtResource("2_j5ywc")
 
-[node name="CharacterStateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state", "character", "animation_tree")]
+[node name="CharacterStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "character", "animation_tree")]
 script = ExtResource("4_uxv5g")
-current_state = NodePath("Patrol")
+initial_state = NodePath("Pursue")
 character = NodePath("..")
 animation_tree = NodePath("../AnimationTree")
 metadata/_custom_type_script = "uid://dmurjk74xkpdn"
@@ -401,7 +402,6 @@ metadata/_custom_type_script = "uid://bc302qypp4ibv"
 [node name="Hit" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("damageable")]
 script = ExtResource("6_bfjdt")
 damageable = NodePath("../../Damageable")
-pursue = "pursue"
 metadata/_custom_type_script = "uid://bc302qypp4ibv"
 
 [node name="Pursue" type="Node" parent="CharacterStateMachine"]
@@ -444,6 +444,15 @@ script = ExtResource("14_n0m5m")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 position = Vector2(31, 0.25)
 shape = SubResource("RectangleShape2D_wg02f")
+
+[node name="Label" type="Label" parent="." node_paths=PackedStringArray("state_machine")]
+offset_left = -45.0
+offset_top = -50.0
+offset_right = 58.0
+offset_bottom = -27.0
+text = "State:"
+script = ExtResource("15_x1a2a")
+state_machine = NodePath("../CharacterStateMachine")
 
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Hit" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Attack" method="_on_animation_tree_animation_finished"]

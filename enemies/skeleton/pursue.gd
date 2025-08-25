@@ -17,13 +17,13 @@ func state_physics_process(_delta):
 		character.set_direction(direction_to_player)
 
 	if not character.can_patrol():
-		emit_signal("on_change_state", "patrol")
+		emit_change_state("patrol")
 		return
 
 	if (distance_to_player > max_chase_distance):
-		emit_signal("on_change_state", "patrol")
+		emit_change_state("patrol")
 	elif (distance_to_player > min_chase_distance):
 		character.velocity.x = direction_to_player * chase_speed
 	else:
 		character.velocity.x = 0
-		emit_signal("on_change_state", "attack")
+		emit_change_state("attack")

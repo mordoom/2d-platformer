@@ -4,12 +4,14 @@ class_name CharacterStateMachine
 
 var states: Array[State]
 var states_dict = {}
+var current_state: State
 
-@export var current_state: State
+@export var initial_state: State
 @export var character: CharacterBody2D
 @export var animation_tree: AnimationTree
 
 func _ready() -> void:
+	current_state = initial_state
 	for child in get_children():
 		if (child is State):
 			states.append(child)
@@ -17,6 +19,7 @@ func _ready() -> void:
 			child.character = character
 			child.playback = animation_tree["parameters/playback"]
 			child.connect("on_change_state", _on_change_state)
+			child.connect("reset_state", _on_reset_state)
 
 	current_state.on_enter()
 
@@ -45,3 +48,6 @@ func _on_change_state(state_name: String):
 	var new_state = states_dict.get(state_name.to_lower())
 	assert(new_state != null, "State '" + state_name + "' not found in states_dict")
 	change_state(new_state)
+
+func _on_reset_state():
+	change_state(initial_state)

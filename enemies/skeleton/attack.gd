@@ -8,4 +8,4 @@ func on_enter():
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
     if (anim_name == "attack"):
-        emit_signal("on_change_state", "pursue")
+        emit_change_state("pursue")

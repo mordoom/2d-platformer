@@ -678,9 +678,9 @@ texture_filter = 1
 texture = ExtResource("2_kpjcp")
 hframes = 5
 
-[node name="CharacterStateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state", "character", "animation_tree")]
+[node name="CharacterStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "character", "animation_tree")]
 script = ExtResource("6_tdg3f")
-current_state = NodePath("Ground")
+initial_state = NodePath("Ground")
 character = NodePath("..")
 animation_tree = NodePath("../AnimationTree")
 
@@ -707,7 +707,6 @@ one_shot = true
 [node name="Hit" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("damageable")]
 script = ExtResource("15_uewl2")
 damageable = NodePath("../../Damageable")
-pursue = "ground"
 can_move = false
 input_allowed = false
 metadata/_custom_type_script = "uid://b76n5nhjrhsom"
