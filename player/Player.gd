@@ -18,9 +18,6 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _ready():
     animation_tree.active = true
 
-func reset():
-    pass
-
 func _physics_process(delta):
     if state_machine.is_dead():
         return

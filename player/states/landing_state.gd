@@ -5,6 +5,7 @@ class_name LandingState
 var landing_dust_anim = preload("res://effects/landing_dust_anim.tscn")
 
 func on_enter():
+	playback.travel("landing")
 	var landing_dust = landing_dust_anim.instantiate()
 	get_tree().get_root().add_child(landing_dust)
 	landing_dust.global_position = character.global_position
