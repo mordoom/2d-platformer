@@ -2,8 +2,6 @@ extends State
 
 class_name AirState
 
-@export var landing_state: State
-@export var jump_state: State
 @export var double_jump_velocity: float = GameConstants.DOUBLE_JUMP_VELOCITY
 @export var coyote_time: float = GameConstants.COYOTE_TIME
 @onready var jump_buffer_timer = $Timer

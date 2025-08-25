@@ -3,7 +3,6 @@ extends State
 class_name HitState
 
 @export var damageable: Damageable
-@export var dead_state: State
 @export var pursue: String
 @export var knockback_speed: float = GameConstants.KNOCKBACK_SPEED
 

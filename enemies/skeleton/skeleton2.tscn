@@ -389,9 +389,8 @@ character = NodePath("..")
 animation_tree = NodePath("../AnimationTree")
 metadata/_custom_type_script = "uid://dmurjk74xkpdn"
 
-[node name="Patrol" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("pursue_state")]
+[node name="Patrol" type="Node" parent="CharacterStateMachine"]
 script = ExtResource("5_2v32d")
-pursue_state = NodePath("../Pursue")
 metadata/_custom_type_script = "uid://bc302qypp4ibv"
 
 [node name="Dead" type="Node" parent="CharacterStateMachine"]
@@ -399,22 +398,18 @@ script = ExtResource("6_l7c3s")
 can_move = false
 metadata/_custom_type_script = "uid://bc302qypp4ibv"
 
-[node name="Hit" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("damageable", "dead_state")]
+[node name="Hit" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("damageable")]
 script = ExtResource("6_bfjdt")
 damageable = NodePath("../../Damageable")
-dead_state = NodePath("../Dead")
 pursue = "pursue"
 metadata/_custom_type_script = "uid://bc302qypp4ibv"
 
-[node name="Pursue" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("patrol_state", "attack_state")]
+[node name="Pursue" type="Node" parent="CharacterStateMachine"]
 script = ExtResource("8_wg02f")
-patrol_state = NodePath("../Patrol")
-attack_state = NodePath("../Attack")
 metadata/_custom_type_script = "uid://bc302qypp4ibv"
 
-[node name="Attack" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("pursue_state")]
+[node name="Attack" type="Node" parent="CharacterStateMachine"]
 script = ExtResource("9_p8ro6")
-pursue_state = NodePath("../Pursue")
 metadata/_custom_type_script = "uid://bc302qypp4ibv"
 
 [node name="AnimationTree" type="AnimationTree" parent="."]

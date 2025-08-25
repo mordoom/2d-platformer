@@ -2,7 +2,6 @@ extends State
 
 class_name AttackState
 
-@export var pursue_state: State
 
 func on_enter():
     playback.travel("attack")

@@ -12,13 +12,13 @@ func test_player():
 	await await_millis(1000)
 
 	#jump over the gap	
-	await simulate_input_press("right", 800)
-	simulate_input_press("right", 1700)
+	await simulate_input_press("right", 500)
+	simulate_input_press("right", 2000)
 	await simulate_input_press("jump", 200)
 	await simulate_input_press("jump", 1000)
 
 	await simulate_input_press("right", 500)
-	await simulate_input_press("right", 300)
+	await simulate_input_press("right", 900)
 	await simulate_input_press("attack", 200)
 	await simulate_input_press("attack", 200)
 	simulate_input_press("attack", 200)

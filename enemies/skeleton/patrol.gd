@@ -6,7 +6,6 @@ enum States {IDLE, MOVING}
 
 @export var initial_direction = 1.0
 @export var speed: float = GameConstants.SKELETON_PATROL_SPEED
-@export var pursue_state: State
 
 var idle_time = GameConstants.SKELETON_IDLE_TIME
 var idle_timer: float = 0

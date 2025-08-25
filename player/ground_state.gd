@@ -2,9 +2,6 @@ extends State
 
 class_name GroundState
 
-@export var air_state: State
-@export var jump_state: State
-@export var ground_attack_state: State
 
 # TODO: this is required for the hit state atm
 var direction

@@ -3,7 +3,6 @@ extends State
 class_name LandingState
 
 var landing_dust_anim = preload("res://effects/landing_dust_anim.tscn")
-@export var ground_state: State
 
 func on_enter():
 	var landing_dust = landing_dust_anim.instantiate()

@@ -4,8 +4,6 @@ class_name PursueState
 
 @onready var game_manager = get_tree().get_root().get_node("GameManager")
 @export var chase_speed = GameConstants.SKELETON_CHASE_SPEED
-@export var patrol_state: State
-@export var attack_state: State
 @export var min_chase_distance = GameConstants.SKELETON_MIN_CHASE_DISTANCE
 @export var max_chase_distance = GameConstants.SKELETON_MAX_CHASE_DISTANCE
 

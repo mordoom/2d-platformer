@@ -2,7 +2,6 @@ extends State
 
 class_name GroundAttackState
 
-@export var ground_state: State
 @onready var timer = $Timer
 
 func on_enter():
