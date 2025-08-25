@@ -2,7 +2,7 @@ extends Control
 
 @export var damage_color = Color.DARK_RED
 @export var heal_color = Color.DARK_GREEN
-var health_changed_label = preload("res://ui/damage_label.tscn")
+var health_changed_label = References.health_changed_label
 
 func _ready() -> void:
     SignalBus.connect("on_health_changed", on_signal_health_changed)

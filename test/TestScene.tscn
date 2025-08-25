@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://byhgqn0g6svkx"]
 
 [ext_resource type="PackedScene" uid="uid://b7o8xkqx8kprr" path="res://player/Player.tscn" id="2_player"]
-[ext_resource type="PackedScene" uid="uid://cioby1n27ryow" path="res://enemies/skeleton/skeleton2.tscn" id="3_skeleton"]
+[ext_resource type="PackedScene" uid="uid://cioby1n27ryow" path="res://enemies/skeleton/skeleton.tscn" id="3_skeleton"]
 [ext_resource type="PackedScene" uid="uid://cfx37qgo8rucj" path="res://ui/damage_counter.tscn" id="4_damage_counter"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]

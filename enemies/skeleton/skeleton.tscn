@@ -1,20 +1,20 @@
 [gd_scene load_steps=42 format=3 uid="uid://cioby1n27ryow"]
 
-[ext_resource type="Texture2D" uid="uid://dhg56c1lwor7w" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Idle.png" id="1_j5q4d"]
-[ext_resource type="Script" uid="uid://cur2e4n2p0pxn" path="res://enemies/skeleton/skeleton.gd" id="1_t7nm1"]
-[ext_resource type="Texture2D" uid="uid://bm8s43ddaqvhj" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Die.png" id="2_8w2ca"]
-[ext_resource type="Script" uid="uid://bv74cjk6dv3j5" path="res://characters/damageable.gd" id="2_j5ywc"]
-[ext_resource type="Script" uid="uid://dmurjk74xkpdn" path="res://characters/character_state_machine.gd" id="4_uxv5g"]
-[ext_resource type="Script" uid="uid://buxdijsixt086" path="res://enemies/skeleton/patrol.gd" id="5_2v32d"]
-[ext_resource type="Script" uid="uid://b76n5nhjrhsom" path="res://characters/states/hit_state.gd" id="6_bfjdt"]
-[ext_resource type="Script" uid="uid://buvdd3fgh12nl" path="res://characters/states/dead_state.gd" id="6_l7c3s"]
-[ext_resource type="Script" uid="uid://8es5ffb4n0v1" path="res://enemies/skeleton/pursue.gd" id="8_wg02f"]
-[ext_resource type="Texture2D" uid="uid://dbx4fl4f4d2hd" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Hurt.png" id="9_2v32d"]
-[ext_resource type="Script" uid="uid://eb3e3o2d6d5x" path="res://enemies/skeleton/attack.gd" id="9_p8ro6"]
-[ext_resource type="Texture2D" uid="uid://ufb0ajwqyft0" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Walk.png" id="10_5q7td"]
-[ext_resource type="Texture2D" uid="uid://3le6hlxbv7n0" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Attack1.png" id="12_a1dpt"]
-[ext_resource type="Script" uid="uid://bcywceit70ofw" path="res://characters/weapon.gd" id="14_n0m5m"]
-[ext_resource type="Script" uid="uid://ce1llr8pnomm1" path="res://player/state_debug_label.gd" id="15_x1a2a"]
+[ext_resource type="Script" uid="uid://cur2e4n2p0pxn" path="res://enemies/skeleton/skeleton.gd" id="1_drsv4"]
+[ext_resource type="Texture2D" uid="uid://dhg56c1lwor7w" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Idle.png" id="2_riuq3"]
+[ext_resource type="Script" uid="uid://bv74cjk6dv3j5" path="res://characters/damageable.gd" id="3_es8qe"]
+[ext_resource type="Script" uid="uid://dmurjk74xkpdn" path="res://characters/character_state_machine.gd" id="4_4e564"]
+[ext_resource type="Script" uid="uid://buxdijsixt086" path="res://enemies/skeleton/patrol.gd" id="5_mew8a"]
+[ext_resource type="Script" uid="uid://buvdd3fgh12nl" path="res://characters/states/dead_state.gd" id="6_8bh25"]
+[ext_resource type="Script" uid="uid://b76n5nhjrhsom" path="res://characters/states/hit_state.gd" id="7_p4nc8"]
+[ext_resource type="Script" uid="uid://8es5ffb4n0v1" path="res://enemies/skeleton/pursue.gd" id="8_583g5"]
+[ext_resource type="Script" uid="uid://eb3e3o2d6d5x" path="res://enemies/skeleton/attack.gd" id="9_5xsdm"]
+[ext_resource type="Texture2D" uid="uid://3le6hlxbv7n0" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Attack1.png" id="10_f7cdn"]
+[ext_resource type="Texture2D" uid="uid://bm8s43ddaqvhj" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Die.png" id="11_pi0qw"]
+[ext_resource type="Texture2D" uid="uid://dbx4fl4f4d2hd" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Hurt.png" id="12_ym5ls"]
+[ext_resource type="Texture2D" uid="uid://ufb0ajwqyft0" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Walk.png" id="13_f47vg"]
+[ext_resource type="Script" uid="uid://bcywceit70ofw" path="res://characters/weapon.gd" id="14_vfshu"]
+[ext_resource type="Script" uid="uid://ce1llr8pnomm1" path="res://player/state_debug_label.gd" id="15_jrkgk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5q4d"]
 size = Vector2(27, 47)
@@ -120,7 +120,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_j5q4d")]
+"values": [ExtResource("2_riuq3")]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -149,7 +149,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("12_a1dpt")]
+"values": [ExtResource("10_f7cdn")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -202,7 +202,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_8w2ca")]
+"values": [ExtResource("11_pi0qw")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -243,7 +243,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("9_2v32d")]
+"values": [ExtResource("12_ym5ls")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -285,7 +285,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_j5q4d")]
+"values": [ExtResource("2_riuq3")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -327,7 +327,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("10_5q7td")]
+"values": [ExtResource("13_f47vg")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -369,7 +369,7 @@ size = Vector2(32, 63.5)
 
 [node name="Skeleton" type="CharacterBody2D"]
 collision_layer = 4
-script = ExtResource("1_t7nm1")
+script = ExtResource("1_drsv4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2.5, 8.5)
@@ -377,39 +377,39 @@ shape = SubResource("RectangleShape2D_j5q4d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("1_j5q4d")
+texture = ExtResource("2_riuq3")
 hframes = 8
 
 [node name="Damageable" type="Node" parent="."]
-script = ExtResource("2_j5ywc")
+script = ExtResource("3_es8qe")
 
 [node name="CharacterStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "character", "animation_tree")]
-script = ExtResource("4_uxv5g")
+script = ExtResource("4_4e564")
 initial_state = NodePath("Pursue")
 character = NodePath("..")
 animation_tree = NodePath("../AnimationTree")
 metadata/_custom_type_script = "uid://dmurjk74xkpdn"
 
 [node name="Patrol" type="Node" parent="CharacterStateMachine"]
-script = ExtResource("5_2v32d")
+script = ExtResource("5_mew8a")
 metadata/_custom_type_script = "uid://bc302qypp4ibv"
 
 [node name="Dead" type="Node" parent="CharacterStateMachine"]
-script = ExtResource("6_l7c3s")
+script = ExtResource("6_8bh25")
 can_move = false
 metadata/_custom_type_script = "uid://bc302qypp4ibv"
 
 [node name="Hit" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("damageable")]
-script = ExtResource("6_bfjdt")
+script = ExtResource("7_p4nc8")
 damageable = NodePath("../../Damageable")
 metadata/_custom_type_script = "uid://bc302qypp4ibv"
 
 [node name="Pursue" type="Node" parent="CharacterStateMachine"]
-script = ExtResource("8_wg02f")
+script = ExtResource("8_583g5")
 metadata/_custom_type_script = "uid://bc302qypp4ibv"
 
 [node name="Attack" type="Node" parent="CharacterStateMachine"]
-script = ExtResource("9_p8ro6")
+script = ExtResource("9_5xsdm")
 metadata/_custom_type_script = "uid://bc302qypp4ibv"
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
@@ -439,7 +439,7 @@ collision_mask = 3
 collision_layer = 4
 collision_mask = 2
 monitoring = false
-script = ExtResource("14_n0m5m")
+script = ExtResource("14_vfshu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 position = Vector2(31, 0.25)
@@ -451,7 +451,7 @@ offset_top = -50.0
 offset_right = 58.0
 offset_bottom = -27.0
 text = "State:"
-script = ExtResource("15_x1a2a")
+script = ExtResource("15_jrkgk")
 state_machine = NodePath("../CharacterStateMachine")
 
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Hit" method="_on_animation_tree_animation_finished"]

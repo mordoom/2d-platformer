@@ -1,7 +1,7 @@
 class_name GdUnitExampleTest
 extends GdUnitTestSuite
 
-var skeleton_scene = preload("res://enemies/skeleton/skeleton2.tscn")
+var skeleton_scene = References.skeleton_scene
 
 func test_player():
 	var runner = scene_runner("res://Main.tscn")

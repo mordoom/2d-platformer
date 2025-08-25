@@ -6,7 +6,6 @@ class_name AirState
 @export var coyote_time: float = GameConstants.COYOTE_TIME
 @onready var jump_buffer_timer = $Timer
 
-var jump_dust_anim = preload("res://effects/jump_dust_anim.tscn")
 var has_double_jumped = false
 var coyote_timer: float = 0
 

@@ -3,12 +3,12 @@ extends Node
 class_name GameManager
 
 var player: Node
-var player_scene = preload("res://player/Player.tscn")
+var player_scene = References.player_scene
 var player_position: Vector2
 var camera: Camera2D
 
 var death_timer: Timer
-var initial_level = preload("res://world/cave/levels/starting_area.tscn")
+var initial_level = References.initial_level
 var current_level: Node
 var current_level_bounds: Rect2i
 
@@ -35,10 +35,10 @@ func init_level(level: PackedScene):
 	current_level = new_level
 	current_level_bounds = get_current_level_bounds()
 
-	camera.limit_left = current_level_bounds.position.x
-	camera.limit_right = current_level_bounds.size.x
-	camera.limit_bottom = current_level_bounds.size.y
-	camera.limit_top = current_level_bounds.position.y
+	camera.limit_left = current_level_bounds.position.x + cell_size
+	camera.limit_right = current_level_bounds.size.x - cell_size
+	camera.limit_bottom = current_level_bounds.size.y - cell_size
+	camera.limit_top = current_level_bounds.position.y + cell_size
 
 func load_level(level: PackedScene):
 	if (current_level != null):
