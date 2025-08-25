@@ -7,10 +7,9 @@ class_name State
 @export var dead = false
 @export var character: CharacterBody2D
 
-var next_state: State
-var playback: AnimationNodeStateMachinePlayback
+signal on_change_state(new_state: State)
 
-signal interrupt_state(new_state: State)
+var playback: AnimationNodeStateMachinePlayback
 
 func state_input(_event):
 	pass
@@ -22,7 +21,7 @@ func state_physics_process(_delta):
 	pass
 
 func on_enter():
-	next_state = null
+	pass
 	
 func on_exit():
-	next_state = null
+	pass

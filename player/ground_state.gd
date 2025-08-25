@@ -15,17 +15,17 @@ func on_enter():
 
 func state_input(event: InputEvent):
 	if event.is_action_pressed("jump"):
-		next_state = air_state
+		emit_signal("on_change_state", air_state)
 		jump()
 	elif event.is_action_pressed("attack"):
 		attack()
 		
 func state_process(_delta):
 	if (!character.is_on_floor()):
-		next_state = air_state
+		emit_signal("on_change_state", air_state)
 
 func attack():
-	next_state = ground_attack_state
+	emit_signal("on_change_state", ground_attack_state)
 
 func jump():
 	character.velocity.y = jump_velocity

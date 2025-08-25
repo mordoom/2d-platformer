@@ -23,14 +23,14 @@ func on_damageable_hit(_node: Node, _amount: int, direction: Vector2):
 	character.velocity = knockback_speed * direction
 
 	if (damageable.is_dead()):
-		emit_signal("interrupt_state", dead_state)
+		emit_signal("on_change_state", dead_state)
 	else:
-		emit_signal("interrupt_state", self)
+		emit_signal("on_change_state", self)
 		playback.travel("hit")
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	if (anim_name == "hit"):
-		next_state = pursue_state
+		emit_signal("on_change_state", pursue_state)
 
 		if character.has_method("set_direction"):
 			character.set_direction(sign(hit_direction.x))

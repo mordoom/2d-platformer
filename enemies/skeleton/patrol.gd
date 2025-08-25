@@ -18,7 +18,7 @@ func on_enter():
 func state_physics_process(delta):
 	var player_collision = character.get_player_collision()
 	if (player_collision != null && player_collision.name == "Player"):
-		next_state = pursue_state
+		emit_signal("on_change_state", pursue_state)
 		return
 
 	var can_patrol = character.can_patrol()

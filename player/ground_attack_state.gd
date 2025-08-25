@@ -29,4 +29,4 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 		end_combo()
 
 func end_combo():
-	next_state = ground_state
+	emit_signal("on_change_state", ground_state)

@@ -20,7 +20,7 @@ func state_process(delta):
 	if character.is_on_floor():
 		if jump_buffer_timer.is_stopped():
 			playback.travel("landing")
-			next_state = landing_state
+			emit_signal("on_change_state", landing_state)
 		else:
 			jump_buffer_timer.stop()
 			character.velocity.y = double_jump_velocity
@@ -52,6 +52,6 @@ func double_jump():
 	playback.travel("jump")
 
 func on_exit():
-	if (next_state == landing_state):
-		has_double_jumped = false
+	# if (next_state == landing_state):
+	# 	has_double_jumped = false
 	super.on_exit()

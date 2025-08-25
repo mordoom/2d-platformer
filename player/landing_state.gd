@@ -12,4 +12,4 @@ func on_enter():
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	if (anim_name == "landing"):
-		next_state = ground_state
+		emit_signal("on_change_state", ground_state)
