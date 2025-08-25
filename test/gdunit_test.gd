@@ -6,11 +6,9 @@ var skeleton_scene = preload("res://enemies/skeleton/skeleton2.tscn")
 func test_player():
 	var runner = scene_runner("res://Main.tscn")
 	await await_millis(1000)
-	await simulate_input_press("right", 1400)
+	await simulate_input_press("right", 1300)
 	await simulate_input_press("up", 500)
-	await simulate_input_press("down", 500)
-	await simulate_input_press("down", 400)
-	await simulate_input_press("down", 1)
+	await simulate_input_press("down", 1000)
 	await await_millis(1000)
 
 	#jump over the gap	

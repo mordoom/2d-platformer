@@ -11,6 +11,8 @@ var is_on_ladder = false
 @onready var state_machine = $CharacterStateMachine
 @onready var sword_collision = $Sword/CollisionShape2D
 
+@onready var floor_check: RayCast2D = $floor_check
+
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var death_time: float = GameConstants.DEATH_TIME
@@ -38,6 +40,9 @@ func _physics_process(delta):
 
     move_and_slide()
     SignalBus.emit_signal("on_player_position_changed", position)
+
+func is_raycast_on_floor():
+    return floor_check.is_colliding()
 
 func get_vertical_direction():
     return Input.get_axis("up", "down")
