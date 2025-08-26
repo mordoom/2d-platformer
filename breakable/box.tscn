@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dikkltplokfed"]
+
+[ext_resource type="Script" uid="uid://gi88o17g02x7" path="res://breakable/box.gd" id="1_4bn1v"]
+[ext_resource type="Texture2D" uid="uid://7ltlkc2do43r" path="res://assets/wood_set/box/1.png" id="1_r41ig"]
+[ext_resource type="Script" uid="uid://bv74cjk6dv3j5" path="res://characters/damageable.gd" id="2_ayd8b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cf5vc"]
+size = Vector2(38, 37.5)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+collision_layer = 5
+collision_mask = 3
+script = ExtResource("1_4bn1v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_cf5vc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_r41ig")
+
+[node name="Damageable" type="Node" parent="."]
+script = ExtResource("2_ayd8b")
+metadata/_custom_type_script = "uid://bv74cjk6dv3j5"
