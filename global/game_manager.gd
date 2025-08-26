@@ -4,10 +4,11 @@ class_name GameManager
 
 var player: Node
 var player_scene = References.player_scene
+var player_initial_position = GameConstants.PLAYER_INITIAL_POSITION
 var camera: Camera2D
 
 var death_timer: Timer
-var initial_level = References.initial_level
+var initial_level: PackedScene = References.initial_level
 var current_level: Node
 var current_level_bounds: Rect2i
 
@@ -17,6 +18,7 @@ const starting_offset = 2 * cell_size
 func _ready() -> void:
     init()
     SignalBus.connect("character_died", on_character_died_handler)
+    SignalBus.connect("on_campfire_rested", on_campfire_rested_handler)
 
 func init():
     if (player):
@@ -24,7 +26,7 @@ func init():
 
     player = player_scene.instantiate()
     camera = player.get_node("Camera2D")
-    player.global_position = GameConstants.PLAYER_INITIAL_POSITION
+    player.global_position = player_initial_position
     add_child.call_deferred(player)
     init_level(initial_level)
 
@@ -105,3 +107,7 @@ func get_current_level_bounds():
     var bottom_right_local = tilemap_node.map_to_local(used_rect.end)
     var level_bounds = Rect2i(top_left_local, bottom_right_local)
     return level_bounds
+
+func on_campfire_rested_handler(area: Area2D):
+    initial_level = ResourceLoader.load(current_level.scene_file_path)
+    player_initial_position = area.global_position

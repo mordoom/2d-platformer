@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=3 uid="uid://cjgwk01y15726"]
+
+[ext_resource type="Texture2D" uid="uid://bq7uk82bkvea6" path="res://assets/campfire-Sheet.png" id="1_vygbo"]
+[ext_resource type="Script" uid="uid://e0cmf22xdcbm" path="res://world/interactable/campfire.gd" id="1_xjc6e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfnok"]
+atlas = ExtResource("1_vygbo")
+region = Rect2(0, 0, 36, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l047u"]
+atlas = ExtResource("1_vygbo")
+region = Rect2(36, 0, 36, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xsjb"]
+atlas = ExtResource("1_vygbo")
+region = Rect2(72, 0, 36, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0i12"]
+atlas = ExtResource("1_vygbo")
+region = Rect2(108, 0, 36, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpbnk"]
+atlas = ExtResource("1_vygbo")
+region = Rect2(144, 0, 36, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0ud6"]
+atlas = ExtResource("1_vygbo")
+region = Rect2(180, 0, 36, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_85lld"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sfnok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l047u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xsjb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0i12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vpbnk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0ud6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vygbo"]
+size = Vector2(45, 47)
+
+[node name="Campfire" type="Area2D" groups=["Campfire"]]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_xjc6e")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_85lld")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -2.5)
+shape = SubResource("RectangleShape2D_vygbo")

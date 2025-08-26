@@ -39,6 +39,7 @@ enabled=PackedStringArray("res://addons/SignalVisualizer/plugin.cfg", "res://add
 
 Player=""
 Ladder=""
+Campfire=""
 
 [input]
 

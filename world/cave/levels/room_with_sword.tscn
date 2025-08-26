@@ -2092,7 +2092,7 @@ sources/0 = SubResource("TileSetAtlasSource_3dxm6")
 [node name="StartingArea" type="Node"]
 script = ExtResource("1_1d0fo")
 left_level = "res://world/cave/levels/starting_area.tscn"
-right_level = "res://world/cave/levels/room_with_enemies.tscn"
+right_level = "res://world/cave/levels/room_with_campfire.tscn"
 up_level = "res://world/cave/levels/room_with_enemies_above.tscn"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

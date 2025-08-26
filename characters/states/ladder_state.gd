@@ -31,6 +31,8 @@ func _input(event):
 func _on_interact_area_entered(area: Area2D) -> void:
 	if area.get_parent().is_in_group("Ladder"):
 		on_ladder = true
+	elif area.is_in_group("Campfire"):
+		SignalBus.emit_signal("on_campfire_rested", area)
 
 func _on_interact_area_exited(area: Area2D) -> void:
 	if area.get_parent().is_in_group("Ladder"):
