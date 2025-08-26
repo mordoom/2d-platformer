@@ -93,7 +93,7 @@ func get_next_starting_pos(entry_direction: Vector2):
         var right_position = current_level_bounds.size.x - starting_offset
         return Vector2(right_position, player.position.y)
     elif entry_direction == Vector2.UP:
-        var bottom_position = current_level_bounds.size.y - starting_offset
+        var bottom_position = current_level_bounds.size.y - (starting_offset * 2)
         return Vector2(player.position.x, bottom_position)
     elif entry_direction == Vector2.DOWN:
         var top_position = current_level_bounds.position.y + starting_offset
