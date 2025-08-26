@@ -6,7 +6,8 @@
       "mcp__godot-mcp__stop_project",
       "mcp__godot-mcp__run_project",
       "Bash(mv:*)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(godot:*)"
     ],
     "deny": []
   }

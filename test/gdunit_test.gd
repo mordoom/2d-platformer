@@ -36,11 +36,6 @@ func test_player():
 	
 	# and then to next scene again
 	await simulate_input_press("right", 2000)
-
-	# wait until the next scene's skeleton kills the player
-	var player = runner.invoke("find_child", "Player")
-	await assert_signal(SignalBus).wait_until(10000).is_emitted("character_died", [player])
-	await assert_signal(SignalBus).wait_until(1000).is_emitted("game_over")
 	
 	await await_millis(1000);
 

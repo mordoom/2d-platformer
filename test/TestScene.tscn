@@ -1,19 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://byhgqn0g6svkx"]
-
-[ext_resource type="PackedScene" uid="uid://b7o8xkqx8kprr" path="res://player/Player.tscn" id="2_player"]
-[ext_resource type="PackedScene" uid="uid://cioby1n27ryow" path="res://enemies/skeleton/skeleton.tscn" id="3_skeleton"]
-[ext_resource type="PackedScene" uid="uid://cfx37qgo8rucj" path="res://ui/damage_counter.tscn" id="4_damage_counter"]
+[gd_scene load_steps=2 format=3 uid="uid://byhgqn0g6svkx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
 size = Vector2(800, 50)
 
 [node name="TestScene" type="Node2D"]
-
-[node name="Player" parent="." instance=ExtResource("2_player")]
-position = Vector2(100, 300)
-
-[node name="Skeleton" parent="." instance=ExtResource("3_skeleton")]
-position = Vector2(400, 300)
 
 [node name="Platform" type="StaticBody2D" parent="."]
 position = Vector2(400, 350)
@@ -32,5 +22,3 @@ offset_top = -25.0
 offset_right = 400.0
 offset_bottom = 25.0
 color = Color(0.5, 0.3, 0.2, 1)
-
-[node name="DamageCounter" parent="." instance=ExtResource("4_damage_counter")]

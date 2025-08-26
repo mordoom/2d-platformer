@@ -21,63 +21,63 @@ var cached_player_collision: Node = null
 var cache_timer: float = 0.0
 
 func _ready() -> void:
-    animation_tree.active = true
+	animation_tree.active = true
 
 func _physics_process(delta: float) -> void:
-    if not is_on_floor():
-        velocity.y += gravity * delta
+	if not is_on_floor():
+		velocity.y += gravity * delta
 
-    if (state_machine.is_dead()):
-        return
+	if (state_machine.is_dead()):
+		return
 
-    _update_raycast_cache(delta)
+	_update_raycast_cache(delta)
 
-    var direction = get_movement_direction()
-    update_animation(direction)
-    if (state_machine.can_move()):
-        move_and_slide()
+	var direction = get_movement_direction()
+	update_animation(direction)
+	if (state_machine.can_move()):
+		move_and_slide()
 
 func _update_raycast_cache(delta: float):
-    # TODO: no longer cached - consider uplifting this later
-    wall_check.force_raycast_update()
-    floor_check.force_raycast_update()
-    player_check.force_raycast_update()
-    
-    cached_floor_collision = floor_check.is_colliding()
-    cached_wall_collision = wall_check.is_colliding()
-    cached_player_collision = player_check.get_collider()
+	# TODO: no longer cached - consider uplifting this later
+	wall_check.force_raycast_update()
+	floor_check.force_raycast_update()
+	player_check.force_raycast_update()
+	
+	cached_floor_collision = floor_check.is_colliding()
+	cached_wall_collision = wall_check.is_colliding()
+	cached_player_collision = player_check.get_collider()
 
 func can_patrol() -> bool:
-    return cached_floor_collision && !cached_wall_collision
+	return cached_floor_collision && !cached_wall_collision
 
 func get_player_collision() -> Node:
-    return cached_player_collision
+	return cached_player_collision
 
 func set_direction(new_direction: float):
-    if new_direction != current_direction:
-        current_direction = new_direction
-        _flip_raycasts()
-        update_facing_direction(new_direction)
+	if new_direction != current_direction:
+		current_direction = new_direction
+		_flip_raycasts()
+		update_facing_direction(new_direction)
 
 func get_current_direction() -> float:
-    return current_direction
+	return current_direction
 
 func _flip_raycasts():
-    wall_check.target_position.x = abs(wall_check.target_position.x) * current_direction
-    wall_check.position.x = abs(wall_check.position.x) * current_direction
+	wall_check.target_position.x = abs(wall_check.target_position.x) * current_direction
+	wall_check.position.x = abs(wall_check.position.x) * current_direction
 
-    floor_check.position.x = abs(floor_check.position.x) * current_direction
+	floor_check.position.x = abs(floor_check.position.x) * current_direction
 
-    player_check.position.x = (abs(player_check.position.x) * current_direction) - (player_check_offset * current_direction)
-    player_check.target_position.x = abs(player_check.target_position.x) * current_direction
+	player_check.position.x = (abs(player_check.position.x) * current_direction) - (player_check_offset * current_direction)
+	player_check.target_position.x = abs(player_check.target_position.x) * current_direction
 
-    sword_collision.position.x = abs(sword_collision.position.x) * current_direction
+	sword_collision.position.x = abs(sword_collision.position.x) * current_direction
 
 func get_movement_direction():
-    return sign(velocity.x)
+	return sign(velocity.x)
 
 func update_animation(direction: float):
-    animation_tree.set("parameters/patrol/blend_position", direction)
+	animation_tree.set("parameters/patrol/blend_position", direction)
 
 func update_facing_direction(direction: float):
-    sprite.flip_h = false if direction > 0 else true
+	sprite.flip_h = false if direction > 0 else true

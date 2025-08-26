@@ -39,7 +39,6 @@ func _physics_process(delta):
             velocity.x = move_toward(velocity.x, 0, current_speed)
 
     move_and_slide()
-    SignalBus.emit_signal("on_player_position_changed", position)
 
 func _input(_event: InputEvent) -> void:
     if state_machine.current_state.input_allowed:
