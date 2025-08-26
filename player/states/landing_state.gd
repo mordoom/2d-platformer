@@ -12,5 +12,4 @@ func create_landing_dust():
 	References.instantiate(landing_dust_anim, character.global_position)
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
-	if (anim_name == "landing" && get_parent().current_state == self):
-		emit_change_state("ground")
+	change_state_after_animation(anim_name == "landing", "ground")

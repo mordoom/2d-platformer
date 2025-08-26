@@ -74,13 +74,13 @@ states/Start/position = Vector2(199, 100)
 states/attack/node = SubResource("AnimationNodeAnimation_p8ro6")
 states/attack/position = Vector2(707, 100)
 states/death/node = SubResource("AnimationNodeAnimation_t7nm1")
-states/death/position = Vector2(288, 199)
+states/death/position = Vector2(299, 169)
 states/hit/node = SubResource("AnimationNodeAnimation_2v32d")
 states/hit/position = Vector2(512, 204)
 states/patrol/node = SubResource("AnimationNodeBlendSpace1D_5q7td")
 states/patrol/position = Vector2(519, 3)
 transitions = ["Start", "patrol", SubResource("AnimationNodeStateMachineTransition_wg02f"), "patrol", "hit", SubResource("AnimationNodeStateMachineTransition_a1dpt"), "patrol", "death", SubResource("AnimationNodeStateMachineTransition_p8ro6"), "hit", "death", SubResource("AnimationNodeStateMachineTransition_5q7td"), "hit", "patrol", SubResource("AnimationNodeStateMachineTransition_n0m5m"), "patrol", "attack", SubResource("AnimationNodeStateMachineTransition_x1a2a"), "attack", "patrol", SubResource("AnimationNodeStateMachineTransition_60n1n"), "attack", "hit", SubResource("AnimationNodeStateMachineTransition_otoki"), "attack", "death", SubResource("AnimationNodeStateMachineTransition_xm4ec")]
-graph_offset = Vector2(-88, -59)
+graph_offset = Vector2(-234, -5)
 
 [sub_resource type="Animation" id="Animation_2v32d"]
 length = 1.12501

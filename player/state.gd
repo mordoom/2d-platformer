@@ -27,6 +27,10 @@ func emit_change_state(new_state):
 func emit_reset_state():
 	emit_signal("reset_state")
 
+func change_state_after_animation(does_anim_name_match, new_state):
+	if (does_anim_name_match && get_parent().current_state == self):
+		emit_change_state(new_state)
+
 func on_enter():
 	pass
 	

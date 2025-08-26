@@ -12,7 +12,7 @@ func _ready() -> void:
 
 func on_exit():
 	character.velocity = Vector2.ZERO
-	super.on_exit()
+
 
 func on_damageable_hit(_node: Node, _amount: int, direction: Vector2):
 	hit_direction = direction
@@ -27,8 +27,5 @@ func on_damageable_hit(_node: Node, _amount: int, direction: Vector2):
 		playback.travel("hit")
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
-	if (anim_name == "hit"):
+	if (anim_name == "hit" && get_parent().current_state == self):
 		emit_reset_state()
-
-		if character.has_method("set_direction"):
-			character.set_direction(sign(hit_direction.x))
