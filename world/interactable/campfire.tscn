@@ -56,7 +56,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vygbo"]
 size = Vector2(45, 47)
 
-[node name="Campfire" type="Area2D" groups=["Campfire"]]
+[node name="Campfire" type="Area2D" groups=["Interactable"]]
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_xjc6e")
@@ -68,3 +68,7 @@ autoplay = "default"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -2.5)
 shape = SubResource("RectangleShape2D_vygbo")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0

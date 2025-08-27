@@ -7,6 +7,8 @@ var current_speed = speed
 var climbing = false
 var on_ladder: Area2D
 
+var on_interactable: Area2D
+
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var state_machine = $CharacterStateMachine
@@ -42,11 +44,15 @@ func _physics_process(delta):
 
     move_and_slide()
 
-func _input(_event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
     if state_machine.current_state.input_allowed:
         var direction = get_horizontal_direction()
         update_animation(direction)
         update_facing_direction(direction)
+
+        if event.is_action_pressed("interact"):
+            if on_interactable:
+                on_interactable.interact()
 
 func update_animation(direction: float = 0):
     animation_tree.set("parameters/move/blend_position", direction)
@@ -64,13 +70,17 @@ func update_facing_direction(direction: float):
 func _on_interact_area_entered(area: Area2D) -> void:
     if area.get_parent().is_in_group("Ladder"):
         on_ladder = area
-    elif area.is_in_group("Campfire"):
-        SignalBus.emit_signal("on_campfire_rested", area)
+    elif area is Interactable:
+        on_interactable = area
+        area.show_prompt()
 
 func _on_interact_area_exited(area: Area2D) -> void:
     if area.get_parent().is_in_group("Ladder"):
         climbing = false
         on_ladder = null
+    elif area is Interactable:
+        on_interactable = null
+        area.hide_prompt()
 
 func is_raycast_on_floor():
     return floor_check.is_colliding()
