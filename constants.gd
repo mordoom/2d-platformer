@@ -26,4 +26,4 @@ const KNOCKBACK_SPEED: float = 30.0
 const DEATH_TIME: float = 3.0
 
 # Performance Constants
-const RAYCAST_CACHE_DURATION: float = 0.1 # Update raycasts 10 times per second
+const RAYCAST_CACHE_DURATION: float = 0.33 # Update raycasts 3 times per second

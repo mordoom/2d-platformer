@@ -38,10 +38,13 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 
 func _update_raycast_cache(delta: float):
-	# TODO: no longer cached - consider uplifting this later
-	wall_check.force_raycast_update()
-	floor_check.force_raycast_update()
-	player_check.force_raycast_update()
+	cache_timer -= delta
+
+	if cache_timer <= 0:
+		cache_timer = GameConstants.RAYCAST_CACHE_DURATION
+		wall_check.force_raycast_update()
+		floor_check.force_raycast_update()
+		player_check.force_raycast_update()
 	
 	cached_floor_collision = floor_check.is_colliding()
 	cached_wall_collision = wall_check.is_colliding()
