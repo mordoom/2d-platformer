@@ -7,15 +7,16 @@ class_name GameManager
 var player: Node
 var player_scene = References.player_scene
 var player_initial_position = GameConstants.PLAYER_INITIAL_POSITION
+var death_timer: Timer
+
 var camera: Camera2D
 
-var death_timer: Timer
 var initial_level: PackedScene = References.initial_level
 var current_level: Node
 var current_level_bounds: Rect2i
 
-const cell_size = 16
-const starting_offset = 2 * cell_size
+const cell_size = GameConstants.CELL_SIZE
+const starting_offset = GameConstants.STARTING_OFFSET
 
 func _ready() -> void:
     init()

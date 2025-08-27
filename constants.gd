@@ -27,3 +27,7 @@ const DEATH_TIME: float = 3.0
 
 # Performance Constants
 const RAYCAST_CACHE_DURATION: float = 0.33 # Update raycasts 3 times per second
+
+# World Constants
+const CELL_SIZE = 16
+const STARTING_OFFSET = 2 * CELL_SIZE
