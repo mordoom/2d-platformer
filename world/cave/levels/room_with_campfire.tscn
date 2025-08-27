@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=4 uid="uid://djohs0wplrnj3"]
 
-[ext_resource type="Script" uid="uid://bte0vrcl1ixri" path="res://world/cave/levels/level.gd" id="1_0qljk"]
+[ext_resource type="Script" uid="uid://dwuby3rls3l27" path="res://world/cave/levels/room_with_campfire.gd" id="1_j3rnj"]
 [ext_resource type="Texture2D" uid="uid://bxrbskqrqwo0j" path="res://assets/PixelFantasy_Caves_1.0/mainlev_build.png" id="2_j3rnj"]
 [ext_resource type="PackedScene" uid="uid://dtb6ujcdawf23" path="res://world/cave/parallax_background.tscn" id="3_sfnok"]
 [ext_resource type="Texture2D" uid="uid://bm8s43ddaqvhj" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Die.png" id="4_l047u"]
@@ -2091,7 +2091,7 @@ terrain_set_0/terrain_0/color = Color(0.855773, 0, 0.0535524, 1)
 sources/0 = SubResource("TileSetAtlasSource_3dxm6")
 
 [node name="Level" type="Node"]
-script = ExtResource("1_0qljk")
+script = ExtResource("1_j3rnj")
 left_level = "res://world/cave/levels/room_with_sword.tscn"
 right_level = "res://world/cave/levels/room_with_enemies.tscn"
 

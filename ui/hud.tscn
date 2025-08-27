@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6gem3jw1eo62"]
+
+[ext_resource type="Script" uid="uid://c5bni58bhmjlo" path="res://ui/hud.gd" id="1_rbyyf"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_rbyyf")
+
+[node name="GameOverMessage" type="Label" parent="."]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 1.0
+offset_top = 91.0
+offset_bottom = -1.0
+text = "YARR DEAD"
+horizontal_alignment = 1
+
+[node name="Message" type="Label" parent="."]
+anchors_preset = -1
+anchor_top = 0.834
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 2.75998
+offset_right = -1.0
+offset_bottom = -3.0
+horizontal_alignment = 1
+vertical_alignment = 2
