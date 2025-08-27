@@ -2,6 +2,8 @@ extends Node
 
 class_name GameManager
 
+@onready var hud = $HUD
+
 var player: Node
 var player_scene = References.player_scene
 var player_initial_position = GameConstants.PLAYER_INITIAL_POSITION
@@ -63,6 +65,7 @@ func start_death_timer():
 
 func reload() -> void:
     init()
+    hud.init()
 
 func _physics_process(_delta: float) -> void:
     check_level_bounds()

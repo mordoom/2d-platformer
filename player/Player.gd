@@ -21,11 +21,11 @@ func _ready():
     animation_tree.active = true
 
 func _physics_process(delta):
-    if state_machine.is_dead():
-        return
-
     if not is_on_floor() && not climbing:
         velocity.y += gravity * delta
+
+    if state_machine.is_dead():
+        return
 
     if climbing:
         var upward_direction = get_vertical_direction()
