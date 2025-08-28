@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cjgwk01y15726"]
+[gd_scene load_steps=14 format=3 uid="uid://cjgwk01y15726"]
 
 [ext_resource type="Texture2D" uid="uid://bq7uk82bkvea6" path="res://assets/campfire-Sheet.png" id="1_vygbo"]
 [ext_resource type="Script" uid="uid://e0cmf22xdcbm" path="res://world/interactable/campfire.gd" id="1_xjc6e"]
 [ext_resource type="Texture2D" uid="uid://dgmvf61vc8x1l" path="res://assets/light texture.png" id="3_3qrqy"]
+[ext_resource type="Script" uid="uid://c3db1ow76qj73" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="4_ee1jl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sfnok"]
 atlas = ExtResource("1_vygbo")
@@ -57,6 +58,17 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vygbo"]
 size = Vector2(45, 47)
 
+[sub_resource type="Texture2D" id="Texture2D_3mcgb"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_ee1jl")
+path = "interact"
+show_mode = 0
+force_controller_icon_style = -1
+force_type = 0
+force_device = 16
+metadata/_custom_type_script = "uid://c3db1ow76qj73"
+
 [node name="SavePoint" type="Area2D" groups=["Interactable"]]
 collision_layer = 8
 collision_mask = 2
@@ -77,6 +89,10 @@ texture = ExtResource("3_3qrqy")
 position = Vector2(-0.5, -2.5)
 shape = SubResource("RectangleShape2D_vygbo")
 
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="Label" type="TextureRect" parent="."]
+offset_left = -36.0
+offset_top = -109.0
+offset_right = 35.0
+offset_bottom = -38.0
+texture = SubResource("Texture2D_3mcgb")
+expand_mode = 1

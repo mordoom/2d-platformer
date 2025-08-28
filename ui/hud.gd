@@ -6,6 +6,7 @@ extends CanvasLayer
 func _ready():
     SignalBus.connect("game_over", on_game_over)
     SignalBus.connect("on_display_message", on_display_message)
+    SignalBus.connect("on_remove_message", on_remove_message)
     init()
 
 func init():
@@ -22,3 +23,6 @@ func on_display_message(text: String):
 func _input(event: InputEvent) -> void:
     if event.is_action_released("interact") && message.visible:
         message.visible = false
+
+func on_remove_message():
+    message.visible = false
