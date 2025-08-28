@@ -1,10 +1,12 @@
-extends Node
+extends "res://addons/MetroidvaniaSystem/Template/Scripts/MetSysGame.gd"
 
 class_name GameManager
 
 @onready var hud = $HUD
+@onready var player_ref = $Player
 
-var player: Node
+const SaveManager = preload("res://addons/MetroidvaniaSystem/Template/Scripts/SaveManager.gd")
+
 var player_scene = References.player_scene
 var player_initial_position = GameConstants.PLAYER_INITIAL_POSITION
 var death_timer: Timer
@@ -12,106 +14,110 @@ var death_timer: Timer
 var camera: Camera2D
 
 var initial_level: PackedScene = References.initial_level
+var starting_map = initial_level.resource_path
 var current_level: Node
 var current_level_bounds: Rect2i
 
 const cell_size = GameConstants.CELL_SIZE
 const starting_offset = GameConstants.STARTING_OFFSET
 
+const SAVE_PATH = "user://example_save_data.sav"
+var custom_run: bool
+
+
 func _ready() -> void:
-    init()
-    SignalBus.connect("character_died", on_character_died_handler)
-    SignalBus.connect("on_campfire_rested", on_campfire_rested_handler)
+	init()
+
+	SignalBus.connect("character_died", on_character_died_handler)
+	SignalBus.connect("on_campfire_rested", on_campfire_rested_handler)
 
 func init():
-    if (player):
-        player.queue_free()
+	MetSys.reset_state()
+	set_player(player_ref)
 
-    player = player_scene.instantiate()
-    camera = player.get_node("Camera2D")
-    player.global_position = player_initial_position
-    add_child.call_deferred(player)
-    init_level(initial_level)
 
-func init_level(level: PackedScene):
-    var new_level = load_level(level)
-    current_level = new_level
-    current_level_bounds = get_current_level_bounds()
+	if FileAccess.file_exists(SAVE_PATH):
+		# If save data exists, load it using MetSys SaveManager.
+		var save_manager := SaveManager.new()
+		save_manager.load_from_text(SAVE_PATH)
+		# Assign loaded values.
+		# collectibles = save_manager.get_value("collectible_count")
+		# generated_rooms.assign(save_manager.get_value("generated_rooms"))
+		# events.assign(save_manager.get_value("events"))
+		# player.abilities.assign(save_manager.get_value("abilities"))
+		
+		if not custom_run:
+			var loaded_starting_map: String = save_manager.get_value("current_room")
+			if not loaded_starting_map.is_empty(): # Some compatibility problem.
+				starting_map = loaded_starting_map
+	else:
+		# If no data exists, set empty one.
+		MetSys.set_save_data()
 
-    camera.limit_left = current_level_bounds.position.x + cell_size
-    camera.limit_right = current_level_bounds.size.x - cell_size
-    camera.limit_bottom = current_level_bounds.size.y - cell_size
-    camera.limit_top = current_level_bounds.position.y + cell_size
+	# Initialize room when it changes.
+	room_loaded.connect(init_room, CONNECT_DEFERRED)
+	# Load the starting room.
+	load_room(starting_map)
 
-func load_level(level: PackedScene):
-    if (current_level != null):
-        current_level.queue_free()
-    var new_level = level.instantiate()
-    add_child.call_deferred(new_level)
-    return new_level
+	var start := map.get_node_or_null(^"SavePoint")
+	if start and not custom_run:
+		player.position = start.position
+	
+	# Add module for room transitions.
+	add_module("RoomTransitions.gd")
+	# You can enable alternate transition effect by using this module instead.
+	# add_module("ScrollingRoomTransitions.gd")
+	
+	# Reset position tracking (feature specific to this project).
+	await get_tree().physics_frame
+	reset_map_starting_coords.call_deferred()
+	
+	# Make sure minimap is at correct position (required for themes to work correctly).
+	%Minimap.set_offsets_preset(Control.PRESET_TOP_RIGHT, Control.PRESET_MODE_MINSIZE, 8)
 
+func init_room():
+	MetSys.get_current_room_instance().adjust_camera_limits($Player/Camera2D)
+	player.on_enter()
+	
+	# Initializes MetSys.get_current_coords(), so you can use it from the beginning.
+	if MetSys.last_player_position.x == Vector2i.MAX.x:
+		MetSys.set_player_position(player.position)
+
+func reset_map_starting_coords():
+	# $UI/MapWindow.reset_starting_coords()
+	pass
 
 func on_character_died_handler(character: Node):
-    if character.is_in_group("Player"):
-        SignalBus.emit_signal("game_over")
-        start_death_timer()
+	if character.is_in_group("Player"):
+		SignalBus.emit_signal("game_over")
+		start_death_timer()
 
 func start_death_timer():
-    death_timer = Timer.new()
-    death_timer.wait_time = GameConstants.DEATH_TIME
-    death_timer.one_shot = true
-    death_timer.timeout.connect(reload)
-    add_child(death_timer)
-    death_timer.start()
+	death_timer = Timer.new()
+	death_timer.wait_time = GameConstants.DEATH_TIME
+	death_timer.one_shot = true
+	death_timer.timeout.connect(reload)
+	add_child(death_timer)
+	death_timer.start()
 
 func reload() -> void:
-    init()
-    hud.init()
+	get_tree().reload_current_scene()
 
 func _physics_process(_delta: float) -> void:
-    check_level_bounds()
-
-func check_level_bounds():
-    if (player.position.x >= current_level_bounds.size.x):
-        check_and_load_next_level(current_level.right_level, Vector2.RIGHT)
-    elif (player.position.x <= current_level_bounds.position.x):
-        check_and_load_next_level(current_level.left_level, Vector2.LEFT)
-    elif (player.position.y <= current_level_bounds.position.y):
-        check_and_load_next_level(current_level.up_level, Vector2.UP)
-    elif (player.position.y >= current_level_bounds.size.y):
-        check_and_load_next_level(current_level.down_level, Vector2.DOWN)
-
-func check_and_load_next_level(level_path, entry_direction: Vector2):
-    if level_path == "":
-        reload()
-        print_debug("no connecting level found - game over")
-    else:
-        init_level(load(level_path))
-        player.position = get_next_starting_pos(entry_direction)
-
-func get_next_starting_pos(entry_direction: Vector2):
-    if (entry_direction == Vector2.RIGHT):
-        var left_position = current_level_bounds.position.x + starting_offset
-        return Vector2(left_position, player.position.y)
-    elif entry_direction == Vector2.LEFT:
-        var right_position = current_level_bounds.size.x - starting_offset
-        return Vector2(right_position, player.position.y)
-    elif entry_direction == Vector2.UP:
-        var bottom_position = current_level_bounds.size.y - (starting_offset * 2)
-        return Vector2(player.position.x, bottom_position)
-    elif entry_direction == Vector2.DOWN:
-        var top_position = current_level_bounds.position.y + starting_offset
-        return Vector2(player.position.x, top_position)
-
-
-func get_current_level_bounds():
-    var tilemap_node = current_level.get_node("TileMapLayer")
-    var used_rect = tilemap_node.get_used_rect()
-    var top_left_local = tilemap_node.map_to_local(used_rect.position)
-    var bottom_right_local = tilemap_node.map_to_local(used_rect.end)
-    var level_bounds = Rect2i(top_left_local, bottom_right_local)
-    return level_bounds
+	pass
 
 func on_campfire_rested_handler(area: Area2D):
-    initial_level = ResourceLoader.load(current_level.scene_file_path)
-    player_initial_position = area.global_position
+	# Make Game save the data.
+	save_game()
+	# Starting coords for the delta vector feature.
+	reset_map_starting_coords()
+	player.set_health(GameConstants.DEFAULT_HEALTH)
+
+func save_game():
+	var save_manager := SaveManager.new()
+	# save_manager.set_value("collectible_count", collectibles)
+	# save_manager.set_value("generated_rooms", generated_rooms)
+	# save_manager.set_value("events", events)
+	# save_manager.set_value("abilities", player.abilities)
+	save_manager.set_value("current_room", MetSys.get_current_room_name())
+	save_manager.save_as_text(SAVE_PATH)

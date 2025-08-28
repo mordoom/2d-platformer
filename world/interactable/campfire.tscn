@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://cjgwk01y15726"]
+[gd_scene load_steps=12 format=3 uid="uid://cjgwk01y15726"]
 
 [ext_resource type="Texture2D" uid="uid://bq7uk82bkvea6" path="res://assets/campfire-Sheet.png" id="1_vygbo"]
 [ext_resource type="Script" uid="uid://e0cmf22xdcbm" path="res://world/interactable/campfire.gd" id="1_xjc6e"]
+[ext_resource type="Texture2D" uid="uid://dgmvf61vc8x1l" path="res://assets/light texture.png" id="3_3qrqy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sfnok"]
 atlas = ExtResource("1_vygbo")
@@ -56,14 +57,21 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vygbo"]
 size = Vector2(45, 47)
 
-[node name="Campfire" type="Area2D" groups=["Interactable"]]
+[node name="SavePoint" type="Area2D" groups=["Interactable"]]
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_xjc6e")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_85lld")
 autoplay = "default"
+
+[node name="PointLight2D" type="PointLight2D" parent="AnimatedSprite2D"]
+position = Vector2(0, -17)
+energy = 0.5
+shadow_enabled = true
+texture = ExtResource("3_3qrqy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -2.5)

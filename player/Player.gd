@@ -16,11 +16,16 @@ var on_interactable: Area2D
 @onready var floor_check: RayCast2D = $floor_check
 @onready var ceiling_check: RayCast2D = $ceiling_check
 @onready var collision_shape = $CollisionShape2D
+@onready var damageable = $Damageable
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
     animation_tree.active = true
+    on_enter()
+
+func on_enter():
+    pass
 
 func _physics_process(delta):
     if not is_on_floor() && not climbing:
@@ -81,6 +86,9 @@ func _on_interact_area_exited(area: Area2D) -> void:
     elif area is Interactable:
         on_interactable = null
         area.hide_prompt()
+
+func set_health(value: int):
+    damageable.health = value
 
 func is_raycast_on_floor():
     return floor_check.is_colliding()

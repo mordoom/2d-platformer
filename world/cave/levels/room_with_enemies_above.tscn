@@ -1,15 +1,14 @@
 [gd_scene load_steps=6 format=4 uid="uid://dsmgpvm6s1cy6"]
 
-[ext_resource type="Script" uid="uid://bte0vrcl1ixri" path="res://world/cave/levels/level.gd" id="1_bx1mq"]
+[ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="1_y63kf"]
 [ext_resource type="TileSet" uid="uid://dsu71ownhxqk5" path="res://world/cave/levels/tiles.tres" id="2_y63kf"]
 [ext_resource type="PackedScene" uid="uid://dtb6ujcdawf23" path="res://world/cave/parallax_background.tscn" id="3_lns7a"]
 [ext_resource type="PackedScene" uid="uid://cioby1n27ryow" path="res://enemies/skeleton/skeleton.tscn" id="4_1en53"]
 [ext_resource type="PackedScene" uid="uid://b45tjtegdp6uo" path="res://world/interactable/ladder.tscn" id="5_y63kf"]
 
-[node name="Level" type="Node"]
-script = ExtResource("1_bx1mq")
-down_level = "res://world/cave/levels/room_with_enemies.tscn"
-metadata/_custom_type_script = "uid://bte0vrcl1ixri"
+[node name="Level" type="Node2D"]
+
+[node name="RoomInstance" parent="." instance=ExtResource("1_y63kf")]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(342, 35)

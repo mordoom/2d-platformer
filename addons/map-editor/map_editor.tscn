@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjx6mlawe22vf"]
+
+[ext_resource type="Script" uid="uid://v3vx8cfu0kao" path="res://addons/map-editor/map_editor_ui.gd" id="1_iy4vu"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchor_right = 1.002
+anchor_bottom = 1.0
+offset_right = -0.280029
+offset_bottom = 1.0
+script = ExtResource("1_iy4vu")
+
+[node name="AddLevelButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+offset_right = 78.0
+offset_bottom = 31.0
+text = "add level"
+
+[node name="GraphEdit" type="GraphEdit" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 35.0
+offset_right = 1.00006
+scroll_offset = Vector2(-1.00006, 0)
+
+[node name="GraphNode" type="GraphNode" parent="GraphEdit"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 48.0
+offset_right = 473.0
+offset_bottom = 164.0
+mouse_filter = 1
+position_offset = Vector2(60.9999, 48)
+resizable = true
+title = "test"
