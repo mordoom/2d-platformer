@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://djohs0wplrnj3"]
+[gd_scene load_steps=8 format=4 uid="uid://djohs0wplrnj3"]
 
 [ext_resource type="Script" uid="uid://dwuby3rls3l27" path="res://world/cave/levels/room_with_campfire.gd" id="1_j3rnj"]
 [ext_resource type="Texture2D" uid="uid://bxrbskqrqwo0j" path="res://assets/PixelFantasy_Caves_1.0/mainlev_build.png" id="2_j3rnj"]
@@ -2089,9 +2089,6 @@ terrain_set_0/terrain_0/name = "Snowy"
 terrain_set_0/terrain_0/color = Color(0.855773, 0, 0.0535524, 1)
 sources/0 = SubResource("TileSetAtlasSource_3dxm6")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0qljk"]
-size = Vector2(571, 99)
-
 [node name="Level" type="Node2D"]
 script = ExtResource("1_j3rnj")
 left_level = "res://world/cave/levels/room_with_sword.tscn"
@@ -2110,13 +2107,3 @@ follow_viewport_scale = 0.5
 
 [node name="SavePoint" parent="." instance=ExtResource("6_j3rnj")]
 position = Vector2(715, 402)
-
-[node name="MessageTrigger" type="Area2D" parent="."]
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MessageTrigger"]
-position = Vector2(708, 366)
-shape = SubResource("RectangleShape2D_0qljk")
-
-[connection signal="body_entered" from="MessageTrigger" to="." method="_on_message_trigger_body_entered"]
-[connection signal="body_exited" from="MessageTrigger" to="." method="_on_message_trigger_body_exited"]
