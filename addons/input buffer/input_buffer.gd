@@ -5,7 +5,7 @@ extends Node
 
 # How many milliseconds ahead of time the player can make an input and have it still be recognized.
 # I chose the value 150 because it imitates the 9-frame buffer window in the Super Smash Bros. Ultimate game.
-const BUFFER_WINDOW: int = 150
+const BUFFER_WINDOW: int = 200
 
 var keyboard_timestamps: Dictionary
 var joypad_timestamps: Dictionary
@@ -24,8 +24,8 @@ func _input(event: InputEvent) -> void:
 		if !event.pressed or event.is_echo():
 			return
 			
-		var scancode: int = event.unicode
-		keyboard_timestamps[scancode] = Time.get_ticks_msec()
+		var unicode = event.physical_keycode
+		keyboard_timestamps[unicode] = Time.get_ticks_msec()
 	elif event is InputEventJoypadButton:
 		if !event.pressed or event.is_echo():
 			return
@@ -39,9 +39,9 @@ func is_action_press_buffered(action: String) -> bool:
 	# the action is buffered.
 	for event: InputEvent in InputMap.action_get_events(action):
 		if event is InputEventKey:
-			var scancode: int = event.unicode
-			if keyboard_timestamps.has(scancode):
-				if Time.get_ticks_msec() - keyboard_timestamps[scancode] <= BUFFER_WINDOW:
+			var unicode = event.physical_keycode
+			if keyboard_timestamps.has(unicode):
+				if Time.get_ticks_msec() - keyboard_timestamps[unicode] <= BUFFER_WINDOW:
 					# Prevent this method from returning true repeatedly and registering duplicate actions.
 					_invalidate_action(action)
 					
@@ -64,9 +64,9 @@ func is_action_press_buffered(action: String) -> bool:
 func _invalidate_action(action: String) -> void:
 	for event in InputMap.action_get_events(action):
 		if event is InputEventKey:
-			var scancode: int = event.unicode
-			if keyboard_timestamps.has(scancode):
-				keyboard_timestamps[scancode] = 0
+			var unicode = event.physical_keycode
+			if keyboard_timestamps.has(unicode):
+				keyboard_timestamps[unicode] = 0
 		elif event is InputEventJoypadButton:
 			var button_index: int = event.button_index
 			if joypad_timestamps.has(button_index):

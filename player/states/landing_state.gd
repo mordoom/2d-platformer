@@ -8,6 +8,10 @@ func on_enter():
 	playback.travel("landing")
 	create_landing_dust()
 
+func state_input(_event):
+	if InputBuffer.is_action_press_buffered("jump"):
+		emit_change_state("jump")
+
 func create_landing_dust():
 	References.instantiate(landing_dust_anim, character.global_position)
 
