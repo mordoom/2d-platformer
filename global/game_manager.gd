@@ -106,7 +106,7 @@ func reload() -> void:
 func _physics_process(_delta: float) -> void:
 	pass
 
-func on_campfire_rested_handler(area: Area2D):
+func on_campfire_rested_handler(_area: Area2D):
 	# Make Game save the data.
 	save_game()
 	# Starting coords for the delta vector feature.

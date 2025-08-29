@@ -1,0 +1,15 @@
+[remap]
+
+importer="import_gif_to_sprite_frames"
+type="SpriteFrames"
+uid="uid://lp25lskgw51t"
+path="res://.godot/imported/Cañon_animacion.gif-6c3cf5b2bd85b6492d92d977abbdb092.tres"
+
+[deps]
+
+source_file="res://assets/Cañon_animacion.gif"
+dest_files=["res://.godot/imported/Cañon_animacion.gif-6c3cf5b2bd85b6492d92d977abbdb092.tres"]
+
+[params]
+
+frames_per_second=30
