@@ -708,6 +708,7 @@ one_shot = true
 [node name="Hit" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("damageable")]
 script = ExtResource("15_uewl2")
 damageable = NodePath("../../Damageable")
+knockback_speed = 70.0
 can_move = false
 input_allowed = false
 metadata/_custom_type_script = "uid://b76n5nhjrhsom"
@@ -716,6 +717,7 @@ metadata/_custom_type_script = "uid://b76n5nhjrhsom"
 script = ExtResource("17_yu5hk")
 can_move = false
 input_allowed = false
+dead = true
 metadata/_custom_type_script = "uid://buvdd3fgh12nl"
 
 [node name="Ladder" type="Node" parent="CharacterStateMachine"]

@@ -1,7 +1,8 @@
 extends Area2D
 
+# TODO: this is a copy of the weapon script, try to remove. the only difference is the ready function
+
 @export var damage = GameConstants.CANNONBALL_DAMAGE
-@export var speed = 100
 
 func _ready() -> void:
     monitoring = true
@@ -20,3 +21,6 @@ func _on_body_entered(body: Node2D) -> void:
                 damage_direction = Vector2.LEFT
             
             child.hit(damage, damage_direction)
+
+            # TODO: generate an explosion effect
+            get_parent().queue_free()

@@ -11,3 +11,5 @@ func _physics_process(delta: float) -> void:
     if (time_since_shot <= 0):
         time_since_shot = time_to_shoot
         References.instantiate(cannonball, sprite.global_position)
+
+    # TODO: reuse bullets rather than instantiating each time

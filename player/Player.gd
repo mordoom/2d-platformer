@@ -31,21 +31,22 @@ func _physics_process(delta):
     if not is_on_floor() && not climbing:
         velocity.y += gravity * delta
 
-    if state_machine.is_dead():
-        return
+    if state_machine.current_state.input_allowed:
+        if climbing:
+            var upward_direction = get_vertical_direction()
+            if upward_direction:
+                velocity.y = upward_direction * ladder_speed
+            else:
+                velocity.y = move_toward(velocity.y, 0, ladder_speed)
 
-    if climbing:
-        var upward_direction = get_vertical_direction()
-        if upward_direction:
-            velocity.y = upward_direction * ladder_speed
+        var direction = get_horizontal_direction()
+        if direction && state_machine.can_move():
+            velocity.x = direction * current_speed
         else:
-            velocity.y = move_toward(velocity.y, 0, ladder_speed)
+            velocity.x = move_toward(velocity.x, 0, current_speed)
 
-    var direction = get_horizontal_direction()
-    if direction && state_machine.can_move():
-        velocity.x = direction * current_speed
-    else:
-        velocity.x = move_toward(velocity.x, 0, current_speed)
+    if state_machine.is_dead():
+        velocity.x = move_toward(velocity.x, 0, 1)
 
     move_and_slide()
 

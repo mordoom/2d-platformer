@@ -13,6 +13,7 @@ extends CharacterBody2D
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var current_direction: float = 1.0
 var player_check_offset = 40
+var climbing = false
 
 # Raycast caching for performance
 var cached_floor_collision: bool = false
