@@ -16,7 +16,6 @@ var camera: Camera2D
 var initial_level: PackedScene = References.initial_level
 var starting_map = initial_level.resource_path
 var current_level: Node
-var current_level_bounds: Rect2i
 
 const cell_size = GameConstants.CELL_SIZE
 const starting_offset = GameConstants.STARTING_OFFSET

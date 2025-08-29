@@ -17,6 +17,8 @@ const SKELETON_MIN_CHASE_DISTANCE: float = 30.0
 const SKELETON_MAX_CHASE_DISTANCE: float = 500.0
 const SKELETON_IDLE_TIME: float = 3.0
 
+const CANNONBALL_DAMAGE = 15
+
 # Combat Constants
 const SWORD_DAMAGE: int = 10
 const DEFAULT_HEALTH: int = 30
