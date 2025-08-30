@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://b33ws0ac72ddr"]
 
-[ext_resource type="Script" uid="uid://bnimfadgde2fw" path="res://enemies/cannonball.gd" id="1_ckmj2"]
+[ext_resource type="Script" uid="uid://bnimfadgde2fw" path="res://enemies/cannon/cannonball.gd" id="1_ckmj2"]
 [ext_resource type="Texture2D" uid="uid://ckkfk6cviqyl0" path="res://assets/Cañon_bala.png" id="2_bigq7"]
-[ext_resource type="Script" uid="uid://n8gk68tb7d2h" path="res://enemies/cannonball_hitbox.gd" id="3_8n5d7"]
+[ext_resource type="Script" uid="uid://n8gk68tb7d2h" path="res://enemies/cannon/cannonball_hitbox.gd" id="3_8n5d7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d8cjw"]
 atlas = ExtResource("2_bigq7")
@@ -44,6 +44,7 @@ position = Vector2(4, 2)
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("3_8n5d7")
+damage = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("RectangleShape2D_6aqm0")

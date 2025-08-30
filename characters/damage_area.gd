@@ -1,11 +1,11 @@
 extends Area2D
+class_name DamageArea
 
-# TODO: this is a copy of the weapon script, try to remove. the only difference is the ready function
-
-@export var damage = GameConstants.CANNONBALL_DAMAGE
+@export var damage = GameConstants.SWORD_DAMAGE
+@export var initial_monitoring_state = true
 
 func _ready() -> void:
-    monitoring = true
+    monitoring = initial_monitoring_state
 
 func _on_body_entered(body: Node2D) -> void:
     for child in body.get_children():
@@ -22,5 +22,7 @@ func _on_body_entered(body: Node2D) -> void:
             
             child.hit(damage, damage_direction)
 
-            # TODO: generate an explosion effect
-            get_parent().queue_free()
+            custom_damage_behaviour()
+
+func custom_damage_behaviour():
+    pass

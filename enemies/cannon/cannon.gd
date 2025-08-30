@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var cannonball = preload("res://enemies/cannonball.tscn")
+@onready var cannonball = preload("res://enemies/cannon/cannonball.tscn")
 @onready var sprite = $Sprite2D
 
 var time_since_shot = 0
