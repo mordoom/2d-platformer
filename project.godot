@@ -18,19 +18,20 @@ config/icon="res://icon.svg"
 [autoload]
 
 SignalBus="*res://global/signal_bus.gd"
-Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
+Signal_Debugger="res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
 References="*res://global/references.gd"
 InputHelper="*res://addons/input_helper/input_helper.gd"
 MetSys="*res://addons/MetroidvaniaSystem/Nodes/Singleton.tscn"
 ControllerIcons="*res://addons/controller_icons/ControllerIcons.gd"
 InputBuffer="*res://addons/input buffer/input_buffer.gd"
+DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
 
 [display]
 
 window/size/viewport_width=640
 window/size/viewport_height=360
-window/size/window_width_override=1280
-window/size/window_height_override=720
+window/size/window_width_override=1920
+window/size/window_height_override=1080
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
 window/stretch/scale_mode="integer"
@@ -41,7 +42,7 @@ project/assembly_name="2d platformer"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/MetroidvaniaSystem/plugin.cfg", "res://addons/controller_icons/plugin.cfg", "res://addons/gdUnit4/plugin.cfg", "res://addons/input_helper/plugin.cfg", "res://addons/map-editor/plugin.cfg")
+enabled=PackedStringArray("res://addons/MetroidvaniaSystem/plugin.cfg", "res://addons/controller_icons/plugin.cfg", "res://addons/debug_menu/plugin.cfg", "res://addons/gdUnit4/plugin.cfg", "res://addons/input_helper/plugin.cfg", "res://addons/map-editor/plugin.cfg")
 
 [global_group]
 
