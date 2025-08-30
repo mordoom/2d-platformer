@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dsu71ownhxqk5"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://dsu71ownhxqk5"]
 
 [ext_resource type="Texture2D" uid="uid://bxrbskqrqwo0j" path="res://assets/PixelFantasy_Caves_1.0/mainlev_build.png" id="1_h6dm5"]
+[ext_resource type="PackedScene" uid="uid://cqefnt5rald4a" path="res://enemies/spike/spike.tscn" id="2_k0kge"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3dxm6"]
 texture = ExtResource("1_h6dm5")
@@ -2078,9 +2079,14 @@ texture = ExtResource("1_h6dm5")
 3:9/0 = 0
 3:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_k0kge"]
+resource_name = "damageable"
+scenes/1/scene = ExtResource("2_k0kge")
+
 [resource]
 physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Snowy"
 terrain_set_0/terrain_0/color = Color(0.855773, 0, 0.0535524, 1)
 sources/0 = SubResource("TileSetAtlasSource_3dxm6")
+sources/1 = SubResource("TileSetScenesCollectionSource_k0kge")
