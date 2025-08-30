@@ -32,4 +32,4 @@ position = Vector2(1369, 358)
 position = Vector2(91, 388)
 
 [node name="Ladder" parent="." instance=ExtResource("5_y63kf")]
-position = Vector2(789, 729)
+position = Vector2(800, 729)
