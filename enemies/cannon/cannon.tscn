@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://dmrr3jqhipmb8" path="res://assets/Cañon_quieto.png" id="2_t547e"]
 
 [node name="Cannon" type="Node2D"]
+z_index = 1
 script = ExtResource("1_55v8w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1085, 297)
 rotation = 3.14159
 scale = Vector2(0.1, -0.1)
 texture = ExtResource("2_t547e")

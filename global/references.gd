@@ -11,3 +11,4 @@ func instantiate(scene: PackedScene, global_position: Vector2):
     var new_thing = scene.instantiate()
     get_tree().get_root().add_child(new_thing)
     new_thing.global_position = global_position
+    return new_thing

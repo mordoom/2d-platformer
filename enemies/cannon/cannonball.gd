@@ -2,10 +2,12 @@ extends CharacterBody2D
 
 @export var speed = -200
 
+var direction = Vector2.LEFT
+
 func _physics_process(_delta: float) -> void:
-    velocity.x = speed
+	velocity = speed * direction
 
-    move_and_slide()
+	move_and_slide()
 
-    if (global_position.x <= 0):
-        queue_free()
+	if (global_position.x <= 0):
+		queue_free()
