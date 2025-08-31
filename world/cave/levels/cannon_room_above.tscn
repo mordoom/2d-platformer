@@ -46,4 +46,4 @@ position = Vector2(1396, 159)
 position = Vector2(1940, 144)
 
 [node name="Ladder4" parent="." instance=ExtResource("7_clto0")]
-position = Vector2(2164, 144)
+position = Vector2(2148, 144)

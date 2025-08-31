@@ -21,7 +21,7 @@ offset_right = 39.0
 
 [node name="Minimap" parent="UI" instance=ExtResource("5_3dxm6")]
 unique_name_in_owner = true
-offset_left = 216.0
-offset_top = -174.0
-offset_right = 264.0
-offset_bottom = -78.0
+offset_left = 448.0
+offset_top = 2.0
+offset_right = 640.0
+offset_bottom = 122.0

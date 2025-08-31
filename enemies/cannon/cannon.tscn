@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://lv651gm64w3v"]
+[gd_scene load_steps=4 format=3 uid="uid://lv651gm64w3v"]
 
 [ext_resource type="Script" uid="uid://dvbhlwfwsbskl" path="res://enemies/cannon/cannon.gd" id="1_55v8w"]
 [ext_resource type="Texture2D" uid="uid://dmrr3jqhipmb8" path="res://assets/Cañon_quieto.png" id="2_t547e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_55v8w"]
+size = Vector2(48, 37)
 
 [node name="Cannon" type="Node2D"]
 z_index = 1
@@ -11,3 +14,9 @@ script = ExtResource("1_55v8w")
 rotation = 3.14159
 scale = Vector2(0.1, -0.1)
 texture = ExtResource("2_t547e")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2, 5.5)
+shape = SubResource("RectangleShape2D_55v8w")
