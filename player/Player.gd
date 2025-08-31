@@ -21,99 +21,97 @@ var on_interactable: Area2D
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
-    animation_tree.active = true
-    on_enter()
+	animation_tree.active = true
+	on_enter()
 
 func on_enter():
-    pass
+	pass
 
 func _physics_process(delta):
-    if not is_on_floor() && not climbing:
-        velocity.y += gravity * delta
+	if not is_on_floor() && not climbing:
+		velocity.y += gravity * delta
 
-    if state_machine.current_state.input_allowed:
-        if climbing:
-            var upward_direction = get_vertical_direction()
-            if upward_direction:
-                velocity.y = upward_direction * ladder_speed
-            else:
-                velocity.y = move_toward(velocity.y, 0, ladder_speed)
+	if state_machine.current_state.input_allowed:
+		if climbing:
+			var upward_direction = get_vertical_direction()
+			if upward_direction:
+				velocity.y = upward_direction * ladder_speed
+			else:
+				velocity.y = move_toward(velocity.y, 0, ladder_speed)
 
-        var direction = get_horizontal_direction()
-        if direction && state_machine.can_move():
-            velocity.x = direction * current_speed
-        else:
-            velocity.x = move_toward(velocity.x, 0, current_speed)
+		var direction = get_horizontal_direction()
+		if direction && state_machine.can_move():
+			velocity.x = direction * current_speed
+		else:
+			velocity.x = move_toward(velocity.x, 0, current_speed)
 
-    if state_machine.is_dead():
-        velocity.x = move_toward(velocity.x, 0, 1)
+	if state_machine.is_dead():
+		velocity.x = move_toward(velocity.x, 0, 1)
 
-    move_and_slide()
+	move_and_slide()
 
 func _input(event: InputEvent) -> void:
-    if state_machine.current_state.input_allowed:
-        var direction = get_horizontal_direction()
-        update_animation(direction)
-        update_facing_direction(direction)
+	if state_machine.current_state.input_allowed:
+		var direction = get_horizontal_direction()
+		update_animation(direction)
+		update_facing_direction(direction)
 
-        if event.is_action_pressed("interact"):
-            if on_interactable:
-                on_interactable.interact()
-        if (event.is_action_pressed("up", true)):
-            if is_raycast_on_ceiling():
-                if not climbing && on_ladder:
-                    state_machine._on_change_state("ladder")
-            else:
-                if climbing:
-                    state_machine._on_change_state("ground")
-        elif (event.is_action_pressed("down", true)):
-            if is_raycast_on_floor():
-                if not climbing && on_ladder:
-                    state_machine._on_change_state("ladder")
-            else:
-                if climbing:
-                    state_machine._on_change_state("ground")
+		if event.is_action_pressed("interact"):
+			if on_interactable:
+				on_interactable.interact()
+
+		if (event.is_action_pressed("up", true)):
+			if on_ladder && not climbing:
+				state_machine._on_change_state("ladder")
+			if climbing && not is_raycast_on_ceiling():
+				state_machine._on_change_state("ground")
+		
+		if (event.is_action_pressed("down", true)):
+			if on_ladder && not climbing:
+				state_machine._on_change_state("ladder")
+			if climbing && not is_raycast_on_floor():
+				state_machine._on_change_state("ground")
 
 
 func update_animation(direction: float = 0):
-    animation_tree.set("parameters/move/blend_position", direction)
+	animation_tree.set("parameters/move/blend_position", direction)
 
 func update_facing_direction(direction: float):
-    if direction < 0:
-        sprite.flip_h = true
-        if sign(sword_collision.position.x) == 1:
-            sword_collision.position.x *= -1
-    elif direction > 0:
-        sprite.flip_h = false
-        if sign(sword_collision.position.x) == -1:
-            sword_collision.position.x *= -1
+	if direction < 0:
+		sprite.flip_h = true
+		if sign(sword_collision.position.x) == 1:
+			sword_collision.position.x *= -1
+	elif direction > 0:
+		sprite.flip_h = false
+		if sign(sword_collision.position.x) == -1:
+			sword_collision.position.x *= -1
 
 func _on_interact_area_entered(area: Area2D) -> void:
-    if area.get_parent().is_in_group("Ladder"):
-        on_ladder = area
-    elif area is Interactable:
-        on_interactable = area
-        area.show_prompt()
+	if area.get_parent().is_in_group("Ladder"):
+		on_ladder = area
+	elif area is Interactable:
+		on_interactable = area
+		area.show_prompt()
 
 func _on_interact_area_exited(area: Area2D) -> void:
-    if area.get_parent().is_in_group("Ladder"):
-        climbing = false
-        on_ladder = null
-    elif area is Interactable:
-        on_interactable = null
-        area.hide_prompt()
+	if area.get_parent().is_in_group("Ladder"):
+		climbing = false
+		on_ladder = null
+	elif area is Interactable:
+		on_interactable = null
+		area.hide_prompt()
 
 func set_health(value: int):
-    damageable.health = value
+	damageable.health = value
 
 func is_raycast_on_floor():
-    return floor_check.is_colliding()
+	return floor_check.is_colliding()
 
 func is_raycast_on_ceiling():
-    return ceiling_check.is_colliding()
+	return ceiling_check.is_colliding()
 
 func get_vertical_direction():
-    return Input.get_axis("up", "down")
+	return Input.get_axis("up", "down")
 
 func get_horizontal_direction():
-    return Input.get_axis("left", "right")
+	return Input.get_axis("left", "right")
