@@ -6,7 +6,7 @@ class_name HitState
 @export var knockback_speed: float = GameConstants.KNOCKBACK_SPEED
 
 var hit_stop_time_scale = 0.1
-var hit_stop_duration = 0.15
+var hit_stop_duration = 0.2
 
 var hit_direction
 
