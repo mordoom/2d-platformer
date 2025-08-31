@@ -59,6 +59,21 @@ func _input(event: InputEvent) -> void:
         if event.is_action_pressed("interact"):
             if on_interactable:
                 on_interactable.interact()
+        if (event.is_action_pressed("up", true)):
+            if is_raycast_on_ceiling():
+                if not climbing && on_ladder:
+                    state_machine._on_change_state("ladder")
+            else:
+                if climbing:
+                    state_machine._on_change_state("ground")
+        elif (event.is_action_pressed("down", true)):
+            if is_raycast_on_floor():
+                if not climbing && on_ladder:
+                    state_machine._on_change_state("ladder")
+            else:
+                if climbing:
+                    state_machine._on_change_state("ground")
+
 
 func update_animation(direction: float = 0):
     animation_tree.set("parameters/move/blend_position", direction)
