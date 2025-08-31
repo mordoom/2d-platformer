@@ -25,6 +25,7 @@ MetSys="*res://addons/MetroidvaniaSystem/Nodes/Singleton.tscn"
 ControllerIcons="*res://addons/controller_icons/ControllerIcons.gd"
 InputBuffer="*res://addons/input buffer/input_buffer.gd"
 DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
+GameState="*res://global/game_state.gd"
 
 [display]
 
