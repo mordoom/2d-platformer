@@ -4,10 +4,9 @@ extends CharacterBody2D
 
 var direction = Vector2.LEFT
 var in_motion = false
-var initial_position: Vector2
 
 func _ready():
-	initial_position = global_position
+	visible = false
 
 func _physics_process(_delta: float) -> void:
 	if not in_motion:
@@ -21,5 +20,5 @@ func _physics_process(_delta: float) -> void:
 		reset()
 
 func reset():
-	global_position = initial_position
 	in_motion = false
+	visible = false

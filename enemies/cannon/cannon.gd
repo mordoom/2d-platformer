@@ -12,9 +12,9 @@ var bullet_index = 0
 
 func _ready():
     bullets = [
-        References.instantiate_deferred(cannonball, sprite.global_position, self),
-        References.instantiate_deferred(cannonball, sprite.global_position, self),
-        References.instantiate_deferred(cannonball, sprite.global_position, self)
+        References.instantiate_deferred(cannonball, self),
+        References.instantiate_deferred(cannonball, self),
+        References.instantiate_deferred(cannonball, self)
     ]
 
 func _physics_process(delta: float) -> void:
@@ -28,6 +28,7 @@ func _physics_process(delta: float) -> void:
 
 func init_bullet():
     var bullet = bullets[bullet_index]
-    bullet.global_position = sprite.global_position
+    bullet.position = Vector2.ZERO
     bullet.direction = direction
     bullet.in_motion = true
+    bullet.visible = true
