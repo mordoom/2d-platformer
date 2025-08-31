@@ -87,14 +87,14 @@ func update_facing_direction(direction: float):
 			sword_collision.position.x *= -1
 
 func _on_interact_area_entered(area: Area2D) -> void:
-	if area.get_parent().is_in_group("Ladder"):
+	if area is Ladder:
 		on_ladder = area
 	elif area is Interactable:
 		on_interactable = area
 		area.show_prompt()
 
 func _on_interact_area_exited(area: Area2D) -> void:
-	if area.get_parent().is_in_group("Ladder"):
+	if area is Ladder:
 		climbing = false
 		on_ladder = null
 	elif area is Interactable:
