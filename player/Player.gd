@@ -63,13 +63,13 @@ func _input(event: InputEvent) -> void:
 		if (event.is_action_pressed("up", true)):
 			if on_ladder && not climbing:
 				state_machine._on_change_state("ladder")
-			if climbing && not is_raycast_on_ceiling():
+			if climbing && not is_ladder_above():
 				state_machine._on_change_state("ground")
 		
 		if (event.is_action_pressed("down", true)):
 			if on_ladder && not climbing:
 				state_machine._on_change_state("ladder")
-			if climbing && not is_raycast_on_floor():
+			if climbing && not is_ladder_below():
 				state_machine._on_change_state("ground")
 
 
@@ -104,10 +104,10 @@ func _on_interact_area_exited(area: Area2D) -> void:
 func set_health(value: int):
 	damageable.health = value
 
-func is_raycast_on_floor():
+func is_ladder_below():
 	return floor_check.is_colliding()
 
-func is_raycast_on_ceiling():
+func is_ladder_above():
 	return ceiling_check.is_colliding()
 
 func get_vertical_direction():
