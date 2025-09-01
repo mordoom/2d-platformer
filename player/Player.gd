@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var speed: float = GameConstants.PLAYER_SPEED
 var current_speed = speed
-var player_gravity_multiplier = 1
+var player_gravity_multiplier = GameConstants.PLAYER_GRAVITY_MULT
 
 @export var ladder_speed = GameConstants.LADDER_SPEED
 var climbing = false

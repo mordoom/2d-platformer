@@ -5,8 +5,9 @@ class_name GameConstants
 # Player Constants
 const PLAYER_SPEED: float = 300.0
 const PLAYER_INITIAL_POSITION = Vector2(80, 200)
+const PLAYER_GRAVITY_MULT = 1.4
 const LADDER_SPEED: float = 150.0
-const JUMP_VELOCITY: float = -400.0
+const JUMP_VELOCITY: float = -500.0
 const DOUBLE_JUMP_VELOCITY: float = -300.0
 const COYOTE_TIME: float = 0.1
 
