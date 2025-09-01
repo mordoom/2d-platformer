@@ -5,6 +5,7 @@ class_name LadderState
 func on_enter():
 	character.climbing = true
 	character.global_position.x = character.on_ladder.global_position.x
+	character.velocity.x = 0
 	if character.on_ladder.turn_off_collisions:
 		character.set_collision_mask_value(1, false)
 

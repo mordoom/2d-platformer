@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var speed: float = GameConstants.PLAYER_SPEED
 var current_speed = speed
+var player_gravity_multiplier = 1
 
 @export var ladder_speed = GameConstants.LADDER_SPEED
 var climbing = false
@@ -29,7 +30,7 @@ func on_enter():
 
 func _physics_process(delta):
 	if not is_on_floor() && not climbing:
-		velocity.y += gravity * delta
+		velocity.y += gravity * player_gravity_multiplier * delta
 
 	if state_machine.current_state.input_allowed:
 		if climbing:
@@ -60,13 +61,13 @@ func _input(event: InputEvent) -> void:
 			if on_interactable:
 				on_interactable.interact()
 
-		if (event.is_action_pressed("up", true)):
+		if (Input.is_action_pressed("up", true)):
+			if climbing && is_ladder_above():
+				state_machine._on_change_state("ground")
 			if on_ladder && not climbing:
 				state_machine._on_change_state("ladder")
-			if climbing && not is_ladder_above():
-				state_machine._on_change_state("ground")
 		
-		if (event.is_action_pressed("down", true)):
+		if (Input.is_action_pressed("down", true)):
 			if on_ladder && not climbing:
 				state_machine._on_change_state("ladder")
 			if climbing && not is_ladder_below():

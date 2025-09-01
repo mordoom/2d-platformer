@@ -6,7 +6,7 @@ func on_enter():
 	playback.travel("move")
 
 func state_input(event: InputEvent):
-	if event.is_action_pressed("jump"):
+	if event.is_action_pressed("jump") || InputBuffer.is_action_press_buffered("jump"):
 		emit_change_state("jump")
 	elif event.is_action_pressed("attack"):
 		emit_change_state("groundattack")
