@@ -70,7 +70,7 @@ force_device = 16
 metadata/_custom_type_script = "uid://c3db1ow76qj73"
 
 [node name="SavePoint" type="Area2D" groups=["Interactable"]]
-collision_layer = 8
+collision_layer = 16
 collision_mask = 2
 script = ExtResource("1_xjc6e")
 
