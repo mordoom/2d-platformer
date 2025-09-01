@@ -62,21 +62,15 @@ func _input(event: InputEvent) -> void:
 				on_interactable.interact()
 
 		if (Input.is_action_pressed("up", true)):
-			if climbing:
-				if not is_ladder_above():
-					state_machine._on_change_state("ground")
-			else:
-				if is_ladder_above():
-					state_machine._on_change_state("ladder")
-		
-		if (Input.is_action_pressed("down", true)):
-			if climbing:
-				if not is_ladder_below():
-					state_machine._on_change_state("ground")
-			else:
-				if is_ladder_below():
-					state_machine._on_change_state("ladder")
-
+			if is_ladder_above():
+				state_machine._on_change_state("ladder")
+			elif climbing:
+				state_machine._on_change_state("ground")
+		elif (Input.is_action_pressed("down", true)):
+			if is_ladder_below():
+				state_machine._on_change_state("ladder")
+			elif climbing:
+				state_machine._on_change_state("ground")
 
 func update_animation(direction: float = 0):
 	animation_tree.set("parameters/move/blend_position", direction)
