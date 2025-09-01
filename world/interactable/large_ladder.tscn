@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://braa4odvf1gb0" path="res://assets/wood_set/ladder/28x128/1.png" id="1_rx67k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sgfke"]
-size = Vector2(23, 540)
+size = Vector2(23, 529)
 
 [node name="Area2D" type="Area2D"]
 collision_layer = 8
@@ -13,7 +13,7 @@ script = ExtResource("1_7sbdc")
 turn_off_collisions = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -206)
+position = Vector2(0.5, -200.5)
 shape = SubResource("RectangleShape2D_sgfke")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

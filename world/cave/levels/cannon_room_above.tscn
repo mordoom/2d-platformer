@@ -40,53 +40,10 @@ position = Vector2(119, 271)
 position = Vector2(1215, 223)
 
 [node name="Ladder2" parent="." instance=ExtResource("7_clto0")]
-position = Vector2(1394, 127)
+position = Vector2(1393, 127)
 
 [node name="Ladder3" parent="." instance=ExtResource("7_clto0")]
-position = Vector2(1938, 112)
+position = Vector2(1937, 112)
 
 [node name="Ladder4" parent="." instance=ExtResource("7_clto0")]
-position = Vector2(2146, 112)
-
-[connection signal="body_entered" from="TileMapLayer/Spike" to="TileMapLayer/Spike" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44397" to="TileMapLayer/@Area2D@44397" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44398" to="TileMapLayer/@Area2D@44398" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44399" to="TileMapLayer/@Area2D@44399" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44400" to="TileMapLayer/@Area2D@44400" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44401" to="TileMapLayer/@Area2D@44401" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44402" to="TileMapLayer/@Area2D@44402" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44403" to="TileMapLayer/@Area2D@44403" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44404" to="TileMapLayer/@Area2D@44404" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44405" to="TileMapLayer/@Area2D@44405" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44406" to="TileMapLayer/@Area2D@44406" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44407" to="TileMapLayer/@Area2D@44407" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44408" to="TileMapLayer/@Area2D@44408" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44409" to="TileMapLayer/@Area2D@44409" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44410" to="TileMapLayer/@Area2D@44410" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44411" to="TileMapLayer/@Area2D@44411" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44412" to="TileMapLayer/@Area2D@44412" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44413" to="TileMapLayer/@Area2D@44413" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44414" to="TileMapLayer/@Area2D@44414" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44415" to="TileMapLayer/@Area2D@44415" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44416" to="TileMapLayer/@Area2D@44416" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44417" to="TileMapLayer/@Area2D@44417" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44418" to="TileMapLayer/@Area2D@44418" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44419" to="TileMapLayer/@Area2D@44419" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44420" to="TileMapLayer/@Area2D@44420" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44421" to="TileMapLayer/@Area2D@44421" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44422" to="TileMapLayer/@Area2D@44422" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44423" to="TileMapLayer/@Area2D@44423" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44424" to="TileMapLayer/@Area2D@44424" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44425" to="TileMapLayer/@Area2D@44425" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44426" to="TileMapLayer/@Area2D@44426" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44427" to="TileMapLayer/@Area2D@44427" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44428" to="TileMapLayer/@Area2D@44428" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44429" to="TileMapLayer/@Area2D@44429" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44430" to="TileMapLayer/@Area2D@44430" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44431" to="TileMapLayer/@Area2D@44431" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44432" to="TileMapLayer/@Area2D@44432" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44433" to="TileMapLayer/@Area2D@44433" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44434" to="TileMapLayer/@Area2D@44434" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44435" to="TileMapLayer/@Area2D@44435" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44436" to="TileMapLayer/@Area2D@44436" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@44437" to="TileMapLayer/@Area2D@44437" method="_on_body_entered"]
+position = Vector2(2108, 112)

@@ -44,9 +44,9 @@ func init():
         # generated_rooms.assign(save_manager.get_value("generated_rooms"))
         # events.assign(save_manager.get_value("events"))
         # player.abilities.assign(save_manager.get_value("abilities"))
-        if GameState.dead_enemies.is_empty():
+        if GameState.perma_dead_enemies.is_empty():
             var loaded_dead_enemies = save_manager.get_value("dead_enemies")
-            GameState.dead_enemies.assign(loaded_dead_enemies if loaded_dead_enemies else [])
+            GameState.perma_dead_enemies.assign(loaded_dead_enemies if loaded_dead_enemies else [])
         
         if not custom_run:
             var loaded_starting_map: String = save_manager.get_value("current_room")
@@ -93,6 +93,9 @@ func on_character_died_handler(character: Node):
     if character.is_in_group("Player"):
         SignalBus.emit_signal("game_over")
         start_death_timer()
+        GameState.reset_enemies()
+    else:
+        GameState.add_dead_enemy(character)
 
 func start_death_timer():
     death_timer = Timer.new()
@@ -114,6 +117,7 @@ func on_campfire_rested_handler(_area: Area2D):
     # Starting coords for the delta vector feature.
     reset_map_starting_coords()
     player.set_health(GameConstants.DEFAULT_HEALTH)
+    GameState.reset_enemies()
 
 func save_game():
     var save_manager := SaveManager.new()
@@ -121,6 +125,6 @@ func save_game():
     # save_manager.set_value("generated_rooms", generated_rooms)
     # save_manager.set_value("events", events)
     # save_manager.set_value("abilities", player.abilities)
-    save_manager.set_value("dead_enemies", GameState.dead_enemies)
+    save_manager.set_value("dead_enemies", GameState.perma_dead_enemies)
     save_manager.set_value("current_room", MetSys.get_current_room_name())
     save_manager.save_as_text(SAVE_PATH)
