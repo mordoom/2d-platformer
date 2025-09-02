@@ -733,6 +733,7 @@ script = ExtResource("20_2m0d2")
 metadata/_custom_type_script = "uid://bc302qypp4ibv"
 
 [node name="Label" type="Label" parent="." node_paths=PackedStringArray("state_machine")]
+visible = false
 offset_left = -45.0
 offset_top = -50.0
 offset_right = 58.0

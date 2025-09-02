@@ -14,14 +14,13 @@ var bullet_index = 0
 var hit_stop_time_scale = 0.1
 var hit_stop_duration = 0.2
 
-var default_bullet_pos = Vector2.ZERO
+var default_bullet_pos = Vector2(-35, 0)
 
 func _ready():
     if GameState.enemy_is_dead(self):
         queue_free()
 
     damageable.connect("on_hit", on_damageable_hit)
-    default_bullet_pos = Vector2(-direction.x * 50, 0)
     bullets = [
         References.instantiate_deferred(cannonball, self, default_bullet_pos),
         References.instantiate_deferred(cannonball, self, default_bullet_pos),

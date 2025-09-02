@@ -29,3 +29,13 @@ position = Vector2(716, 183)
 
 [node name="SavePoint" parent="." instance=ExtResource("7_d8cjw")]
 position = Vector2(60, 366)
+
+[connection signal="body_entered" from="TileMapLayer/Spike" to="TileMapLayer/Spike" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@65534" to="TileMapLayer/@Area2D@65534" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@65535" to="TileMapLayer/@Area2D@65535" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@65536" to="TileMapLayer/@Area2D@65536" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@65537" to="TileMapLayer/@Area2D@65537" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@65538" to="TileMapLayer/@Area2D@65538" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@65539" to="TileMapLayer/@Area2D@65539" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@65540" to="TileMapLayer/@Area2D@65540" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@65541" to="TileMapLayer/@Area2D@65541" method="_on_body_entered"]
