@@ -28,109 +28,110 @@ var max_rum_bottles = 0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
-    animation_tree.active = true
-    on_enter()
+	animation_tree.active = true
+	on_enter()
 
 func on_enter():
-    pass
+	pass
 
 func _physics_process(delta):
-    if not is_on_floor() && not climbing:
-        velocity.y += gravity * player_gravity_multiplier * delta
+	if not is_on_floor() && not climbing:
+		velocity.y += gravity * player_gravity_multiplier * delta
 
-    if state_machine.current_state.input_allowed:
-        if climbing:
-            var upward_direction = get_vertical_direction()
-            if upward_direction:
-                velocity.y = upward_direction * ladder_speed
-            else:
-                velocity.y = move_toward(velocity.y, 0, ladder_speed)
+	if state_machine.current_state.input_allowed:
+		if climbing:
+			var upward_direction = get_vertical_direction()
+			if upward_direction:
+				velocity.y = upward_direction * ladder_speed
+			else:
+				velocity.y = move_toward(velocity.y, 0, ladder_speed)
 
-        var direction = get_horizontal_direction()
-        if direction && state_machine.can_move():
-            velocity.x = direction * current_speed
-        else:
-            velocity.x = move_toward(velocity.x, 0, current_speed)
+		var direction = get_horizontal_direction()
+		if direction && state_machine.can_move():
+			velocity.x = direction * current_speed
+		else:
+			velocity.x = move_toward(velocity.x, 0, current_speed)
 
-    if state_machine.is_dead():
-        velocity.x = move_toward(velocity.x, 0, 1)
+	if state_machine.is_dead():
+		velocity.x = move_toward(velocity.x, 0, 1)
 
-    move_and_slide()
+	move_and_slide()
 
 func _input(event: InputEvent) -> void:
-    if state_machine.current_state.input_allowed:
-        var direction = get_horizontal_direction()
-        update_animation(direction)
-        update_facing_direction(direction)
+	if state_machine.current_state.input_allowed:
+		var direction = get_horizontal_direction()
+		update_animation(direction)
+		update_facing_direction(direction)
 
-        if event.is_action_pressed("interact"):
-            if on_interactable:
-                on_interactable.interact()
+		if event.is_action_pressed("interact"):
+			if on_interactable:
+				on_interactable.interact()
 
-        if (Input.is_action_pressed("up", true)):
-            if is_ladder_above:
-                state_machine._on_change_state("ladder")
-            elif climbing:
-                state_machine._on_change_state("ground")
-        elif (Input.is_action_pressed("down", true)):
-            if is_ladder_below():
-                state_machine._on_change_state("ladder")
-            elif climbing:
-                state_machine._on_change_state("ground")
-        
-        if (Input.is_action_just_pressed("drink_rum") && rum_bottles > 0):
-            damageable.health = damageable.health + 20
-            rum_bottles = rum_bottles - 1
+		if (Input.is_action_pressed("up", true)):
+			if is_ladder_above:
+				state_machine._on_change_state("ladder")
+			elif climbing:
+				state_machine._on_change_state("ground")
+		elif (Input.is_action_pressed("down", true)):
+			if is_ladder_below():
+				state_machine._on_change_state("ladder")
+			elif climbing:
+				state_machine._on_change_state("ground")
+		
+		if (Input.is_action_just_pressed("drink_rum") && rum_bottles > 0):
+			SignalBus.emit_signal("rum_consumed")
+			damageable.health = damageable.health + 20
+			rum_bottles = rum_bottles - 1
 
 func update_animation(direction: float = 0):
-    animation_tree.set("parameters/move/blend_position", direction)
+	animation_tree.set("parameters/move/blend_position", direction)
 
 func update_facing_direction(direction: float):
-    if direction < 0:
-        sprite.flip_h = true
-        if sign(sword_collision.position.x) == 1:
-            sword_collision.position.x *= -1
-    elif direction > 0:
-        sprite.flip_h = false
-        if sign(sword_collision.position.x) == -1:
-            sword_collision.position.x *= -1
+	if direction < 0:
+		sprite.flip_h = true
+		if sign(sword_collision.position.x) == 1:
+			sword_collision.position.x *= -1
+	elif direction > 0:
+		sprite.flip_h = false
+		if sign(sword_collision.position.x) == -1:
+			sword_collision.position.x *= -1
 
 func _on_interact_area_entered(area: Area2D) -> void:
-    if area is Ladder:
-        on_ladder = area
-    elif area is Interactable:
-        on_interactable = area
-        area.show_prompt()
+	if area is Ladder:
+		on_ladder = area
+	elif area is Interactable:
+		on_interactable = area
+		area.show_prompt()
 
 func _on_interact_area_exited(area: Area2D) -> void:
-    if area is Ladder:
-        climbing = false
-        on_ladder = null
-    elif area is Interactable:
-        on_interactable = null
-        area.hide_prompt()
+	if area is Ladder:
+		climbing = false
+		on_ladder = null
+	elif area is Interactable:
+		on_interactable = null
+		area.hide_prompt()
 
 func set_health(value: int):
-    damageable.health = value
+	damageable.health = value
 
 func get_health():
-    return damageable.health
+	return damageable.health
 
 func is_ladder_below():
-    return floor_check.is_colliding()
+	return floor_check.is_colliding()
 
 func get_vertical_direction():
-    return Input.get_axis("up", "down")
+	return Input.get_axis("up", "down")
 
 func get_horizontal_direction():
-    return Input.get_axis("left", "right")
+	return Input.get_axis("left", "right")
 
 func _on_ladder_above_area_exited(area: Area2D) -> void:
-    is_ladder_above = false
+	is_ladder_above = false
 
 func _on_ladder_above_area_entered(area: Area2D) -> void:
-    is_ladder_above = true
+	is_ladder_above = true
 
 func add_rum_bottle():
-    rum_bottles = rum_bottles + 1
-    max_rum_bottles = max_rum_bottles + 1
+	rum_bottles = rum_bottles + 1
+	max_rum_bottles = max_rum_bottles + 1

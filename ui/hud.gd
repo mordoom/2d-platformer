@@ -3,22 +3,20 @@ extends CanvasLayer
 @onready var gameOverMessage: Label = $GameOverMessage
 @onready var message: Label = $Message
 @onready var healthbar = $Healthbar
-@onready var rum_label = $RumLabel
+@onready var rumbar = $Rumbar
+@onready var player = %Player
 
 func _ready():
     SignalBus.connect("game_over", on_game_over)
     SignalBus.connect("on_display_message", on_display_message)
     SignalBus.connect("on_remove_message", on_remove_message)
     SignalBus.connect("on_health_changed", on_health_changed)
-    init()
 
 func init():
     gameOverMessage.visible = false
     message.visible = false
-    healthbar.init_health(%Player.get_health())
-
-func _process(delta):
-    rum_label.text = str(%Player.rum_bottles)
+    healthbar.init_health(player.get_health())
+    rumbar.init(player)
 
 func on_game_over():
     gameOverMessage.visible = true

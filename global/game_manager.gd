@@ -59,6 +59,8 @@ func init():
     else:
         # If no data exists, set empty one.
         MetSys.set_save_data()
+    
+    hud.init()
 
     # Initialize room when it changes.
     room_loaded.connect(init_room, CONNECT_DEFERRED)

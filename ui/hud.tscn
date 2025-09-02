@@ -1,13 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6gem3jw1eo62"]
+[gd_scene load_steps=6 format=3 uid="uid://b6gem3jw1eo62"]
 
 [ext_resource type="Script" uid="uid://c5bni58bhmjlo" path="res://ui/hud.gd" id="1_rbyyf"]
 [ext_resource type="PackedScene" uid="uid://bipon0wb0ovjw" path="res://ui/healthbar/healthbar.tscn" id="2_276te"]
 [ext_resource type="Theme" uid="uid://cqw1qi00p254h" path="res://ui_theme.tres" id="2_546lt"]
+[ext_resource type="Script" uid="uid://c66o6dhkgnilh" path="res://ui/rumbar.gd" id="4_7ihmi"]
+[ext_resource type="Texture2D" uid="uid://dh5ypuj42igpe" path="res://assets/bottle of rum - small.png" id="5_en2x2"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_rbyyf")
 
 [node name="GameOverMessage" type="Label" parent="."]
+texture_filter = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.5
@@ -36,10 +39,27 @@ offset_right = 152.0
 offset_bottom = 20.0
 size_flags_horizontal = 0
 
-[node name="RumLabel" type="Label" parent="."]
-offset_left = 18.0
-offset_top = 22.0
-offset_right = 153.0
-offset_bottom = 45.0
+[node name="Rumbar" type="HBoxContainer" parent="."]
+layout_direction = 2
+offset_left = 21.0
+offset_top = 32.0
+offset_right = 34.0
+offset_bottom = 48.0
+size_flags_horizontal = 0
+script = ExtResource("4_7ihmi")
+
+[node name="Panel" type="Panel" parent="Rumbar"]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Rumbar/Panel"]
+texture_filter = 1
+position = Vector2(3, 0)
+texture = ExtResource("5_en2x2")
+
+[node name="Label" type="Label" parent="Rumbar"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
 theme = ExtResource("2_546lt")
 text = "0"
+horizontal_alignment = 2
