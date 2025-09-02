@@ -1,5 +1,6 @@
 extends Node
 
+var rum_bottles = []
 var perma_dead_enemies: Array[String] = []
 var dead_enemies = []
 
@@ -18,3 +19,11 @@ func add_dead_enemy(enemy: Node2D):
 
 func get_enemy_unique_key(enemy: Node2D):
     return enemy.get_parent().scene_file_path + str(enemy.get_path())
+
+func is_rum_bottle_collected(node: Node2D):
+    var unique_key = get_enemy_unique_key(node)
+    return unique_key in rum_bottles
+
+func rum_bottle_collected(node: Node2D):
+    var unique_key = get_enemy_unique_key(node)
+    rum_bottles.append(unique_key)

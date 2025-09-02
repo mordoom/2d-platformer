@@ -28,6 +28,7 @@ func _ready() -> void:
 
     SignalBus.connect("character_died", on_character_died_handler)
     SignalBus.connect("on_campfire_rested", on_campfire_rested_handler)
+    SignalBus.connect("on_bottle_rum_collected", on_bottle_rum_collected)
 
 func init():
     MetSys.reset_state()
@@ -44,6 +45,9 @@ func init():
         # generated_rooms.assign(save_manager.get_value("generated_rooms"))
         # events.assign(save_manager.get_value("events"))
         # player.abilities.assign(save_manager.get_value("abilities"))
+        GameState.rum_bottles.assign(save_manager.get_value("rum_bottles"))
+        player.rum_bottles = GameState.rum_bottles.size()
+        player.max_rum_bottles = GameState.rum_bottles.size()
         if GameState.perma_dead_enemies.is_empty():
             var loaded_dead_enemies = save_manager.get_value("dead_enemies")
             GameState.perma_dead_enemies.assign(loaded_dead_enemies if loaded_dead_enemies else [])
@@ -117,7 +121,12 @@ func on_campfire_rested_handler(_area: Area2D):
     # Starting coords for the delta vector feature.
     reset_map_starting_coords()
     player.set_health(GameConstants.DEFAULT_HEALTH)
+    player.rum_bottles = player.max_rum_bottles
     GameState.reset_enemies()
+
+func on_bottle_rum_collected(area: Area2D):
+    player.add_rum_bottle()
+    GameState.rum_bottle_collected(area)
 
 func save_game():
     var save_manager := SaveManager.new()
@@ -125,6 +134,7 @@ func save_game():
     # save_manager.set_value("generated_rooms", generated_rooms)
     # save_manager.set_value("events", events)
     # save_manager.set_value("abilities", player.abilities)
+    save_manager.set_value("rum_bottles", GameState.rum_bottles)
     save_manager.set_value("dead_enemies", GameState.perma_dead_enemies)
     save_manager.set_value("current_room", MetSys.get_current_room_name())
     save_manager.save_as_text(SAVE_PATH)

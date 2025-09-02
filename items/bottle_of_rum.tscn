@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://cpbx41ergsr8t"]
+
+[ext_resource type="Texture2D" uid="uid://d3fuixhfdipu3" path="res://assets/bottle of rum.png" id="1_bla5d"]
+[ext_resource type="Script" uid="uid://csn6kelyrxvxf" path="res://items/bottle_of_rum.gd" id="1_mgag8"]
+[ext_resource type="Script" uid="uid://c3db1ow76qj73" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="3_mhjx1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bla5d"]
+size = Vector2(20, 32)
+
+[sub_resource type="Texture2D" id="Texture2D_a7xm2"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("3_mhjx1")
+path = "interact"
+show_mode = 0
+force_controller_icon_style = -1
+force_type = 0
+force_device = 16
+metadata/_custom_type_script = "uid://c3db1ow76qj73"
+
+[node name="BottleOfRum" type="Area2D"]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("1_mgag8")
+metadata/_custom_type_script = "uid://dvegsh7mn5oyw"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bla5d")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_bla5d")
+
+[node name="Label" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = -11.0
+offset_top = -61.0
+offset_right = 11.0
+offset_bottom = -39.0
+texture = SubResource("Texture2D_a7xm2")
+expand_mode = 1
