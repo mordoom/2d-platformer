@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://1oqljbi8et2h"]
+[gd_scene load_steps=6 format=4 uid="uid://1oqljbi8et2h"]
 
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="1_xmiqg"]
 [ext_resource type="TileSet" uid="uid://dsu71ownhxqk5" path="res://world/cave/levels/tiles.tres" id="2_7f6x1"]
 [ext_resource type="PackedScene" uid="uid://dtb6ujcdawf23" path="res://world/cave/parallax_background.tscn" id="3_xj735"]
 [ext_resource type="PackedScene" uid="uid://dikkltplokfed" path="res://breakable/box.tscn" id="4_ggv3p"]
+[ext_resource type="PackedScene" uid="uid://lv651gm64w3v" path="res://enemies/cannon/cannon.tscn" id="5_xmiqg"]
 
 [node name="Level" type="Node2D"]
 
@@ -19,28 +20,33 @@ transform = Transform2D(1, 0, 0, 1, 300, 250)
 follow_viewport_scale = 0.5
 
 [node name="StaticBody2D" parent="." instance=ExtResource("4_ggv3p")]
-position = Vector2(491, 389)
+position = Vector2(1017, 390)
 
 [node name="StaticBody2D2" parent="." instance=ExtResource("4_ggv3p")]
-position = Vector2(537, 389)
+position = Vector2(1063, 390)
 
 [node name="StaticBody2D3" parent="." instance=ExtResource("4_ggv3p")]
-position = Vector2(585, 389)
+position = Vector2(1111, 390)
 
 [node name="StaticBody2D4" parent="." instance=ExtResource("4_ggv3p")]
-position = Vector2(585, 349)
+position = Vector2(1111, 350)
 
 [node name="StaticBody2D5" parent="." instance=ExtResource("4_ggv3p")]
-position = Vector2(537, 349)
+position = Vector2(1063, 350)
 
 [node name="StaticBody2D6" parent="." instance=ExtResource("4_ggv3p")]
-position = Vector2(491, 349)
+position = Vector2(1017, 350)
 
 [node name="StaticBody2D7" parent="." instance=ExtResource("4_ggv3p")]
-position = Vector2(491, 309)
+position = Vector2(1017, 310)
 
 [node name="StaticBody2D8" parent="." instance=ExtResource("4_ggv3p")]
-position = Vector2(539, 309)
+position = Vector2(1065, 310)
 
 [node name="StaticBody2D9" parent="." instance=ExtResource("4_ggv3p")]
-position = Vector2(587, 309)
+position = Vector2(1113, 310)
+
+[node name="Cannon" parent="." instance=ExtResource("5_xmiqg")]
+position = Vector2(876, 393)
+scale = Vector2(-1, 1)
+direction = Vector2(-1, 0)

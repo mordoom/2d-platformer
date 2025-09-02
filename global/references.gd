@@ -13,7 +13,8 @@ func instantiate(scene: PackedScene, global_position: Vector2):
     new_thing.global_position = global_position
     return new_thing
 
-func instantiate_deferred(scene: PackedScene, parent: Node2D):
+func instantiate_deferred(scene: PackedScene, parent: Node2D, position: Vector2):
     var new_thing = scene.instantiate()
+    new_thing.position = position
     parent.add_child.call_deferred(new_thing)
     return new_thing
