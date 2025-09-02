@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6gem3jw1eo62"]
+[gd_scene load_steps=4 format=3 uid="uid://b6gem3jw1eo62"]
 
 [ext_resource type="Script" uid="uid://c5bni58bhmjlo" path="res://ui/hud.gd" id="1_rbyyf"]
 [ext_resource type="PackedScene" uid="uid://bipon0wb0ovjw" path="res://ui/healthbar/healthbar.tscn" id="2_276te"]
+[ext_resource type="Theme" uid="uid://cqw1qi00p254h" path="res://ui_theme.tres" id="2_546lt"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_rbyyf")
@@ -13,6 +14,7 @@ anchor_bottom = 0.5
 offset_left = 1.0
 offset_top = 91.0
 offset_bottom = -1.0
+theme = ExtResource("2_546lt")
 text = "YARR DEAD"
 horizontal_alignment = 1
 
