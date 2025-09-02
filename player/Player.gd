@@ -19,6 +19,9 @@ var on_interactable: Area2D
 @onready var collision_shape = $CollisionShape2D
 @onready var damageable = $Damageable
 
+@onready var ladderAboveArea = $LadderAbove
+var is_ladder_above = false
+
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
@@ -62,7 +65,7 @@ func _input(event: InputEvent) -> void:
 				on_interactable.interact()
 
 		if (Input.is_action_pressed("up", true)):
-			if is_ladder_above():
+			if is_ladder_above:
 				state_machine._on_change_state("ladder")
 			elif climbing:
 				state_machine._on_change_state("ground")
@@ -106,11 +109,14 @@ func set_health(value: int):
 func is_ladder_below():
 	return floor_check.is_colliding()
 
-func is_ladder_above():
-	return ceiling_check.is_colliding()
-
 func get_vertical_direction():
 	return Input.get_axis("up", "down")
 
 func get_horizontal_direction():
 	return Input.get_axis("left", "right")
+
+func _on_ladder_above_area_exited(area: Area2D) -> void:
+	is_ladder_above = false
+
+func _on_ladder_above_area_entered(area: Area2D) -> void:
+	is_ladder_above = true

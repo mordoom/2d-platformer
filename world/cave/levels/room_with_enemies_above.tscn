@@ -26,10 +26,11 @@ position = Vector2(542, 324)
 position = Vector2(873, 356)
 
 [node name="Skeleton3" parent="." instance=ExtResource("4_1en53")]
-position = Vector2(1209, 358)
+position = Vector2(1208, 358)
 
 [node name="Skeleton4" parent="." instance=ExtResource("4_1en53")]
 position = Vector2(91, 388)
 
 [node name="Ladder" parent="." instance=ExtResource("5_y63kf")]
-position = Vector2(800, 729)
+position = Vector2(799, 729)
+turn_off_collisions = true
