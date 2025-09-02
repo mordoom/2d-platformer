@@ -106,6 +106,9 @@ func _on_interact_area_exited(area: Area2D) -> void:
 func set_health(value: int):
 	damageable.health = value
 
+func get_health():
+	return damageable.health
+
 func is_ladder_below():
 	return floor_check.is_colliding()
 

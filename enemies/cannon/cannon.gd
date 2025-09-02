@@ -21,7 +21,7 @@ func _ready():
         queue_free()
 
     damageable.connect("on_hit", on_damageable_hit)
-    default_bullet_pos = Vector2(direction.x * 50, 0)
+    default_bullet_pos = Vector2(-direction.x * 50, 0)
     bullets = [
         References.instantiate_deferred(cannonball, self, default_bullet_pos),
         References.instantiate_deferred(cannonball, self, default_bullet_pos),
