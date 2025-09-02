@@ -23,7 +23,7 @@ const CANNONBALL_DAMAGE = 15
 # Combat Constants
 const SWORD_DAMAGE: int = 10
 const DEFAULT_HEALTH: int = 30
-const KNOCKBACK_SPEED: float = 30.0
+const KNOCKBACK_SPEED: float = 20.0
 
 # Animation and Effects
 const DEATH_TIME: float = 3.0

@@ -2118,4 +2118,10 @@ position = Vector2(2421, 358)
 [node name="Box4" parent="." instance=ExtResource("5_cjia5")]
 position = Vector2(2422, 316)
 
+[node name="Box5" parent="." instance=ExtResource("5_cjia5")]
+position = Vector2(2422, 276)
+
+[node name="Box6" parent="." instance=ExtResource("5_cjia5")]
+position = Vector2(2425, 236)
+
 [node name="RoomInstance" parent="." instance=ExtResource("6_cf5vc")]
