@@ -4,14 +4,13 @@ class_name GameManager
 
 @onready var hud = $HUD
 @onready var player_ref = $Player
+@onready var camera = $Player/Camera2D
 
 const SaveManager = preload("res://addons/MetroidvaniaSystem/Template/Scripts/SaveManager.gd")
 
 var player_scene = References.player_scene
 var player_initial_position = GameConstants.PLAYER_INITIAL_POSITION
 var death_timer: Timer
-
-var camera: Camera2D
 
 var initial_level: PackedScene = References.initial_level
 var starting_map = initial_level.resource_path
@@ -29,6 +28,7 @@ func _ready() -> void:
     SignalBus.connect("character_died", on_character_died_handler)
     SignalBus.connect("on_campfire_rested", on_campfire_rested_handler)
     SignalBus.connect("on_bottle_rum_collected", on_bottle_rum_collected)
+    SignalBus.connect("on_health_changed", on_health_changed)
 
 func init():
     MetSys.reset_state()
@@ -84,7 +84,7 @@ func init():
     %Minimap.set_offsets_preset(Control.PRESET_TOP_RIGHT, Control.PRESET_MODE_MINSIZE, 8)
 
 func init_room():
-    MetSys.get_current_room_instance().adjust_camera_limits($Player/Camera2D)
+    MetSys.get_current_room_instance().adjust_camera_limits(camera)
     player.on_enter()
     
     # Initializes MetSys.get_current_coords(), so you can use it from the beginning.
@@ -129,6 +129,9 @@ func on_campfire_rested_handler(_area: Area2D):
 func on_bottle_rum_collected(area: Area2D):
     player.add_rum_bottle()
     GameState.rum_bottle_collected(area)
+
+func on_health_changed(_node: Node, _amount: int):
+    camera.get_node("ShakerComponent2D").play_shake()
 
 func save_game():
     var save_manager := SaveManager.new()
