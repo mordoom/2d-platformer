@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dtb6ujcdawf23" path="res://world/cave/parallax_background.tscn" id="2_oq5dy"]
 [ext_resource type="TileSet" uid="uid://dsu71ownhxqk5" path="res://world/cave/levels/tiles.tres" id="2_vme22"]
 [ext_resource type="PackedScene" uid="uid://cioby1n27ryow" path="res://enemies/skeleton/skeleton.tscn" id="3_uqlg1"]
-[ext_resource type="PackedScene" uid="uid://dmxcjqfiiabri" path="res://world/interactable/ladder/large_ladder.tscn" id="5_vme22"]
+[ext_resource type="PackedScene" uid="uid://dmxcjqfiiabri" path="res://interactable/ladder/large_ladder.tscn" id="5_vme22"]
 
 [node name="Level" type="Node2D"]
 
