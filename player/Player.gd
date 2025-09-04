@@ -101,7 +101,7 @@ func update_facing_direction(direction: float) -> void:
 			sword_collision.position.x *= -1
 
 func _on_interact_area_entered(area: Area2D) -> void:
-	if area is Ladder:
+	if area.has_node("ClimbableComponent"):
 		on_ladder = area
 	elif area.has_node("InteractionComponent"):
 		on_interactable = area
@@ -113,7 +113,7 @@ func _on_interact_area_entered(area: Area2D) -> void:
 		button_prompt_comp.show_prompt()
 
 func _on_interact_area_exited(area: Area2D) -> void:
-	if area is Ladder:
+	if area.has_node("ClimbableComponent"):
 		climbing = false
 		on_ladder = null
 	elif area.has_node("InteractionComponent"):

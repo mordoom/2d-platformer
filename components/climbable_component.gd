@@ -1,5 +1,5 @@
-extends Area2D
+extends Node
 
-class_name Ladder
+class_name ClimbableComponent
 
 @export var turn_off_collisions: bool = false
