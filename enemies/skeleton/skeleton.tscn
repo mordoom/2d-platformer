@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bm8s43ddaqvhj" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Die.png" id="11_pi0qw"]
 [ext_resource type="Texture2D" uid="uid://dbx4fl4f4d2hd" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Hurt.png" id="12_ym5ls"]
 [ext_resource type="Texture2D" uid="uid://ufb0ajwqyft0" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Walk.png" id="13_f47vg"]
-[ext_resource type="Script" uid="uid://bcywceit70ofw" path="res://characters/damage/weapon.gd" id="14_vfshu"]
+[ext_resource type="Script" uid="uid://b04ble633sv7g" path="res://characters/damage/damage_area.gd" id="14_drsv4"]
 [ext_resource type="Script" uid="uid://ce1llr8pnomm1" path="res://characters/states/state_debug_label.gd" id="15_jrkgk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5q4d"]
@@ -439,7 +439,8 @@ collision_mask = 3
 collision_layer = 4
 collision_mask = 2
 monitoring = false
-script = ExtResource("14_vfshu")
+script = ExtResource("14_drsv4")
+initial_monitoring_state = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 position = Vector2(31, 0.25)

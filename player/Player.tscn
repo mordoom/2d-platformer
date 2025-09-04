@@ -18,11 +18,11 @@
 [ext_resource type="Script" uid="uid://bmbf8x21nlc3o" path="res://player/states/ground_attack_state.gd" id="11_gatk"]
 [ext_resource type="Texture2D" uid="uid://caw51tt3dwwll" path="res://assets/Pirate by seartsy/Death-4frm.png" id="11_q6miu"]
 [ext_resource type="Script" uid="uid://b76n5nhjrhsom" path="res://characters/states/hit_state.gd" id="15_uewl2"]
-[ext_resource type="Script" uid="uid://bcywceit70ofw" path="res://characters/damage/weapon.gd" id="16_t8epa"]
 [ext_resource type="Script" uid="uid://bv74cjk6dv3j5" path="res://characters/damage/damageable.gd" id="17_w24id"]
 [ext_resource type="Script" uid="uid://buvdd3fgh12nl" path="res://characters/states/dead_state.gd" id="17_yu5hk"]
 [ext_resource type="Script" uid="uid://cqjief3xbuucb" path="res://characters/states/ladder_state.gd" id="19_mlfor"]
 [ext_resource type="Script" uid="uid://bfdimik8paaq7" path="res://player/states/jump_state.gd" id="20_2m0d2"]
+[ext_resource type="Script" uid="uid://b04ble633sv7g" path="res://characters/damage/damage_area.gd" id="22_8eyfg"]
 [ext_resource type="Script" uid="uid://bn5dalk2rg7k2" path="res://addons/shaker/src/Vector2/shaker_component2D.gd" id="24_8nth8"]
 [ext_resource type="Script" uid="uid://duxib2kpsik7x" path="res://addons/shaker/data/Vector2/BaseShakerType2D.gd" id="25_8eyfg"]
 [ext_resource type="Script" uid="uid://cfhxxvnhwgl6w" path="res://addons/shaker/data/Vector2/ShakerTypeSineWave2D.gd" id="26_76mgg"]
@@ -775,7 +775,8 @@ state_machine = NodePath("../CharacterStateMachine")
 collision_layer = 0
 collision_mask = 4
 monitoring = false
-script = ExtResource("16_t8epa")
+script = ExtResource("22_8eyfg")
+initial_monitoring_state = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sword"]
 position = Vector2(50, 6)
