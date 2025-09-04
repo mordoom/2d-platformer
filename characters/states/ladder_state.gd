@@ -7,10 +7,9 @@ func on_enter() -> void:
 	character.velocity.x = 0
 	if character.on_ladder:
 		character.global_position.x = character.on_ladder.global_position.x
-		if character.on_ladder.has_node("ClimbableComponent"):
-			var climbable_comp: ClimbableComponent = character.on_ladder.get_node("ClimbableComponent")
-			if climbable_comp.turn_off_collisions:
-				character.set_collision_mask_value(1, false)
+		var climbable_comp: ClimbableComponent = character.on_ladder.get_node_or_null("ClimbableComponent")
+		if climbable_comp and climbable_comp.turn_off_collisions:
+			character.set_collision_mask_value(1, false)
 
 func on_exit() -> void:
 	character.climbing = false

@@ -64,12 +64,14 @@ func _input(event: InputEvent) -> void:
 		update_facing_direction(direction)
 
 		if event.is_action_pressed("interact"):
-			if on_interactable and on_interactable.has_node("InteractionComponent"):
-				var interaction_comp: InteractionComponent = on_interactable.get_node("InteractionComponent")
-				interaction_comp.interact()
-			if on_collectible and on_collectible.has_node("CollectionComponent"):
-				var collection_comp: CollectionComponent = on_collectible.get_node("CollectionComponent")
-				collection_comp.collect()
+			if on_interactable:
+				var interaction_comp: InteractionComponent = on_interactable.get_node_or_null("InteractionComponent")
+				if interaction_comp:
+					interaction_comp.interact()
+			if on_collectible:
+				var collection_comp: CollectionComponent = on_collectible.get_node_or_null("CollectionComponent")
+				if collection_comp:
+					collection_comp.collect()
 
 		if (Input.is_action_pressed("up", true)):
 			if is_ladder_above:
@@ -101,28 +103,36 @@ func update_facing_direction(direction: float) -> void:
 			sword_collision.position.x *= -1
 
 func _on_interact_area_entered(area: Area2D) -> void:
-	if area.has_node("ClimbableComponent"):
+	var climbable_comp: ClimbableComponent = area.get_node_or_null("ClimbableComponent")
+	var interaction_comp: InteractionComponent = area.get_node_or_null("InteractionComponent")
+	var collection_comp: CollectionComponent = area.get_node_or_null("CollectionComponent")
+	var button_prompt_comp: ButtonPromptComponent = area.get_node_or_null("ButtonPromptComponent")
+	
+	if climbable_comp:
 		on_ladder = area
-	elif area.has_node("InteractionComponent"):
+	elif interaction_comp:
 		on_interactable = area
-	elif area.has_node("CollectionComponent"):
+	elif collection_comp:
 		on_collectible = area
 	
-	if area.has_node("ButtonPromptComponent"):
-		var button_prompt_comp: ButtonPromptComponent = area.get_node("ButtonPromptComponent")
+	if button_prompt_comp:
 		button_prompt_comp.show_prompt()
 
 func _on_interact_area_exited(area: Area2D) -> void:
-	if area.has_node("ClimbableComponent"):
+	var climbable_comp: ClimbableComponent = area.get_node_or_null("ClimbableComponent")
+	var interaction_comp: InteractionComponent = area.get_node_or_null("InteractionComponent")
+	var collection_comp: CollectionComponent = area.get_node_or_null("CollectionComponent")
+	var button_prompt_comp: ButtonPromptComponent = area.get_node_or_null("ButtonPromptComponent")
+	
+	if climbable_comp:
 		climbing = false
 		on_ladder = null
-	elif area.has_node("InteractionComponent"):
+	elif interaction_comp:
 		on_interactable = null
-	elif area.has_node("CollectionComponent"):
+	elif collection_comp:
 		on_collectible = null
 	
-	if area.has_node("ButtonPromptComponent"):
-		var button_prompt_comp: ButtonPromptComponent = area.get_node("ButtonPromptComponent")
+	if button_prompt_comp:
 		button_prompt_comp.hide_prompt()
 
 func set_health(value: int) -> void:
