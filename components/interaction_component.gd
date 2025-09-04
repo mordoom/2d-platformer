@@ -3,17 +3,13 @@ extends Node
 class_name InteractionComponent
 
 @export var signal_to_emit: String = "on_interacted"
-
-@onready var button_prompt: TextureRect = get_parent().get_node("Label")
-
-func _ready() -> void:
-	button_prompt.visible = false
+@export var button_prompt_comp: ButtonPromptComponent
 
 func interact() -> void:
 	SignalBus.emit_signal(signal_to_emit, get_parent())
 
 func show_prompt() -> void:
-	button_prompt.visible = true
+	button_prompt_comp.show_prompt()
 
 func hide_prompt() -> void:
-	button_prompt.visible = false
+	button_prompt_comp.hide_prompt()
