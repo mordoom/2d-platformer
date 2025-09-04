@@ -110,10 +110,7 @@ func _on_interact_area_entered(area: Area2D) -> void:
 	elif area.has_node("CollectionComponent"):
 		var collection_comp: CollectionComponent = area.get_node("CollectionComponent")
 		on_collectible = area
-		if collection_comp.auto_collect_on_touch:
-			collection_comp.collect()
-		else:
-			collection_comp.show_prompt()
+		collection_comp.show_prompt()
 
 func _on_interact_area_exited(area: Area2D) -> void:
 	if area is Ladder:

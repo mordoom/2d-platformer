@@ -24,7 +24,6 @@ texture = ExtResource("1_bla5d")
 [node name="CollectionComponent" type="Node" parent="." node_paths=PackedStringArray("button_prompt_comp")]
 script = ExtResource("4_0hxvv")
 collection_signal = "on_bottle_rum_collected"
-auto_collect_on_touch = false
 button_prompt_comp = NodePath("../ButtonPromptComponent")
 metadata/_custom_type_script = "uid://832xmughicl7"
 
