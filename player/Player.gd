@@ -104,26 +104,26 @@ func _on_interact_area_entered(area: Area2D) -> void:
 	if area is Ladder:
 		on_ladder = area
 	elif area.has_node("InteractionComponent"):
-		var interaction_comp: InteractionComponent = area.get_node("InteractionComponent")
 		on_interactable = area
-		interaction_comp.show_prompt()
 	elif area.has_node("CollectionComponent"):
-		var collection_comp: CollectionComponent = area.get_node("CollectionComponent")
 		on_collectible = area
-		collection_comp.show_prompt()
+	
+	if area.has_node("ButtonPromptComponent"):
+		var button_prompt_comp: ButtonPromptComponent = area.get_node("ButtonPromptComponent")
+		button_prompt_comp.show_prompt()
 
 func _on_interact_area_exited(area: Area2D) -> void:
 	if area is Ladder:
 		climbing = false
 		on_ladder = null
 	elif area.has_node("InteractionComponent"):
-		var interaction_comp: InteractionComponent = area.get_node("InteractionComponent")
 		on_interactable = null
-		interaction_comp.hide_prompt()
 	elif area.has_node("CollectionComponent"):
-		var collection_comp: CollectionComponent = area.get_node("CollectionComponent")
 		on_collectible = null
-		collection_comp.hide_prompt()
+	
+	if area.has_node("ButtonPromptComponent"):
+		var button_prompt_comp: ButtonPromptComponent = area.get_node("ButtonPromptComponent")
+		button_prompt_comp.hide_prompt()
 
 func set_health(value: int) -> void:
 	damageable.health = value
