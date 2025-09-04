@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://s2702h7h5u4q"]
+
+[ext_resource type="Script" uid="uid://mv2ak04mf7d5" path="res://components/button_prompt_component.gd" id="1_5od6s"]
+[ext_resource type="Script" uid="uid://c3db1ow76qj73" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="2_hklwq"]
+
+[sub_resource type="Texture2D" id="Texture2D_x7x26"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_hklwq")
+path = "interact"
+show_mode = 0
+force_controller_icon_style = -1
+force_type = 0
+force_device = 16
+metadata/_custom_type_script = "uid://c3db1ow76qj73"
+
+[node name="ButtonPromptComponent" type="Node2D"]
+script = ExtResource("1_5od6s")
+
+[node name="Label" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = -11.0
+offset_top = -61.0
+offset_right = 11.0
+offset_bottom = -39.0
+texture = SubResource("Texture2D_x7x26")
+expand_mode = 1

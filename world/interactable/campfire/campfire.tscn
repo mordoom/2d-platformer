@@ -1,11 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://cjgwk01y15726"]
+[gd_scene load_steps=14 format=3 uid="uid://cjgwk01y15726"]
 
 [ext_resource type="Texture2D" uid="uid://bq7uk82bkvea6" path="res://assets/campfire-Sheet.png" id="1_vygbo"]
 [ext_resource type="Script" uid="uid://e0cmf22xdcbm" path="res://world/interactable/campfire/campfire.gd" id="1_xjc6e"]
 [ext_resource type="Texture2D" uid="uid://dgmvf61vc8x1l" path="res://assets/light texture.png" id="3_3qrqy"]
-[ext_resource type="Script" uid="uid://c3db1ow76qj73" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="4_ee1jl"]
+[ext_resource type="PackedScene" uid="uid://s2702h7h5u4q" path="res://components/button_prompt_component.tscn" id="5_11yxp"]
 [ext_resource type="Script" uid="uid://cqr86vajk6xoh" path="res://components/interaction_component.gd" id="5_hith6"]
-[ext_resource type="Script" uid="uid://mv2ak04mf7d5" path="res://components/button_prompt_component.gd" id="6_11yxp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sfnok"]
 atlas = ExtResource("1_vygbo")
@@ -60,17 +59,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vygbo"]
 size = Vector2(45, 47)
 
-[sub_resource type="Texture2D" id="Texture2D_ee1jl"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("4_ee1jl")
-path = "interact"
-show_mode = 0
-force_controller_icon_style = -1
-force_type = 0
-force_device = 16
-metadata/_custom_type_script = "uid://c3db1ow76qj73"
-
 [node name="SavePoint" type="Area2D" groups=["Interactable"]]
 collision_layer = 16
 collision_mask = 2
@@ -97,14 +85,4 @@ signal_to_emit = "on_campfire_rested"
 button_prompt_comp = NodePath("../ButtonPromptComponent")
 metadata/_custom_type_script = "uid://cqr86vajk6xoh"
 
-[node name="ButtonPromptComponent" type="Node" parent="."]
-script = ExtResource("6_11yxp")
-
-[node name="Label" type="TextureRect" parent="."]
-texture_filter = 1
-offset_left = -11.0
-offset_top = -61.0
-offset_right = 11.0
-offset_bottom = -39.0
-texture = SubResource("Texture2D_ee1jl")
-expand_mode = 1
+[node name="ButtonPromptComponent" parent="." instance=ExtResource("5_11yxp")]
