@@ -5,18 +5,18 @@ class_name HitState
 @export var damageable: Damageable
 @export var knockback_speed: float = GameConstants.KNOCKBACK_SPEED
 
-var hit_stop_time_scale = 0.1
-var hit_stop_duration = 0.2
+var hit_stop_time_scale: float = 0.1
+var hit_stop_duration: float = 0.2
 
-var hit_direction
+var hit_direction: Vector2
 
 func _ready() -> void:
     damageable.connect("on_hit", on_damageable_hit)
 
-func on_exit():
+func on_exit() -> void:
     character.velocity.x = 0
 
-func on_damageable_hit(_node: Node, _amount: int, direction: Vector2):
+func on_damageable_hit(_node: Node, _amount: int, direction: Vector2) -> void:
     hit_direction = direction
 
     # TODO: find a better way to do knockback

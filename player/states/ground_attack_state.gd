@@ -2,12 +2,12 @@ extends State
 
 class_name GroundAttackState
 
-@onready var timer = $Timer
+@onready var timer: Timer = $Timer
 
-func on_enter():
+func on_enter() -> void:
 	playback.travel("attack")
 
-func state_input(event: InputEvent):
+func state_input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack"):
 		timer.start()
 
@@ -27,5 +27,5 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	elif anim_name == "attack3":
 		end_combo()
 
-func end_combo():
+func end_combo() -> void:
 	emit_change_state("ground")

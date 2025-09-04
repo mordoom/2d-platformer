@@ -2,24 +2,24 @@ extends "res://addons/MetroidvaniaSystem/Template/Scripts/MetSysGame.gd"
 
 class_name GameManager
 
-@onready var hud = $HUD
-@onready var player_ref = $Player
-@onready var camera = $Player/Camera2D
+@onready var hud: CanvasLayer = $HUD
+@onready var player_ref: CharacterBody2D = $Player
+@onready var camera: Camera2D = $Player/Camera2D
 
 const SaveManager = preload("res://addons/MetroidvaniaSystem/Template/Scripts/SaveManager.gd")
 
-var player_scene = References.player_scene
-var player_initial_position = GameConstants.PLAYER_INITIAL_POSITION
+var player_scene: PackedScene = References.player_scene
+var player_initial_position: Vector2 = GameConstants.PLAYER_INITIAL_POSITION
 var death_timer: Timer
 
 var initial_level: PackedScene = References.initial_level
-var starting_map = initial_level.resource_path
+var starting_map: String = initial_level.resource_path
 var current_level: Node
 
-const cell_size = GameConstants.CELL_SIZE
-const starting_offset = GameConstants.STARTING_OFFSET
+const cell_size: int = GameConstants.CELL_SIZE
+const starting_offset: int = GameConstants.STARTING_OFFSET
 
-const SAVE_PATH = "user://example_save_data.sav"
+const SAVE_PATH: String = "user://example_save_data.sav"
 var custom_run: bool
 
 func _ready() -> void:
@@ -30,14 +30,14 @@ func _ready() -> void:
     SignalBus.connect("on_bottle_rum_collected", on_bottle_rum_collected)
     SignalBus.connect("on_health_changed", on_health_changed)
 
-func init():
+func init() -> void:
     MetSys.reset_state()
     set_player(player_ref)
 
 
     if FileAccess.file_exists(SAVE_PATH):
         # If save data exists, load it using MetSys SaveManager.
-        var save_manager := SaveManager.new()
+        var save_manager: SaveManager = SaveManager.new()
         save_manager.load_from_text(SAVE_PATH)
 
         # Assign loaded values.
@@ -49,7 +49,7 @@ func init():
         player.rum_bottles = GameState.rum_bottles.size()
         player.max_rum_bottles = GameState.rum_bottles.size()
         if GameState.perma_dead_enemies.is_empty():
-            var loaded_dead_enemies = save_manager.get_value("dead_enemies")
+            var loaded_dead_enemies: Array = save_manager.get_value("dead_enemies")
             GameState.perma_dead_enemies.assign(loaded_dead_enemies if loaded_dead_enemies else [])
         
         if not custom_run:
@@ -67,7 +67,7 @@ func init():
     # Load the starting room.
     load_room(starting_map)
 
-    var start := map.get_node_or_null(^"SavePoint")
+    var start: Node = map.get_node_or_null(^"SavePoint")
     if start and not custom_run:
         player.position = start.position
     
@@ -83,7 +83,7 @@ func init():
     # Make sure minimap is at correct position (required for themes to work correctly).
     %Minimap.set_offsets_preset(Control.PRESET_TOP_RIGHT, Control.PRESET_MODE_MINSIZE, 8)
 
-func init_room():
+func init_room() -> void:
     MetSys.get_current_room_instance().adjust_camera_limits(camera)
     player.on_enter()
     
@@ -91,11 +91,11 @@ func init_room():
     if MetSys.last_player_position.x == Vector2i.MAX.x:
         MetSys.set_player_position(player.position)
 
-func reset_map_starting_coords():
+func reset_map_starting_coords() -> void:
     # $UI/MapWindow.reset_starting_coords()
     pass
 
-func on_character_died_handler(character: Node):
+func on_character_died_handler(character: Node) -> void:
     if character.is_in_group("Player"):
         SignalBus.emit_signal("game_over")
         start_death_timer()
@@ -103,7 +103,7 @@ func on_character_died_handler(character: Node):
     else:
         GameState.add_dead_enemy(character)
 
-func start_death_timer():
+func start_death_timer() -> void:
     death_timer = Timer.new()
     death_timer.wait_time = GameConstants.DEATH_TIME
     death_timer.one_shot = true
@@ -117,7 +117,7 @@ func reload() -> void:
 func _physics_process(_delta: float) -> void:
     pass
 
-func on_campfire_rested_handler(_area: Area2D):
+func on_campfire_rested_handler(_area: Area2D) -> void:
     # Make Game save the data.
     save_game()
     # Starting coords for the delta vector feature.
@@ -126,15 +126,15 @@ func on_campfire_rested_handler(_area: Area2D):
     player.rum_bottles = player.max_rum_bottles
     GameState.reset_enemies()
 
-func on_bottle_rum_collected(area: Area2D):
+func on_bottle_rum_collected(area: Area2D) -> void:
     player.add_rum_bottle()
     GameState.rum_bottle_collected(area)
 
-func on_health_changed(_node: Node, _amount: int):
+func on_health_changed(_node: Node, _amount: int) -> void:
     camera.get_node("ShakerComponent2D").play_shake()
 
-func save_game():
-    var save_manager := SaveManager.new()
+func save_game() -> void:
+    var save_manager: SaveManager = SaveManager.new()
     # save_manager.set_value("collectible_count", collectibles)
     # save_manager.set_value("generated_rooms", generated_rooms)
     # save_manager.set_value("events", events)

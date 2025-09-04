@@ -2,16 +2,16 @@ extends Area2D
 
 class_name Interactable
 
-@onready var label = $Label
+@onready var button_prompt: TextureRect = $Label
 
-func _ready():
-    label.visible = false
+func _ready() -> void:
+	button_prompt.visible = false
 
-func interact():
-    pass
+func interact() -> void:
+	pass
 
-func show_prompt():
-    label.visible = true
+func show_prompt() -> void:
+	button_prompt.visible = true
 
-func hide_prompt():
-    label.visible = false
+func hide_prompt() -> void:
+	button_prompt.visible = false

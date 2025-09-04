@@ -2,7 +2,7 @@ extends State
 
 class_name AttackState
 
-func on_enter():
+func on_enter() -> void:
     playback.travel("attack")
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:

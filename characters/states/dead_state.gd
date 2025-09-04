@@ -2,7 +2,7 @@ extends State
 
 class_name DeadState
 
-func on_enter():
+func on_enter() -> void:
 	dead = true
 	character.climbing = false
 	playback.travel("death")

@@ -2,20 +2,20 @@ extends State
 
 class_name PursueState
 
-@export var chase_speed = GameConstants.SKELETON_CHASE_SPEED
-@export var min_chase_distance = GameConstants.SKELETON_MIN_CHASE_DISTANCE
-@export var max_chase_distance = GameConstants.SKELETON_MAX_CHASE_DISTANCE
+@export var chase_speed: float = GameConstants.SKELETON_CHASE_SPEED
+@export var min_chase_distance: float = GameConstants.SKELETON_MIN_CHASE_DISTANCE
+@export var max_chase_distance: float = GameConstants.SKELETON_MAX_CHASE_DISTANCE
 
-func state_physics_process(_delta):
-	var player = get_tree().get_first_node_in_group("Player")
+func state_physics_process(_delta: float) -> void:
+	var player: Node = get_tree().get_first_node_in_group("Player")
 	if (player == null):
 		emit_change_state("patrol")
 		return
 
-	var position_difference = player.position.x - character.position.x
-	var direction_to_player = sign(position_difference)
-	var distance_to_player = abs(position_difference)
-	var current_direction = character.get_current_direction()
+	var position_difference: float = player.position.x - character.position.x
+	var direction_to_player: float = sign(position_difference)
+	var distance_to_player: float = abs(position_difference)
+	var current_direction: float = character.get_current_direction()
 
 	if direction_to_player != current_direction:
 		character.set_direction(direction_to_player)

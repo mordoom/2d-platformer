@@ -3,7 +3,7 @@ extends Node
 class_name CharacterStateMachine
 
 var states: Array[State]
-var states_dict = {}
+var states_dict: Dictionary = {}
 var current_state: State
 
 @export var initial_state: State
@@ -32,22 +32,22 @@ func is_dead() -> bool:
 func _physics_process(delta: float) -> void:
 	current_state.state_physics_process(delta)
 
-func _input(event: InputEvent):
+func _input(event: InputEvent) -> void:
 	if current_state.input_allowed:
 		current_state.state_input(event)
 
 func _process(delta: float) -> void:
 	current_state.state_process(delta)
 
-func change_state(new_state: State):
+func change_state(new_state: State) -> void:
 	current_state.on_exit()
 	current_state = new_state
 	current_state.on_enter()
 
-func _on_change_state(state_name: String):
-	var new_state = states_dict.get(state_name.to_lower())
+func _on_change_state(state_name: String) -> void:
+	var new_state: State = states_dict.get(state_name.to_lower())
 	assert(new_state != null, "State '" + state_name + "' not found in states_dict")
 	change_state(new_state)
 
-func _on_reset_state():
+func _on_reset_state() -> void:
 	change_state(initial_state)

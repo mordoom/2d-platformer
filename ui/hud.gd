@@ -2,26 +2,26 @@ extends CanvasLayer
 
 @onready var gameOverMessage: Label = $GameOverMessage
 @onready var message: Label = $Message
-@onready var healthbar = $Healthbar
-@onready var rumbar = $Rumbar
-@onready var player = %Player
+@onready var healthbar: ProgressBar = $Healthbar
+@onready var rumbar: HBoxContainer = $Rumbar
+@onready var player: CharacterBody2D = %Player
 
-func _ready():
+func _ready() -> void:
     SignalBus.connect("game_over", on_game_over)
     SignalBus.connect("on_display_message", on_display_message)
     SignalBus.connect("on_remove_message", on_remove_message)
     SignalBus.connect("on_health_changed", on_health_changed)
 
-func init():
+func init() -> void:
     gameOverMessage.visible = false
     message.visible = false
     healthbar.init_health(player.get_health())
     rumbar.init(player)
 
-func on_game_over():
+func on_game_over() -> void:
     gameOverMessage.visible = true
 
-func on_display_message(text: String):
+func on_display_message(text: String) -> void:
     message.text = text
     message.visible = true
 
@@ -29,10 +29,10 @@ func _input(event: InputEvent) -> void:
     if event.is_action_released("interact") && message.visible:
         message.visible = false
 
-func on_remove_message():
+func on_remove_message() -> void:
     message.visible = false
 
-func on_health_changed(node: Node, amount: int):
+func on_health_changed(node: Node, amount: int) -> void:
     if node.is_in_group("Player"):
-        var new_health = healthbar.health + amount
+        var new_health: int = healthbar.health + amount
         healthbar.health = new_health

@@ -1,52 +1,52 @@
 extends CharacterBody2D
 
 @export var speed: float = GameConstants.PLAYER_SPEED
-var current_speed = speed
-var player_gravity_multiplier = GameConstants.PLAYER_GRAVITY_MULT
+var current_speed: float = speed
+var player_gravity_multiplier: float = GameConstants.PLAYER_GRAVITY_MULT
 
-@export var ladder_speed = GameConstants.LADDER_SPEED
-var climbing = false
+@export var ladder_speed: float = GameConstants.LADDER_SPEED
+var climbing: bool = false
 var on_ladder: Area2D
 
 var on_interactable: Area2D
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var sprite: Sprite2D = $Sprite2D
-@onready var state_machine = $CharacterStateMachine
-@onready var sword_collision = $Sword/CollisionShape2D
+@onready var state_machine: CharacterStateMachine = $CharacterStateMachine
+@onready var sword_collision: CollisionShape2D = $Sword/CollisionShape2D
 @onready var floor_check: RayCast2D = $floor_check
 @onready var ceiling_check: RayCast2D = $ceiling_check
-@onready var collision_shape = $CollisionShape2D
-@onready var damageable = $Damageable
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var damageable: Damageable = $Damageable
 
-@onready var ladderAboveArea = $LadderAbove
-var is_ladder_above = false
+@onready var ladderAboveArea: Area2D = $LadderAbove
+var is_ladder_above: bool = false
 
-var rum_bottles = 0
-var max_rum_bottles = 0
+var rum_bottles: int = 0
+var max_rum_bottles: int = 0
 
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-func _ready():
+func _ready() -> void:
 	animation_tree.active = true
 	on_enter()
 
-func on_enter():
+func on_enter() -> void:
 	pass
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	if not is_on_floor() && not climbing:
 		velocity.y += gravity * player_gravity_multiplier * delta
 
 	if state_machine.current_state.input_allowed:
 		if climbing:
-			var upward_direction = get_vertical_direction()
+			var upward_direction: float = get_vertical_direction()
 			if upward_direction:
 				velocity.y = upward_direction * ladder_speed
 			else:
 				velocity.y = move_toward(velocity.y, 0, ladder_speed)
 
-		var direction = get_horizontal_direction()
+		var direction: float = get_horizontal_direction()
 		if direction && state_machine.can_move():
 			velocity.x = direction * current_speed
 		else:
@@ -59,7 +59,7 @@ func _physics_process(delta):
 
 func _input(event: InputEvent) -> void:
 	if state_machine.current_state.input_allowed:
-		var direction = get_horizontal_direction()
+		var direction: float = get_horizontal_direction()
 		update_animation(direction)
 		update_facing_direction(direction)
 
@@ -83,10 +83,10 @@ func _input(event: InputEvent) -> void:
 			damageable.health = damageable.health + 20
 			rum_bottles = rum_bottles - 1
 
-func update_animation(direction: float = 0):
+func update_animation(direction: float = 0) -> void:
 	animation_tree.set("parameters/move/blend_position", direction)
 
-func update_facing_direction(direction: float):
+func update_facing_direction(direction: float) -> void:
 	if direction < 0:
 		sprite.flip_h = true
 		if sign(sword_collision.position.x) == 1:
@@ -111,19 +111,19 @@ func _on_interact_area_exited(area: Area2D) -> void:
 		on_interactable = null
 		area.hide_prompt()
 
-func set_health(value: int):
+func set_health(value: int) -> void:
 	damageable.health = value
 
-func get_health():
+func get_health() -> int:
 	return damageable.health
 
-func is_ladder_below():
+func is_ladder_below() -> bool:
 	return floor_check.is_colliding()
 
-func get_vertical_direction():
+func get_vertical_direction() -> float:
 	return Input.get_axis("up", "down")
 
-func get_horizontal_direction():
+func get_horizontal_direction() -> float:
 	return Input.get_axis("left", "right")
 
 func _on_ladder_above_area_exited(area: Area2D) -> void:
@@ -132,6 +132,6 @@ func _on_ladder_above_area_exited(area: Area2D) -> void:
 func _on_ladder_above_area_entered(area: Area2D) -> void:
 	is_ladder_above = true
 
-func add_rum_bottle():
+func add_rum_bottle() -> void:
 	rum_bottles = rum_bottles + 1
 	max_rum_bottles = max_rum_bottles + 1

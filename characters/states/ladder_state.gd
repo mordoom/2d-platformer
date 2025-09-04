@@ -2,7 +2,7 @@ extends State
 
 class_name LadderState
 
-func on_enter():
+func on_enter() -> void:
 	character.climbing = true
 	character.velocity.x = 0
 	if character.on_ladder:
@@ -10,14 +10,14 @@ func on_enter():
 		if character.on_ladder.turn_off_collisions:
 			character.set_collision_mask_value(1, false)
 
-func on_exit():
+func on_exit() -> void:
 	character.climbing = false
 	character.set_collision_mask_value(1, true)
 
-func state_input(event):
+func state_input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
 		emit_change_state("jump")
 
-func state_process(_delta):
+func state_process(_delta: float) -> void:
 	if not character.climbing:
 		character.set_collision_mask_value(1, true)

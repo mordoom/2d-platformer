@@ -4,23 +4,23 @@ class_name PatrolState
 
 enum States {IDLE, MOVING}
 
-@export var initial_direction = 1.0
+@export var initial_direction: float = 1.0
 @export var speed: float = GameConstants.SKELETON_PATROL_SPEED
 
-var idle_time = GameConstants.SKELETON_IDLE_TIME
+var idle_time: float = GameConstants.SKELETON_IDLE_TIME
 var idle_timer: float = 0
-var patrol_state = States.MOVING
+var patrol_state: States = States.MOVING
 
-func on_enter():
+func on_enter() -> void:
 	character.set_direction(initial_direction)
 
-func state_physics_process(delta):
-	var player_collision = character.get_player_collision()
+func state_physics_process(delta: float) -> void:
+	var player_collision: Node = character.get_player_collision()
 	if (player_collision != null && player_collision.is_in_group("Player")):
 		emit_change_state("pursue")
 		return
 
-	var can_patrol = character.can_patrol()
+	var can_patrol: bool = character.can_patrol()
 	match patrol_state:
 		States.IDLE:
 			idle_timer -= delta
@@ -35,5 +35,5 @@ func state_physics_process(delta):
 				idle_timer = idle_time
 				patrol_state = States.IDLE
 
-func _flip_direction():
+func _flip_direction() -> void:
 	character.set_direction(-character.get_current_direction())

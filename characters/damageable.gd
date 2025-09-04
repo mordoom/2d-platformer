@@ -4,9 +4,9 @@ class_name Damageable
 
 signal on_hit(node: Node, damage_taken: int, direction: Vector2)
 
-var max_health = GameConstants.DEFAULT_HEALTH
+var max_health: int = GameConstants.DEFAULT_HEALTH
 
-@export var health = GameConstants.DEFAULT_HEALTH:
+@export var health: int = GameConstants.DEFAULT_HEALTH:
 	get:
 		return health
 	set(value):
@@ -16,7 +16,7 @@ var max_health = GameConstants.DEFAULT_HEALTH
 		else:
 			health = value
 
-func hit(damage: int, direction: Vector2):
+func hit(damage: int, direction: Vector2) -> void:
 	if health > 0:
 		health -= damage
 		emit_signal("on_hit", get_parent(), damage, direction)
