@@ -15,8 +15,8 @@ func on_exit() -> void:
 	character.climbing = false
 	character.set_collision_mask_value(1, true)
 
-func state_input(event: InputEvent) -> void:
-	if event.is_action_pressed("jump"):
+func state_input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("jump"):
 		emit_change_state("jump")
 
 func state_process(_delta: float) -> void:

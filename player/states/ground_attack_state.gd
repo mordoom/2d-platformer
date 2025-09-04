@@ -7,8 +7,8 @@ class_name GroundAttackState
 func on_enter() -> void:
 	playback.travel("attack")
 
-func state_input(event: InputEvent) -> void:
-	if event.is_action_pressed("attack"):
+func state_input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("attack"):
 		timer.start()
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
