@@ -65,11 +65,11 @@ func _input(event: InputEvent) -> void:
 
 		if event.is_action_pressed("interact"):
 			if on_interactable:
-				var interaction_comp: InteractionComponent = on_interactable.get_node_or_null("InteractionComponent")
+				var interaction_comp: InteractionComponent = on_interactable.get_node_or_null(GameConstants.ComponentNames.INTERACTION)
 				if interaction_comp:
 					interaction_comp.interact()
 			if on_collectible:
-				var collection_comp: CollectionComponent = on_collectible.get_node_or_null("CollectionComponent")
+				var collection_comp: CollectionComponent = on_collectible.get_node_or_null(GameConstants.ComponentNames.COLLECTION)
 				if collection_comp:
 					collection_comp.collect()
 
@@ -103,10 +103,10 @@ func update_facing_direction(direction: float) -> void:
 			sword_collision.position.x *= -1
 
 func _on_interact_area_entered(area: Area2D) -> void:
-	var climbable_comp: ClimbableComponent = area.get_node_or_null("ClimbableComponent")
-	var interaction_comp: InteractionComponent = area.get_node_or_null("InteractionComponent")
-	var collection_comp: CollectionComponent = area.get_node_or_null("CollectionComponent")
-	var button_prompt_comp: ButtonPromptComponent = area.get_node_or_null("ButtonPromptComponent")
+	var climbable_comp: ClimbableComponent = area.get_node_or_null(GameConstants.ComponentNames.CLIMBABLE)
+	var interaction_comp: InteractionComponent = area.get_node_or_null(GameConstants.ComponentNames.INTERACTION)
+	var collection_comp: CollectionComponent = area.get_node_or_null(GameConstants.ComponentNames.COLLECTION)
+	var button_prompt_comp: ButtonPromptComponent = area.get_node_or_null(GameConstants.ComponentNames.BUTTON_PROMPT)
 	
 	if climbable_comp:
 		on_ladder = area
@@ -119,10 +119,10 @@ func _on_interact_area_entered(area: Area2D) -> void:
 		button_prompt_comp.show_prompt()
 
 func _on_interact_area_exited(area: Area2D) -> void:
-	var climbable_comp: ClimbableComponent = area.get_node_or_null("ClimbableComponent")
-	var interaction_comp: InteractionComponent = area.get_node_or_null("InteractionComponent")
-	var collection_comp: CollectionComponent = area.get_node_or_null("CollectionComponent")
-	var button_prompt_comp: ButtonPromptComponent = area.get_node_or_null("ButtonPromptComponent")
+	var climbable_comp: ClimbableComponent = area.get_node_or_null(GameConstants.ComponentNames.CLIMBABLE)
+	var interaction_comp: InteractionComponent = area.get_node_or_null(GameConstants.ComponentNames.INTERACTION)
+	var collection_comp: CollectionComponent = area.get_node_or_null(GameConstants.ComponentNames.COLLECTION)
+	var button_prompt_comp: ButtonPromptComponent = area.get_node_or_null(GameConstants.ComponentNames.BUTTON_PROMPT)
 	
 	if climbable_comp:
 		climbing = false

@@ -34,3 +34,10 @@ const RAYCAST_CACHE_DURATION: float = 0.33 # Update raycasts 3 times per second
 # World Constants
 const CELL_SIZE: int = 16
 const STARTING_OFFSET: int = 2 * CELL_SIZE
+
+# Component Name Constants
+class ComponentNames:
+	const INTERACTION = "InteractionComponent"
+	const COLLECTION = "CollectionComponent"
+	const CLIMBABLE = "ClimbableComponent"
+	const BUTTON_PROMPT = "ButtonPromptComponent"
