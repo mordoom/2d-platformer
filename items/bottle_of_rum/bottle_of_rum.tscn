@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpbx41ergsr8t"]
+[gd_scene load_steps=5 format=3 uid="uid://cpbx41ergsr8t"]
 
 [ext_resource type="Texture2D" uid="uid://d3fuixhfdipu3" path="res://assets/bottle of rum.png" id="1_bla5d"]
-[ext_resource type="Script" uid="uid://csn6kelyrxvxf" path="res://items/bottle_of_rum/bottle_of_rum.gd" id="1_mgag8"]
 [ext_resource type="Script" uid="uid://832xmughicl7" path="res://components/collection_component.gd" id="4_0hxvv"]
 [ext_resource type="PackedScene" uid="uid://s2702h7h5u4q" path="res://components/button_prompt_component.tscn" id="4_do1cl"]
 
@@ -11,8 +10,6 @@ size = Vector2(20, 32)
 [node name="BottleOfRum" type="Area2D"]
 collision_layer = 16
 collision_mask = 2
-script = ExtResource("1_mgag8")
-metadata/_custom_type_script = "uid://dvegsh7mn5oyw"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_bla5d")

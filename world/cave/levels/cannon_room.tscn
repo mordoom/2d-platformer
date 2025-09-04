@@ -31,16 +31,7 @@ position = Vector2(716, 183)
 
 [node name="SavePoint" parent="." instance=ExtResource("7_d8cjw")]
 position = Vector2(60, 366)
+script = null
 
 [node name="BottleOfRum" parent="." instance=ExtResource("7_5kuk4")]
 position = Vector2(278, 368)
-
-[connection signal="body_entered" from="TileMapLayer/Spike" to="TileMapLayer/Spike" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@47205" to="TileMapLayer/@Area2D@47205" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@47206" to="TileMapLayer/@Area2D@47206" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@47207" to="TileMapLayer/@Area2D@47207" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@47208" to="TileMapLayer/@Area2D@47208" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@47209" to="TileMapLayer/@Area2D@47209" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@47210" to="TileMapLayer/@Area2D@47210" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@47211" to="TileMapLayer/@Area2D@47211" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@47212" to="TileMapLayer/@Area2D@47212" method="_on_body_entered"]
