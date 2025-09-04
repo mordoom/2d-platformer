@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dvbhlwfwsbskl" path="res://enemies/cannon/cannon.gd" id="1_55v8w"]
 [ext_resource type="Texture2D" uid="uid://dmrr3jqhipmb8" path="res://assets/Cañon_quieto.png" id="2_t547e"]
-[ext_resource type="Script" uid="uid://bv74cjk6dv3j5" path="res://characters/damageable.gd" id="3_t547e"]
+[ext_resource type="Script" uid="uid://bv74cjk6dv3j5" path="res://characters/damage/damageable.gd" id="3_t547e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_55v8w"]
 size = Vector2(48, 37)

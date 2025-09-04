@@ -7,8 +7,14 @@ var player_gravity_multiplier: float = GameConstants.PLAYER_GRAVITY_MULT
 @export var ladder_speed: float = GameConstants.LADDER_SPEED
 var climbing: bool = false
 var on_ladder: Area2D
+var is_ladder_above: bool = false
 
 var on_interactable: Area2D
+
+var rum_bottles: int = 0
+var max_rum_bottles: int = 0
+
+var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var sprite: Sprite2D = $Sprite2D
@@ -18,14 +24,7 @@ var on_interactable: Area2D
 @onready var ceiling_check: RayCast2D = $ceiling_check
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var damageable: Damageable = $Damageable
-
 @onready var ladderAboveArea: Area2D = $LadderAbove
-var is_ladder_above: bool = false
-
-var rum_bottles: int = 0
-var max_rum_bottles: int = 0
-
-var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready() -> void:
 	animation_tree.active = true
@@ -126,10 +125,10 @@ func get_vertical_direction() -> float:
 func get_horizontal_direction() -> float:
 	return Input.get_axis("left", "right")
 
-func _on_ladder_above_area_exited(area: Area2D) -> void:
+func _on_ladder_above_area_exited(_area: Area2D) -> void:
 	is_ladder_above = false
 
-func _on_ladder_above_area_entered(area: Area2D) -> void:
+func _on_ladder_above_area_entered(_area: Area2D) -> void:
 	is_ladder_above = true
 
 func add_rum_bottle() -> void:

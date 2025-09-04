@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://b6gem3jw1eo62"]
 
-[ext_resource type="Script" uid="uid://c5bni58bhmjlo" path="res://ui/hud.gd" id="1_rbyyf"]
+[ext_resource type="Script" uid="uid://c5bni58bhmjlo" path="res://ui/hud/hud.gd" id="1_rbyyf"]
 [ext_resource type="PackedScene" uid="uid://bipon0wb0ovjw" path="res://ui/healthbar/healthbar.tscn" id="2_276te"]
 [ext_resource type="Theme" uid="uid://cqw1qi00p254h" path="res://ui_theme.tres" id="2_546lt"]
-[ext_resource type="Script" uid="uid://c66o6dhkgnilh" path="res://ui/rumbar.gd" id="4_7ihmi"]
+[ext_resource type="Script" uid="uid://c66o6dhkgnilh" path="res://ui/rumbar/rumbar.gd" id="4_7ihmi"]
 [ext_resource type="Texture2D" uid="uid://dh5ypuj42igpe" path="res://assets/bottle of rum - small.png" id="5_en2x2"]
 
 [node name="HUD" type="CanvasLayer"]

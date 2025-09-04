@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cpbx41ergsr8t"]
 
 [ext_resource type="Texture2D" uid="uid://d3fuixhfdipu3" path="res://assets/bottle of rum.png" id="1_bla5d"]
-[ext_resource type="Script" uid="uid://csn6kelyrxvxf" path="res://items/bottle_of_rum.gd" id="1_mgag8"]
+[ext_resource type="Script" uid="uid://csn6kelyrxvxf" path="res://items/bottle_of_rum/bottle_of_rum.gd" id="1_mgag8"]
 [ext_resource type="Script" uid="uid://c3db1ow76qj73" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="3_mhjx1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bla5d"]

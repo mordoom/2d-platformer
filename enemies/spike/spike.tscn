@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cqefnt5rald4a"]
 
 [ext_resource type="Texture2D" uid="uid://bypsu3fqlk6t" path="res://assets/16-bit-spike-Sheet.png" id="1_jv70o"]
-[ext_resource type="Script" uid="uid://b04ble633sv7g" path="res://characters/damage_area.gd" id="1_ojea8"]
+[ext_resource type="Script" uid="uid://b04ble633sv7g" path="res://characters/damage/damage_area.gd" id="1_ojea8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jv70o"]
 size = Vector2(16, 13)

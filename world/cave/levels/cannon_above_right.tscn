@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dtb6ujcdawf23" path="res://world/cave/parallax_background.tscn" id="2_ibhvl"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="3_2qrk1"]
 [ext_resource type="PackedScene" uid="uid://lv651gm64w3v" path="res://enemies/cannon/cannon.tscn" id="5_a574b"]
-[ext_resource type="PackedScene" uid="uid://b45tjtegdp6uo" path="res://world/interactable/ladder.tscn" id="7_w3bbo"]
+[ext_resource type="PackedScene" uid="uid://b45tjtegdp6uo" path="res://world/interactable/ladder/ladder.tscn" id="7_w3bbo"]
 
 [node name="Level" type="Node2D"]
 

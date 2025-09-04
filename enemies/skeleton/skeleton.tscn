@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cur2e4n2p0pxn" path="res://enemies/skeleton/skeleton.gd" id="1_drsv4"]
 [ext_resource type="Texture2D" uid="uid://dhg56c1lwor7w" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Idle.png" id="2_riuq3"]
-[ext_resource type="Script" uid="uid://bv74cjk6dv3j5" path="res://characters/damageable.gd" id="3_es8qe"]
-[ext_resource type="Script" uid="uid://dmurjk74xkpdn" path="res://characters/character_state_machine.gd" id="4_4e564"]
+[ext_resource type="Script" uid="uid://bv74cjk6dv3j5" path="res://characters/damage/damageable.gd" id="3_es8qe"]
+[ext_resource type="Script" uid="uid://dmurjk74xkpdn" path="res://characters/states/character_state_machine.gd" id="4_4e564"]
 [ext_resource type="Script" uid="uid://buxdijsixt086" path="res://enemies/skeleton/patrol.gd" id="5_mew8a"]
 [ext_resource type="Script" uid="uid://buvdd3fgh12nl" path="res://characters/states/dead_state.gd" id="6_8bh25"]
 [ext_resource type="Script" uid="uid://b76n5nhjrhsom" path="res://characters/states/hit_state.gd" id="7_p4nc8"]
@@ -13,8 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://bm8s43ddaqvhj" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Die.png" id="11_pi0qw"]
 [ext_resource type="Texture2D" uid="uid://dbx4fl4f4d2hd" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Hurt.png" id="12_ym5ls"]
 [ext_resource type="Texture2D" uid="uid://ufb0ajwqyft0" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Walk.png" id="13_f47vg"]
-[ext_resource type="Script" uid="uid://bcywceit70ofw" path="res://characters/weapon.gd" id="14_vfshu"]
-[ext_resource type="Script" uid="uid://ce1llr8pnomm1" path="res://player/state_debug_label.gd" id="15_jrkgk"]
+[ext_resource type="Script" uid="uid://bcywceit70ofw" path="res://characters/damage/weapon.gd" id="14_vfshu"]
+[ext_resource type="Script" uid="uid://ce1llr8pnomm1" path="res://characters/states/state_debug_label.gd" id="15_jrkgk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5q4d"]
 size = Vector2(27, 47)

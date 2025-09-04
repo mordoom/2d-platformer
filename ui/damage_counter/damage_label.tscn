@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c63w756i0y3mh"]
 
-[ext_resource type="Script" uid="uid://d4mp47g62iexc" path="res://ui/damage_label.gd" id="1_bvooc"]
+[ext_resource type="Script" uid="uid://d4mp47g62iexc" path="res://ui/damage_counter/damage_label.gd" id="1_bvooc"]
 
 [node name="Label" type="Label"]
 offset_top = -36.0

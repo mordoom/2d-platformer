@@ -3,10 +3,10 @@
 [ext_resource type="TileSet" uid="uid://dsu71ownhxqk5" path="res://world/cave/levels/tiles.tres" id="1_cai5a"]
 [ext_resource type="PackedScene" uid="uid://dtb6ujcdawf23" path="res://world/cave/parallax_background.tscn" id="2_clto0"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="3_1ds06"]
-[ext_resource type="PackedScene" uid="uid://dmxcjqfiiabri" path="res://world/interactable/large_ladder.tscn" id="4_6rn0w"]
+[ext_resource type="PackedScene" uid="uid://dmxcjqfiiabri" path="res://world/interactable/ladder/large_ladder.tscn" id="4_6rn0w"]
 [ext_resource type="PackedScene" uid="uid://lv651gm64w3v" path="res://enemies/cannon/cannon.tscn" id="5_sp6hj"]
 [ext_resource type="PackedScene" uid="uid://cioby1n27ryow" path="res://enemies/skeleton/skeleton.tscn" id="6_cai5a"]
-[ext_resource type="PackedScene" uid="uid://b45tjtegdp6uo" path="res://world/interactable/ladder.tscn" id="7_clto0"]
+[ext_resource type="PackedScene" uid="uid://b45tjtegdp6uo" path="res://world/interactable/ladder/ladder.tscn" id="7_clto0"]
 
 [node name="Level" type="Node2D"]
 

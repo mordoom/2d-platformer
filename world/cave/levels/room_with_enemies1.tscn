@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=4 uid="uid://c5ebfdr0eamoh"]
 
-[ext_resource type="Script" uid="uid://bte0vrcl1ixri" path="res://world/cave/levels/level.gd" id="1_2413f"]
+[ext_resource type="Script" path="res://world/cave/levels/level.gd" id="1_2413f"]
 [ext_resource type="Texture2D" uid="uid://bxrbskqrqwo0j" path="res://assets/PixelFantasy_Caves_1.0/mainlev_build.png" id="2_ohvdp"]
 [ext_resource type="PackedScene" uid="uid://dtb6ujcdawf23" path="res://world/cave/parallax_background.tscn" id="3_jhth2"]
 [ext_resource type="PackedScene" uid="uid://cioby1n27ryow" path="res://enemies/skeleton/skeleton.tscn" id="4_3jkuv"]
-[ext_resource type="PackedScene" uid="uid://b45tjtegdp6uo" path="res://world/interactable/ladder.tscn" id="5_4ghip"]
-[ext_resource type="PackedScene" uid="uid://dostqrv2oq0q1" path="res://world/interactable/floating_platform.tscn" id="6_8t32u"]
+[ext_resource type="PackedScene" uid="uid://b45tjtegdp6uo" path="res://world/interactable/ladder/ladder.tscn" id="5_4ghip"]
+[ext_resource type="PackedScene" uid="uid://dostqrv2oq0q1" path="res://world/interactable/floating_platform/floating_platform.tscn" id="6_8t32u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3dxm6"]
 texture = ExtResource("2_ohvdp")

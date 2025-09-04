@@ -6,20 +6,20 @@
 [ext_resource type="Texture2D" uid="uid://voenwyxkj2wi" path="res://assets/Pirate by seartsy/Run-6frm.png" id="3_kne1u"]
 [ext_resource type="Texture2D" uid="uid://dhcvxnye58wua" path="res://assets/Pirate by seartsy/Jump-2frm.png" id="4_tdg3f"]
 [ext_resource type="Texture2D" uid="uid://drxqntyee8ii6" path="res://assets/Pirate by seartsy/Fall-LandingGround-2frm.png" id="6_5qrx2"]
-[ext_resource type="Script" uid="uid://dmurjk74xkpdn" path="res://characters/character_state_machine.gd" id="6_tdg3f"]
+[ext_resource type="Script" uid="uid://dmurjk74xkpdn" path="res://characters/states/character_state_machine.gd" id="6_tdg3f"]
 [ext_resource type="Texture2D" uid="uid://cvh8qov1j3h8r" path="res://assets/Pirate by seartsy/Atk1-6frm.png" id="7_atk1"]
 [ext_resource type="Script" uid="uid://ypi8fhgdlt8b" path="res://player/states/ground_state.gd" id="7_gskgj"]
 [ext_resource type="Texture2D" uid="uid://2akcxwqvn1kx" path="res://assets/Pirate by seartsy/Atk2-6frm.png" id="8_atk2"]
 [ext_resource type="Script" uid="uid://mg18sps8ogyj" path="res://player/states/air_state.gd" id="8_mhpjh"]
 [ext_resource type="Texture2D" uid="uid://f1tv8mv0cpdj" path="res://assets/Pirate by seartsy/Atk3-6frm.png" id="9_atk3"]
 [ext_resource type="Script" uid="uid://bwsx2dnfudycp" path="res://player/states/landing_state.gd" id="9_ndjxb"]
-[ext_resource type="Script" uid="uid://ce1llr8pnomm1" path="res://player/state_debug_label.gd" id="10_ndjxb"]
+[ext_resource type="Script" uid="uid://ce1llr8pnomm1" path="res://characters/states/state_debug_label.gd" id="10_ndjxb"]
 [ext_resource type="Texture2D" uid="uid://3a5ik7ndvyrq" path="res://assets/Pirate by seartsy/Hit-3frm.png" id="10_ofhxi"]
 [ext_resource type="Script" uid="uid://bmbf8x21nlc3o" path="res://player/states/ground_attack_state.gd" id="11_gatk"]
 [ext_resource type="Texture2D" uid="uid://caw51tt3dwwll" path="res://assets/Pirate by seartsy/Death-4frm.png" id="11_q6miu"]
 [ext_resource type="Script" uid="uid://b76n5nhjrhsom" path="res://characters/states/hit_state.gd" id="15_uewl2"]
-[ext_resource type="Script" uid="uid://bcywceit70ofw" path="res://characters/weapon.gd" id="16_t8epa"]
-[ext_resource type="Script" uid="uid://bv74cjk6dv3j5" path="res://characters/damageable.gd" id="17_w24id"]
+[ext_resource type="Script" uid="uid://bcywceit70ofw" path="res://characters/damage/weapon.gd" id="16_t8epa"]
+[ext_resource type="Script" uid="uid://bv74cjk6dv3j5" path="res://characters/damage/damageable.gd" id="17_w24id"]
 [ext_resource type="Script" uid="uid://buvdd3fgh12nl" path="res://characters/states/dead_state.gd" id="17_yu5hk"]
 [ext_resource type="Script" uid="uid://cqjief3xbuucb" path="res://characters/states/ladder_state.gd" id="19_mlfor"]
 [ext_resource type="Script" uid="uid://bfdimik8paaq7" path="res://player/states/jump_state.gd" id="20_2m0d2"]
@@ -663,7 +663,7 @@ size = Vector2(34, 55)
 script = ExtResource("26_76mgg")
 frequency = Vector2(10, 10)
 phase = Vector2(1, 1)
-amplitude = Vector2(15, 15)
+amplitude = Vector2(14, 14)
 offset = Vector2(0, 0)
 BlendingMode = 0
 fade_in = 0.0
@@ -807,7 +807,7 @@ hit_from_inside = true
 collide_with_areas = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(1.90735e-05, -2.02656e-06)
+position = Vector2(1.9908e-05, -2.02656e-06)
 process_callback = 0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true

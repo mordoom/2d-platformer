@@ -130,15 +130,12 @@ func on_bottle_rum_collected(area: Area2D) -> void:
     player.add_rum_bottle()
     GameState.rum_bottle_collected(area)
 
-func on_health_changed(_node: Node, _amount: int) -> void:
-    camera.get_node("ShakerComponent2D").play_shake()
+func on_health_changed(_node: Node, amount: int) -> void:
+    if (amount < 0):
+        camera.get_node("ShakerComponent2D").play_shake()
 
 func save_game() -> void:
     var save_manager: SaveManager = SaveManager.new()
-    # save_manager.set_value("collectible_count", collectibles)
-    # save_manager.set_value("generated_rooms", generated_rooms)
-    # save_manager.set_value("events", events)
-    # save_manager.set_value("abilities", player.abilities)
     save_manager.set_value("rum_bottles", GameState.rum_bottles)
     save_manager.set_value("dead_enemies", GameState.perma_dead_enemies)
     save_manager.set_value("current_room", MetSys.get_current_room_name())
