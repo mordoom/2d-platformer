@@ -10,6 +10,7 @@ var on_ladder: Area2D
 var is_ladder_above: bool = false
 
 var on_interactable: Area2D
+var on_collectible: Area2D
 
 var rum_bottles: int = 0
 var max_rum_bottles: int = 0
@@ -63,8 +64,12 @@ func _input(event: InputEvent) -> void:
 		update_facing_direction(direction)
 
 		if event.is_action_pressed("interact"):
-			if on_interactable:
-				on_interactable.interact()
+			if on_interactable and on_interactable.has_node("InteractionComponent"):
+				var interaction_comp: InteractionComponent = on_interactable.get_node("InteractionComponent")
+				interaction_comp.interact()
+			if on_collectible and on_collectible.has_node("CollectionComponent"):
+				var collection_comp: CollectionComponent = on_collectible.get_node("CollectionComponent")
+				collection_comp.collect()
 
 		if (Input.is_action_pressed("up", true)):
 			if is_ladder_above:
@@ -98,17 +103,30 @@ func update_facing_direction(direction: float) -> void:
 func _on_interact_area_entered(area: Area2D) -> void:
 	if area is Ladder:
 		on_ladder = area
-	elif area is Interactable:
+	elif area.has_node("InteractionComponent"):
+		var interaction_comp: InteractionComponent = area.get_node("InteractionComponent")
 		on_interactable = area
-		area.show_prompt()
+		interaction_comp.show_prompt()
+	elif area.has_node("CollectionComponent"):
+		var collection_comp: CollectionComponent = area.get_node("CollectionComponent")
+		on_collectible = area
+		if collection_comp.auto_collect_on_touch:
+			collection_comp.collect()
+		else:
+			collection_comp.show_prompt()
 
 func _on_interact_area_exited(area: Area2D) -> void:
 	if area is Ladder:
 		climbing = false
 		on_ladder = null
-	elif area is Interactable:
+	elif area.has_node("InteractionComponent"):
+		var interaction_comp: InteractionComponent = area.get_node("InteractionComponent")
 		on_interactable = null
-		area.hide_prompt()
+		interaction_comp.hide_prompt()
+	elif area.has_node("CollectionComponent"):
+		var collection_comp: CollectionComponent = area.get_node("CollectionComponent")
+		on_collectible = null
+		collection_comp.hide_prompt()
 
 func set_health(value: int) -> void:
 	damageable.health = value
