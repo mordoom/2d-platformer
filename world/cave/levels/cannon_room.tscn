@@ -31,7 +31,6 @@ position = Vector2(716, 183)
 
 [node name="SavePoint" parent="." instance=ExtResource("7_d8cjw")]
 position = Vector2(60, 366)
-script = null
 
 [node name="BottleOfRum" parent="." instance=ExtResource("7_5kuk4")]
 position = Vector2(278, 368)

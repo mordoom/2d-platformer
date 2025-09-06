@@ -67,12 +67,6 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_85lld")
 autoplay = "default"
 
-[node name="PointLight2D" type="PointLight2D" parent="AnimatedSprite2D"]
-position = Vector2(0, -17)
-energy = 0.5
-shadow_enabled = true
-texture = ExtResource("3_3qrqy")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -2.5)
 shape = SubResource("RectangleShape2D_vygbo")
@@ -84,3 +78,7 @@ button_prompt_comp = NodePath("../ButtonPromptComponent")
 metadata/_custom_type_script = "uid://cqr86vajk6xoh"
 
 [node name="ButtonPromptComponent" parent="." instance=ExtResource("5_11yxp")]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+shadow_enabled = true
+texture = ExtResource("3_3qrqy")

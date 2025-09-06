@@ -21,7 +21,7 @@ follow_viewport_scale = 0.5
 position = Vector2(1, 0)
 
 [node name="Ladder3" parent="." instance=ExtResource("7_w3bbo")]
-position = Vector2(649, 128)
+position = Vector2(627, 129)
 
 [node name="Cannon" parent="." instance=ExtResource("5_a574b")]
 position = Vector2(776, 234)

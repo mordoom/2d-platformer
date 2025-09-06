@@ -24,4 +24,4 @@ position = Vector2(1, 0)
 position = Vector2(745, 161)
 
 [node name="SavePoint" parent="." instance=ExtResource("5_vya86")]
-position = Vector2(617, 301)
+position = Vector2(616, 307)
