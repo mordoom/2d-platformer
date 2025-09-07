@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var sword_collision: CollisionShape2D = $AttackArea/CollisionShape2D
 @onready var damageable: Damageable = $Damageable
+
 @export var healthbar: ProgressBar
 
 @onready var floor_check: RayCast2D = $floor_check
@@ -95,3 +96,4 @@ func on_damageable_hit(_node: Node, _damage_taken: int, _direction: Vector2) -> 
     healthbar.health = damageable.health
     if (damageable.is_dead()):
         GameState.add_perma_dead_enemy(self)
+        set_collision_mask_value(1, false)

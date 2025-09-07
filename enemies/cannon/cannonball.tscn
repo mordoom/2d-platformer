@@ -27,10 +27,11 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6aqm0"]
-size = Vector2(16, 12)
+size = Vector2(11, 11)
 
-[node name="Cannonball" type="CharacterBody2D"]
+[node name="Cannonball" type="Area2D" node_paths=PackedStringArray("damage_area")]
 script = ExtResource("1_ckmj2")
+damage_area = NodePath("Hitbox")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = -3.14159
@@ -40,13 +41,14 @@ autoplay = "default"
 frame_progress = 0.108488
 
 [node name="Hitbox" type="Area2D" parent="."]
-position = Vector2(4, 2)
 collision_layer = 4
 collision_mask = 6
 script = ExtResource("3_8n5d7")
 damage = 15
+initial_monitoring_state = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_6aqm0")
 
 [connection signal="body_entered" from="Hitbox" to="Hitbox" method="_on_body_entered"]

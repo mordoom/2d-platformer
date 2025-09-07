@@ -371,7 +371,7 @@ size = Vector2(32, 63.5)
 
 [node name="Bonehead" type="CharacterBody2D" node_paths=PackedStringArray("healthbar")]
 scale = Vector2(3, 3)
-collision_layer = 4
+collision_layer = 5
 script = ExtResource("1_sux7x")
 healthbar = NodePath("CanvasLayer/Healthbar")
 
@@ -411,7 +411,7 @@ metadata/_custom_type_script = "uid://bc302qypp4ibv"
 [node name="Pursue" type="Node" parent="CharacterStateMachine"]
 script = ExtResource("8_eobln")
 chase_speed = 180.0
-min_chase_distance = 50.0
+min_chase_distance = 100.0
 max_chase_distance = 10000.0
 metadata/_custom_type_script = "uid://bc302qypp4ibv"
 
@@ -455,6 +455,7 @@ position = Vector2(31, 0.25)
 shape = SubResource("RectangleShape2D_wg02f")
 
 [node name="Label" type="Label" parent="." node_paths=PackedStringArray("state_machine")]
+visible = false
 offset_left = -45.0
 offset_top = -50.0
 offset_right = 58.0
