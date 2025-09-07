@@ -6,6 +6,8 @@ extends CharacterBody2D
 @onready var sword_collision: CollisionShape2D = $AttackArea/CollisionShape2D
 @onready var damageable: Damageable = $Damageable
 @onready var shoot_timer: Timer = $ShootTimer
+@onready var healthbar_timer: Timer = $HealthbarTimer
+@onready var canvas_layer: CanvasLayer = $CanvasLayer
 
 @export var healthbar: ProgressBar
 
@@ -43,12 +45,16 @@ func _ready() -> void:
 	]
 
 	shoot_timer.timeout.connect(shoot)
+	healthbar_timer.timeout.connect(show_hide_healthbar)
+	canvas_layer.visible = false
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
 	if (state_machine.is_dead()):
+		if healthbar_timer.is_stopped() && canvas_layer.visible:
+			healthbar_timer.start()
 		return
 
 	_update_raycast_cache(delta)
@@ -124,3 +130,9 @@ func shoot_bullet() -> void:
 	bullet_index += 1
 	if (bullet_index >= bullets.size()):
 		bullet_index = 0
+
+func show_hide_healthbar():
+	if state_machine.is_dead():
+		canvas_layer.visible = false
+	else:
+		canvas_layer.visible = true
