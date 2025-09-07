@@ -4,6 +4,8 @@ class_name DamageArea
 @export var damage: int = GameConstants.SWORD_DAMAGE
 @export var initial_monitoring_state: bool = true
 
+signal on_damage_area_hit()
+
 func _ready() -> void:
     monitoring = initial_monitoring_state
 
@@ -21,8 +23,4 @@ func _on_body_entered(body: Node2D) -> void:
                 damage_direction = Vector2.LEFT
             
             child.hit(damage, damage_direction)
-
-            custom_damage_behaviour()
-
-func custom_damage_behaviour() -> void:
-    pass
+            emit_signal("on_damage_area_hit")
