@@ -5,8 +5,6 @@ extends StaticBody2D
 @onready var damageable: Damageable = $Damageable
 @onready var marker2d: Marker2D = $Marker2D
 
-@export var direction: Vector2 = Vector2.RIGHT
-
 var time_since_shot: float = 0
 var time_to_shoot: float = 3
 var bullets: Array[Area2D]
@@ -31,14 +29,14 @@ func _physics_process(delta: float) -> void:
 	time_since_shot -= delta
 	if (time_since_shot <= 0):
 		time_since_shot = time_to_shoot
-		init_bullet()
+		shoot_bullet()
 		bullet_index += 1
 		if (bullet_index >= bullets.size()):
 			bullet_index = 0
 
-func init_bullet() -> void:
+func shoot_bullet() -> void:
 	var bullet: Area2D = bullets[bullet_index]
-	bullet.shoot(direction)
+	bullet.shoot(marker2d.global_transform)
 
 func on_damageable_hit(_node: Node, _amount: int, _direction: Vector2) -> void:
 	Engine.time_scale = hit_stop_time_scale

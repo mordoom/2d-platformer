@@ -1,9 +1,8 @@
 extends Area2D
 
 @export var damage_area: DamageArea
-@export var speed: float = -200
+@export var speed: float = 200
 
-var direction: Vector2 = Vector2.LEFT
 var in_motion: bool = false
 var default_pos: Vector2
 
@@ -15,16 +14,17 @@ func _physics_process(delta: float) -> void:
 	if not in_motion:
 		return
 
-	position += speed * direction * delta
+	var poisiton_increase = speed * transform.x * delta
+	position += poisiton_increase
 
-	if (global_position.x <= 0):
+	if global_position.x <= 0:
 		reset()
 
-func shoot(_direction: Vector2) -> void:
-	direction = _direction
+func shoot(_transform: Transform2D) -> void:
 	in_motion = true
 	visible = true
 	damage_area.monitoring = true
+	transform = _transform
 
 func reset() -> void:
 	in_motion = false

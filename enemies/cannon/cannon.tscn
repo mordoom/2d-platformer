@@ -27,5 +27,5 @@ script = ExtResource("3_t547e")
 metadata/_custom_type_script = "uid://bv74cjk6dv3j5"
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(-30, -4)
+position = Vector2(-34, 0)
 scale = Vector2(-1, 1)

@@ -34,7 +34,6 @@ script = ExtResource("1_ckmj2")
 damage_area = NodePath("Hitbox")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-rotation = -3.14159
 scale = Vector2(0.1, -0.1)
 sprite_frames = SubResource("SpriteFrames_b574o")
 autoplay = "default"
@@ -48,7 +47,7 @@ damage = 15
 initial_monitoring_state = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(1.5, 1.5)
+position = Vector2(-1.5, -1.5)
 shape = SubResource("RectangleShape2D_6aqm0")
 
 [connection signal="body_entered" from="Hitbox" to="Hitbox" method="_on_body_entered"]
