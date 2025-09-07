@@ -96,4 +96,4 @@ func on_damageable_hit(_node: Node, _damage_taken: int, _direction: Vector2) -> 
     healthbar.health = damageable.health
     if (damageable.is_dead()):
         GameState.add_perma_dead_enemy(self)
-        set_collision_mask_value(1, false)
+        set_collision_layer_value(1, false)

@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://cmk6a5xv5wpy3"]
+[gd_scene load_steps=6 format=4 uid="uid://cmk6a5xv5wpy3"]
 
 [ext_resource type="TileSet" uid="uid://dsu71ownhxqk5" path="res://world/cave/levels/tiles.tres" id="1_d4ipq"]
 [ext_resource type="PackedScene" uid="uid://dtb6ujcdawf23" path="res://world/cave/parallax_background.tscn" id="2_s70sw"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="3_qany5"]
 [ext_resource type="PackedScene" uid="uid://dd2o6b85uj4f0" path="res://enemies/bonehead/bonehead.tscn" id="4_1k3tk"]
 [ext_resource type="PackedScene" uid="uid://b45tjtegdp6uo" path="res://interactable/ladder/ladder.tscn" id="4_k126l"]
-[ext_resource type="PackedScene" uid="uid://dikkltplokfed" path="res://breakable/box/box.tscn" id="6_s70sw"]
 
 [node name="Level" type="Node2D"]
 
@@ -26,27 +25,3 @@ position = Vector2(1689, 367)
 
 [node name="Area2D" parent="." instance=ExtResource("4_k126l")]
 position = Vector2(731, 163)
-
-[node name="Box" parent="." instance=ExtResource("6_s70sw")]
-position = Vector2(734, 437)
-
-[node name="Box2" parent="." instance=ExtResource("6_s70sw")]
-position = Vector2(735, 398)
-
-[node name="Box3" parent="." instance=ExtResource("6_s70sw")]
-position = Vector2(693, 439)
-
-[node name="Box4" parent="." instance=ExtResource("6_s70sw")]
-position = Vector2(736, 357)
-
-[node name="Box5" parent="." instance=ExtResource("6_s70sw")]
-position = Vector2(777, 436)
-
-[node name="Box6" parent="." instance=ExtResource("6_s70sw")]
-position = Vector2(777, 398)
-
-[node name="Box7" parent="." instance=ExtResource("6_s70sw")]
-position = Vector2(778, 357)
-
-[node name="Box8" parent="." instance=ExtResource("6_s70sw")]
-position = Vector2(757, 319)

@@ -406,6 +406,7 @@ metadata/_custom_type_script = "uid://bc302qypp4ibv"
 
 [node name="Hit" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("damageable")]
 script = ExtResource("7_ouyxp")
+interrupt = false
 damageable = NodePath("../../Damageable")
 metadata/_custom_type_script = "uid://bc302qypp4ibv"
 

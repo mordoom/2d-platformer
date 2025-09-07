@@ -7,32 +7,32 @@ extends CanvasLayer
 @onready var player: CharacterBody2D = %Player
 
 func _ready() -> void:
-    SignalBus.connect("game_over", on_game_over)
-    SignalBus.connect("on_display_message", on_display_message)
-    SignalBus.connect("on_remove_message", on_remove_message)
-    SignalBus.connect("on_health_changed", on_health_changed)
+	SignalBus.connect("game_over", on_game_over)
+	SignalBus.connect("on_display_message", on_display_message)
+	SignalBus.connect("on_remove_message", on_remove_message)
+	SignalBus.connect("on_health_changed", on_health_changed)
 
 func init() -> void:
-    gameOverMessage.visible = false
-    message.visible = false
-    healthbar.init_health(player.get_health())
-    rumbar.init(player)
+	gameOverMessage.visible = false
+	message.visible = false
+	healthbar.init_health(player.get_health())
+	rumbar.init(player)
 
 func on_game_over() -> void:
-    gameOverMessage.visible = true
+	gameOverMessage.visible = true
 
 func on_display_message(text: String) -> void:
-    message.text = text
-    message.visible = true
+	message.text = text
+	message.visible = true
 
 func _input(event: InputEvent) -> void:
-    if event.is_action_released("interact") && message.visible:
-        message.visible = false
+	if event.is_action_released("interact") && message.visible:
+		message.visible = false
 
 func on_remove_message() -> void:
-    message.visible = false
+	message.visible = false
 
 func on_health_changed(node: Node, amount: int) -> void:
-    if node.is_in_group("Player"):
-        var new_health: int = healthbar.health + amount
-        healthbar.health = new_health
+	if node.is_in_group("Player"):
+		var new_health: int = healthbar.health + amount
+		healthbar.health = new_health

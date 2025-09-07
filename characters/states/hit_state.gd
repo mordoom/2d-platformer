@@ -2,6 +2,7 @@ extends State
 
 class_name HitState
 
+@export var interrupt: bool = true
 @export var damageable: Damageable
 @export var knockback_speed: float = GameConstants.KNOCKBACK_SPEED
 
@@ -24,7 +25,7 @@ func on_damageable_hit(_node: Node, _amount: int, direction: Vector2) -> void:
 
     if (damageable.is_dead()):
         emit_change_state("dead")
-    else:
+    elif interrupt:
         emit_change_state("hit")
         playback.travel("hit")
 
