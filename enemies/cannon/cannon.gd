@@ -1,6 +1,5 @@
 extends StaticBody2D
 
-@onready var cannonball: PackedScene = preload("res://enemies/cannon/cannonball.tscn")
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var damageable: Damageable = $Damageable
 @onready var marker2d: Marker2D = $Marker2D
@@ -20,9 +19,9 @@ func _ready() -> void:
 
 	damageable.connect("on_hit", on_damageable_hit)
 	bullets = [
-		References.instantiate_deferred(cannonball, owner, marker2d.global_position),
-		References.instantiate_deferred(cannonball, owner, marker2d.global_position),
-		References.instantiate_deferred(cannonball, owner, marker2d.global_position)
+		References.instantiate_deferred(References.cannonball, owner, marker2d.global_position),
+		References.instantiate_deferred(References.cannonball, owner, marker2d.global_position),
+		References.instantiate_deferred(References.cannonball, owner, marker2d.global_position)
 	]
 
 func _physics_process(delta: float) -> void:

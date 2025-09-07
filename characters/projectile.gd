@@ -18,16 +18,16 @@ func _physics_process(delta: float) -> void:
 	if global_position.x <= 0:
 		reset()
 
-func shoot(_transform: Transform2D) -> void:
+func shoot(new_transform: Transform2D) -> void:
 	in_motion = true
 	visible = true
-	damage_area.monitoring = true
-	transform = _transform
+	damage_area.set_deferred("monitoring", true)
+	transform = new_transform
 
 func reset() -> void:
 	in_motion = false
 	visible = false
-	damage_area.monitoring = false
+	damage_area.set_deferred("monitoring", false)
 
 func _on_hitbox_on_damage_area_hit() -> void:
 	reset()
