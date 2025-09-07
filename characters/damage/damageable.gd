@@ -4,9 +4,8 @@ class_name Damageable
 
 signal on_hit(node: Node, damage_taken: int, direction: Vector2)
 
-var max_health: int = GameConstants.DEFAULT_HEALTH
-
-@export var health: int = GameConstants.DEFAULT_HEALTH:
+@export var max_health: int = GameConstants.DEFAULT_HEALTH
+@onready var health: int = max_health:
 	get:
 		return health
 	set(value):
