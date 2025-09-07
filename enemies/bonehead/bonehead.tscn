@@ -1,13 +1,12 @@
-[gd_scene load_steps=44 format=3 uid="uid://dd2o6b85uj4f0"]
+[gd_scene load_steps=43 format=3 uid="uid://dd2o6b85uj4f0"]
 
 [ext_resource type="Script" uid="uid://chd33v8rcniuh" path="res://enemies/bonehead/bonehead.gd" id="1_sux7x"]
 [ext_resource type="Texture2D" uid="uid://dhg56c1lwor7w" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Idle.png" id="2_7yjm0"]
 [ext_resource type="Script" uid="uid://bv74cjk6dv3j5" path="res://characters/damage/damageable.gd" id="3_hf0x3"]
 [ext_resource type="Script" uid="uid://dmurjk74xkpdn" path="res://characters/states/character_state_machine.gd" id="4_xa3pv"]
-[ext_resource type="Script" uid="uid://buxdijsixt086" path="res://enemies/skeleton/patrol.gd" id="5_45rux"]
 [ext_resource type="Script" uid="uid://buvdd3fgh12nl" path="res://characters/states/dead_state.gd" id="6_t53tg"]
 [ext_resource type="Script" uid="uid://b76n5nhjrhsom" path="res://characters/states/hit_state.gd" id="7_ouyxp"]
-[ext_resource type="Script" uid="uid://8es5ffb4n0v1" path="res://enemies/skeleton/pursue.gd" id="8_eobln"]
+[ext_resource type="Script" uid="uid://d0hp3uwlat7k8" path="res://enemies/bonehead/states/pursue_and_shoot.gd" id="8_goma3"]
 [ext_resource type="Script" uid="uid://eb3e3o2d6d5x" path="res://enemies/skeleton/attack.gd" id="9_gn6t7"]
 [ext_resource type="Texture2D" uid="uid://3le6hlxbv7n0" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Attack1.png" id="10_y1kmh"]
 [ext_resource type="Texture2D" uid="uid://bm8s43ddaqvhj" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Die.png" id="11_sdnhn"]
@@ -371,7 +370,7 @@ size = Vector2(32, 63.5)
 
 [node name="Bonehead" type="CharacterBody2D" node_paths=PackedStringArray("healthbar")]
 scale = Vector2(3, 3)
-collision_layer = 4
+collision_layer = 5
 script = ExtResource("1_sux7x")
 healthbar = NodePath("CanvasLayer/Healthbar")
 
@@ -395,10 +394,6 @@ character = NodePath("..")
 animation_tree = NodePath("../AnimationTree")
 metadata/_custom_type_script = "uid://dmurjk74xkpdn"
 
-[node name="Patrol" type="Node" parent="CharacterStateMachine"]
-script = ExtResource("5_45rux")
-metadata/_custom_type_script = "uid://bc302qypp4ibv"
-
 [node name="Dead" type="Node" parent="CharacterStateMachine"]
 script = ExtResource("6_t53tg")
 can_move = false
@@ -410,11 +405,13 @@ interrupt = false
 damageable = NodePath("../../Damageable")
 metadata/_custom_type_script = "uid://bc302qypp4ibv"
 
-[node name="Pursue" type="Node" parent="CharacterStateMachine"]
-script = ExtResource("8_eobln")
+[node name="Pursue" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("character")]
+script = ExtResource("8_goma3")
 chase_speed = 180.0
-min_chase_distance = 100.0
+min_shoot_distance = 200.0
+min_chase_distance = 70.0
 max_chase_distance = 10000.0
+character = NodePath("../..")
 metadata/_custom_type_script = "uid://bc302qypp4ibv"
 
 [node name="Attack" type="Node" parent="CharacterStateMachine"]
@@ -457,7 +454,6 @@ position = Vector2(31, 0.25)
 shape = SubResource("RectangleShape2D_wg02f")
 
 [node name="Label" type="Label" parent="." node_paths=PackedStringArray("state_machine")]
-visible = false
 offset_left = -45.0
 offset_top = -50.0
 offset_right = 58.0

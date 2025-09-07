@@ -35,14 +35,13 @@ func _ready() -> void:
 	if GameState.enemy_is_dead(self):
 		queue_free()
 		return
-	
+
 	bullets = [
 		References.instantiate_deferred(References.cannonball, owner, marker2d.global_position),
 		References.instantiate_deferred(References.cannonball, owner, marker2d.global_position),
 		References.instantiate_deferred(References.cannonball, owner, marker2d.global_position)
 	]
 
-	shoot_timer.start()
 	shoot_timer.timeout.connect(shoot)
 
 func _physics_process(delta: float) -> void:

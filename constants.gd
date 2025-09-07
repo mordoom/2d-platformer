@@ -14,6 +14,7 @@ const COYOTE_TIME: float = 0.1
 # Enemy Constants - Skeleton
 const SKELETON_PATROL_SPEED: float = 50.0
 const SKELETON_CHASE_SPEED: float = 120.0
+const SKELETON_MIN_SHOOT_DISTANCE: float = 150
 const SKELETON_MIN_CHASE_DISTANCE: float = 30.0
 const SKELETON_MAX_CHASE_DISTANCE: float = 500.0
 const SKELETON_IDLE_TIME: float = 3.0
