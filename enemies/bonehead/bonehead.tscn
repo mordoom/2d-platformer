@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dd2o6b85uj4f0"]
+[gd_scene load_steps=43 format=3 uid="uid://dd2o6b85uj4f0"]
 
 [ext_resource type="Script" uid="uid://chd33v8rcniuh" path="res://enemies/bonehead/bonehead.gd" id="1_sux7x"]
 [ext_resource type="Texture2D" uid="uid://dhg56c1lwor7w" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Idle.png" id="2_7yjm0"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://b04ble633sv7g" path="res://characters/damage/damage_area.gd" id="14_0tqpm"]
 [ext_resource type="PackedScene" uid="uid://cmtfombvtj003" path="res://ui/healthbar/boss_healthbar.tscn" id="15_1vf8f"]
 [ext_resource type="Script" uid="uid://ce1llr8pnomm1" path="res://characters/states/state_debug_label.gd" id="15_3ou11"]
+[ext_resource type="PackedScene" uid="uid://cu87nnob3ont0" path="res://components/projectile_component.tscn" id="16_sux7x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5q4d"]
 size = Vector2(27, 47)
@@ -465,11 +466,8 @@ state_machine = NodePath("../CharacterStateMachine")
 boss_name = "BONEHEAD"
 damageable = NodePath("../Damageable")
 
-[node name="ShootTimer" type="Timer" parent="."]
-wait_time = 2.0
-
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(30, 13)
+[node name="ProjectileComponent" parent="." instance=ExtResource("16_sux7x")]
+position = Vector2(35.3333, 12.6667)
 
 [connection signal="on_hit" from="Damageable" to="." method="_on_damageable_on_hit"]
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Hit" method="_on_animation_tree_animation_finished"]

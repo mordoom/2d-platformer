@@ -34,7 +34,6 @@ func state_physics_process(_delta: float) -> void:
         emit_change_state("attack")
     
     if distance_to_player > min_shoot_distance:
-        if character.shoot_timer.is_stopped():
-            character.shoot_timer.start()
+        character.projectile_comp.start()
     else:
-        character.shoot_timer.stop()
+        character.projectile_comp.stop()
