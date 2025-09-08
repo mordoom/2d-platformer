@@ -1,6 +1,7 @@
-[gd_scene load_steps=44 format=3 uid="uid://cioby1n27ryow"]
+[gd_scene load_steps=45 format=3 uid="uid://cioby1n27ryow"]
 
 [ext_resource type="Script" uid="uid://cur2e4n2p0pxn" path="res://enemies/skeleton/skeleton.gd" id="1_drsv4"]
+[ext_resource type="Resource" uid="uid://ngxymc6o3enq" path="res://enemies/skeleton/basic_skeleton.tres" id="2_4e564"]
 [ext_resource type="Texture2D" uid="uid://dhg56c1lwor7w" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Idle.png" id="2_riuq3"]
 [ext_resource type="Script" uid="uid://bv74cjk6dv3j5" path="res://damageable_component.gd" id="3_es8qe"]
 [ext_resource type="Script" uid="uid://dmurjk74xkpdn" path="res://characters/states/character_state_machine.gd" id="4_4e564"]
@@ -372,6 +373,7 @@ size = Vector2(32, 63.5)
 [node name="Skeleton" type="CharacterBody2D" node_paths=PackedStringArray("components")]
 collision_layer = 4
 script = ExtResource("1_drsv4")
+stats = ExtResource("2_4e564")
 components = [NodePath("AttackArea"), NodePath("EnvCheckComponent")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -406,11 +408,11 @@ metadata/_custom_type_script = "uid://bc302qypp4ibv"
 [node name="Hit" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("damageable")]
 script = ExtResource("7_p4nc8")
 interrupt = null
+damageable = NodePath("../../DamageableComponent")
 knockback_speed = null
 can_move = null
 input_allowed = null
 dead = null
-damageable = NodePath("../../DamageableComponent")
 metadata/_custom_type_script = "uid://bc302qypp4ibv"
 
 [node name="Pursue" type="Node" parent="CharacterStateMachine"]

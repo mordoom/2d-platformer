@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=2 format=3 uid="uid://ngxymc6o3enq"]
+
+[ext_resource type="Script" uid="uid://731cx3rumm3f" path="res://enemies/skeleton/enemy_stats.gd" id="1_xygav"]
+
+[resource]
+script = ExtResource("1_xygav")
+initial_direction = 1.0
+patrol_speed = 50.0
+metadata/_custom_type_script = "uid://731cx3rumm3f"

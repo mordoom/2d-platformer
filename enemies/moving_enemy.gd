@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var gravity_comp: GravityComponent = $GravityComponent
 
+@export var stats: EnemyStats
 @export var components: Array[Node2D]
 
 var current_direction: float = 1.0

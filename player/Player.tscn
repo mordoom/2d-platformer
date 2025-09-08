@@ -745,11 +745,11 @@ one_shot = true
 [node name="Hit" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("damageable")]
 script = ExtResource("15_uewl2")
 interrupt = null
+damageable = NodePath("../../DamageableComponent")
 knockback_speed = 70.0
 can_move = false
 input_allowed = false
 dead = null
-damageable = NodePath("../../DamageableComponent")
 metadata/_custom_type_script = "uid://b76n5nhjrhsom"
 
 [node name="Dead" type="Node" parent="CharacterStateMachine"]
