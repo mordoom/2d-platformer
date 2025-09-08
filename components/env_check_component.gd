@@ -37,3 +37,6 @@ func flip(current_direction: float) -> void:
 
     player_check.position.x = (abs(player_check.position.x) * current_direction) - (player_check_offset * current_direction)
     player_check.target_position.x = abs(player_check.target_position.x) * current_direction
+
+func can_patrol() -> bool:
+    return cached_floor_collision && !cached_wall_collision
