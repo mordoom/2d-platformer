@@ -6,12 +6,11 @@ extends CharacterBody2D
 @onready var sword_collision: CollisionShape2D = $AttackArea/CollisionShape2D
 @onready var damageable: DamageableComponent = $DamageableComponent
 @onready var healthbar: BossHealthbar = $BossHealthbar
+@onready var projectile_comp: Node = $ProjectileComponent
 
 @onready var floor_check: RayCast2D = $floor_check
 @onready var wall_check: RayCast2D = $wall_check
 @onready var player_check: RayCast2D = $player_check
-
-@onready var projectile_comp: Node = $ProjectileComponent
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var current_direction: float = 1.0

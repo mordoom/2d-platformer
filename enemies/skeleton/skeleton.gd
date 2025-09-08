@@ -25,6 +25,7 @@ func _ready() -> void:
     animation_tree.active = true
     if GameState.enemy_is_dead(self):
         queue_free()
+        return
 
 func _physics_process(delta: float) -> void:
     if not is_on_floor():
