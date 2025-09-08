@@ -40,7 +40,6 @@ func _process(delta: float) -> void:
 	current_state.state_process(delta)
 
 func change_state(new_state: State) -> void:
-	print_debug("on change state: from, to", current_state.name, new_state)
 	current_state.on_exit()
 	current_state = new_state
 	current_state.on_enter()
