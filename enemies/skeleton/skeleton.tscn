@@ -1,8 +1,8 @@
-[gd_scene load_steps=43 format=3 uid="uid://cioby1n27ryow"]
+[gd_scene load_steps=44 format=3 uid="uid://cioby1n27ryow"]
 
 [ext_resource type="Script" uid="uid://cur2e4n2p0pxn" path="res://enemies/skeleton/skeleton.gd" id="1_drsv4"]
 [ext_resource type="Texture2D" uid="uid://dhg56c1lwor7w" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Idle.png" id="2_riuq3"]
-[ext_resource type="Script" uid="uid://bv74cjk6dv3j5" path="res://components/damageable_component.gd" id="3_es8qe"]
+[ext_resource type="Script" uid="uid://bv74cjk6dv3j5" path="res://damageable_component.gd" id="3_es8qe"]
 [ext_resource type="Script" uid="uid://dmurjk74xkpdn" path="res://characters/states/character_state_machine.gd" id="4_4e564"]
 [ext_resource type="Script" uid="uid://buxdijsixt086" path="res://enemies/skeleton/patrol.gd" id="5_mew8a"]
 [ext_resource type="Script" uid="uid://buvdd3fgh12nl" path="res://characters/states/dead_state.gd" id="6_8bh25"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://b04ble633sv7g" path="res://characters/damage/damage_area.gd" id="14_drsv4"]
 [ext_resource type="Script" uid="uid://ce1llr8pnomm1" path="res://characters/states/state_debug_label.gd" id="15_jrkgk"]
 [ext_resource type="Script" uid="uid://cv5rhtqh14anw" path="res://components/env_check_component.gd" id="16_riuq3"]
+[ext_resource type="Script" uid="uid://c4jfxsbjr0jwd" path="res://components/gravity_component.gd" id="17_es8qe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5q4d"]
 size = Vector2(27, 47)
@@ -392,8 +393,9 @@ character = NodePath("..")
 animation_tree = NodePath("../AnimationTree")
 metadata/_custom_type_script = "uid://dmurjk74xkpdn"
 
-[node name="Patrol" type="Node" parent="CharacterStateMachine"]
+[node name="Patrol" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("env_check_comp")]
 script = ExtResource("5_mew8a")
+env_check_comp = NodePath("../../EnvCheckComponent")
 metadata/_custom_type_script = "uid://bc302qypp4ibv"
 
 [node name="Dead" type="Node" parent="CharacterStateMachine"]
@@ -403,6 +405,11 @@ metadata/_custom_type_script = "uid://bc302qypp4ibv"
 
 [node name="Hit" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("damageable")]
 script = ExtResource("7_p4nc8")
+interrupt = null
+knockback_speed = null
+can_move = null
+input_allowed = null
+dead = null
 damageable = NodePath("../../DamageableComponent")
 metadata/_custom_type_script = "uid://bc302qypp4ibv"
 
@@ -435,7 +442,7 @@ initial_monitoring_state = false
 position = Vector2(31, 0.25)
 shape = SubResource("RectangleShape2D_wg02f")
 
-[node name="Label" type="Label" parent="." node_paths=PackedStringArray("state_machine")]
+[node name="StateLabel" type="Label" parent="." node_paths=PackedStringArray("state_machine")]
 visible = false
 offset_left = -45.0
 offset_top = -50.0
@@ -461,6 +468,9 @@ position = Vector2(-16, 0)
 rotation = -0.001484
 target_position = Vector2(1000, 0)
 collision_mask = 3
+
+[node name="GravityComponent" type="Node" parent="."]
+script = ExtResource("17_es8qe")
 
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Hit" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Attack" method="_on_animation_tree_animation_finished"]

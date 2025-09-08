@@ -38,7 +38,7 @@ const STARTING_OFFSET: int = 2 * CELL_SIZE
 
 # Component Name Constants
 class ComponentNames:
-	const INTERACTION = "InteractionComponent"
-	const COLLECTION = "CollectionComponent"
-	const CLIMBABLE = "ClimbableComponent"
-	const BUTTON_PROMPT = "ButtonPromptComponent"
+    const INTERACTION = "InteractionComponent"
+    const COLLECTION = "CollectionComponent"
+    const CLIMBABLE = "ClimbableComponent"
+    const BUTTON_PROMPT = "ButtonPromptComponent"

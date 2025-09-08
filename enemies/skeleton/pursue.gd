@@ -15,7 +15,7 @@ func state_physics_process(_delta: float) -> void:
 	var position_difference: float = player.position.x - character.position.x
 	var direction_to_player: float = sign(position_difference)
 	var distance_to_player: float = abs(position_difference)
-	var current_direction: float = character.get_current_direction()
+	var current_direction: float = character.current_direction
 
 	if direction_to_player != current_direction:
 		character.set_direction(direction_to_player)

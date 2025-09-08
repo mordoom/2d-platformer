@@ -4,6 +4,7 @@ class_name PatrolState
 
 enum States {IDLE, MOVING}
 
+@export var env_check_comp: EnvCheckComponent
 @export var initial_direction: float = 1.0
 @export var speed: float = GameConstants.SKELETON_PATROL_SPEED
 
@@ -15,7 +16,7 @@ func on_enter() -> void:
 	character.set_direction(initial_direction)
 
 func state_physics_process(delta: float) -> void:
-	var player_collision: Node = character.get_player_collision()
+	var player_collision: Node = env_check_comp.cached_player_collision
 	if (player_collision != null && player_collision.is_in_group("Player")):
 		emit_change_state("pursue")
 		return
@@ -30,10 +31,10 @@ func state_physics_process(delta: float) -> void:
 				patrol_state = States.MOVING
 		States.MOVING:
 			if (can_patrol):
-				character.velocity.x = character.get_current_direction() * speed
+				character.velocity.x = character.current_direction * speed
 			else:
 				idle_timer = idle_time
 				patrol_state = States.IDLE
 
 func _flip_direction() -> void:
-	character.set_direction(-character.get_current_direction())
+	character.set_direction(-character.current_direction)

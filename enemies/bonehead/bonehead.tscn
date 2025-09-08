@@ -1,8 +1,8 @@
-[gd_scene load_steps=44 format=3 uid="uid://dd2o6b85uj4f0"]
+[gd_scene load_steps=45 format=3 uid="uid://dd2o6b85uj4f0"]
 
 [ext_resource type="Script" uid="uid://chd33v8rcniuh" path="res://enemies/bonehead/bonehead.gd" id="1_sux7x"]
 [ext_resource type="Texture2D" uid="uid://dhg56c1lwor7w" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Idle.png" id="2_7yjm0"]
-[ext_resource type="Script" uid="uid://bv74cjk6dv3j5" path="res://components/damageable_component.gd" id="3_hf0x3"]
+[ext_resource type="Script" uid="uid://bv74cjk6dv3j5" path="res://damageable_component.gd" id="3_hf0x3"]
 [ext_resource type="Script" uid="uid://dmurjk74xkpdn" path="res://characters/states/character_state_machine.gd" id="4_xa3pv"]
 [ext_resource type="Script" uid="uid://buvdd3fgh12nl" path="res://characters/states/dead_state.gd" id="6_t53tg"]
 [ext_resource type="Script" uid="uid://b76n5nhjrhsom" path="res://characters/states/hit_state.gd" id="7_ouyxp"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://ce1llr8pnomm1" path="res://characters/states/state_debug_label.gd" id="15_3ou11"]
 [ext_resource type="PackedScene" uid="uid://cu87nnob3ont0" path="res://components/projectile_component.tscn" id="16_sux7x"]
 [ext_resource type="PackedScene" uid="uid://buojgt88loa8u" path="res://enemies/cannon/big_cannonball.tscn" id="17_goma3"]
+[ext_resource type="Script" uid="uid://c4jfxsbjr0jwd" path="res://components/gravity_component.gd" id="18_fyvcc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5q4d"]
 size = Vector2(67.5, 139.5)
@@ -384,10 +385,6 @@ scale = Vector2(3, 3)
 texture = ExtResource("2_7yjm0")
 hframes = 8
 
-[node name="DamageableComponent" type="Node" parent="."]
-script = ExtResource("3_hf0x3")
-max_health = 100
-
 [node name="CharacterStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "character", "animation_tree")]
 script = ExtResource("4_xa3pv")
 initial_state = NodePath("Pursue")
@@ -406,8 +403,9 @@ interrupt = false
 damageable = NodePath("../../DamageableComponent")
 metadata/_custom_type_script = "uid://bc302qypp4ibv"
 
-[node name="Pursue" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("character")]
+[node name="Pursue" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("projectile_comp", "character")]
 script = ExtResource("8_goma3")
+projectile_comp = NodePath("../../ProjectileComponent")
 chase_speed = 180.0
 min_shoot_distance = 200.0
 min_chase_distance = 70.0
@@ -441,7 +439,24 @@ initial_monitoring_state = false
 position = Vector2(82.75, 10.4375)
 shape = SubResource("RectangleShape2D_wg02f")
 
-[node name="Label" type="Label" parent="." node_paths=PackedStringArray("state_machine")]
+[node name="DamageableComponent" type="Node" parent="."]
+script = ExtResource("3_hf0x3")
+max_health = 100
+
+[node name="BossHealthbar" parent="." node_paths=PackedStringArray("state_machine", "damageable") instance=ExtResource("15_1vf8f")]
+state_machine = NodePath("../CharacterStateMachine")
+boss_name = "BONEHEAD"
+damageable = NodePath("../DamageableComponent")
+
+[node name="ProjectileComponent" parent="." instance=ExtResource("16_sux7x")]
+position = Vector2(53, 49)
+bullet_scene = ExtResource("17_goma3")
+
+[node name="GravityComponent" type="Node" parent="."]
+script = ExtResource("18_fyvcc")
+
+[node name="StateLabel" type="Label" parent="." node_paths=PackedStringArray("state_machine")]
+visible = false
 offset_left = -45.0
 offset_top = -50.0
 offset_right = 58.0
@@ -450,16 +465,6 @@ text = "State:"
 script = ExtResource("15_3ou11")
 state_machine = NodePath("../CharacterStateMachine")
 
-[node name="BossHealthbar" parent="." node_paths=PackedStringArray("state_machine", "damageable") instance=ExtResource("15_1vf8f")]
-boss_name = "BONEHEAD"
-state_machine = NodePath("../CharacterStateMachine")
-damageable = NodePath("../DamageableComponent")
-
-[node name="ProjectileComponent" parent="." instance=ExtResource("16_sux7x")]
-position = Vector2(53, 49)
-bullet_scene = ExtResource("17_goma3")
-
-[connection signal="on_hit" from="DamageableComponent" to="." method="_on_damageable_on_hit"]
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Hit" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Attack" method="_on_animation_tree_animation_finished"]
 [connection signal="body_entered" from="AttackArea" to="AttackArea" method="_on_body_entered"]
