@@ -1,6 +1,6 @@
 extends Node
 
-class_name Damageable
+class_name DamageableComponent
 
 signal on_hit(node: Node, damage_taken: int, direction: Vector2)
 

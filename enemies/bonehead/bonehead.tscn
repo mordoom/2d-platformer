@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://chd33v8rcniuh" path="res://enemies/bonehead/bonehead.gd" id="1_sux7x"]
 [ext_resource type="Texture2D" uid="uid://dhg56c1lwor7w" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Idle.png" id="2_7yjm0"]
-[ext_resource type="Script" uid="uid://bv74cjk6dv3j5" path="res://characters/damage/damageable.gd" id="3_hf0x3"]
+[ext_resource type="Script" uid="uid://bv74cjk6dv3j5" path="res://components/damageable_component.gd" id="3_hf0x3"]
 [ext_resource type="Script" uid="uid://dmurjk74xkpdn" path="res://characters/states/character_state_machine.gd" id="4_xa3pv"]
 [ext_resource type="Script" uid="uid://buvdd3fgh12nl" path="res://characters/states/dead_state.gd" id="6_t53tg"]
 [ext_resource type="Script" uid="uid://b76n5nhjrhsom" path="res://characters/states/hit_state.gd" id="7_ouyxp"]
@@ -382,7 +382,7 @@ texture_filter = 1
 texture = ExtResource("2_7yjm0")
 hframes = 8
 
-[node name="Damageable" type="Node" parent="."]
+[node name="DamageableComponent" type="Node" parent="."]
 script = ExtResource("3_hf0x3")
 max_health = 100
 
@@ -401,7 +401,7 @@ metadata/_custom_type_script = "uid://bc302qypp4ibv"
 [node name="Hit" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("damageable")]
 script = ExtResource("7_ouyxp")
 interrupt = false
-damageable = NodePath("../../Damageable")
+damageable = NodePath("../../DamageableComponent")
 metadata/_custom_type_script = "uid://bc302qypp4ibv"
 
 [node name="Pursue" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("character")]
@@ -462,14 +462,14 @@ script = ExtResource("15_3ou11")
 state_machine = NodePath("../CharacterStateMachine")
 
 [node name="BossHealthbar" parent="." node_paths=PackedStringArray("state_machine", "damageable") instance=ExtResource("15_1vf8f")]
-state_machine = NodePath("../CharacterStateMachine")
 boss_name = "BONEHEAD"
-damageable = NodePath("../Damageable")
+state_machine = NodePath("../CharacterStateMachine")
+damageable = NodePath("../DamageableComponent")
 
 [node name="ProjectileComponent" parent="." instance=ExtResource("16_sux7x")]
 position = Vector2(35.3333, 12.6667)
 
-[connection signal="on_hit" from="Damageable" to="." method="_on_damageable_on_hit"]
+[connection signal="on_hit" from="DamageableComponent" to="." method="_on_damageable_on_hit"]
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Hit" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Attack" method="_on_animation_tree_animation_finished"]
 [connection signal="body_entered" from="AttackArea" to="AttackArea" method="_on_body_entered"]

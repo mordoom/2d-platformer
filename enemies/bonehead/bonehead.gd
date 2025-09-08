@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var state_machine: CharacterStateMachine = $CharacterStateMachine
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var sword_collision: CollisionShape2D = $AttackArea/CollisionShape2D
-@onready var damageable: Damageable = $Damageable
+@onready var damageable: DamageableComponent = $DamageableComponent
 @onready var healthbar: BossHealthbar = $BossHealthbar
 
 @onready var floor_check: RayCast2D = $floor_check

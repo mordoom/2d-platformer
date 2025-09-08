@@ -3,7 +3,7 @@ extends State
 class_name HitState
 
 @export var interrupt: bool = true
-@export var damageable: Damageable
+@export var damageable: DamageableComponent
 @export var knockback_speed: float = GameConstants.KNOCKBACK_SPEED
 
 var hit_stop_time_scale: float = 0.1

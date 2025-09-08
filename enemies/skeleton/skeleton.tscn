@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cur2e4n2p0pxn" path="res://enemies/skeleton/skeleton.gd" id="1_drsv4"]
 [ext_resource type="Texture2D" uid="uid://dhg56c1lwor7w" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Idle.png" id="2_riuq3"]
-[ext_resource type="Script" uid="uid://bv74cjk6dv3j5" path="res://characters/damage/damageable.gd" id="3_es8qe"]
+[ext_resource type="Script" uid="uid://bv74cjk6dv3j5" path="res://components/damageable_component.gd" id="3_es8qe"]
 [ext_resource type="Script" uid="uid://dmurjk74xkpdn" path="res://characters/states/character_state_machine.gd" id="4_4e564"]
 [ext_resource type="Script" uid="uid://buxdijsixt086" path="res://enemies/skeleton/patrol.gd" id="5_mew8a"]
 [ext_resource type="Script" uid="uid://buvdd3fgh12nl" path="res://characters/states/dead_state.gd" id="6_8bh25"]
@@ -380,7 +380,7 @@ texture_filter = 1
 texture = ExtResource("2_riuq3")
 hframes = 8
 
-[node name="Damageable" type="Node" parent="."]
+[node name="DamageableComponent" type="Node" parent="."]
 script = ExtResource("3_es8qe")
 
 [node name="CharacterStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "character", "animation_tree")]
@@ -401,7 +401,7 @@ metadata/_custom_type_script = "uid://bc302qypp4ibv"
 
 [node name="Hit" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("damageable")]
 script = ExtResource("7_p4nc8")
-damageable = NodePath("../../Damageable")
+damageable = NodePath("../../DamageableComponent")
 metadata/_custom_type_script = "uid://bc302qypp4ibv"
 
 [node name="Pursue" type="Node" parent="CharacterStateMachine"]

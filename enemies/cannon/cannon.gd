@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 @onready var sprite: Sprite2D = $Sprite2D
-@onready var damageable: Damageable = $Damageable
+@onready var damageable: DamageableComponent = $DamageableComponent
 @onready var projectile_comp: ProjectileComponent = $ProjectileComponent
 
 var hit_stop_time_scale: float = 0.1

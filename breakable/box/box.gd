@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-@onready var damageable: Damageable = $Damageable
+@onready var damageable: DamageableComponent = $DamageableComponent
 @onready var animatedSprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collisionShape: CollisionShape2D = $CollisionShape2D
 @export var hit_force: float = 100

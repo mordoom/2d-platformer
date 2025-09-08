@@ -3,7 +3,7 @@ extends CanvasLayer
 
 @export var state_machine: CharacterStateMachine
 @export var boss_name: String
-@export var damageable: Damageable
+@export var damageable: DamageableComponent
 
 @onready var healthbar: ProgressBar = $Healthbar
 @onready var label: Label = $Label

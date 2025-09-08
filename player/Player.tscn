@@ -18,7 +18,7 @@
 [ext_resource type="Script" uid="uid://bmbf8x21nlc3o" path="res://player/states/ground_attack_state.gd" id="11_gatk"]
 [ext_resource type="Texture2D" uid="uid://caw51tt3dwwll" path="res://assets/Pirate by seartsy/Death-4frm.png" id="11_q6miu"]
 [ext_resource type="Script" uid="uid://b76n5nhjrhsom" path="res://characters/states/hit_state.gd" id="15_uewl2"]
-[ext_resource type="Script" uid="uid://bv74cjk6dv3j5" path="res://characters/damage/damageable.gd" id="17_w24id"]
+[ext_resource type="Script" uid="uid://bv74cjk6dv3j5" path="res://components/damageable_component.gd" id="17_w24id"]
 [ext_resource type="Script" uid="uid://buvdd3fgh12nl" path="res://characters/states/dead_state.gd" id="17_yu5hk"]
 [ext_resource type="Script" uid="uid://cqjief3xbuucb" path="res://characters/states/ladder_state.gd" id="19_mlfor"]
 [ext_resource type="Script" uid="uid://bfdimik8paaq7" path="res://player/states/jump_state.gd" id="20_2m0d2"]
@@ -742,7 +742,7 @@ one_shot = true
 
 [node name="Hit" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("damageable")]
 script = ExtResource("15_uewl2")
-damageable = NodePath("../../Damageable")
+damageable = NodePath("../../DamageableComponent")
 knockback_speed = 70.0
 can_move = false
 input_allowed = false
@@ -785,7 +785,7 @@ initial_monitoring_state = false
 position = Vector2(50, 6)
 shape = SubResource("RectangleShape2D_v4f8b")
 
-[node name="Damageable" type="Node" parent="."]
+[node name="DamageableComponent" type="Node" parent="."]
 script = ExtResource("17_w24id")
 metadata/_custom_type_script = "uid://bv74cjk6dv3j5"
 

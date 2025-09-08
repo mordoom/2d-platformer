@@ -21,7 +21,7 @@ var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var floor_check: RayCast2D = $floor_check
 @onready var ceiling_check: RayCast2D = $ceiling_check
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
-@onready var damageable: Damageable = $Damageable
+@onready var damageable: DamageableComponent = $DamageableComponent
 @onready var ladderAboveArea: Area2D = $LadderAbove
 @onready var interact_area: Area2D = $Interact
 

@@ -11,7 +11,7 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
     for child in body.get_children():
-        if child is Damageable:
+        if child is DamageableComponent:
             print_debug(body.name + " took " + str(damage) + " damage")
             var direction_to_target: Vector2 = body.global_position - get_parent().global_position
             var direction_sign: float = sign(direction_to_target.x)

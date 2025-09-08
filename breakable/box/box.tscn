@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://gi88o17g02x7" path="res://breakable/box/box.gd" id="1_4bn1v"]
 [ext_resource type="Texture2D" uid="uid://7ltlkc2do43r" path="res://assets/wood_set/box/1.png" id="1_r41ig"]
-[ext_resource type="Script" uid="uid://bv74cjk6dv3j5" path="res://characters/damage/damageable.gd" id="2_ayd8b"]
+[ext_resource type="Script" uid="uid://bv74cjk6dv3j5" path="res://components/damageable_component.gd" id="2_ayd8b"]
 [ext_resource type="Texture2D" uid="uid://21konxyjsps5" path="res://assets/wood_set/box/2.png" id="4_qkeua"]
 [ext_resource type="Texture2D" uid="uid://c4baovymkmyk7" path="res://assets/wood_set/box/3.png" id="5_6w4yh"]
 [ext_resource type="Texture2D" uid="uid://c5o3wuoa7vknu" path="res://assets/wood_set/box/4.png" id="6_k4727"]
@@ -44,7 +44,7 @@ script = ExtResource("1_4bn1v")
 position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_cf5vc")
 
-[node name="Damageable" type="Node" parent="."]
+[node name="DamageableComponent" type="Node" parent="."]
 script = ExtResource("2_ayd8b")
 metadata/_custom_type_script = "uid://bv74cjk6dv3j5"
 
