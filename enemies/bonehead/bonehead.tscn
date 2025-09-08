@@ -1,6 +1,7 @@
-[gd_scene load_steps=45 format=3 uid="uid://dd2o6b85uj4f0"]
+[gd_scene load_steps=46 format=3 uid="uid://dd2o6b85uj4f0"]
 
 [ext_resource type="Script" uid="uid://chd33v8rcniuh" path="res://enemies/bonehead/bonehead.gd" id="1_sux7x"]
+[ext_resource type="Resource" uid="uid://cfv2yeakklu26" path="res://enemies/skeleton/bonehead.tres" id="2_4vjax"]
 [ext_resource type="Texture2D" uid="uid://dhg56c1lwor7w" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Idle.png" id="2_7yjm0"]
 [ext_resource type="Script" uid="uid://bv74cjk6dv3j5" path="res://damageable_component.gd" id="3_hf0x3"]
 [ext_resource type="Script" uid="uid://dmurjk74xkpdn" path="res://characters/states/character_state_machine.gd" id="4_xa3pv"]
@@ -373,6 +374,7 @@ size = Vector2(109.5, 168.875)
 [node name="Bonehead" type="CharacterBody2D" node_paths=PackedStringArray("components")]
 collision_layer = 5
 script = ExtResource("1_sux7x")
+stats = ExtResource("2_4vjax")
 components = [NodePath("ProjectileComponent"), NodePath("AttackArea")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
