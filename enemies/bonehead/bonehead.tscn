@@ -369,9 +369,10 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wg02f"]
 size = Vector2(109.5, 168.875)
 
-[node name="Bonehead" type="CharacterBody2D"]
+[node name="Bonehead" type="CharacterBody2D" node_paths=PackedStringArray("components")]
 collision_layer = 5
 script = ExtResource("1_sux7x")
+components = [NodePath("ProjectileComponent"), NodePath("AttackArea")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-5.75, 25.25)
@@ -427,19 +428,6 @@ parameters/patrol/blend_position = 0.64935
 libraries = {
 &"": SubResource("AnimationLibrary_5q7td")
 }
-
-[node name="floor_check" type="RayCast2D" parent="."]
-position = Vector2(28, 51)
-
-[node name="wall_check" type="RayCast2D" parent="."]
-position = Vector2(28, -11)
-target_position = Vector2(12, 0)
-
-[node name="player_check" type="RayCast2D" parent="."]
-position = Vector2(-16, 0)
-rotation = -0.001484
-target_position = Vector2(1000, 0)
-collision_mask = 3
 
 [node name="AttackArea" type="Area2D" parent="."]
 collision_layer = 4

@@ -37,3 +37,7 @@ func shoot_bullet() -> void:
     bullet_index += 1
     if (bullet_index >= bullets.size()):
         bullet_index = 0
+
+func flip(current_direction: float) -> void:
+    position.x = abs(position.x) * current_direction
+    transform.x = abs(transform.x) * current_direction
