@@ -6,10 +6,7 @@ extends CharacterBody2D
 @onready var sword_collision: CollisionShape2D = $AttackArea/CollisionShape2D
 @onready var damageable: Damageable = $Damageable
 @onready var shoot_timer: Timer = $ShootTimer
-@onready var healthbar_timer: Timer = $HealthbarTimer
-@onready var canvas_layer: CanvasLayer = $CanvasLayer
-
-@export var healthbar: ProgressBar
+@onready var healthbar: BossHealthbar = $BossHealthbar
 
 @onready var floor_check: RayCast2D = $floor_check
 @onready var wall_check: RayCast2D = $wall_check
@@ -32,7 +29,6 @@ var bullet_index: int = 0
 
 func _ready() -> void:
 	animation_tree.active = true
-	healthbar.init_health(damageable.health)
 	damageable.connect("on_hit", on_damageable_hit)
 	if GameState.enemy_is_dead(self):
 		queue_free()
@@ -45,16 +41,13 @@ func _ready() -> void:
 	]
 
 	shoot_timer.timeout.connect(shoot)
-	healthbar_timer.timeout.connect(show_hide_healthbar)
-	canvas_layer.visible = false
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
 	if (state_machine.is_dead()):
-		if healthbar_timer.is_stopped() && canvas_layer.visible:
-			healthbar_timer.start()
+		healthbar.dead()
 		return
 
 	_update_raycast_cache(delta)
@@ -115,7 +108,6 @@ func update_facing_direction(direction: float) -> void:
 	sprite.flip_h = false if direction > 0 else true
 
 func on_damageable_hit(_node: Node, _damage_taken: int, _direction: Vector2) -> void:
-	healthbar.health = damageable.health
 	if (damageable.is_dead()):
 		GameState.add_perma_dead_enemy(self)
 		set_collision_layer_value(1, false)
@@ -130,9 +122,3 @@ func shoot_bullet() -> void:
 	bullet_index += 1
 	if (bullet_index >= bullets.size()):
 		bullet_index = 0
-
-func show_hide_healthbar():
-	if state_machine.is_dead():
-		canvas_layer.visible = false
-	else:
-		canvas_layer.visible = true

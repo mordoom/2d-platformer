@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dd2o6b85uj4f0"]
+[gd_scene load_steps=42 format=3 uid="uid://dd2o6b85uj4f0"]
 
 [ext_resource type="Script" uid="uid://chd33v8rcniuh" path="res://enemies/bonehead/bonehead.gd" id="1_sux7x"]
 [ext_resource type="Texture2D" uid="uid://dhg56c1lwor7w" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Idle.png" id="2_7yjm0"]
@@ -13,9 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://dbx4fl4f4d2hd" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Hurt.png" id="12_3kalx"]
 [ext_resource type="Texture2D" uid="uid://ufb0ajwqyft0" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Walk.png" id="13_sahts"]
 [ext_resource type="Script" uid="uid://b04ble633sv7g" path="res://characters/damage/damage_area.gd" id="14_0tqpm"]
+[ext_resource type="PackedScene" uid="uid://cmtfombvtj003" path="res://ui/healthbar/boss_healthbar.tscn" id="15_1vf8f"]
 [ext_resource type="Script" uid="uid://ce1llr8pnomm1" path="res://characters/states/state_debug_label.gd" id="15_3ou11"]
-[ext_resource type="PackedScene" uid="uid://bipon0wb0ovjw" path="res://ui/healthbar/healthbar.tscn" id="16_sux7x"]
-[ext_resource type="Theme" uid="uid://cqw1qi00p254h" path="res://ui_theme.tres" id="17_goma3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5q4d"]
 size = Vector2(27, 47)
@@ -368,11 +367,10 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wg02f"]
 size = Vector2(32, 63.5)
 
-[node name="Bonehead" type="CharacterBody2D" node_paths=PackedStringArray("healthbar")]
+[node name="Bonehead" type="CharacterBody2D"]
 scale = Vector2(3, 3)
 collision_layer = 5
 script = ExtResource("1_sux7x")
-healthbar = NodePath("CanvasLayer/Healthbar")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2.5, 8.5)
@@ -462,48 +460,16 @@ text = "State:"
 script = ExtResource("15_3ou11")
 state_machine = NodePath("../CharacterStateMachine")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Healthbar" parent="CanvasLayer" instance=ExtResource("16_sux7x")]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -256.0
-offset_top = -33.0
-offset_right = 252.0
-offset_bottom = -22.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_horizontal = 4
-size_flags_vertical = 1
-
-[node name="Label" type="Label" parent="CanvasLayer"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -256.0
-offset_top = -50.0
-offset_right = -167.0
-offset_bottom = -27.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("17_goma3")
-text = "BONEHEAD"
+[node name="BossHealthbar" parent="." node_paths=PackedStringArray("state_machine", "damageable") instance=ExtResource("15_1vf8f")]
+state_machine = NodePath("../CharacterStateMachine")
+boss_name = "BONEHEAD"
+damageable = NodePath("../Damageable")
 
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 2.0
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(30, 13)
-
-[node name="HealthbarTimer" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
-autostart = true
 
 [connection signal="on_hit" from="Damageable" to="." method="_on_damageable_on_hit"]
 [connection signal="animation_finished" from="AnimationTree" to="CharacterStateMachine/Hit" method="_on_animation_tree_animation_finished"]
