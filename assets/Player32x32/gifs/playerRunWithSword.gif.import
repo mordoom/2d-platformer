@@ -1,0 +1,15 @@
+[remap]
+
+importer="import_gif_to_sprite_frames"
+type="SpriteFrames"
+uid="uid://d16dm7fbxfcud"
+path="res://.godot/imported/playerRunWithSword.gif-d899aa8dc1c7032a47a9f7f28687a401.tres"
+
+[deps]
+
+source_file="res://assets/Player32x32/gifs/playerRunWithSword.gif"
+dest_files=["res://.godot/imported/playerRunWithSword.gif-d899aa8dc1c7032a47a9f7f28687a401.tres"]
+
+[params]
+
+frames_per_second=30

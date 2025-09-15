@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="1_vme22"]
 [ext_resource type="PackedScene" uid="uid://dtb6ujcdawf23" path="res://world/cave/parallax_background.tscn" id="2_oq5dy"]
 [ext_resource type="TileSet" uid="uid://dsu71ownhxqk5" path="res://world/cave/levels/tiles.tres" id="2_vme22"]
-[ext_resource type="PackedScene" uid="uid://cioby1n27ryow" path="res://enemies/skeleton/skeleton.tscn" id="3_uqlg1"]
+[ext_resource type="PackedScene" uid="uid://yq36i0nmliug" path="res://new_characters/enemy/enemy.tscn" id="5_6dq0b"]
 [ext_resource type="PackedScene" uid="uid://dmxcjqfiiabri" path="res://interactable/ladder/large_ladder.tscn" id="5_vme22"]
 
 [node name="Level" type="Node2D"]
@@ -19,8 +19,8 @@ offset = Vector2(300, 250)
 transform = Transform2D(1, 0, 0, 1, 300, 250)
 follow_viewport_scale = 0.5
 
-[node name="Skeleton" parent="." instance=ExtResource("3_uqlg1")]
-position = Vector2(531, 319)
-
 [node name="Ladder" parent="." instance=ExtResource("5_vme22")]
 position = Vector2(799, 287)
+
+[node name="Enemy" parent="." instance=ExtResource("5_6dq0b")]
+position = Vector2(524, 320)

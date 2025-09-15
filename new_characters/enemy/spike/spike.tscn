@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqefnt5rald4a"]
+
+[ext_resource type="Texture2D" uid="uid://bypsu3fqlk6t" path="res://assets/16-bit-spike-Sheet.png" id="1_jv70o"]
+[ext_resource type="Script" uid="uid://sbaeqqe6wi0e" path="res://new_characters/components/hitbox.gd" id="1_ojea8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jv70o"]
+size = Vector2(16, 13)
+
+[node name="Spike" type="Area2D"]
+collision_layer = 4
+collision_mask = 6
+script = ExtResource("1_ojea8")
+monitoring_default = true
+damage = 1000
+knockback_velocity = 0.0
+can_be_deflected = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_jv70o")
+region_enabled = true
+region_rect = Rect2(0, 0, 15, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_jv70o")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

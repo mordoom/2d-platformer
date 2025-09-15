@@ -1,0 +1,15 @@
+[remap]
+
+importer="import_gif_to_sprite_frames"
+type="SpriteFrames"
+uid="uid://bee1fm676emkc"
+path="res://.godot/imported/playerRunAttack.gif-282b52508064be60d7e0c21e6ec5e000.tres"
+
+[deps]
+
+source_file="res://assets/Player32x32/gifs/playerRunAttack.gif"
+dest_files=["res://.godot/imported/playerRunAttack.gif-282b52508064be60d7e0c21e6ec5e000.tres"]
+
+[params]
+
+frames_per_second=30

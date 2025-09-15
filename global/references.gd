@@ -1,12 +1,12 @@
 extends Node
 
-var player_scene: PackedScene = preload("res://player/Player.tscn")
+var player_scene: PackedScene = preload("res://new_characters/player/player.tscn")
 var initial_level: PackedScene = preload("res://world/cave/levels/starting_area.tscn")
 var jump_dust_anim: PackedScene = preload("res://effects/jump_dust_anim.tscn")
 var landing_dust_anim: PackedScene = preload("res://effects/landing_dust_anim.tscn")
-var skeleton_scene: PackedScene = preload("res://enemies/skeleton/skeleton.tscn")
+var skeleton_scene: PackedScene = preload("res://new_characters/enemy/enemy.tscn")
 var health_changed_label: PackedScene = preload("res://ui/damage_counter/damage_label.tscn")
-var cannonball: PackedScene = preload("res://enemies/cannon/cannonball.tscn")
+var cannonball: PackedScene = preload("res://new_characters/enemy/cannon/cannon.tscn")
 
 func instantiate(scene: PackedScene, global_position: Vector2) -> Node:
 	var new_thing: Node = scene.instantiate()

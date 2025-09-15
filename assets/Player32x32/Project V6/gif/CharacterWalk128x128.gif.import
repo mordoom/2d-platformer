@@ -1,0 +1,15 @@
+[remap]
+
+importer="import_gif_to_sprite_frames"
+type="SpriteFrames"
+uid="uid://b3wdoxvg2olkf"
+path="res://.godot/imported/CharacterWalk128x128.gif-9c4a16464245669931affce464909ddb.tres"
+
+[deps]
+
+source_file="res://assets/Player32x32/Project V6/gif/CharacterWalk128x128.gif"
+dest_files=["res://.godot/imported/CharacterWalk128x128.gif-9c4a16464245669931affce464909ddb.tres"]
+
+[params]
+
+frames_per_second=30

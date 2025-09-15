@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dwsvsmoc2fshl"
+path="res://.godot/imported/CharacterJump.aseprite-fc6b6a8e0525720ff92bb78c681d677a.res"
+
+[deps]
+
+source_file="res://assets/Player32x32/Project V6/aseprite files/CharacterJump.aseprite"
+dest_files=["res://.godot/imported/CharacterJump.aseprite-fc6b6a8e0525720ff92bb78c681d677a.res"]
+
+[params]
+

@@ -1,0 +1,15 @@
+[remap]
+
+importer="import_gif_to_sprite_frames"
+type="SpriteFrames"
+uid="uid://gj7fkxvcthm1"
+path="res://.godot/imported/playerIdle.gif-df5aa2d05e338270d42841abcf9aa70f.tres"
+
+[deps]
+
+source_file="res://assets/Player32x32/gifs/playerIdle.gif"
+dest_files=["res://.godot/imported/playerIdle.gif-df5aa2d05e338270d42841abcf9aa70f.tres"]
+
+[params]
+
+frames_per_second=30

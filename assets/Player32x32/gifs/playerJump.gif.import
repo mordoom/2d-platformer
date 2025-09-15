@@ -1,0 +1,15 @@
+[remap]
+
+importer="import_gif_to_sprite_frames"
+type="SpriteFrames"
+uid="uid://444dgxg0uowy"
+path="res://.godot/imported/playerJump.gif-992d91aa80d687ba292de754a06b6bc5.tres"
+
+[deps]
+
+source_file="res://assets/Player32x32/gifs/playerJump.gif"
+dest_files=["res://.godot/imported/playerJump.gif-992d91aa80d687ba292de754a06b6bc5.tres"]
+
+[params]
+
+frames_per_second=30

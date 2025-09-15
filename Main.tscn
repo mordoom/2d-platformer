@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bkoh78sq1mtcr"]
 
 [ext_resource type="Script" uid="uid://24a3nolesjbj" path="res://global/game_manager.gd" id="1_r0du0"]
-[ext_resource type="PackedScene" uid="uid://b7o8xkqx8kprr" path="res://player/Player.tscn" id="2_cm0pq"]
+[ext_resource type="PackedScene" uid="uid://ynhyq16703kq" path="res://new_characters/player/player.tscn" id="2_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://b6gem3jw1eo62" path="res://ui/hud/hud.tscn" id="3_r0du0"]
 [ext_resource type="PackedScene" uid="uid://dch8dyylb7526" path="res://addons/MetroidvaniaSystem/Template/Nodes/Minimap.tscn" id="5_3dxm6"]
 

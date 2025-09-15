@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://dikkltplokfed"]
+[gd_scene load_steps=12 format=3 uid="uid://dikkltplokfed"]
 
 [ext_resource type="Script" uid="uid://gi88o17g02x7" path="res://breakable/box/box.gd" id="1_4bn1v"]
 [ext_resource type="Texture2D" uid="uid://7ltlkc2do43r" path="res://assets/wood_set/box/1.png" id="1_r41ig"]
-[ext_resource type="Script" uid="uid://bv74cjk6dv3j5" path="res://damageable_component.gd" id="2_ayd8b"]
 [ext_resource type="Texture2D" uid="uid://21konxyjsps5" path="res://assets/wood_set/box/2.png" id="4_qkeua"]
 [ext_resource type="Texture2D" uid="uid://c4baovymkmyk7" path="res://assets/wood_set/box/3.png" id="5_6w4yh"]
 [ext_resource type="Texture2D" uid="uid://c5o3wuoa7vknu" path="res://assets/wood_set/box/4.png" id="6_k4727"]
+[ext_resource type="Script" uid="uid://btumjuy135r4w" path="res://new_characters/components/health_component.gd" id="7_l3f25"]
 [ext_resource type="Texture2D" uid="uid://c8es4cqct7uxi" path="res://assets/wood_set/box/5.png" id="7_wlb84"]
+[ext_resource type="Script" uid="uid://bgh31qn75n5u2" path="res://new_characters/components/hurtbox.gd" id="8_nxhfi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cf5vc"]
 size = Vector2(38, 37.5)
@@ -34,6 +35,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hp6lj"]
+size = Vector2(38, 38)
+
 [node name="Box" type="RigidBody2D"]
 collision_layer = 5
 collision_mask = 7
@@ -44,10 +48,25 @@ script = ExtResource("1_4bn1v")
 position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_cf5vc")
 
-[node name="DamageableComponent" type="Node" parent="."]
-script = ExtResource("2_ayd8b")
-metadata/_custom_type_script = "uid://bv74cjk6dv3j5"
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_sgsx4")
+
+[node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("hurtbox")]
+script = ExtResource("7_l3f25")
+hurtbox = NodePath("../Hurtbox")
+max_health = 30
+metadata/_custom_type_script = "uid://btumjuy135r4w"
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 6
+script = ExtResource("8_nxhfi")
+metadata/_custom_type_script = "uid://bgh31qn75n5u2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_hp6lj")
+
+[connection signal="dead" from="HealthComponent" to="." method="_on_health_component_dead"]
+[connection signal="on_hit" from="Hurtbox" to="." method="_on_hurtbox_on_hit"]

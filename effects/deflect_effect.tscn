@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://c51vili5fxp03"]
+
+[ext_resource type="Script" uid="uid://5gyubb7fymod" path="res://effects/bullet_effect.gd" id="1_0xqg2"]
+[ext_resource type="Texture2D" uid="uid://chelcef1se406" path="res://assets/light texture.png" id="2_7gvvq"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8bj4n"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_icpky"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_max = 4.56
+hue_variation_min = 0.16
+hue_variation_max = 0.35
+
+[node name="BulletEffect" type="GPUParticles2D"]
+material = SubResource("CanvasItemMaterial_8bj4n")
+use_parent_material = true
+emitting = false
+amount = 20
+lifetime = 0.2
+interp_to_end = 0.219
+one_shot = true
+speed_scale = 2.0
+explosiveness = 0.5
+randomness = 0.63
+collision_base_size = 3.0
+process_material = SubResource("ParticleProcessMaterial_icpky")
+script = ExtResource("1_0xqg2")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.957476, 0.84167, 1.23215e-05, 1)
+texture = ExtResource("2_7gvvq")
+texture_scale = 0.2
+
+[connection signal="finished" from="." to="." method="_on_finished"]

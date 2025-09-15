@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dj6ctye0tab0p"
+path="res://.godot/imported/MiniCharacter.aseprite-d7e2527aa2530dc0288731d2bca6faaa.res"
+
+[deps]
+
+source_file="res://assets/Player32x32/Project V6/aseprite files/MiniCharacter.aseprite"
+dest_files=["res://.godot/imported/MiniCharacter.aseprite-d7e2527aa2530dc0288731d2bca6faaa.res"]
+
+[params]
+

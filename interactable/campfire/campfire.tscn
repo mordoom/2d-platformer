@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://cjgwk01y15726"]
 
 [ext_resource type="Texture2D" uid="uid://bq7uk82bkvea6" path="res://assets/campfire-Sheet.png" id="1_vygbo"]
-[ext_resource type="Texture2D" uid="uid://dgmvf61vc8x1l" path="res://assets/light texture.png" id="3_3qrqy"]
+[ext_resource type="Texture2D" uid="uid://chelcef1se406" path="res://assets/light texture.png" id="3_3qrqy"]
 [ext_resource type="PackedScene" uid="uid://s2702h7h5u4q" path="res://components/button_prompt_component.tscn" id="5_11yxp"]
 [ext_resource type="Script" uid="uid://cqr86vajk6xoh" path="res://components/interaction_component.gd" id="5_hith6"]
 
@@ -77,8 +77,12 @@ signal_to_emit = "on_campfire_rested"
 button_prompt_comp = NodePath("../ButtonPromptComponent")
 metadata/_custom_type_script = "uid://cqr86vajk6xoh"
 
-[node name="ButtonPromptComponent" parent="." instance=ExtResource("5_11yxp")]
+[node name="ButtonPromptComponent" parent="." node_paths=PackedStringArray("interact_area") instance=ExtResource("5_11yxp")]
+interact_area = NodePath("..")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 shadow_enabled = true
 texture = ExtResource("3_3qrqy")
+
+[connection signal="body_entered" from="." to="ButtonPromptComponent" method="_on_save_point_body_entered"]
+[connection signal="body_exited" from="." to="ButtonPromptComponent" method="_on_save_point_body_exited"]

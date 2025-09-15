@@ -1,10 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6gem3jw1eo62"]
+[gd_scene load_steps=9 format=3 uid="uid://b6gem3jw1eo62"]
 
 [ext_resource type="Script" uid="uid://c5bni58bhmjlo" path="res://ui/hud/hud.gd" id="1_rbyyf"]
 [ext_resource type="PackedScene" uid="uid://bipon0wb0ovjw" path="res://ui/healthbar/healthbar.tscn" id="2_276te"]
 [ext_resource type="Theme" uid="uid://cqw1qi00p254h" path="res://ui_theme.tres" id="2_546lt"]
 [ext_resource type="Script" uid="uid://c66o6dhkgnilh" path="res://ui/rumbar/rumbar.gd" id="4_7ihmi"]
 [ext_resource type="Texture2D" uid="uid://dh5ypuj42igpe" path="res://assets/bottle of rum - small.png" id="5_en2x2"]
+[ext_resource type="FontFile" uid="uid://b33ox0oj78and" path="res://assets/fonts/Minecraft.ttf" id="6_kwc50"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_272bh"]
+
+[sub_resource type="Theme" id="Theme_o2lis"]
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+Label/constants/line_spacing = 3
+Label/constants/outline_size = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 16
+Label/fonts/font = ExtResource("6_kwc50")
+Label/styles/normal = SubResource("StyleBoxEmpty_272bh")
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_rbyyf")
@@ -62,4 +78,15 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("2_546lt")
 text = "0"
+horizontal_alignment = 2
+
+[node name="MoneyDisplay" type="Label" parent="."]
+texture_filter = 1
+offset_left = 63.0
+offset_top = 28.0
+offset_right = 151.0
+offset_bottom = 60.0
+theme = SubResource("Theme_o2lis")
+theme_override_colors/font_color = Color(1, 0.966667, 0, 1)
+text = "$0"
 horizontal_alignment = 2

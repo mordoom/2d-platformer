@@ -1,0 +1,25 @@
+extends BTAction
+
+var min_chase_distance := 50
+var pursue_speed := 120
+
+func _enter() -> void:
+    blackboard.set_var(&"current_speed", pursue_speed)
+
+func _tick(delta: float) -> Status:
+    if not agent.floor_check.is_colliding() || agent.is_on_wall():
+        return FAILURE
+
+    var target = blackboard.get_var(&"target")
+    var position_difference: float = target.position.x - agent.position.x
+    var direction_to_player: float = sign(position_difference)
+    var distance_to_player: float = abs(position_difference)
+    var current_direction: float = blackboard.get_var(&"current_dir")
+
+    if current_direction != direction_to_player:
+        agent.flip_direction()
+
+    if (distance_to_player <= min_chase_distance):
+        return SUCCESS
+
+    return RUNNING

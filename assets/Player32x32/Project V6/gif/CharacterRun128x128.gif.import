@@ -1,0 +1,15 @@
+[remap]
+
+importer="import_gif_to_sprite_frames"
+type="SpriteFrames"
+uid="uid://etskyutn5t33"
+path="res://.godot/imported/CharacterRun128x128.gif-d74818b70defab1a9c7acd0577a7b54a.tres"
+
+[deps]
+
+source_file="res://assets/Player32x32/Project V6/gif/CharacterRun128x128.gif"
+dest_files=["res://.godot/imported/CharacterRun128x128.gif-d74818b70defab1a9c7acd0577a7b54a.tres"]
+
+[params]
+
+frames_per_second=30

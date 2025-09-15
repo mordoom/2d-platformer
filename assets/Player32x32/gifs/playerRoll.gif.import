@@ -1,0 +1,15 @@
+[remap]
+
+importer="import_gif_to_sprite_frames"
+type="SpriteFrames"
+uid="uid://cbcon2tu18nuj"
+path="res://.godot/imported/playerRoll.gif-bbd908576bd803d06823a8e6c0449bf3.tres"
+
+[deps]
+
+source_file="res://assets/Player32x32/gifs/playerRoll.gif"
+dest_files=["res://.godot/imported/playerRoll.gif-bbd908576bd803d06823a8e6c0449bf3.tres"]
+
+[params]
+
+frames_per_second=30

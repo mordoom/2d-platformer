@@ -1,0 +1,15 @@
+[remap]
+
+importer="import_gif_to_sprite_frames"
+type="SpriteFrames"
+uid="uid://dag17t7rmolw2"
+path="res://.godot/imported/playerWalk.gif-6a319a81cbd23b7568eb6d393dbea5e1.tres"
+
+[deps]
+
+source_file="res://assets/Player32x32/gifs/playerWalk.gif"
+dest_files=["res://.godot/imported/playerWalk.gif-6a319a81cbd23b7568eb6d393dbea5e1.tres"]
+
+[params]
+
+frames_per_second=30

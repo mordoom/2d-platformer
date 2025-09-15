@@ -1,0 +1,15 @@
+[remap]
+
+importer="import_gif_to_sprite_frames"
+type="SpriteFrames"
+uid="uid://bruq1xujfrbn2"
+path="res://.godot/imported/CharacterJump128x128.gif-f760588c8ad7da79f08986440f760ee2.tres"
+
+[deps]
+
+source_file="res://assets/Player32x32/Project V6/gif/CharacterJump128x128.gif"
+dest_files=["res://.godot/imported/CharacterJump128x128.gif-f760588c8ad7da79f08986440f760ee2.tres"]
+
+[params]
+
+frames_per_second=30

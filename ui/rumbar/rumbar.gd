@@ -5,8 +5,8 @@ extends HBoxContainer
 var player: CharacterBody2D
 
 func init(_player: CharacterBody2D) -> void:
-    player = _player
+	player = _player
 
 func _process(_delta: float) -> void:
-    if player:
-        label.text = str(player.rum_bottles)
+	if player:
+		label.text = str(player.rum_bottles)

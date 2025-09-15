@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://b33ws0ac72ddr"]
+
+[ext_resource type="Script" uid="uid://bnimfadgde2fw" path="res://new_characters/components/projectile.gd" id="1_xiwto"]
+[ext_resource type="Texture2D" uid="uid://ckkfk6cviqyl0" path="res://assets/Cañon_bala.png" id="2_xtlfa"]
+[ext_resource type="Script" uid="uid://sbaeqqe6wi0e" path="res://new_characters/components/hitbox.gd" id="3_5vlf7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8cjw"]
+atlas = ExtResource("2_xtlfa")
+region = Rect2(500, 250, 262, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kuk4"]
+atlas = ExtResource("2_xtlfa")
+region = Rect2(500, 500, 262, 250)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b574o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8cjw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kuk4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t12b7"]
+size = Vector2(11, 11)
+
+[node name="Cannonball" type="Area2D" node_paths=PackedStringArray("hitbox")]
+script = ExtResource("1_xiwto")
+hitbox = NodePath("Hitbox")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.1, -0.1)
+sprite_frames = SubResource("SpriteFrames_b574o")
+autoplay = "default"
+frame_progress = 0.108488
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("3_5vlf7")
+metadata/_custom_type_script = "uid://sbaeqqe6wi0e"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-1.5, -1.5)
+shape = SubResource("RectangleShape2D_t12b7")
+
+[connection signal="body_entered" from="." to="." method="_on_hitbox_on_damage_area_hit"]

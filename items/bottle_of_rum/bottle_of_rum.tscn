@@ -24,4 +24,5 @@ collection_signal = "on_bottle_rum_collected"
 button_prompt_comp = NodePath("../ButtonPromptComponent")
 metadata/_custom_type_script = "uid://832xmughicl7"
 
-[node name="ButtonPromptComponent" parent="." instance=ExtResource("4_do1cl")]
+[node name="ButtonPromptComponent" parent="." node_paths=PackedStringArray("interact_area") instance=ExtResource("4_do1cl")]
+interact_area = NodePath("..")

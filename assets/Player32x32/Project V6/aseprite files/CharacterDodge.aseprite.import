@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://crj6onjbujip2"
+path="res://.godot/imported/CharacterDodge.aseprite-c7f01b2f4b108014faba7c38ab221966.res"
+
+[deps]
+
+source_file="res://assets/Player32x32/Project V6/aseprite files/CharacterDodge.aseprite"
+dest_files=["res://.godot/imported/CharacterDodge.aseprite-c7f01b2f4b108014faba7c38ab221966.res"]
+
+[params]
+

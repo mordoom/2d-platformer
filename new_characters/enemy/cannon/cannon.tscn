@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://lv651gm64w3v"]
+
+[ext_resource type="Script" uid="uid://dvbhlwfwsbskl" path="res://new_characters/enemy/cannon/cannon.gd" id="1_55v8w"]
+[ext_resource type="PackedScene" uid="uid://cu87nnob3ont0" path="res://components/projectile_component.tscn" id="2_4vdrb"]
+[ext_resource type="Texture2D" uid="uid://dmrr3jqhipmb8" path="res://assets/Cañon_quieto.png" id="2_t547e"]
+[ext_resource type="Script" uid="uid://bgh31qn75n5u2" path="res://new_characters/components/hurtbox.gd" id="5_uocle"]
+[ext_resource type="Script" uid="uid://btumjuy135r4w" path="res://new_characters/components/health_component.gd" id="5_y1v53"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_55v8w"]
+size = Vector2(48, 37)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y1v53"]
+size = Vector2(48, 37)
+
+[node name="Cannon" type="StaticBody2D"]
+z_index = 1
+collision_layer = 5
+collision_mask = 3
+script = ExtResource("1_55v8w")
+
+[node name="ProjectileComponent" parent="." instance=ExtResource("2_4vdrb")]
+position = Vector2(-34, 0)
+rotation = 3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 5.5)
+shape = SubResource("RectangleShape2D_55v8w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.14159
+scale = Vector2(0.1, -0.1)
+texture = ExtResource("2_t547e")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("5_uocle")
+metadata/_custom_type_script = "uid://bgh31qn75n5u2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(2, 5.5)
+shape = SubResource("RectangleShape2D_y1v53")
+
+[node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("hurtbox")]
+script = ExtResource("5_y1v53")
+hurtbox = NodePath("../Hurtbox")
+max_health = 30
+metadata/_custom_type_script = "uid://btumjuy135r4w"

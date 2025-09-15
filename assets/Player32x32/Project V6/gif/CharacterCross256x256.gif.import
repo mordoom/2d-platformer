@@ -1,0 +1,15 @@
+[remap]
+
+importer="import_gif_to_sprite_frames"
+type="SpriteFrames"
+uid="uid://cqe8w3tyoey3u"
+path="res://.godot/imported/CharacterCross256x256.gif-762251d886e8642f044ac0dfab98571e.tres"
+
+[deps]
+
+source_file="res://assets/Player32x32/Project V6/gif/CharacterCross256x256.gif"
+dest_files=["res://.godot/imported/CharacterCross256x256.gif-762251d886e8642f044ac0dfab98571e.tres"]
+
+[params]
+
+frames_per_second=30

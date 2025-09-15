@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="1_y63kf"]
 [ext_resource type="TileSet" uid="uid://dsu71ownhxqk5" path="res://world/cave/levels/tiles.tres" id="2_y63kf"]
 [ext_resource type="PackedScene" uid="uid://dtb6ujcdawf23" path="res://world/cave/parallax_background.tscn" id="3_lns7a"]
-[ext_resource type="PackedScene" uid="uid://cioby1n27ryow" path="res://enemies/skeleton/skeleton.tscn" id="4_1en53"]
+[ext_resource type="PackedScene" uid="uid://yq36i0nmliug" path="res://new_characters/enemy/enemy.tscn" id="4_1en53"]
 [ext_resource type="PackedScene" uid="uid://dmxcjqfiiabri" path="res://interactable/ladder/large_ladder.tscn" id="5_y63kf"]
 
 [node name="Level" type="Node2D"]

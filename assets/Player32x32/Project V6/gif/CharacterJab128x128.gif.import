@@ -1,0 +1,15 @@
+[remap]
+
+importer="import_gif_to_sprite_frames"
+type="SpriteFrames"
+uid="uid://bkiy3epog71x3"
+path="res://.godot/imported/CharacterJab128x128.gif-ca256d404ca758a6fc807129d3ba0545.tres"
+
+[deps]
+
+source_file="res://assets/Player32x32/Project V6/gif/CharacterJab128x128.gif"
+dest_files=["res://.godot/imported/CharacterJab128x128.gif-ca256d404ca758a6fc807129d3ba0545.tres"]
+
+[params]
+
+frames_per_second=30

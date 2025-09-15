@@ -1,0 +1,15 @@
+[remap]
+
+importer="import_gif_to_sprite_frames"
+type="SpriteFrames"
+uid="uid://by3sv5ivfbecn"
+path="res://.godot/imported/CharacterDodge128x128.gif-1d74512bfb187649774cd8b17e43d310.tres"
+
+[deps]
+
+source_file="res://assets/Player32x32/Project V6/gif/CharacterDodge128x128.gif"
+dest_files=["res://.godot/imported/CharacterDodge128x128.gif-1d74512bfb187649774cd8b17e43d310.tres"]
+
+[params]
+
+frames_per_second=30
