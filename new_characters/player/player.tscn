@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=4 uid="uid://ynhyq16703kq"]
+[gd_scene load_steps=57 format=4 uid="uid://ynhyq16703kq"]
 
 [ext_resource type="Script" uid="uid://dqaul3djxxb3b" path="res://new_characters/player/player.gd" id="1_i3pqv"]
 [ext_resource type="Material" uid="uid://bv2fvbsgt04xu" path="res://new_characters/hitshader.tres" id="2_fpo3a"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://bh0ywy2ty2f80" path="res://new_characters/player/states/sword_attack.gd" id="6_x5dtk"]
 [ext_resource type="Script" uid="uid://5nua74ox8y81" path="res://new_characters/player/states/air.gd" id="7_dw050"]
 [ext_resource type="Script" uid="uid://dai6srq0ffod6" path="res://addons/shaker/data/Vector2/ShakerPreset2D.gd" id="7_v7dxj"]
+[ext_resource type="Script" uid="uid://d3srwp64xewq8" path="res://new_characters/player/limbo_hsm.gd" id="8_5l3i6"]
 [ext_resource type="Script" uid="uid://dd2vwptv6ukam" path="res://new_characters/player/states/shoot.gd" id="8_icpky"]
 [ext_resource type="Script" uid="uid://72vh1n1cjnqx" path="res://new_characters/player/states/climbing.gd" id="8_rpf03"]
 [ext_resource type="Script" uid="uid://bkmsdxww3f7p5" path="res://new_characters/player/states/deflect.gd" id="9_fpo3a"]
@@ -447,25 +448,12 @@ size_override = Vector2(576, 512)
 [sub_resource type="Resource" id="Resource_234y4"]
 script = ExtResource("5_f1vlj")
 frequency = Vector2(10, 10)
-phase = Vector2(1, 1)
 amplitude = Vector2(14, 14)
-offset = Vector2(0, 0)
-BlendingMode = 0
-fade_in = 0.0
-fade_out = 0.0
-start_percent = 0.0
-end_percent = 1.0
-_temp_graph = false
-bake_internal = 64
 metadata/_custom_type_script = "uid://cfhxxvnhwgl6w"
 
 [sub_resource type="Resource" id="Resource_r1uo0"]
 script = ExtResource("7_v7dxj")
 PositionShake = Array[ExtResource("4_5l3i6")]([SubResource("Resource_234y4")])
-RotationShake = Array[ExtResource("6_t5niu")]([])
-ScaleShake = Array[ExtResource("4_5l3i6")]([])
-bake_internal = 64
-__follow_timeline = false
 metadata/_custom_type_script = "uid://dai6srq0ffod6"
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_hqtel"]
@@ -504,6 +492,16 @@ var/has_double_jumped/type = 1
 var/has_double_jumped/value = false
 var/has_double_jumped/hint = 0
 var/has_double_jumped/hint_string = ""
+var/climbable_above/name = &"climbable_above"
+var/climbable_above/type = 0
+var/climbable_above/value = null
+var/climbable_above/hint = 0
+var/climbable_above/hint_string = ""
+var/climbable_below/name = &"climbable_below"
+var/climbable_below/type = 0
+var/climbable_below/value = null
+var/climbable_below/hint = 0
+var/climbable_below/hint_string = ""
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_idpv6"]
 size = Vector2(11, 29)
@@ -580,6 +578,7 @@ metadata/_custom_type_script = "uid://bn5dalk2rg7k2"
 
 [node name="LimboHSM" type="LimboHSM" parent="."]
 blackboard_plan = SubResource("BlackboardPlan_hqtel")
+script = ExtResource("8_5l3i6")
 
 [node name="Idle" type="LimboState" parent="LimboHSM" node_paths=PackedStringArray("animation_player")]
 script = ExtResource("2_hqtel")
