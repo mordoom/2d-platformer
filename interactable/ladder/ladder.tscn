@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://b45tjtegdp6uo"]
+[gd_scene load_steps=4 format=4 uid="uid://b45tjtegdp6uo"]
 
-[ext_resource type="Texture2D" uid="uid://braa4odvf1gb0" path="res://assets/wood_set/ladder/28x128/1.png" id="1_7u6sq"]
 [ext_resource type="Script" uid="uid://bdiu73v2aj05b" path="res://new_interactables/climbable.gd" id="1_gchbr"]
+[ext_resource type="TileSet" uid="uid://dis6gvty4iluf" path="res://world/beach/beach.tres" id="2_gchbr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sgfke"]
 size = Vector2(28, 127)
@@ -12,9 +12,11 @@ collision_mask = 6
 script = ExtResource("1_gchbr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.5)
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_sgfke")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
-texture = ExtResource("1_7u6sq")
+position = Vector2(-7, 0)
+tile_map_data = PackedByteArray("AAAAAPz/AAAcAAAAAAAAAAMAAAAdAAAAAAAAAAIAAAAeAAAAAAAAAAEAAAAeAAAAAAAAAAAAAAAeAAAAAAAAAP//AAAeAAAAAAAAAP7/AAAeAAAAAAAAAP3/AAAeAAAAAAA=")
+tile_set = ExtResource("2_gchbr")
