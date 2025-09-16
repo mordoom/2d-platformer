@@ -1,7 +1,6 @@
-[gd_resource type="TileSet" load_steps=27 format=3 uid="uid://dsu71ownhxqk5"]
+[gd_resource type="TileSet" load_steps=26 format=3 uid="uid://dsu71ownhxqk5"]
 
 [ext_resource type="Texture2D" uid="uid://bxrbskqrqwo0j" path="res://assets/PixelFantasy_Caves_1.0/mainlev_build.png" id="1_h6dm5"]
-[ext_resource type="PackedScene" uid="uid://cqefnt5rald4a" path="res://enemies/spike/spike.tscn" id="2_k0kge"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_k0kge"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -2325,7 +2324,6 @@ texture = ExtResource("1_h6dm5")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_k0kge"]
 resource_name = "damageable"
-scenes/1/scene = ExtResource("2_k0kge")
 
 [resource]
 occlusion_layer_0/light_mask = 1
