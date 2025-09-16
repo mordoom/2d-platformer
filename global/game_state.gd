@@ -3,6 +3,26 @@ extends Node
 var rum_bottles: Array[String] = []
 var perma_dead_enemies: Array[String] = []
 var dead_enemies: Array[String] = []
+var dead_body: DeadBody
+
+class DeadBody:
+    var scene: String
+    var position: Vector2
+    var money: int
+
+func store_dead_body(player: Player) -> void:
+    var new_body = DeadBody.new()
+    new_body.position = player.global_position
+    new_body.scene = MetSys.get_current_room_name()
+    new_body.money = player.money
+    dead_body = new_body
+
+func create_body() -> void:
+    var dead_body_scene = load("res://items/dead_body.tscn")
+    var new_body = dead_body_scene.instantiate()
+    new_body.global_position = dead_body.position
+    new_body.money = dead_body.money
+    MetSys.get_current_room_instance().add_child(new_body)
 
 func reset_enemies() -> void:
     dead_enemies = []

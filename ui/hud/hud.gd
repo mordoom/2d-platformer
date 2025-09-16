@@ -25,6 +25,7 @@ func init() -> void:
 	message.visible = false
 	healthbar.init_health(player.get_health())
 	rumbar.init(player)
+	money = player.money
 	update_money_label()
 
 func on_game_over() -> void:

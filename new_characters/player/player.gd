@@ -33,6 +33,7 @@ var knockback_force = Vector2.ZERO
 var roll_force = 0
 var climbing = false
 var double_jumped = false
+var money := 0
 var rum_bottles: int = 0
 var max_rum_bottles: int = 0
 var climbable_above: Area2D = null
@@ -40,6 +41,7 @@ var climbable_below: Area2D = null
 var swingable_above: Area2D = null
 
 func _ready() -> void:
+    SignalBus.connect("money_collected", _on_money_collected)
     hsm.blackboard.bind_var_to_property(GameConstants.BlackboardVars.dir_var, self, &"dir")
     hsm.blackboard.bind_var_to_property(GameConstants.BlackboardVars.current_speed_var, self, &"current_speed")
     hsm.blackboard.bind_var_to_property(GameConstants.BlackboardVars.roll_force_var, self, &"roll_force")
@@ -143,3 +145,6 @@ func _on_health_component_dead() -> void:
 func _on_hurtbox_component_on_hit(_damage: int, knockback_velocity: float, direction: Vector2, _stun: bool) -> void:
     knockback_force = knockback_velocity * direction
     hsm.dispatch(&"hit_started")
+
+func _on_money_collected(amount: int):
+    money += amount

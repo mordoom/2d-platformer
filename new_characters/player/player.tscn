@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://bxvjmhc3a6grx" path="res://new_characters/player/states/move.gd" id="3_sweqy"]
 [ext_resource type="Script" uid="uid://5q66n5vik8ft" path="res://new_characters/player/states/roll.gd" id="4_1jxqw"]
 [ext_resource type="Script" uid="uid://duxib2kpsik7x" path="res://addons/shaker/data/Vector2/BaseShakerType2D.gd" id="4_5l3i6"]
-[ext_resource type="Script" uid="uid://cu714kewjssre" path="res://input_manager.gd" id="4_hqtel"]
+[ext_resource type="Script" path="res://input_manager.gd" id="4_hqtel"]
 [ext_resource type="Script" uid="uid://0yikiyyw3ca4" path="res://new_characters/player/states/jump.gd" id="5_2hs0m"]
 [ext_resource type="Script" uid="uid://cfhxxvnhwgl6w" path="res://addons/shaker/data/Vector2/ShakerTypeSineWave2D.gd" id="5_f1vlj"]
 [ext_resource type="Script" uid="uid://bcbw3ogr3btb" path="res://addons/shaker/data/Single/BaseShakerType1D.gd" id="6_t5niu"]
@@ -519,6 +519,7 @@ size = Vector2(25, 20)
 size = Vector2(25, 20)
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["Player"]]
+z_index = 1
 collision_layer = 2
 collision_mask = 5
 floor_stop_on_slope = false
@@ -606,31 +607,31 @@ metadata/_custom_type_script = "uid://ccanlw8cuwyak"
 [node name="GroundAttack" type="LimboState" parent="LimboHSM" node_paths=PackedStringArray("animation_player")]
 script = ExtResource("6_x5dtk")
 can_move = false
-animation_player = NodePath("../../AnimationPlayer")
 animation_name = &"Attack"
+animation_player = NodePath("../../AnimationPlayer")
 metadata/_custom_type_script = "uid://ccanlw8cuwyak"
 
 [node name="JumpAttack" type="LimboState" parent="LimboHSM" node_paths=PackedStringArray("animation_player")]
 script = ExtResource("6_x5dtk")
 stop_movement = false
-animation_player = NodePath("../../AnimationPlayer")
 animation_name = &"JumpAttack"
+animation_player = NodePath("../../AnimationPlayer")
 metadata/_custom_type_script = "uid://ccanlw8cuwyak"
 
 [node name="RunAttack" type="LimboState" parent="LimboHSM" node_paths=PackedStringArray("animation_player")]
 script = ExtResource("6_x5dtk")
 stop_movement = false
 can_move = false
-animation_player = NodePath("../../AnimationPlayer")
 animation_name = &"RunAttack"
+animation_player = NodePath("../../AnimationPlayer")
 metadata/_custom_type_script = "uid://ccanlw8cuwyak"
 
 [node name="Shoot" type="LimboState" parent="LimboHSM" node_paths=PackedStringArray("bullet_hitbox", "animation_player")]
 script = ExtResource("8_icpky")
-bullet_hitbox = NodePath("../../BulletHitbox")
 can_move = false
-animation_player = NodePath("../../AnimationPlayer")
 animation_name = &"Shoot"
+bullet_hitbox = NodePath("../../BulletHitbox")
+animation_player = NodePath("../../AnimationPlayer")
 metadata/_custom_type_script = "uid://ccanlw8cuwyak"
 
 [node name="Deflect" type="LimboState" parent="LimboHSM" node_paths=PackedStringArray("animation_player")]
@@ -749,6 +750,7 @@ collision_layer = 2
 collision_mask = 4
 script = ExtResource("18_d2agh")
 sound_effect = ExtResource("21_5mkjs")
+is_deflecting = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeflectBox"]
 position = Vector2(19.5, 5)
