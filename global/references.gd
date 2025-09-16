@@ -1,7 +1,7 @@
 extends Node
 
 var player_scene: PackedScene = preload("res://new_characters/player/player.tscn")
-var initial_level: PackedScene = preload("res://world/cave/levels/starting_area.tscn")
+var initial_level: PackedScene = preload("res://world/beach/starting_beach.tscn")
 var jump_dust_anim: PackedScene = preload("res://effects/jump_dust_anim.tscn")
 var landing_dust_anim: PackedScene = preload("res://effects/landing_dust_anim.tscn")
 var skeleton_scene: PackedScene = preload("res://new_characters/enemy/enemy.tscn")

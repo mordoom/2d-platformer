@@ -523,6 +523,7 @@ z_index = 1
 collision_layer = 2
 collision_mask = 5
 floor_stop_on_slope = false
+floor_max_angle = 0.87266463
 floor_snap_length = 20.0
 script = ExtResource("1_i3pqv")
 jump_height = 80.0
@@ -607,31 +608,31 @@ metadata/_custom_type_script = "uid://ccanlw8cuwyak"
 [node name="GroundAttack" type="LimboState" parent="LimboHSM" node_paths=PackedStringArray("animation_player")]
 script = ExtResource("6_x5dtk")
 can_move = false
-animation_name = &"Attack"
 animation_player = NodePath("../../AnimationPlayer")
+animation_name = &"Attack"
 metadata/_custom_type_script = "uid://ccanlw8cuwyak"
 
 [node name="JumpAttack" type="LimboState" parent="LimboHSM" node_paths=PackedStringArray("animation_player")]
 script = ExtResource("6_x5dtk")
 stop_movement = false
-animation_name = &"JumpAttack"
 animation_player = NodePath("../../AnimationPlayer")
+animation_name = &"JumpAttack"
 metadata/_custom_type_script = "uid://ccanlw8cuwyak"
 
 [node name="RunAttack" type="LimboState" parent="LimboHSM" node_paths=PackedStringArray("animation_player")]
 script = ExtResource("6_x5dtk")
 stop_movement = false
 can_move = false
-animation_name = &"RunAttack"
 animation_player = NodePath("../../AnimationPlayer")
+animation_name = &"RunAttack"
 metadata/_custom_type_script = "uid://ccanlw8cuwyak"
 
 [node name="Shoot" type="LimboState" parent="LimboHSM" node_paths=PackedStringArray("bullet_hitbox", "animation_player")]
 script = ExtResource("8_icpky")
-can_move = false
-animation_name = &"Shoot"
 bullet_hitbox = NodePath("../../BulletHitbox")
+can_move = false
 animation_player = NodePath("../../AnimationPlayer")
+animation_name = &"Shoot"
 metadata/_custom_type_script = "uid://ccanlw8cuwyak"
 
 [node name="Deflect" type="LimboState" parent="LimboHSM" node_paths=PackedStringArray("animation_player")]
@@ -750,7 +751,6 @@ collision_layer = 2
 collision_mask = 4
 script = ExtResource("18_d2agh")
 sound_effect = ExtResource("21_5mkjs")
-is_deflecting = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeflectBox"]
 position = Vector2(19.5, 5)

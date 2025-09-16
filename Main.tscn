@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dch8dyylb7526" path="res://addons/MetroidvaniaSystem/Template/Nodes/Minimap.tscn" id="5_3dxm6"]
 
 [node name="GameManager" type="Node2D"]
+position = Vector2(444, -1)
 script = ExtResource("1_r0du0")
 
 [node name="Player" parent="." instance=ExtResource("2_cm0pq")]

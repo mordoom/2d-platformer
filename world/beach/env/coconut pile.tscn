@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://djc318w74cunt"]
+
+[ext_resource type="Texture2D" uid="uid://cr1ubgqel7p7c" path="res://assets/beach/Coconut pile.png" id="1_syw1j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_syw1j"]
+size = Vector2(70, 53)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-239, -58)
+texture = ExtResource("1_syw1j")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-6, -3.5)
+shape = SubResource("RectangleShape2D_syw1j")

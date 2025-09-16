@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwyvnwk15i0q0"]
+
+[ext_resource type="Texture2D" uid="uid://c0j88ovdeni17" path="res://assets/beach/Trees.png" id="1_d30ig"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d30ig"]
+size = Vector2(73, 11)
+
+[node name="Tree" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-223, 82)
+texture = ExtResource("1_d30ig")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0.5, -8.5)
+shape = SubResource("RectangleShape2D_d30ig")
+one_way_collision = true

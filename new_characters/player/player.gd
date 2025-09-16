@@ -33,6 +33,7 @@ var knockback_force = Vector2.ZERO
 var roll_force = 0
 var climbing = false
 var double_jumped = false
+var terminal_velocity = 500
 var money := 0
 var rum_bottles: int = 0
 var max_rum_bottles: int = 0
@@ -58,7 +59,7 @@ func on_enter() -> void:
 func _physics_process(delta: float) -> void:
     if is_on_floor():
         double_jumped = false
-    elif not climbing:
+    elif not climbing && velocity.y < terminal_velocity:
         velocity.y += calc_gravity() * delta
 
     var can_move: bool = hsm.blackboard.get_var(GameConstants.BlackboardVars.can_move_var)
