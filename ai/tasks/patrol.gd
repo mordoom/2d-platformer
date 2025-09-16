@@ -1,6 +1,6 @@
 extends BTAction
 
-var patrol_speed = 80
+@export var patrol_speed = 80
 
 func _enter() -> void:
     blackboard.set_var(&"current_speed", patrol_speed)

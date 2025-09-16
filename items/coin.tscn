@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://fodnqvn86xdq"]
+
+[ext_resource type="Texture2D" uid="uid://dmo4mfwi3sfmb" path="res://assets/coin.png" id="1_kjs30"]
+[ext_resource type="Script" uid="uid://bwijyi3x7fosu" path="res://items/collect_on_contact.gd" id="1_mt2wt"]
+[ext_resource type="Script" uid="uid://832xmughicl7" path="res://components/collection_component.gd" id="1_op8v0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3s7u"]
+atlas = ExtResource("1_kjs30")
+region = Rect2(0, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wh2h"]
+atlas = ExtResource("1_kjs30")
+region = Rect2(10, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3lwv"]
+atlas = ExtResource("1_kjs30")
+region = Rect2(20, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utvve"]
+atlas = ExtResource("1_kjs30")
+region = Rect2(30, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5ufm"]
+atlas = ExtResource("1_kjs30")
+region = Rect2(40, 0, 10, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hwcao"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3s7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wh2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h3lwv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utvve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5ufm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mt2wt"]
+size = Vector2(11, 12)
+
+[node name="Collect On Contact" type="Area2D" node_paths=PackedStringArray("collection_component")]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_mt2wt")
+collection_component = NodePath("CollectionComponent")
+
+[node name="CollectionComponent" type="Node" parent="."]
+script = ExtResource("1_op8v0")
+collection_signal = "money_collected"
+amount = 2
+metadata/_custom_type_script = "uid://832xmughicl7"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_hwcao")
+autoplay = "default"
+frame_progress = 0.85762477
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_mt2wt")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

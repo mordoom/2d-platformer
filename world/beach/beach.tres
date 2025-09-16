@@ -1,6 +1,9 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dis6gvty4iluf"]
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://dis6gvty4iluf"]
 
 [ext_resource type="Texture2D" uid="uid://c4x0s6orm77gc" path="res://assets/beach/beach-tiles.png" id="1_5v8jm"]
+[ext_resource type="PackedScene" uid="uid://fodnqvn86xdq" path="res://items/coin.tscn" id="2_j5cxw"]
+[ext_resource type="PackedScene" uid="uid://cpbx41ergsr8t" path="res://items/bottle_of_rum/bottle_of_rum.tscn" id="3_w7ddd"]
+[ext_resource type="PackedScene" uid="uid://clal0ss1p0mk0" path="res://items/treasure_chest.tscn" id="4_w7ddd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rtgoh"]
 texture = ExtResource("1_5v8jm")
@@ -82,9 +85,16 @@ texture = ExtResource("1_5v8jm")
 37:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(3.3157883, -5.0626435, 8, -4.0081263, 8, 2.830552, 3.412836, 3.2834406)
 37:0/0/physics_layer_0/polygon_0/one_way = true
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_j5cxw"]
+resource_name = "collectables"
+scenes/1/scene = ExtResource("2_j5cxw")
+scenes/3/scene = ExtResource("4_w7ddd")
+scenes/5/scene = ExtResource("3_w7ddd")
+
 [resource]
 physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_rtgoh")
+sources/1 = SubResource("TileSetScenesCollectionSource_j5cxw")

@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://buojgt88loa8u"]
 
-[ext_resource type="Script" uid="uid://bnimfadgde2fw" path="res://new_characters/components/projectile.gd" id="1_1325h"]
+[ext_resource type="Script" uid="uid://bnimfadgde2fw" path="res://characters/components/projectile.gd" id="1_1325h"]
 [ext_resource type="Texture2D" uid="uid://ckkfk6cviqyl0" path="res://assets/Cañon_bala.png" id="2_atblw"]
-[ext_resource type="Script" uid="uid://b04ble633sv7g" path="res://characters/damage/damage_area.gd" id="3_0rkvk"]
+[ext_resource type="Script" path="res://characters/damage/damage_area.gd" id="3_0rkvk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d8cjw"]
 atlas = ExtResource("2_atblw")

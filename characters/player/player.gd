@@ -147,5 +147,5 @@ func _on_hurtbox_component_on_hit(_damage: int, knockback_velocity: float, direc
     knockback_force = knockback_velocity * direction
     hsm.dispatch(&"hit_started")
 
-func _on_money_collected(amount: int):
+func _on_money_collected(area: Area2D, amount: int):
     money += amount

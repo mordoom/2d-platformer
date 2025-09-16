@@ -204,7 +204,7 @@ func _reload_resource():
 
 func _load_texture_path_impl():
 	var textures: Array[Texture2D] = []
-	if ControllerIcons.is_node_ready() and _can_be_shown():
+	if ControllerIcons && ControllerIcons.is_node_ready() and _can_be_shown():
 		var input_type = ControllerIcons._last_input_type if force_type == ForceType.NONE else force_type - 1
 		if ControllerIcons.get_path_type(path) == ControllerIcons.PathType.INPUT_ACTION:
 			var event := ControllerIcons.get_matching_event(path, input_type)
@@ -227,7 +227,8 @@ func _load_texture_path():
 		_load_texture_path_impl()
 
 func _init():
-	ControllerIcons.input_type_changed.connect(_on_input_type_changed)
+	if ControllerIcons:
+		ControllerIcons.input_type_changed.connect(_on_input_type_changed)
 
 func _on_input_type_changed(input_type: int, controller: int):
 	_load_texture_path()

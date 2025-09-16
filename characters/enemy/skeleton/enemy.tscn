@@ -1,19 +1,19 @@
 [gd_scene load_steps=53 format=3 uid="uid://yq36i0nmliug"]
 
-[ext_resource type="Script" uid="uid://sbaeqqe6wi0e" path="res://new_characters/components/hitbox.gd" id="1_7k104"]
-[ext_resource type="Script" uid="uid://box5tsimem7l4" path="res://new_characters/enemy/enemy.gd" id="1_427j3"]
-[ext_resource type="Script" uid="uid://bgh31qn75n5u2" path="res://new_characters/components/hurtbox.gd" id="2_bm2dv"]
-[ext_resource type="Script" uid="uid://btumjuy135r4w" path="res://new_characters/components/health_component.gd" id="3_iuxou"]
-[ext_resource type="AudioStream" uid="uid://s5214aembmjs" path="res://assets/sounds/zapsplat_sword_hit.mp3" id="3_ueybh"]
-[ext_resource type="Texture2D" uid="uid://cdqhlha8pefgq" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Attack2.png" id="6_2e6xf"]
-[ext_resource type="AnimationLibrary" uid="uid://p2meusl6rtfg" path="res://new_characters/enemy/skeleanims.res" id="6_03nx6"]
-[ext_resource type="Script" uid="uid://djo8043iycaf6" path="res://ai/tasks/check_for_player.gd" id="7_03nx6"]
-[ext_resource type="Script" uid="uid://bgobfy4nln5cw" path="res://ai/tasks/patrol.gd" id="8_yeuqv"]
-[ext_resource type="Script" uid="uid://c61fv4n4mdc02" path="res://ai/tasks/pursue.gd" id="9_2vq4o"]
-[ext_resource type="Script" uid="uid://botkcxhs4svve" path="res://ai/tasks/get_first_in_group.gd" id="9_iavur"]
-[ext_resource type="Script" uid="uid://g12wvgj8iisd" path="res://ai/tasks/stop.gd" id="9_k40fn"]
-[ext_resource type="Script" uid="uid://fae0vc1pe7kt" path="res://ai/tasks/attack.gd" id="13_2e6xf"]
-[ext_resource type="AudioStream" uid="uid://c8r35jyo2xhm4" path="res://assets/sounds/zapsplat_sword_swing.mp3" id="14_xmf1p"]
+[ext_resource type="Script" uid="uid://box5tsimem7l4" path="res://characters/enemy/enemy.gd" id="1_8n2xj"]
+[ext_resource type="Script" uid="uid://sbaeqqe6wi0e" path="res://characters/components/hitbox.gd" id="2_vj04c"]
+[ext_resource type="AudioStream" uid="uid://s5214aembmjs" path="res://assets/sounds/zapsplat_sword_hit.mp3" id="3_ctjj8"]
+[ext_resource type="Script" uid="uid://bgh31qn75n5u2" path="res://characters/components/hurtbox.gd" id="4_vom71"]
+[ext_resource type="Script" uid="uid://btumjuy135r4w" path="res://characters/components/health_component.gd" id="5_sevdq"]
+[ext_resource type="Texture2D" uid="uid://cdqhlha8pefgq" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Attack2.png" id="6_txd13"]
+[ext_resource type="AnimationLibrary" uid="uid://p2meusl6rtfg" path="res://characters/enemy/skeleanims.res" id="7_6hewy"]
+[ext_resource type="Script" uid="uid://djo8043iycaf6" path="res://ai/tasks/check_for_player.gd" id="8_ed447"]
+[ext_resource type="Script" uid="uid://bgobfy4nln5cw" path="res://ai/tasks/patrol.gd" id="9_7bplv"]
+[ext_resource type="Script" uid="uid://g12wvgj8iisd" path="res://ai/tasks/stop.gd" id="10_hmpb7"]
+[ext_resource type="Script" uid="uid://botkcxhs4svve" path="res://ai/tasks/get_first_in_group.gd" id="11_vebsi"]
+[ext_resource type="Script" uid="uid://c61fv4n4mdc02" path="res://ai/tasks/pursue.gd" id="12_nhxi0"]
+[ext_resource type="Script" uid="uid://fae0vc1pe7kt" path="res://ai/tasks/attack.gd" id="13_oy8vk"]
+[ext_resource type="AudioStream" uid="uid://c8r35jyo2xhm4" path="res://assets/sounds/zapsplat_sword_swing.mp3" id="14_huevs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xaro"]
 size = Vector2(40, 61)
@@ -73,7 +73,7 @@ var/target/hint = 0
 var/target/hint_string = ""
 
 [sub_resource type="BTAction" id="BTAction_2vq4o"]
-script = ExtResource("7_03nx6")
+script = ExtResource("8_ed447")
 
 [sub_resource type="BBNode" id="BBNode_yeuqv"]
 saved_value = NodePath("AnimationPlayer")
@@ -84,14 +84,14 @@ animation_player = SubResource("BBNode_yeuqv")
 animation_name = &"skeleanims/walk"
 
 [sub_resource type="BTAction" id="BTAction_yeuqv"]
-script = ExtResource("8_yeuqv")
+script = ExtResource("9_7bplv")
 
 [sub_resource type="BTSequence" id="BTSequence_ueybh"]
 custom_name = "Look for player"
 children = [SubResource("BTPlayAnimation_2vq4o"), SubResource("BTAction_yeuqv")]
 
 [sub_resource type="BTAction" id="BTAction_ueybh"]
-script = ExtResource("9_k40fn")
+script = ExtResource("10_hmpb7")
 
 [sub_resource type="BBNode" id="BBNode_03nx6"]
 saved_value = NodePath("AnimationPlayer")
@@ -139,24 +139,23 @@ animation_player = SubResource("BBNode_iavur")
 animation_name = &"skeleanims/walk"
 
 [sub_resource type="BTAction" id="BTAction_k40fn"]
-script = ExtResource("9_iavur")
+script = ExtResource("11_vebsi")
 group = &"Player"
-output_var = &"target"
 
 [sub_resource type="BTAction" id="BTAction_iavur"]
-script = ExtResource("9_2vq4o")
+script = ExtResource("12_nhxi0")
 
 [sub_resource type="BTAction" id="BTAction_vwt86"]
-script = ExtResource("9_k40fn")
+script = ExtResource("10_hmpb7")
 
 [sub_resource type="BTAction" id="BTAction_0sx34"]
-script = ExtResource("13_2e6xf")
-sound_effect = ExtResource("14_xmf1p")
+script = ExtResource("13_oy8vk")
+sound_effect = ExtResource("14_huevs")
 animation_name = &"skeleanims/attack"
 
 [sub_resource type="BTAction" id="BTAction_2e6xf"]
-script = ExtResource("13_2e6xf")
-sound_effect = ExtResource("14_xmf1p")
+script = ExtResource("13_oy8vk")
+sound_effect = ExtResource("14_huevs")
 animation_name = &"skeleanims/attack2"
 
 [sub_resource type="BTProbability" id="BTProbability_xmf1p"]
@@ -191,7 +190,7 @@ root_task = SubResource("BTSequence_yeuqv")
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 4
-script = ExtResource("1_427j3")
+script = ExtResource("1_8n2xj")
 death_anim_name = "skeleanims/death"
 stun_animation = &"skeleanims/hit"
 
@@ -200,8 +199,8 @@ position = Vector2(31, 1)
 collision_layer = 4
 collision_mask = 2
 monitoring = false
-script = ExtResource("1_7k104")
-contact_sound = ExtResource("3_ueybh")
+script = ExtResource("2_vj04c")
+contact_sound = ExtResource("3_ctjj8")
 knockback_velocity = 200.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
@@ -211,7 +210,7 @@ shape = SubResource("RectangleShape2D_7xaro")
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("2_bm2dv")
+script = ExtResource("4_vom71")
 metadata/_custom_type_script = "uid://bgh31qn75n5u2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
@@ -219,7 +218,7 @@ position = Vector2(0.5, 8)
 shape = SubResource("RectangleShape2D_iuxou")
 
 [node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("hurtbox")]
-script = ExtResource("3_iuxou")
+script = ExtResource("5_sevdq")
 hurtbox = NodePath("../Hurtbox")
 max_health = 30
 metadata/_custom_type_script = "uid://btumjuy135r4w"
@@ -230,13 +229,13 @@ shape = SubResource("RectangleShape2D_yeuqv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("6_2e6xf")
+texture = ExtResource("6_txd13")
 hframes = 11
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_2vq4o"),
-&"skeleanims": ExtResource("6_03nx6")
+&"skeleanims": ExtResource("7_6hewy")
 }
 
 [node name="BTPlayer" type="BTPlayer" parent="."]

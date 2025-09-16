@@ -133,7 +133,7 @@ func on_campfire_rested_handler(_area: Area2D) -> void:
     player.rum_bottles = player.max_rum_bottles
     GameState.reset_enemies()
 
-func on_bottle_rum_collected(area: Area2D) -> void:
+func on_bottle_rum_collected(area: Area2D, _amount: int) -> void:
     player.add_rum_bottle()
     GameState.rum_bottle_collected(area)
 

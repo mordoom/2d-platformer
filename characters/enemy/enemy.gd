@@ -11,14 +11,14 @@ extends CharacterBody2D
 @onready var hitbox: Hitbox = $HitboxComponent
 @onready var hurtbox: Hurtbox = $Hurtbox
 
+@export var current_dir := 1
 @export var doubloons_dropped := 10
 @export var death_anim_name: String
 @export var stun_animation: StringName
 
-const hit_flash_shader = preload("res://new_characters/hitshader.tres")
+const hit_flash_shader = preload("res://characters/hitshader.tres")
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var current_speed := 0
-var current_dir := 1
 var flash_time := 0.3
 var player_check_offset := 50
 var knockback_force = Vector2.ZERO
@@ -28,6 +28,8 @@ func _ready():
 	sprite.material = new_material
 	bt_player.blackboard.bind_var_to_property(&"current_dir", self, &"current_dir")
 	bt_player.blackboard.bind_var_to_property(&"current_speed", self, &"current_speed")
+	hurtbox.connect("on_hit", _on_hurtbox_on_hit)
+	health_component.connect("dead", _on_health_component_dead)
 
 func _physics_process(delta):
 	velocity.x = current_speed * current_dir + knockback_force.x
@@ -61,8 +63,10 @@ func _on_health_component_dead() -> void:
 	hitbox.set_deferred("monitoring", false)
 	bt_player.active = false
 	current_speed = 0
-	animation_player.play(death_anim_name)
-	SignalBus.emit_signal("money_collected", doubloons_dropped)
+	SignalBus.emit_signal("money_collected", null, doubloons_dropped)
+	if death_anim_name:
+		animation_player.play(death_anim_name)
+	else: queue_free()
 
 func _on_hurtbox_on_hit(_damage: int, knockback_velocity: float, direction: Vector2, stun: bool) -> void:
 	knockback_force = knockback_velocity * direction

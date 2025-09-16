@@ -1,7 +1,7 @@
 extends BTAction
 
-var min_chase_distance := 50
-var pursue_speed := 120
+@export var min_chase_distance := 50
+@export var pursue_speed := 120
 
 func _enter() -> void:
     blackboard.set_var(&"current_speed", pursue_speed)

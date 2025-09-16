@@ -1,30 +1,30 @@
 [gd_scene load_steps=57 format=4 uid="uid://ynhyq16703kq"]
 
-[ext_resource type="Script" uid="uid://dqaul3djxxb3b" path="res://new_characters/player/player.gd" id="1_i3pqv"]
-[ext_resource type="Material" uid="uid://bv2fvbsgt04xu" path="res://new_characters/hitshader.tres" id="2_fpo3a"]
-[ext_resource type="Script" uid="uid://dvyvlvvlyd42d" path="res://new_characters/player/states/idle.gd" id="2_hqtel"]
+[ext_resource type="Script" uid="uid://dqaul3djxxb3b" path="res://characters/player/player.gd" id="1_i3pqv"]
+[ext_resource type="Material" uid="uid://bv2fvbsgt04xu" path="res://characters/hitshader.tres" id="2_fpo3a"]
+[ext_resource type="Script" uid="uid://dvyvlvvlyd42d" path="res://characters/player/states/idle.gd" id="2_hqtel"]
 [ext_resource type="Script" uid="uid://bn5dalk2rg7k2" path="res://addons/shaker/src/Vector2/shaker_component2D.gd" id="3_31pkn"]
-[ext_resource type="Script" uid="uid://bxvjmhc3a6grx" path="res://new_characters/player/states/move.gd" id="3_sweqy"]
-[ext_resource type="Script" uid="uid://5q66n5vik8ft" path="res://new_characters/player/states/roll.gd" id="4_1jxqw"]
+[ext_resource type="Script" uid="uid://bxvjmhc3a6grx" path="res://characters/player/states/move.gd" id="3_sweqy"]
+[ext_resource type="Script" uid="uid://5q66n5vik8ft" path="res://characters/player/states/roll.gd" id="4_1jxqw"]
 [ext_resource type="Script" uid="uid://duxib2kpsik7x" path="res://addons/shaker/data/Vector2/BaseShakerType2D.gd" id="4_5l3i6"]
 [ext_resource type="Script" path="res://input_manager.gd" id="4_hqtel"]
-[ext_resource type="Script" uid="uid://0yikiyyw3ca4" path="res://new_characters/player/states/jump.gd" id="5_2hs0m"]
+[ext_resource type="Script" uid="uid://0yikiyyw3ca4" path="res://characters/player/states/jump.gd" id="5_2hs0m"]
 [ext_resource type="Script" uid="uid://cfhxxvnhwgl6w" path="res://addons/shaker/data/Vector2/ShakerTypeSineWave2D.gd" id="5_f1vlj"]
 [ext_resource type="Script" uid="uid://bcbw3ogr3btb" path="res://addons/shaker/data/Single/BaseShakerType1D.gd" id="6_t5niu"]
-[ext_resource type="Script" uid="uid://bh0ywy2ty2f80" path="res://new_characters/player/states/sword_attack.gd" id="6_x5dtk"]
-[ext_resource type="Script" uid="uid://5nua74ox8y81" path="res://new_characters/player/states/air.gd" id="7_dw050"]
+[ext_resource type="Script" uid="uid://bh0ywy2ty2f80" path="res://characters/player/states/sword_attack.gd" id="6_x5dtk"]
+[ext_resource type="Script" uid="uid://5nua74ox8y81" path="res://characters/player/states/air.gd" id="7_dw050"]
 [ext_resource type="Script" uid="uid://dai6srq0ffod6" path="res://addons/shaker/data/Vector2/ShakerPreset2D.gd" id="7_v7dxj"]
-[ext_resource type="Script" uid="uid://d3srwp64xewq8" path="res://new_characters/player/limbo_hsm.gd" id="8_5l3i6"]
-[ext_resource type="Script" uid="uid://dd2vwptv6ukam" path="res://new_characters/player/states/shoot.gd" id="8_icpky"]
-[ext_resource type="Script" uid="uid://72vh1n1cjnqx" path="res://new_characters/player/states/climbing.gd" id="8_rpf03"]
-[ext_resource type="Script" uid="uid://bkmsdxww3f7p5" path="res://new_characters/player/states/deflect.gd" id="9_fpo3a"]
-[ext_resource type="Script" uid="uid://b8lno6jwq742d" path="res://new_characters/player/states/swinging.gd" id="9_x5dtk"]
-[ext_resource type="Script" uid="uid://e86bw21bg3nn" path="res://new_characters/player/states/hit.gd" id="10_on558"]
-[ext_resource type="Script" uid="uid://dxrpyqigucbrn" path="res://new_characters/player/states/dead.gd" id="12_gqopd"]
-[ext_resource type="Script" uid="uid://bgh31qn75n5u2" path="res://new_characters/components/hurtbox.gd" id="15_58jvb"]
-[ext_resource type="Script" uid="uid://btumjuy135r4w" path="res://new_characters/components/health_component.gd" id="16_8l73k"]
-[ext_resource type="Script" uid="uid://sbaeqqe6wi0e" path="res://new_characters/components/hitbox.gd" id="17_aqrcq"]
-[ext_resource type="Script" uid="uid://bh0x4yq3uixk5" path="res://new_characters/components/deflect_box.gd" id="18_d2agh"]
+[ext_resource type="Script" uid="uid://d3srwp64xewq8" path="res://characters/player/limbo_hsm.gd" id="8_5l3i6"]
+[ext_resource type="Script" uid="uid://dd2vwptv6ukam" path="res://characters/player/states/shoot.gd" id="8_icpky"]
+[ext_resource type="Script" uid="uid://72vh1n1cjnqx" path="res://characters/player/states/climbing.gd" id="8_rpf03"]
+[ext_resource type="Script" uid="uid://bkmsdxww3f7p5" path="res://characters/player/states/deflect.gd" id="9_fpo3a"]
+[ext_resource type="Script" uid="uid://b8lno6jwq742d" path="res://characters/player/states/swinging.gd" id="9_x5dtk"]
+[ext_resource type="Script" uid="uid://e86bw21bg3nn" path="res://characters/player/states/hit.gd" id="10_on558"]
+[ext_resource type="Script" uid="uid://dxrpyqigucbrn" path="res://characters/player/states/dead.gd" id="12_gqopd"]
+[ext_resource type="Script" uid="uid://bgh31qn75n5u2" path="res://characters/components/hurtbox.gd" id="15_58jvb"]
+[ext_resource type="Script" uid="uid://btumjuy135r4w" path="res://characters/components/health_component.gd" id="16_8l73k"]
+[ext_resource type="Script" uid="uid://sbaeqqe6wi0e" path="res://characters/components/hitbox.gd" id="17_aqrcq"]
+[ext_resource type="Script" uid="uid://bh0x4yq3uixk5" path="res://characters/components/deflect_box.gd" id="18_d2agh"]
 [ext_resource type="AudioStream" uid="uid://s5214aembmjs" path="res://assets/sounds/zapsplat_sword_hit.mp3" id="19_kyfeq"]
 [ext_resource type="AudioStream" uid="uid://d0s4mj7ppgykf" path="res://assets/sounds/zapsplat_sword_strike_metal.mp3" id="21_5mkjs"]
 
@@ -571,9 +571,11 @@ metadata/_aseprite_wizard_config_ = {
 metadata/_aseprite_wizard_source_file_hash_ = "72043f8d2e94409f5adc1fc7c1d90db4"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-9.834766e-07, -6.854534e-07)
 
 [node name="ShakerComponent2D" type="Node2D" parent="Camera2D"]
 script = ExtResource("3_31pkn")
+intensity = 0.2
 duration = 0.1
 shakerPreset = SubResource("Resource_r1uo0")
 metadata/_custom_type_script = "uid://bn5dalk2rg7k2"
