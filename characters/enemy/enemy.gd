@@ -10,75 +10,85 @@ extends CharacterBody2D
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var hitbox: Hitbox = $HitboxComponent
 @onready var hurtbox: Hurtbox = $Hurtbox
+@onready var starting_point := position
 
-@export var current_dir := 1
 @export var doubloons_dropped := 10
 @export var death_anim_name: String
 @export var stun_animation: StringName
+@export var flying: bool = false
 
 const hit_flash_shader = preload("res://characters/hitshader.tres")
-var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
+var current_dir := Vector2.RIGHT
 var current_speed := 0
 var flash_time := 0.3
 var player_check_offset := 50
 var knockback_force = Vector2.ZERO
+var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
-	var new_material := hit_flash_shader.duplicate()
-	sprite.material = new_material
-	bt_player.blackboard.bind_var_to_property(&"current_dir", self, &"current_dir")
-	bt_player.blackboard.bind_var_to_property(&"current_speed", self, &"current_speed")
-	hurtbox.connect("on_hit", _on_hurtbox_on_hit)
-	health_component.connect("dead", _on_health_component_dead)
+    var new_material := hit_flash_shader.duplicate()
+    sprite.material = new_material
+    bt_player.blackboard.bind_var_to_property(&"current_dir", self, &"current_dir")
+    bt_player.blackboard.bind_var_to_property(&"current_speed", self, &"current_speed")
+    bt_player.blackboard.bind_var_to_property(&"starting_point", self, &"starting_point", true)
+    hurtbox.connect("on_hit", _on_hurtbox_on_hit)
+    health_component.connect("dead", _on_health_component_dead)
 
 func _physics_process(delta):
-	velocity.x = current_speed * current_dir + knockback_force.x
+    velocity = current_speed * current_dir
+    velocity.x += knockback_force.x
 
-	knockback_force = knockback_force.lerp(Vector2.ZERO, 0.2)
+    knockback_force = knockback_force.lerp(Vector2.ZERO, 0.2)
 
-	if not is_on_floor():
-		velocity.y += gravity * delta
+    if can_fall():
+        velocity.y += gravity * delta
 
-	move_and_slide()
+    update_facing_direction(current_dir.x)
+    move_and_slide()
+
+func can_fall() -> bool:
+    return not is_on_floor() && not flying
+
+func update_facing_direction(direction: float) -> void:
+    if direction < 0:
+        sprite.flip_h = true
+        hitbox.scale.x = -1
+        wall_check.scale.x = -1
+        floor_check.position.x = -1
+        player_check.scale.x = -1
+    elif direction > 0:
+        sprite.flip_h = false
+        hitbox.scale.x = 1
+        wall_check.scale.x = 1
+        floor_check.position.x = 15
+        player_check.scale.x = 1
 
 func flip_direction() -> void:
-	var new_direction = current_dir * -1
-
-	sprite.flip_h = false if new_direction > 0 else true
-
-	wall_check.target_position.x = abs(wall_check.target_position.x) * new_direction
-	wall_check.position.x = abs(wall_check.position.x) * new_direction
-
-	floor_check.position.x = abs(floor_check.position.x) * new_direction
-
-	player_check.target_position.y = abs(player_check.target_position.y) * new_direction
-
-	hitbox.position.x = abs(hitbox.position.x) * new_direction
-
-	current_dir = new_direction
+    current_dir = - current_dir
 
 func _on_health_component_dead() -> void:
-	set_collision_layer_value(3, false)
-	hurtbox.set_deferred("monitorable", false)
-	hitbox.set_deferred("monitoring", false)
-	bt_player.active = false
-	current_speed = 0
-	SignalBus.emit_signal("money_collected", null, doubloons_dropped)
-	if death_anim_name:
-		animation_player.play(death_anim_name)
-	else: queue_free()
+    set_collision_layer_value(3, false)
+    hurtbox.set_deferred("monitorable", false)
+    hitbox.set_deferred("monitoring", false)
+    bt_player.active = false
+    current_speed = 0
+    flying = false
+    SignalBus.emit_signal("money_collected", null, doubloons_dropped)
+    if death_anim_name:
+        animation_player.play(death_anim_name)
+    else: queue_free()
 
 func _on_hurtbox_on_hit(_damage: int, knockback_velocity: float, direction: Vector2, stun: bool) -> void:
-	knockback_force = knockback_velocity * direction
-	hit_flash()
-	if stun:
-		animation_player.play(stun_animation)
-		await animation_player.animation_finished
+    knockback_force = knockback_velocity * direction
+    hit_flash()
+    if stun:
+        animation_player.play(stun_animation)
+        await animation_player.animation_finished
 
-	bt_player.blackboard.set_var(&"target", get_tree().get_first_node_in_group("Player")) # TODO: if we passed the entire Hitbox Node instead we could assign the owner of the hitbox?
-	bt_player.blackboard.set_var(&"current_dir", direction)
+    bt_player.blackboard.set_var(&"target", get_tree().get_first_node_in_group("Player"))
+    bt_player.blackboard.set_var(&"current_dir", direction)
 
 func hit_flash() -> void:
-	sprite.material.set_shader_parameter("flash_value", 1.0)
-	await get_tree().create_timer(flash_time).timeout
-	sprite.material.set_shader_parameter("flash_value", 0)
+    sprite.material.set_shader_parameter("flash_value", 1.0)
+    await get_tree().create_timer(flash_time).timeout
+    sprite.material.set_shader_parameter("flash_value", 0)
