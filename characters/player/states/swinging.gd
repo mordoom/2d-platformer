@@ -13,8 +13,7 @@ func _enter() -> void:
 	swingable = hsm.blackboard.get_var(GameConstants.BlackboardVars.swingable_above_var)
 	blackboard.set_var(GameConstants.BlackboardVars.climbing_var, true)
 
-func _update(delta: float) -> void:
-	var dir: Vector2 = blackboard.get_var(GameConstants.BlackboardVars.dir_var)
+func _update(_delta: float) -> void:
 	var action_pressed: StringName = blackboard.get_var(GameConstants.BlackboardVars.action_pressed_var)
 
 	owner.global_position.x = swingable.marker.global_position.x

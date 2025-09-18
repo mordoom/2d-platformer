@@ -6,7 +6,7 @@ extends BTAction
 func _enter() -> void:
     blackboard.set_var(&"current_speed", patrol_speed)
 
-func _tick(delta: float) -> Status:
+func _tick(_delta: float) -> Status:
     var patrol_point = blackboard.get_var(&"patrol_point")
     var direction_to_point = agent.position.direction_to(patrol_point)
     blackboard.set_var(&"current_dir", direction_to_point)

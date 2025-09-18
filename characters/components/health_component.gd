@@ -18,7 +18,7 @@ signal dead
 func _ready():
 	hurtbox.connect("on_hit", on_hit)
 
-func on_hit(damage: int, _knockback_velocity: float, _direction: Vector2, stun: bool) -> void:
+func on_hit(damage: int, _knockback_velocity: float, _direction: Vector2, _stun: bool) -> void:
 	health -= damage
 	if health <= 0:
 		emit_signal("dead")

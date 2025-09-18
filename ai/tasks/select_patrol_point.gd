@@ -1,8 +1,8 @@
 extends BTAction
 
-@export var max_patrol_distance: Vector2
+@export var max_patrol_distance: Vector2i
 
-func _tick(delta: float) -> Status:
+func _tick(_delta: float) -> Status:
     var starting_point = blackboard.get_var(&"starting_point")
 
     var x = Rng.rng.randi_range(-max_patrol_distance.x, max_patrol_distance.x)

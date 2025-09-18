@@ -6,7 +6,7 @@ extends BTAction
 func _enter() -> void:
     blackboard.set_var(&"current_speed", pursue_speed)
 
-func _tick(delta: float) -> Status:
+func _tick(_delta: float) -> Status:
     if not agent.floor_check.is_colliding() || agent.is_on_wall():
         blackboard.set_var(&"target", null)
         return FAILURE

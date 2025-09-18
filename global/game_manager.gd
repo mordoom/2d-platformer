@@ -66,7 +66,7 @@ func init() -> void:
 
 func load_game(path: String) -> void:
     var save_manager: SaveManager = SaveManager.new()
-    save_manager.load_from_text(SAVE_PATH)
+    save_manager.load_from_text(path)
 
     # Assign loaded values.
     # collectibles = save_manager.get_value("collectible_count")

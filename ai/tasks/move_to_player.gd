@@ -7,7 +7,7 @@ extends BTAction
 func _enter() -> void:
     blackboard.set_var(&"current_speed", pursue_speed)
 
-func _tick(delta: float) -> Status:
+func _tick(_delta: float) -> Status:
     var target = blackboard.get_var(&"target")
     var direction_to_point = agent.global_position.direction_to(target.global_position)
     blackboard.set_var(&"current_dir", direction_to_point)

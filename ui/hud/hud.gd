@@ -50,7 +50,7 @@ func on_health_changed(node: Node, amount: int) -> void:
 func update_money_label() -> void:
 	money_label.text = "$" + str(money)
 
-func _on_money_collected(area: Area2D, amount: int):
+func _on_money_collected(_area: Area2D, amount: int):
 	target_money += amount
 	var tween := get_tree().create_tween()
 	tween.tween_property(self, "money", target_money, 1.0)

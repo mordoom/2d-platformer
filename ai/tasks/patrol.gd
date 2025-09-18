@@ -5,7 +5,7 @@ extends BTAction
 func _enter() -> void:
     blackboard.set_var(&"current_speed", patrol_speed)
 
-func _tick(delta: float) -> Status:
+func _tick(_delta: float) -> Status:
     if agent.floor_check.is_colliding() && not agent.is_on_wall():
         return RUNNING
     else:
