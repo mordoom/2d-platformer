@@ -46,7 +46,7 @@ project/assembly_name="2d platformer"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/MetroidvaniaSystem/plugin.cfg", "res://addons/controller_icons/plugin.cfg", "res://addons/debug_menu/plugin.cfg", "res://addons/gdUnit4/plugin.cfg", "res://addons/input_helper/plugin.cfg", "res://addons/map-editor/plugin.cfg", "res://addons/shaker/plugin.cfg", "res://addons/sound_manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/MetroidvaniaSystem/plugin.cfg", "res://addons/controller_icons/plugin.cfg", "res://addons/debug_menu/plugin.cfg", "res://addons/gdUnit4/plugin.cfg", "res://addons/input_helper/plugin.cfg", "res://addons/map-editor/plugin.cfg", "res://addons/shaker/plugin.cfg", "res://addons/sound_manager/plugin.cfg")
 
 [global_group]
 

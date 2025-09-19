@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://bxvjmhc3a6grx" path="res://characters/player/states/move.gd" id="3_sweqy"]
 [ext_resource type="Script" uid="uid://5q66n5vik8ft" path="res://characters/player/states/roll.gd" id="4_1jxqw"]
 [ext_resource type="Script" uid="uid://duxib2kpsik7x" path="res://addons/shaker/data/Vector2/BaseShakerType2D.gd" id="4_5l3i6"]
-[ext_resource type="Script" path="res://input_manager.gd" id="4_hqtel"]
+[ext_resource type="Script" uid="uid://cu714kewjssre" path="res://input_manager.gd" id="4_hqtel"]
 [ext_resource type="Script" uid="uid://0yikiyyw3ca4" path="res://characters/player/states/jump.gd" id="5_2hs0m"]
 [ext_resource type="Script" uid="uid://cfhxxvnhwgl6w" path="res://addons/shaker/data/Vector2/ShakerTypeSineWave2D.gd" id="5_f1vlj"]
 [ext_resource type="Script" uid="uid://bcbw3ogr3btb" path="res://addons/shaker/data/Single/BaseShakerType1D.gd" id="6_t5niu"]
@@ -544,7 +544,7 @@ material = ExtResource("2_fpo3a")
 texture = SubResource("PortableCompressedTexture2D_aqrcq")
 hframes = 9
 vframes = 8
-frame = 55
+frame = 35
 metadata/_aseprite_wizard_interface_config_ = {
 "animation_section": true,
 "output_section": true,
