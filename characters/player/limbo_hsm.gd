@@ -14,6 +14,7 @@ extends LimboHSM
 @onready var dead_state: LimboState = $Dead
 @onready var shoot_state: LimboState = $Shoot
 @onready var deflect_state: LimboState = $Deflect
+@onready var heal_state: LimboState = $Heal
 
 func _ready():
     _init_state_machine()
@@ -21,6 +22,9 @@ func _ready():
 func _init_state_machine() -> void:
     add_transition(idle_state, move_state, &"movement_started")
     add_transition(move_state, idle_state, EVENT_FINISHED)
+
+    add_transition(idle_state, heal_state, &"healing_started")
+    add_transition(heal_state, idle_state, EVENT_FINISHED)
 
     add_transition(move_state, roll_state, &"roll_started")
     add_transition(roll_state, move_state, EVENT_FINISHED)

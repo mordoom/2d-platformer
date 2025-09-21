@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://dis6gvty4iluf" path="res://world/beach/beach.tres" id="2_gchbr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sgfke"]
-size = Vector2(28, 127)
+size = Vector2(28, 155.5)
 
 [node name="Area2D" type="Area2D"]
 collision_layer = 8
@@ -12,7 +12,7 @@ collision_mask = 6
 script = ExtResource("1_gchbr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
+position = Vector2(0, -15.25)
 shape = SubResource("RectangleShape2D_sgfke")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

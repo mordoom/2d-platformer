@@ -9,10 +9,8 @@ func _input(_event):
 
     var action_pressed: StringName = &"none"
     
-    if (Input.is_action_just_pressed("drink_rum") && owner.rum_bottles > 0):
-        SignalBus.emit_signal("rum_consumed")
-        owner.set_health(owner.get_health() + 20)
-        owner.rum_bottles = owner.rum_bottles - 1
+    if Input.is_action_just_pressed("drink_rum"):
+        action_pressed = &"drink_rum"
     elif Input.is_action_pressed(&"interact"):
         owner.handle_interactions()
     elif Input.is_action_just_pressed(&"roll"):
