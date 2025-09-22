@@ -20,6 +20,7 @@ extends CharacterBody2D
 @export var jump_time_to_descend := 0.5
 @export var coyote_time := 0.1
 @export var variable_height_jump_mult := 0.2
+@export var terminal_velocity = 800
 
 @onready var jump_velocity := ((2.0 * jump_height) / jump_time_to_peak) * -1.0
 @onready var jump_gravity := ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
@@ -33,7 +34,6 @@ var knockback_force = Vector2.ZERO
 var roll_force = 0
 var climbing = false
 var double_jumped = false
-var terminal_velocity = 500
 var money := 0
 var rum_bottles: int = 0
 var max_rum_bottles: int = 0
