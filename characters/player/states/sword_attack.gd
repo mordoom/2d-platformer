@@ -37,3 +37,12 @@ func _update(delta: float) -> void:
             animation_player.play(animation_name + str(combo_count))
         else:
             hsm.dispatch(EVENT_FINISHED)
+    else:
+        if blackboard.get_var(GameConstants.BlackboardVars.dir_var).x == 0 && animation_name == "RunAttack":
+            var current_pos = animation_player.current_animation_position
+            animation_player.play("Attack")
+            animation_player.seek(current_pos)
+        if owner.is_on_floor() && animation_name == "JumpAttack":
+            var current_pos = animation_player.current_animation_position
+            animation_player.play("Attack")
+            animation_player.seek(current_pos)
