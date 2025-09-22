@@ -7,7 +7,7 @@ var sword_swing_sound = preload("res://assets/sounds/zapsplat_sword_swing.mp3")
 var combo_count := 1
 var max_combo = 2
 var advance_combo := false
-var combo_cooldown_time := 0.25
+var combo_cooldown_time := 0.15
 var combo_cooldown_timer := 0.0
 
 func _enter() -> void:

@@ -86,7 +86,6 @@ func _on_hurtbox_on_hit(_damage: int, knockback_velocity: float, direction: Vect
         await animation_player.animation_finished
 
     bt_player.blackboard.set_var(&"target", get_tree().get_first_node_in_group("Player"))
-    bt_player.blackboard.set_var(&"current_dir", direction)
 
 func hit_flash() -> void:
     sprite.material.set_shader_parameter("flash_value", 1.0)

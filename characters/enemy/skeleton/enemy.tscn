@@ -1,16 +1,17 @@
-[gd_scene load_steps=53 format=3 uid="uid://yq36i0nmliug"]
+[gd_scene load_steps=52 format=3 uid="uid://yq36i0nmliug"]
 
 [ext_resource type="Script" uid="uid://box5tsimem7l4" path="res://characters/enemy/enemy.gd" id="1_8n2xj"]
 [ext_resource type="Script" uid="uid://sbaeqqe6wi0e" path="res://characters/components/hitbox.gd" id="2_vj04c"]
 [ext_resource type="AudioStream" uid="uid://s5214aembmjs" path="res://assets/sounds/zapsplat_sword_hit.mp3" id="3_ctjj8"]
 [ext_resource type="Script" uid="uid://bgh31qn75n5u2" path="res://characters/components/hurtbox.gd" id="4_vom71"]
 [ext_resource type="Script" uid="uid://btumjuy135r4w" path="res://characters/components/health_component.gd" id="5_sevdq"]
-[ext_resource type="Texture2D" uid="uid://cdqhlha8pefgq" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Attack2.png" id="6_txd13"]
+[ext_resource type="Texture2D" uid="uid://3le6hlxbv7n0" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Attack1.png" id="6_vj04c"]
 [ext_resource type="AnimationLibrary" uid="uid://p2meusl6rtfg" path="res://characters/enemy/skeleanims.res" id="7_6hewy"]
 [ext_resource type="Script" uid="uid://djo8043iycaf6" path="res://ai/tasks/check_for_player.gd" id="8_ed447"]
 [ext_resource type="Script" uid="uid://bgobfy4nln5cw" path="res://ai/tasks/patrol.gd" id="9_7bplv"]
 [ext_resource type="Script" uid="uid://g12wvgj8iisd" path="res://ai/tasks/stop.gd" id="10_hmpb7"]
 [ext_resource type="Script" uid="uid://botkcxhs4svve" path="res://ai/tasks/get_first_in_group.gd" id="11_vebsi"]
+[ext_resource type="Script" uid="uid://b7ov7os4iacqc" path="res://ai/tasks/flip_direction.gd" id="11_vj04c"]
 [ext_resource type="Script" uid="uid://c61fv4n4mdc02" path="res://ai/tasks/pursue.gd" id="12_nhxi0"]
 [ext_resource type="Script" uid="uid://fae0vc1pe7kt" path="res://ai/tasks/attack.gd" id="13_oy8vk"]
 [ext_resource type="AudioStream" uid="uid://c8r35jyo2xhm4" path="res://assets/sounds/zapsplat_sword_swing.mp3" id="14_huevs"]
@@ -21,8 +22,9 @@ size = Vector2(40, 61)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iuxou"]
 size = Vector2(25, 48)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yeuqv"]
-size = Vector2(21, 46)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vj04c"]
+radius = 15.0
+height = 54.0
 
 [sub_resource type="Animation" id="Animation_03nx6"]
 length = 0.001
@@ -72,60 +74,14 @@ var/target/type = 24
 var/target/hint = 0
 var/target/hint_string = ""
 
-[sub_resource type="BTAction" id="BTAction_2vq4o"]
-script = ExtResource("8_ed447")
+[sub_resource type="BBVariant" id="BBVariant_vj04c"]
+saved_value = null
+resource_name = "<null>"
 
-[sub_resource type="BBNode" id="BBNode_yeuqv"]
-saved_value = NodePath("AnimationPlayer")
-resource_name = "AnimationPlayer"
-
-[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_2vq4o"]
-animation_player = SubResource("BBNode_yeuqv")
-animation_name = &"skeleanims/walk"
-
-[sub_resource type="BTAction" id="BTAction_yeuqv"]
-script = ExtResource("9_7bplv")
-
-[sub_resource type="BTSequence" id="BTSequence_ueybh"]
-custom_name = "Look for player"
-children = [SubResource("BTPlayAnimation_2vq4o"), SubResource("BTAction_yeuqv")]
-
-[sub_resource type="BTAction" id="BTAction_ueybh"]
-script = ExtResource("10_hmpb7")
-
-[sub_resource type="BBNode" id="BBNode_03nx6"]
-saved_value = NodePath("AnimationPlayer")
-resource_name = "AnimationPlayer"
-
-[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_yeuqv"]
-animation_player = SubResource("BBNode_03nx6")
-animation_name = &"skeleanims/idle"
-
-[sub_resource type="BTWait" id="BTWait_03nx6"]
-duration = 2.0
-
-[sub_resource type="BBNode" id="BBNode_2vq4o"]
-saved_value = NodePath(".")
-resource_name = "."
-
-[sub_resource type="BTCallMethod" id="BTCallMethod_iavur"]
-node = SubResource("BBNode_2vq4o")
-method = &"flip_direction"
-
-[sub_resource type="BTFail" id="BTFail_iavur"]
-
-[sub_resource type="BTSequence" id="BTSequence_vwt86"]
-custom_name = "Idle"
-children = [SubResource("BTAction_ueybh"), SubResource("BTPlayAnimation_yeuqv"), SubResource("BTWait_03nx6"), SubResource("BTCallMethod_iavur"), SubResource("BTFail_iavur")]
-
-[sub_resource type="BTSequence" id="BTSequence_iavur"]
-custom_name = "Patrol"
-children = [SubResource("BTSequence_ueybh"), SubResource("BTSequence_vwt86")]
-
-[sub_resource type="BTParallel" id="BTParallel_iavur"]
-num_failures_required = 3
-repeat = true
-children = [SubResource("BTAction_2vq4o"), SubResource("BTSequence_iavur")]
+[sub_resource type="BTCheckVar" id="BTCheckVar_ctjj8"]
+variable = &"target"
+check_type = 5
+value = SubResource("BBVariant_vj04c")
 
 [sub_resource type="BTWait" id="BTWait_k40fn"]
 duration = 0.25
@@ -166,36 +122,77 @@ duration = 0.5
 
 [sub_resource type="BTSequence" id="BTSequence_k40fn"]
 custom_name = "Pursue And Attack"
-children = [SubResource("BTWait_k40fn"), SubResource("BTPlayAnimation_k40fn"), SubResource("BTAction_k40fn"), SubResource("BTAction_iavur"), SubResource("BTAction_vwt86"), SubResource("BTAction_0sx34"), SubResource("BTProbability_xmf1p"), SubResource("BTWait_iavur")]
+children = [SubResource("BTCheckVar_ctjj8"), SubResource("BTWait_k40fn"), SubResource("BTPlayAnimation_k40fn"), SubResource("BTAction_k40fn"), SubResource("BTAction_iavur"), SubResource("BTAction_vwt86"), SubResource("BTAction_0sx34"), SubResource("BTProbability_xmf1p"), SubResource("BTWait_iavur")]
 
-[sub_resource type="BTRepeatUntilFailure" id="BTRepeatUntilFailure_iavur"]
-children = [SubResource("BTSequence_k40fn")]
+[sub_resource type="BTAction" id="BTAction_2vq4o"]
+script = ExtResource("8_ed447")
 
-[sub_resource type="BBVariant" id="BBVariant_iavur"]
-saved_value = null
-resource_name = "<null>"
+[sub_resource type="BBNode" id="BBNode_yeuqv"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
 
-[sub_resource type="BTSetVar" id="BTSetVar_k40fn"]
-variable = &"target"
-value = SubResource("BBVariant_iavur")
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_2vq4o"]
+animation_player = SubResource("BBNode_yeuqv")
+animation_name = &"skeleanims/walk"
 
-[sub_resource type="BTSequence" id="BTSequence_yeuqv"]
-children = [SubResource("BTParallel_iavur"), SubResource("BTRepeatUntilFailure_iavur"), SubResource("BTSetVar_k40fn")]
+[sub_resource type="BTAction" id="BTAction_yeuqv"]
+script = ExtResource("9_7bplv")
+
+[sub_resource type="BTSequence" id="BTSequence_ueybh"]
+custom_name = "Look for player"
+children = [SubResource("BTPlayAnimation_2vq4o"), SubResource("BTAction_yeuqv")]
+
+[sub_resource type="BTAction" id="BTAction_ueybh"]
+script = ExtResource("10_hmpb7")
+
+[sub_resource type="BBNode" id="BBNode_03nx6"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_yeuqv"]
+animation_player = SubResource("BBNode_03nx6")
+animation_name = &"skeleanims/idle"
+
+[sub_resource type="BTWait" id="BTWait_03nx6"]
+duration = 2.0
+
+[sub_resource type="BTAction" id="BTAction_ctjj8"]
+script = ExtResource("11_vj04c")
+
+[sub_resource type="BTFail" id="BTFail_iavur"]
+
+[sub_resource type="BTSequence" id="BTSequence_vwt86"]
+custom_name = "Idle"
+children = [SubResource("BTAction_ueybh"), SubResource("BTPlayAnimation_yeuqv"), SubResource("BTWait_03nx6"), SubResource("BTAction_ctjj8"), SubResource("BTFail_iavur")]
+
+[sub_resource type="BTSequence" id="BTSequence_iavur"]
+custom_name = "Patrol"
+children = [SubResource("BTSequence_ueybh"), SubResource("BTSequence_vwt86")]
+
+[sub_resource type="BTParallel" id="BTParallel_iavur"]
+num_failures_required = 3
+repeat = true
+children = [SubResource("BTAction_2vq4o"), SubResource("BTSequence_iavur")]
+
+[sub_resource type="BTSelector" id="BTSelector_vom71"]
+children = [SubResource("BTSequence_k40fn"), SubResource("BTParallel_iavur")]
 
 [sub_resource type="BehaviorTree" id="BehaviorTree_03nx6"]
 blackboard_plan = SubResource("BlackboardPlan_tlrvp")
-root_task = SubResource("BTSequence_yeuqv")
+root_task = SubResource("BTSelector_vom71")
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_yeuqv"]
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 4
+floor_stop_on_slope = false
+floor_max_angle = 0.87266463
+floor_snap_length = 20.0
 script = ExtResource("1_8n2xj")
 death_anim_name = "skeleanims/death"
 stun_animation = &"skeleanims/hit"
 
 [node name="HitboxComponent" type="Area2D" parent="."]
-position = Vector2(31, 1)
 collision_layer = 4
 collision_mask = 2
 monitoring = false
@@ -204,7 +201,7 @@ contact_sound = ExtResource("3_ctjj8")
 knockback_velocity = 200.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(-4, 0)
+position = Vector2(28, 1)
 shape = SubResource("RectangleShape2D_7xaro")
 
 [node name="Hurtbox" type="Area2D" parent="."]
@@ -224,12 +221,12 @@ max_health = 30
 metadata/_custom_type_script = "uid://btumjuy135r4w"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-3.5, 9)
-shape = SubResource("RectangleShape2D_yeuqv")
+position = Vector2(0, 6)
+shape = SubResource("CapsuleShape2D_vj04c")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("6_txd13")
+texture = ExtResource("6_vj04c")
 hframes = 11
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -244,8 +241,7 @@ blackboard_plan = SubResource("BlackboardPlan_yeuqv")
 
 [node name="player_check" type="RayCast2D" parent="."]
 position = Vector2(0, 18)
-rotation = 4.71239
-target_position = Vector2(0, 400)
+target_position = Vector2(400, 0)
 collision_mask = 2
 
 [node name="floor_check" type="RayCast2D" parent="."]
@@ -255,6 +251,3 @@ target_position = Vector2(0, 15)
 [node name="wall_check" type="RayCast2D" parent="."]
 position = Vector2(5, -7)
 target_position = Vector2(28, 0)
-
-[connection signal="on_hit" from="Hurtbox" to="." method="_on_hurtbox_on_hit"]
-[connection signal="dead" from="HealthComponent" to="." method="_on_health_component_dead"]

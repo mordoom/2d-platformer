@@ -491,10 +491,10 @@ size = Vector2(11, 29)
 size = Vector2(11, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_icpky"]
-size = Vector2(7, 29)
+size = Vector2(15, 39.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d2agh"]
-size = Vector2(25, 20)
+size = Vector2(43, 28)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqrcq"]
 size = Vector2(44.5, 29)
@@ -508,6 +508,7 @@ floor_max_angle = 0.87266463
 floor_snap_length = 20.0
 script = ExtResource("1_i3pqv")
 movement_speed = 300.0
+roll_speed = 350.0
 ladder_speed = 100.0
 jump_height = 80.0
 jump_time_to_descend = 0.3
@@ -528,7 +529,7 @@ position = Vector2(1, -8)
 texture = SubResource("PortableCompressedTexture2D_e0pgg")
 hframes = 9
 vframes = 8
-frame = 10
+frame = 17
 metadata/_aseprite_wizard_interface_config_ = {
 "animation_section": true,
 "output_section": true,
@@ -719,7 +720,7 @@ script = ExtResource("15_58jvb")
 deflect_box = NodePath("../DeflectBox")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
-position = Vector2(0.5, 0.5)
+position = Vector2(1.5, -3.75)
 shape = SubResource("RectangleShape2D_icpky")
 
 [node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("hurtbox")]
@@ -736,7 +737,7 @@ can_deflect = true
 metadata/_custom_type_script = "uid://sbaeqqe6wi0e"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(19.5, 5)
+position = Vector2(20.5, 0)
 shape = SubResource("RectangleShape2D_d2agh")
 
 [node name="DeflectBox" type="Area2D" parent="."]
