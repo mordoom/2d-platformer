@@ -23,7 +23,7 @@ size = Vector2(40, 61)
 size = Vector2(25, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vj04c"]
-size = Vector2(24, 46)
+size = Vector2(25, 46)
 
 [sub_resource type="Animation" id="Animation_03nx6"]
 length = 0.001
@@ -85,14 +85,6 @@ value = SubResource("BBVariant_vj04c")
 [sub_resource type="BTWait" id="BTWait_k40fn"]
 duration = 0.25
 
-[sub_resource type="BBNode" id="BBNode_iavur"]
-saved_value = NodePath("AnimationPlayer")
-resource_name = "AnimationPlayer"
-
-[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_k40fn"]
-animation_player = SubResource("BBNode_iavur")
-animation_name = &"skeleanims/walk"
-
 [sub_resource type="BTAction" id="BTAction_k40fn"]
 script = ExtResource("11_vebsi")
 group = &"Player"
@@ -108,20 +100,27 @@ script = ExtResource("13_oy8vk")
 sound_effect = ExtResource("14_huevs")
 animation_name = &"skeleanims/attack"
 
-[sub_resource type="BTAction" id="BTAction_2e6xf"]
+[sub_resource type="BTAction" id="BTAction_vj04c"]
 script = ExtResource("13_oy8vk")
 sound_effect = ExtResource("14_huevs")
 animation_name = &"skeleanims/attack2"
 
-[sub_resource type="BTProbability" id="BTProbability_xmf1p"]
-children = [SubResource("BTAction_2e6xf")]
+[sub_resource type="BTProbability" id="BTProbability_ctjj8"]
+children = [SubResource("BTAction_vj04c")]
 
-[sub_resource type="BTWait" id="BTWait_iavur"]
+[sub_resource type="BTSequence" id="BTSequence_vom71"]
+children = [SubResource("BTAction_0sx34"), SubResource("BTProbability_ctjj8")]
+
+[sub_resource type="BTCooldown" id="BTCooldown_vj04c"]
 duration = 0.5
+children = [SubResource("BTSequence_vom71")]
+
+[sub_resource type="BTAlwaysSucceed" id="BTAlwaysSucceed_vj04c"]
+children = [SubResource("BTCooldown_vj04c")]
 
 [sub_resource type="BTSequence" id="BTSequence_k40fn"]
 custom_name = "Pursue And Attack"
-children = [SubResource("BTCheckVar_ctjj8"), SubResource("BTWait_k40fn"), SubResource("BTPlayAnimation_k40fn"), SubResource("BTAction_k40fn"), SubResource("BTAction_iavur"), SubResource("BTAction_vwt86"), SubResource("BTAction_0sx34"), SubResource("BTProbability_xmf1p"), SubResource("BTWait_iavur")]
+children = [SubResource("BTCheckVar_ctjj8"), SubResource("BTWait_k40fn"), SubResource("BTAction_k40fn"), SubResource("BTAction_iavur"), SubResource("BTAction_vwt86"), SubResource("BTAlwaysSucceed_vj04c")]
 
 [sub_resource type="BTAction" id="BTAction_2vq4o"]
 script = ExtResource("8_ed447")
@@ -222,7 +221,7 @@ max_health = 30
 metadata/_custom_type_script = "uid://btumjuy135r4w"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 9)
+position = Vector2(-1.5, 9)
 shape = SubResource("RectangleShape2D_vj04c")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

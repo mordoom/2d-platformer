@@ -5,7 +5,7 @@ extends Node
 
 # How many milliseconds ahead of time the player can make an input and have it still be recognized.
 # I chose the value 150 because it imitates the 9-frame buffer window in the Super Smash Bros. Ultimate game.
-const BUFFER_WINDOW: int = 300
+const BUFFER_WINDOW: int = 200
 
 var keyboard_timestamps: Dictionary
 var joypad_timestamps: Dictionary

@@ -10,6 +10,7 @@ extends CharacterBody2D
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var interact_area: Area2D = $InteractArea
 @onready var hsm: LimboHSM = $LimboHSM
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
 @export var movement_speed := 250.0
 @export var roll_speed := 400.0
@@ -111,9 +112,6 @@ func add_rum_bottle() -> void:
 func was_hit() -> void:
     hsm.dispatch(&"hit_started")
 
-func die() -> void:
-    hsm.dispatch(&"death_started")
-
 func set_health(value: int) -> void:
     health_component.health = value
 
@@ -141,6 +139,11 @@ func _on_climbable_area_below_area_exited(area: Area2D) -> void:
         climbable_below = null
 
 func _on_health_component_dead() -> void:
+    die()
+    hurtbox.monitorable = false
+    hurtbox.monitoring = false
+
+func die() -> void:
     hsm.dispatch(&"death_started")
 
 func _on_hurtbox_component_on_hit(_damage: int, knockback_velocity: float, direction: Vector2, _stun: bool) -> void:

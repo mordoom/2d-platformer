@@ -3,11 +3,8 @@ extends BTAction
 @export var min_chase_distance := 50
 @export var pursue_speed := 120
 
-func _enter() -> void:
-    blackboard.set_var(&"current_speed", pursue_speed)
-
 func _tick(_delta: float) -> Status:
-    if not agent.floor_check.is_colliding() || agent.is_on_wall():
+    if not agent.floor_check.is_colliding() || agent.wall_check.is_colliding():
         blackboard.set_var(&"target", null)
         return FAILURE
 
@@ -20,7 +17,11 @@ func _tick(_delta: float) -> Status:
     if sign(current_direction.x) != direction_to_player:
         agent.flip_direction()
 
-    if (distance_to_player <= min_chase_distance):
+    if distance_to_player > min_chase_distance:
+        blackboard.set_var(&"current_speed", pursue_speed)
+        agent.animation_player.play("skeleanims/walk")
+    if distance_to_player <= min_chase_distance:
+        blackboard.set_var(&"current_speed", 0)
         return SUCCESS
 
     return RUNNING

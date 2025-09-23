@@ -108,6 +108,7 @@ func on_character_died_handler(character: Node) -> void:
         start_death_timer()
         GameState.store_dead_body(player)
         GameState.reset_enemies()
+        update_save()
     else:
         GameState.add_dead_enemy(character)
 
@@ -141,10 +142,19 @@ func on_health_changed(_node: Node, amount: int) -> void:
     if (amount < 0):
         camera.get_node("ShakerComponent2D").play_shake()
 
+func update_save() -> void:
+    var save_manager: SaveManager = SaveManager.new()
+    save_manager.load_from_text(SAVE_PATH)
+    save_manager.set_value("money", 0)
+    save_manager.set_value("dead_body", GameState.dead_body)
+    save_manager.save_as_text(SAVE_PATH)
+
+
 func save_game() -> void:
     var save_manager: SaveManager = SaveManager.new()
     save_manager.set_value("money", player.money)
     save_manager.set_value("rum_bottles", GameState.rum_bottles)
     save_manager.set_value("dead_enemies", GameState.perma_dead_enemies)
     save_manager.set_value("current_room", MetSys.get_current_room_name())
+    save_manager.set_value("dead_body", GameState.dead_body)
     save_manager.save_as_text(SAVE_PATH)

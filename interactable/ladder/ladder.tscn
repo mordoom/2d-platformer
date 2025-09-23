@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=4 uid="uid://b45tjtegdp6uo"]
 
-[ext_resource type="Script" uid="uid://bdiu73v2aj05b" path="res://new_interactables/climbable.gd" id="1_gchbr"]
+[ext_resource type="Script" uid="uid://bdiu73v2aj05b" path="res://interactable/climbable.gd" id="1_gchbr"]
 [ext_resource type="TileSet" uid="uid://dis6gvty4iluf" path="res://world/beach/beach.tres" id="2_gchbr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sgfke"]
-size = Vector2(28, 155.5)
+size = Vector2(20, 155.5)
 
 [node name="Area2D" type="Area2D"]
 collision_layer = 8
@@ -12,7 +12,7 @@ collision_mask = 6
 script = ExtResource("1_gchbr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -15.25)
+position = Vector2(1, -15.25)
 shape = SubResource("RectangleShape2D_sgfke")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

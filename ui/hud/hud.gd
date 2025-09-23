@@ -7,7 +7,6 @@ extends CanvasLayer
 @onready var player: CharacterBody2D = %Player
 @onready var money_label: Label = $MoneyDisplay
 
-var target_money := 0
 var money := 0:
 	set(new_money):
 		money = new_money
@@ -26,7 +25,6 @@ func init() -> void:
 	healthbar.init_health(player.get_health())
 	rumbar.init(player)
 	money = player.money
-	update_money_label()
 
 func on_game_over() -> void:
 	gameOverMessage.visible = true
@@ -51,6 +49,6 @@ func update_money_label() -> void:
 	money_label.text = "$" + str(money)
 
 func _on_money_collected(_area: Area2D, amount: int):
-	target_money += amount
+	var target_money = money + amount
 	var tween := get_tree().create_tween()
 	tween.tween_property(self, "money", target_money, 1.0)

@@ -4,6 +4,7 @@ func _ready() -> void:
     pass
 
 func collect() -> void:
-    SignalBus.emit_signal("money_collected", owner.money)
+    SignalBus.emit_signal("money_collected", owner, owner.money)
+    print_debug(owner.money)
     GameState.dead_body = null
     get_parent().queue_free()

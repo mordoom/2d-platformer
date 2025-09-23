@@ -97,7 +97,6 @@ texture = ExtResource("1_5ag7f")
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_0cgt0"]
 resource_name = "damageable"
 scenes/1/scene = ExtResource("2_qla1e")
-scenes/1/display_placeholder = ExtResource("2_qla1e")
 
 [resource]
 physics_layer_0/collision_layer = 1

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=4 uid="uid://dmxcjqfiiabri"]
 
-[ext_resource type="Script" uid="uid://bdiu73v2aj05b" path="res://new_interactables/climbable.gd" id="1_xa2v7"]
+[ext_resource type="Script" uid="uid://bdiu73v2aj05b" path="res://interactable/climbable.gd" id="1_xa2v7"]
 [ext_resource type="TileSet" uid="uid://dis6gvty4iluf" path="res://world/beach/beach.tres" id="2_pxrv2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sgfke"]

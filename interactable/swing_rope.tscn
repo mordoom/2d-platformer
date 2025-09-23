@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b6on6ui1ojn"]
 
-[ext_resource type="Script" uid="uid://bnkfqpuql2fn1" path="res://new_interactables/swing_rope.gd" id="1_lgbms"]
+[ext_resource type="Script" uid="uid://bnkfqpuql2fn1" path="res://interactable/swing_rope.gd" id="1_lgbms"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lgbms"]
 size = Vector2(19, 55)
