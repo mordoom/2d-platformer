@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://yq36i0nmliug"]
+[gd_scene load_steps=53 format=3 uid="uid://yq36i0nmliug"]
 
 [ext_resource type="Script" uid="uid://box5tsimem7l4" path="res://characters/enemy/enemy.gd" id="1_8n2xj"]
 [ext_resource type="Script" uid="uid://sbaeqqe6wi0e" path="res://characters/components/hitbox.gd" id="2_vj04c"]
@@ -22,9 +22,8 @@ size = Vector2(40, 61)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iuxou"]
 size = Vector2(25, 48)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vj04c"]
-radius = 15.0
-height = 54.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vj04c"]
+size = Vector2(24, 46)
 
 [sub_resource type="Animation" id="Animation_03nx6"]
 length = 0.001
@@ -159,11 +158,13 @@ duration = 2.0
 [sub_resource type="BTAction" id="BTAction_ctjj8"]
 script = ExtResource("11_vj04c")
 
+[sub_resource type="BTWaitTicks" id="BTWaitTicks_vj04c"]
+
 [sub_resource type="BTFail" id="BTFail_iavur"]
 
 [sub_resource type="BTSequence" id="BTSequence_vwt86"]
 custom_name = "Idle"
-children = [SubResource("BTAction_ueybh"), SubResource("BTPlayAnimation_yeuqv"), SubResource("BTWait_03nx6"), SubResource("BTAction_ctjj8"), SubResource("BTFail_iavur")]
+children = [SubResource("BTAction_ueybh"), SubResource("BTPlayAnimation_yeuqv"), SubResource("BTWait_03nx6"), SubResource("BTAction_ctjj8"), SubResource("BTWaitTicks_vj04c"), SubResource("BTFail_iavur")]
 
 [sub_resource type="BTSequence" id="BTSequence_iavur"]
 custom_name = "Patrol"
@@ -221,8 +222,8 @@ max_health = 30
 metadata/_custom_type_script = "uid://btumjuy135r4w"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 6)
-shape = SubResource("CapsuleShape2D_vj04c")
+position = Vector2(0, 9)
+shape = SubResource("RectangleShape2D_vj04c")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

@@ -54,7 +54,7 @@ func update_facing_direction(direction: float) -> void:
         sprite.flip_h = true
         hitbox.scale.x = -1
         wall_check.scale.x = -1
-        floor_check.position.x = -1
+        floor_check.position.x = -15
         player_check.scale.x = -1
     elif direction > 0:
         sprite.flip_h = false

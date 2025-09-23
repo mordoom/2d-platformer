@@ -49,6 +49,7 @@ var/starting_point/hint_string = ""
 
 [sub_resource type="BBVariant" id="BBVariant_m8iyl"]
 saved_value = null
+resource_name = "<null>"
 
 [sub_resource type="BTCheckVar" id="BTCheckVar_otbx2"]
 variable = &"target"
@@ -122,14 +123,13 @@ duration = 2.0
 [sub_resource type="BTAction" id="BTAction_1gfcf"]
 script = ExtResource("9_m8iyl")
 
-[sub_resource type="BTWait" id="BTWait_m8iyl"]
-duration = 0.5
+[sub_resource type="BTWaitTicks" id="BTWaitTicks_m8iyl"]
 
 [sub_resource type="BTFail" id="BTFail_w2tmm"]
 
 [sub_resource type="BTSequence" id="BTSequence_ehrib"]
 custom_name = "Idle"
-children = [SubResource("BTAction_cdhnr"), SubResource("BTPlayAnimation_aspcd"), SubResource("BTWait_nlayn"), SubResource("BTAction_1gfcf"), SubResource("BTWait_m8iyl"), SubResource("BTFail_w2tmm")]
+children = [SubResource("BTAction_cdhnr"), SubResource("BTPlayAnimation_aspcd"), SubResource("BTWait_nlayn"), SubResource("BTAction_1gfcf"), SubResource("BTWaitTicks_m8iyl"), SubResource("BTFail_w2tmm")]
 
 [sub_resource type="BTSequence" id="BTSequence_6rgux"]
 custom_name = "Patrol"
