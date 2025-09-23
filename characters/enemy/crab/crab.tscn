@@ -277,7 +277,7 @@ _data = {
 &"walk": SubResource("Animation_vvm3x")
 }
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Crab" type="CharacterBody2D"]
 collision_layer = 0
 script = ExtResource("1_dkckk")
 doubloons_dropped = 0

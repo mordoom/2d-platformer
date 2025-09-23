@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var wall_check: RayCast2D = $wall_check
 @onready var floor_check: RayCast2D = $floor_check
-@onready var player_check: RayCast2D = $player_check
+@onready var player_check = $player_check
 @onready var bt_player: BTPlayer = $BTPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var hitbox: Hitbox = $HitboxComponent
@@ -24,6 +24,7 @@ var flash_time := 0.3
 var player_check_offset := 50
 var knockback_force = Vector2.ZERO
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
+var dead := false
 
 func _ready():
     var new_material := hit_flash_shader.duplicate()
@@ -35,8 +36,9 @@ func _ready():
     health_component.connect("dead", _on_health_component_dead)
 
 func _physics_process(delta):
-    velocity = current_speed * current_dir
-    velocity.x += knockback_force.x
+    velocity.x = current_speed * current_dir.x + knockback_force.x
+    if flying:
+        velocity.y = current_speed * current_dir.y + knockback_force.y
 
     knockback_force = knockback_force.lerp(Vector2.ZERO, 0.2)
 
@@ -73,6 +75,7 @@ func _on_health_component_dead() -> void:
     bt_player.active = false
     current_speed = 0
     flying = false
+    dead = true
     SignalBus.emit_signal("money_collected", null, doubloons_dropped)
     if death_anim_name:
         animation_player.play(death_anim_name)
