@@ -530,7 +530,7 @@ position = Vector2(1, -8)
 texture = SubResource("PortableCompressedTexture2D_e0pgg")
 hframes = 9
 vframes = 8
-frame = 33
+frame = 55
 metadata/_aseprite_wizard_interface_config_ = {
 "animation_section": true,
 "output_section": true,
@@ -757,6 +757,11 @@ one_shot = true
 
 [node name="DeflectPoint" type="Marker2D" parent="DeflectBox"]
 position = Vector2(30, -7)
+
+[node name="HeadCheck" type="RayCast2D" parent="."]
+position = Vector2(3, -9)
+target_position = Vector2(0, -20)
+hit_from_inside = true
 
 [connection signal="area_entered" from="ClimbableAreaAbove" to="." method="_on_climbable_area_above_area_entered"]
 [connection signal="area_exited" from="ClimbableAreaAbove" to="." method="_on_climbable_area_above_area_exited"]

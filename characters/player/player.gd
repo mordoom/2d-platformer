@@ -11,6 +11,7 @@ extends CharacterBody2D
 @onready var interact_area: Area2D = $InteractArea
 @onready var hsm: LimboHSM = $LimboHSM
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var head_check: RayCast2D = $HeadCheck
 
 @export var movement_speed := 250.0
 @export var roll_speed := 400.0
