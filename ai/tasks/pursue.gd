@@ -19,7 +19,6 @@ func _tick(_delta: float) -> Status:
 
     if distance_to_player > min_chase_distance:
         blackboard.set_var(&"current_speed", pursue_speed)
-        agent.animation_player.play("skeleanims/walk")
     if distance_to_player <= min_chase_distance:
         blackboard.set_var(&"current_speed", 0)
         return SUCCESS

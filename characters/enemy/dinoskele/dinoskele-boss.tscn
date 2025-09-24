@@ -1,0 +1,132 @@
+[gd_scene load_steps=26 format=3 uid="uid://76ojbp4jmikh"]
+
+[ext_resource type="Script" uid="uid://box5tsimem7l4" path="res://characters/enemy/enemy.gd" id="1_c0rcl"]
+[ext_resource type="Texture2D" uid="uid://qh1yunhp56tl" path="res://assets/cave/dinoskele.png" id="1_dbg8f"]
+[ext_resource type="Script" uid="uid://bgh31qn75n5u2" path="res://characters/components/hurtbox.gd" id="3_gr183"]
+[ext_resource type="Script" uid="uid://botkcxhs4svve" path="res://ai/tasks/get_first_in_group.gd" id="3_n8pvf"]
+[ext_resource type="Script" uid="uid://btumjuy135r4w" path="res://characters/components/health_component.gd" id="4_fuy26"]
+[ext_resource type="Script" uid="uid://c61fv4n4mdc02" path="res://ai/tasks/pursue.gd" id="4_y07a7"]
+[ext_resource type="Script" uid="uid://g12wvgj8iisd" path="res://ai/tasks/stop.gd" id="5_aa18g"]
+[ext_resource type="Script" uid="uid://sbaeqqe6wi0e" path="res://characters/components/hitbox.gd" id="5_oc8rt"]
+[ext_resource type="PackedScene" uid="uid://cu87nnob3ont0" path="res://components/projectile_component.tscn" id="6_fy21f"]
+[ext_resource type="PackedScene" uid="uid://b5fcyyety2wnr" path="res://characters/enemy/dinoskele/fireball.tscn" id="7_cjehn"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_oc8rt"]
+var/current_dir/name = &"current_dir"
+var/current_dir/type = 5
+var/current_dir/value = Vector2(0, 0)
+var/current_dir/hint = 0
+var/current_dir/hint_string = ""
+var/current_speed/name = &"current_speed"
+var/current_speed/type = 3
+var/current_speed/value = 0.0
+var/current_speed/hint = 0
+var/current_speed/hint_string = ""
+
+[sub_resource type="BTWait" id="BTWait_g53fc"]
+duration = 0.25
+
+[sub_resource type="BTAction" id="BTAction_udvrk"]
+script = ExtResource("3_n8pvf")
+group = &"Player"
+
+[sub_resource type="BTAction" id="BTAction_i627g"]
+script = ExtResource("4_y07a7")
+min_chase_distance = 100
+
+[sub_resource type="BTAction" id="BTAction_olmqp"]
+script = ExtResource("5_aa18g")
+
+[sub_resource type="BBNode" id="BBNode_s4l4j"]
+saved_value = NodePath("ProjectileComponent")
+resource_name = "ProjectileComponent"
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_f6apc"]
+node = SubResource("BBNode_s4l4j")
+method = &"shoot"
+
+[sub_resource type="BTSequence" id="BTSequence_vntg3"]
+children = [SubResource("BTCallMethod_f6apc")]
+
+[sub_resource type="BTCooldown" id="BTCooldown_ni8vk"]
+duration = 1.0
+children = [SubResource("BTSequence_vntg3")]
+
+[sub_resource type="BTAlwaysSucceed" id="BTAlwaysSucceed_dj4v5"]
+children = [SubResource("BTCooldown_ni8vk")]
+
+[sub_resource type="BTSequence" id="BTSequence_idh1h"]
+custom_name = "Pursue And Attack"
+children = [SubResource("BTWait_g53fc"), SubResource("BTAction_udvrk"), SubResource("BTAction_i627g"), SubResource("BTAction_olmqp"), SubResource("BTAlwaysSucceed_dj4v5")]
+
+[sub_resource type="BTSelector" id="BTSelector_4kiqy"]
+children = [SubResource("BTSequence_idh1h")]
+
+[sub_resource type="BehaviorTree" id="BehaviorTree_1pd2a"]
+blackboard_plan = SubResource("BlackboardPlan_oc8rt")
+root_task = SubResource("BTSelector_4kiqy")
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_fuy26"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oc8rt"]
+radius = 18.0
+height = 60.767105
+
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("projectile_component")]
+collision_layer = 4
+script = ExtResource("1_c0rcl")
+projectile_component = NodePath("ProjectileComponent")
+metadata/_custom_type_script = "uid://box5tsimem7l4"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(-1, 1)
+texture = ExtResource("1_dbg8f")
+
+[node name="BTPlayer" type="BTPlayer" parent="."]
+behavior_tree = SubResource("BehaviorTree_1pd2a")
+blackboard_plan = SubResource("BlackboardPlan_fuy26")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("3_gr183")
+metadata/_custom_type_script = "uid://bgh31qn75n5u2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(59, -27)
+rotation = 2.0634916
+shape = SubResource("CapsuleShape2D_oc8rt")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+script = ExtResource("5_oc8rt")
+metadata/_custom_type_script = "uid://sbaeqqe6wi0e"
+
+[node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("hurtbox")]
+script = ExtResource("4_fuy26")
+hurtbox = NodePath("../Hurtbox")
+metadata/_custom_type_script = "uid://btumjuy135r4w"
+
+[node name="player_check" type="RayCast2D" parent="."]
+position = Vector2(0, 18)
+target_position = Vector2(400, 0)
+collision_mask = 2
+
+[node name="floor_check" type="RayCast2D" parent="."]
+position = Vector2(-4, 64)
+target_position = Vector2(0, 15)
+
+[node name="wall_check" type="RayCast2D" parent="."]
+position = Vector2(5, -7)
+target_position = Vector2(28, 0)
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(46, -50)
+polygon = PackedVector2Array(0, -1, 41, 23, 33, 43, 16, 45, -16, 31, -16, 60, -28, 75, -68, 74, -53, 95, -71, 120, -92, 120, -80, 97, -84, 82, -102, 69, -91, 50, -66, 35, -28, 34, -13, 5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="ProjectileComponent" parent="." instance=ExtResource("6_fy21f")]
+position = Vector2(98, 0)
+rotation = 3.14159
+bullet_scene = ExtResource("7_cjehn")

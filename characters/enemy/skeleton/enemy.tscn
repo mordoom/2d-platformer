@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://yq36i0nmliug"]
+[gd_scene load_steps=55 format=3 uid="uid://yq36i0nmliug"]
 
 [ext_resource type="Script" uid="uid://box5tsimem7l4" path="res://characters/enemy/enemy.gd" id="1_8n2xj"]
 [ext_resource type="Script" uid="uid://sbaeqqe6wi0e" path="res://characters/components/hitbox.gd" id="2_vj04c"]
@@ -85,6 +85,14 @@ value = SubResource("BBVariant_vj04c")
 [sub_resource type="BTWait" id="BTWait_k40fn"]
 duration = 0.25
 
+[sub_resource type="BBNode" id="BBNode_vj04c"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_ctjj8"]
+animation_player = SubResource("BBNode_vj04c")
+animation_name = &"skeleanims/walk"
+
 [sub_resource type="BTAction" id="BTAction_k40fn"]
 script = ExtResource("11_vebsi")
 group = &"Player"
@@ -120,7 +128,7 @@ children = [SubResource("BTCooldown_vj04c")]
 
 [sub_resource type="BTSequence" id="BTSequence_k40fn"]
 custom_name = "Pursue And Attack"
-children = [SubResource("BTCheckVar_ctjj8"), SubResource("BTWait_k40fn"), SubResource("BTAction_k40fn"), SubResource("BTAction_iavur"), SubResource("BTAction_vwt86"), SubResource("BTAlwaysSucceed_vj04c")]
+children = [SubResource("BTCheckVar_ctjj8"), SubResource("BTWait_k40fn"), SubResource("BTPlayAnimation_ctjj8"), SubResource("BTAction_k40fn"), SubResource("BTAction_iavur"), SubResource("BTAction_vwt86"), SubResource("BTAlwaysSucceed_vj04c")]
 
 [sub_resource type="BTAction" id="BTAction_2vq4o"]
 script = ExtResource("8_ed447")

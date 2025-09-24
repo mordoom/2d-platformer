@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5fcyyety2wnr"]
+
+[ext_resource type="Script" uid="uid://bnimfadgde2fw" path="res://characters/components/projectile.gd" id="1_1j4ge"]
+[ext_resource type="Texture2D" uid="uid://dsbn28lmg7w1e" path="res://assets/cave/fireball.png" id="2_a3p7q"]
+[ext_resource type="Script" uid="uid://sbaeqqe6wi0e" path="res://characters/components/hitbox.gd" id="3_ufm41"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t12b7"]
+size = Vector2(21.5, 20.5)
+
+[node name="Fireball" type="Area2D" node_paths=PackedStringArray("hitbox")]
+script = ExtResource("1_1j4ge")
+hitbox = NodePath("Hitbox")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+rotation = 3.1415927
+scale = Vector2(1, -1)
+texture = ExtResource("2_a3p7q")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("3_ufm41")
+knockback_velocity = 800.0
+metadata/_custom_type_script = "uid://sbaeqqe6wi0e"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(5.25, -0.25)
+shape = SubResource("RectangleShape2D_t12b7")
+
+[connection signal="body_entered" from="." to="." method="_on_hitbox_on_damage_area_hit"]

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dtb6ujcdawf23" path="res://world/cave/parallax_background.tscn" id="2_s70sw"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="3_qany5"]
 [ext_resource type="PackedScene" uid="uid://b45tjtegdp6uo" path="res://interactable/ladder/ladder.tscn" id="4_k126l"]
-[ext_resource type="PackedScene" uid="uid://caxpsbcawxkky" path="res://characters/enemy/bonehead/bonehead.tscn" id="5_d4ipq"]
+[ext_resource type="PackedScene" uid="uid://76ojbp4jmikh" path="res://characters/enemy/dinoskele/dinoskele-boss.tscn" id="5_d4ipq"]
 
 [node name="Level" type="Node2D"]
 
@@ -29,5 +29,5 @@ position = Vector2(916, 257)
 [node name="Ladder3" parent="." instance=ExtResource("4_k126l")]
 position = Vector2(1476, 257)
 
-[node name="Enemy" parent="." instance=ExtResource("5_d4ipq")]
-position = Vector2(1181, 432)
+[node name="Dinoskele" parent="." instance=ExtResource("5_d4ipq")]
+position = Vector2(1151, 392)
