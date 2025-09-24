@@ -73,12 +73,6 @@ func flip_direction() -> void:
 	if projectile_component:
 		projectile_component.flip(current_dir.x)
 
-func shoot_projectile() -> void:
-	projectile_component.shoot()
-
-func shoot_projectile_stop() -> void:
-	projectile_component.stop()
-
 func _on_health_component_dead() -> void:
 	set_collision_layer_value(3, false)
 	hurtbox.set_deferred("monitorable", false)

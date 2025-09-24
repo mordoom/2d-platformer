@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://ce1323awej8s3"
+path="res://.godot/imported/dinoskele.aseprite-5bb0f21dbd986b9af046886385b3e112.res"
+
+[deps]
+
+source_file="res://assets/cave/dinoskele.aseprite"
+dest_files=["res://.godot/imported/dinoskele.aseprite-5bb0f21dbd986b9af046886385b3e112.res"]
+
+[params]
+
