@@ -4,12 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://dsbn28lmg7w1e" path="res://assets/cave/fireball.png" id="2_a3p7q"]
 [ext_resource type="Script" uid="uid://sbaeqqe6wi0e" path="res://characters/components/hitbox.gd" id="3_ufm41"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t12b7"]
-size = Vector2(21.5, 20.5)
+[sub_resource type="CircleShape2D" id="CircleShape2D_a3p7q"]
 
-[node name="Fireball" type="Area2D" node_paths=PackedStringArray("hitbox")]
+[node name="Fireball" type="Area2D" node_paths=PackedStringArray("hitbox", "floor_check")]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_1j4ge")
 hitbox = NodePath("Hitbox")
+apply_gravity = true
+floor_check = NodePath("floor_check")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -25,7 +28,11 @@ knockback_velocity = 800.0
 metadata/_custom_type_script = "uid://sbaeqqe6wi0e"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(5.25, -0.25)
-shape = SubResource("RectangleShape2D_t12b7")
+position = Vector2(5, -1)
+shape = SubResource("CircleShape2D_a3p7q")
+
+[node name="floor_check" type="RayCast2D" parent="."]
+target_position = Vector2(0, -25)
+hit_from_inside = true
 
 [connection signal="body_entered" from="." to="." method="_on_hitbox_on_damage_area_hit"]

@@ -2,8 +2,11 @@ extends Area2D
 
 @export var hitbox: Hitbox
 @export var speed: float = 200
+@export var apply_gravity: bool = false
+@export var floor_check: RayCast2D
 
 var in_motion: bool = false
+var gravity_const: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready() -> void:
 	visible = false
@@ -14,6 +17,9 @@ func _physics_process(delta: float) -> void:
 
 	var poisiton_increase = speed * transform.x * delta
 	position += poisiton_increase
+
+	if apply_gravity and not floor_check.is_colliding():
+		position.y += gravity_const * delta
 
 	if global_position.x <= 0:
 		reset()

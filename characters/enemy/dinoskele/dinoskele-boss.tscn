@@ -217,6 +217,7 @@ _data = {
 collision_layer = 4
 script = ExtResource("1_c0rcl")
 projectile_component = NodePath("ProjectileComponent")
+doubloons_dropped = 100
 metadata/_custom_type_script = "uid://box5tsimem7l4"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
