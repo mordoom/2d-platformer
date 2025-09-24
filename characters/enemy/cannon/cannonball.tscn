@@ -49,5 +49,3 @@ metadata/_custom_type_script = "uid://sbaeqqe6wi0e"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(-1.5, -1.5)
 shape = SubResource("RectangleShape2D_t12b7")
-
-[connection signal="body_entered" from="." to="." method="_on_hitbox_on_damage_area_hit"]

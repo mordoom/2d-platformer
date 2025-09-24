@@ -10,6 +10,7 @@ var gravity_const: float = ProjectSettings.get_setting("physics/2d/default_gravi
 
 func _ready() -> void:
 	visible = false
+	connect("body_entered", _on_hitbox_on_damage_area_hit)
 
 func _physics_process(delta: float) -> void:
 	if not in_motion:

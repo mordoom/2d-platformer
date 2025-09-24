@@ -10,6 +10,7 @@ extends CharacterBody2D
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var hitbox: Hitbox = $HitboxComponent
 @onready var hurtbox: Hurtbox = $Hurtbox
+@onready var collision_shape = $CollisionShape2D
 
 @onready var starting_point := position
 @export var projectile_component: ProjectileComponent
@@ -60,6 +61,7 @@ func update_facing_direction(direction: float) -> void:
 		wall_check.scale.x = -1
 		floor_check.position.x = -15
 		player_check.scale.x = -1
+		collision_shape.scale.x = -1
 	elif direction > 0:
 		sprite.flip_h = false
 		hitbox.scale.x = 1
@@ -67,6 +69,7 @@ func update_facing_direction(direction: float) -> void:
 		wall_check.scale.x = 1
 		floor_check.position.x = 15
 		player_check.scale.x = 1
+		collision_shape.scale.x = 1
 
 func flip_direction() -> void:
 	current_dir = - current_dir
