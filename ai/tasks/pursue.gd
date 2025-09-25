@@ -5,7 +5,7 @@ extends BTAction
 @export var pursue_speed := 120
 
 func _tick(_delta: float) -> Status:
-	if not agent.floor_check.is_colliding() || agent.wall_check.is_colliding():
+	if not agent.can_patrol():
 		blackboard.set_var(&"target", null)
 		return FAILURE
 

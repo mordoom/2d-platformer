@@ -706,6 +706,7 @@ position = Vector2(24, -7)
 rotation = 4.71239
 target_position = Vector2(0, 200)
 collision_mask = 5
+collide_with_areas = true
 
 [node name="BulletHitbox" type="Area2D" parent="."]
 script = ExtResource("17_aqrcq")

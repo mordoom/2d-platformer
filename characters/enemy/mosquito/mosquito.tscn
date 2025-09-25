@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://t5ui4i8omkee"]
+[gd_scene load_steps=45 format=3 uid="uid://t5ui4i8omkee"]
 
 [ext_resource type="Script" uid="uid://box5tsimem7l4" path="res://characters/enemy/enemy.gd" id="1_kagp7"]
 [ext_resource type="Material" uid="uid://bv2fvbsgt04xu" path="res://characters/hitshader.tres" id="2_5g87h"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://cfxh6ghlxyv2g" path="res://ai/tasks/retreat.gd" id="8_cwsv7"]
 [ext_resource type="Script" uid="uid://lqgmq6egwtgs" path="res://ai/tasks/move_to_patrol_point.gd" id="8_m2ril"]
 [ext_resource type="Script" uid="uid://sbaeqqe6wi0e" path="res://characters/components/hitbox.gd" id="12_w00b1"]
+[ext_resource type="Script" uid="uid://cv5rhtqh14anw" path="res://components/env_check_component.gd" id="13_n4ui5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vjhis"]
 size = Vector2(17, 9)
@@ -224,12 +225,13 @@ _data = {
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_cwsv7"]
 points = PackedVector2Array(0, 0, 200, 0, 200, 100)
 
-[node name="Mosquito" type="CharacterBody2D"]
+[node name="Mosquito" type="CharacterBody2D" node_paths=PackedStringArray("components")]
 collision_layer = 0
 script = ExtResource("1_kagp7")
 doubloons_dropped = 0
 death_anim_name = "death"
 flying = true
+components = [NodePath("Hurtbox"), NodePath("HealthComponent"), NodePath("HitboxComponent"), NodePath("EnvCheckComponent")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -273,21 +275,25 @@ metadata/_custom_type_script = "uid://sbaeqqe6wi0e"
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_aspcd")
 
-[node name="floor_check" type="RayCast2D" parent="."]
-position = Vector2(12, 0)
-target_position = Vector2(0, 15)
-
-[node name="wall_check" type="RayCast2D" parent="."]
-position = Vector2(0, 2)
-target_position = Vector2(22, 0)
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_nm5dh")
 }
 autoplay = "death"
 
-[node name="player_check" type="ShapeCast2D" parent="."]
+[node name="EnvCheckComponent" type="Node2D" parent="."]
+script = ExtResource("13_n4ui5")
+metadata/_custom_type_script = "uid://cv5rhtqh14anw"
+
+[node name="floor_check" type="RayCast2D" parent="EnvCheckComponent"]
+position = Vector2(12, 0)
+target_position = Vector2(0, 15)
+
+[node name="wall_check" type="RayCast2D" parent="EnvCheckComponent"]
+position = Vector2(0, 2)
+target_position = Vector2(22, 0)
+
+[node name="player_check" type="ShapeCast2D" parent="EnvCheckComponent"]
 shape = SubResource("ConvexPolygonShape2D_cwsv7")
 target_position = Vector2(200, 0)
 collision_mask = 2

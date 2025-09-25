@@ -39,5 +39,9 @@ func shoot_bullet() -> void:
         bullet_index = 0
 
 func flip(current_direction: float) -> void:
-    position.x = abs(position.x) * current_direction
-    transform.x = abs(transform.x) * current_direction
+    if current_direction < 0:
+        position.x = abs(position.x) * -1
+        transform.x = abs(transform.x) * -1
+    elif current_direction > 0:
+        position.x = abs(position.x)
+        transform.x = abs(transform.x)

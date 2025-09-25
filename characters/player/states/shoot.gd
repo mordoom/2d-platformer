@@ -18,9 +18,9 @@ func _enter() -> void:
 	if bullet_path.is_colliding():
 		var collider = bullet_path.get_collider()
 
-		if collider is Enemy:
+		if collider is Hurtbox:
 			var direction = (collider.global_position - owner.global_position).normalized()
-			collider.hurtbox.on_hurtbox_hit(bullet_hitbox, direction)
+			collider.on_hurtbox_hit(bullet_hitbox, direction)
 		else:
 			var new_effect = bullet_effect.instantiate()
 			new_effect.global_position = bullet_path.get_collision_point()

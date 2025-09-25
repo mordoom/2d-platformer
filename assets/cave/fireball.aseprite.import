@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://uvjggf3k4wv6"
+path="res://.godot/imported/fireball.aseprite-07d55afae5c79959a42ef2704ffeecf9.res"
+
+[deps]
+
+source_file="res://assets/cave/fireball.aseprite"
+dest_files=["res://.godot/imported/fireball.aseprite-07d55afae5c79959a42ef2704ffeecf9.res"]
+
+[params]
+

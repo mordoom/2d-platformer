@@ -1,10 +1,34 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5fcyyety2wnr"]
+[gd_scene load_steps=7 format=4 uid="uid://b5fcyyety2wnr"]
 
 [ext_resource type="Script" uid="uid://bnimfadgde2fw" path="res://characters/components/projectile.gd" id="1_1j4ge"]
-[ext_resource type="Texture2D" uid="uid://dsbn28lmg7w1e" path="res://assets/cave/fireball.png" id="2_a3p7q"]
 [ext_resource type="Script" uid="uid://sbaeqqe6wi0e" path="res://characters/components/hitbox.gd" id="3_ufm41"]
 
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_yhcre"]
+_data = PackedByteArray("AAADAAUAAAABAAAAQAAAACAAAAAyAQAAUklGRioBAABXRUJQVlA4TB0BAAAvP8AHECdAkG0zf5R5DOEWByLMNtr80QZy/yMgzDaav87eUziYI5j/AGy+6WMHR20kSVI+ksBoEWwPg8kGUFIlf1JdfewBIKL/Cty2UY75CnsF/j3HGgP3K9wkH6yusITHapyesmElYjkMc1ntngRjVXuuapduDZy2WU/05NyNqiYl3G1XHqLnzrpbe2RbSUThcafFSiO6rqspLZkzj5YqUg0W/XW1kWUueDz3U2gUGNe7TgoRDx4DpZT1doVxq2yK0V8Fp4pGQE13gSJ5wlFh2NjiOMG557HnudMhuNdpq6M3Op/4sPfJWx/3PmMZB0dxQizj6DzOMNgmEIAnHu5JrHOYCCImorASRzm4xonAh5kwPsyfdsGPx8YXMgAA")
+size_override = Vector2(64, 32)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_a3p7q"]
+
+[sub_resource type="Animation" id="Animation_a3p7q"]
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1ufg5"]
+_data = {
+&"default": SubResource("Animation_a3p7q")
+}
 
 [node name="Fireball" type="Area2D" node_paths=PackedStringArray("hitbox", "floor_check")]
 collision_layer = 4
@@ -18,11 +42,36 @@ floor_check = NodePath("floor_check")
 texture_filter = 1
 rotation = 3.1415927
 scale = Vector2(1, -1)
-texture = ExtResource("2_a3p7q")
+texture = SubResource("PortableCompressedTexture2D_yhcre")
+hframes = 2
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": true,
+"output_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "AnimationPlayer",
+"scale": "1.0",
+"slice": "",
+"source": "res://assets/cave/fireball.aseprite",
+"source_uid": 1447686297445074697
+}
+metadata/_aseprite_wizard_source_file_hash_ = "5b54fbd3c5f460863cc0a20937729f39"
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 4
-collision_mask = 7
+collision_mask = 2
 script = ExtResource("3_ufm41")
 knockback_velocity = 800.0
 metadata/_custom_type_script = "uid://sbaeqqe6wi0e"
@@ -34,3 +83,9 @@ shape = SubResource("CircleShape2D_a3p7q")
 [node name="floor_check" type="RayCast2D" parent="."]
 target_position = Vector2(0, -25)
 hit_from_inside = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1ufg5")
+}
+autoplay = "default"

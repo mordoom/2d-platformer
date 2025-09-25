@@ -18,7 +18,7 @@ func _tick(_delta: float) -> Status:
         if agent.is_on_wall() || agent.is_on_floor() || agent.is_on_ceiling():
             return SUCCESS
     else:
-        if agent.is_on_wall() || not agent.floor_check.is_colliding():
+        if not agent.can_patrol():
             return SUCCESS
 
     return RUNNING
