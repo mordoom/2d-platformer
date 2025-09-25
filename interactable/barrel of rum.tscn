@@ -69,6 +69,7 @@ interact_area = NodePath("..")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_kyq1n")
+autoplay = "default"
 frame_progress = 0.5165639
 
 [connection signal="body_entered" from="." to="ButtonPromptComponent" method="_on_save_point_body_entered"]

@@ -494,7 +494,7 @@ size = Vector2(11, 1)
 size = Vector2(15, 39.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d2agh"]
-size = Vector2(43, 28)
+size = Vector2(43, 38)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqrcq"]
 size = Vector2(44.5, 29)
@@ -530,7 +530,7 @@ position = Vector2(1, -8)
 texture = SubResource("PortableCompressedTexture2D_e0pgg")
 hframes = 9
 vframes = 8
-frame = 55
+frame = 18
 metadata/_aseprite_wizard_interface_config_ = {
 "animation_section": true,
 "output_section": true,
@@ -720,6 +720,7 @@ collision_layer = 2
 collision_mask = 4
 script = ExtResource("15_58jvb")
 deflect_box = NodePath("../DeflectBox")
+cooldown_time = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 position = Vector2(1.5, -3.75)
@@ -739,7 +740,7 @@ can_deflect = true
 metadata/_custom_type_script = "uid://sbaeqqe6wi0e"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(20.5, 0)
+position = Vector2(20.5, -5)
 shape = SubResource("RectangleShape2D_d2agh")
 
 [node name="DeflectBox" type="Area2D" parent="."]

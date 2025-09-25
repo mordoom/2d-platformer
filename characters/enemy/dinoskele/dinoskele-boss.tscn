@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=4 uid="uid://76ojbp4jmikh"]
+[gd_scene load_steps=68 format=4 uid="uid://76ojbp4jmikh"]
 
 [ext_resource type="Script" uid="uid://box5tsimem7l4" path="res://characters/enemy/enemy.gd" id="1_c0rcl"]
 [ext_resource type="Script" uid="uid://15spxrunflgd" path="res://ai/tasks/distance_to_target.gd" id="2_aa18g"]
@@ -45,6 +45,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [10, 11, 11, 12, 13, 14]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hurtbox/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(331893.44, 10018.358),
+"update": 0,
+"values": [Vector2(59, -27), Vector2(74, 8)]
+}
 
 [sub_resource type="Animation" id="Animation_udvrk"]
 length = 2.3
@@ -78,6 +90,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hurtbox/CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(14766.102),
+"update": 0,
+"values": [Vector2(59, -27)]
+}
 
 [sub_resource type="Animation" id="Animation_i627g"]
 resource_name = "Idle"
@@ -95,6 +119,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [false, false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hurtbox/CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(59, -27)]
 }
 
 [sub_resource type="Animation" id="Animation_75tol"]
@@ -123,6 +159,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hurtbox/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(59, -27)]
+}
 
 [sub_resource type="Animation" id="Animation_y07a7"]
 length = 0.6
@@ -139,6 +187,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [4, 5, 6, 7, 8, 9]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hurtbox/CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(59, -27)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g53fc"]
@@ -232,9 +292,9 @@ animation_name = &"Walk"
 
 [sub_resource type="BTAction" id="BTAction_i627g"]
 script = ExtResource("4_y07a7")
-max_chase_distance = 500
-min_chase_distance = 80
-pursue_speed = 150
+max_chase_distance = 300
+min_chase_distance = 100
+pursue_speed = 180
 
 [sub_resource type="BTAction" id="BTAction_olmqp"]
 script = ExtResource("5_aa18g")
@@ -243,8 +303,10 @@ script = ExtResource("5_aa18g")
 script = ExtResource("5_n8pvf")
 animation_name = &"Bite"
 
+[sub_resource type="BTWait" id="BTWait_udvrk"]
+
 [sub_resource type="BTSequence" id="BTSequence_vntg3"]
-children = [SubResource("BTAction_y07a7")]
+children = [SubResource("BTAction_y07a7"), SubResource("BTWait_udvrk")]
 
 [sub_resource type="BTCooldown" id="BTCooldown_ni8vk"]
 duration = 2.0
@@ -272,7 +334,7 @@ animation_name = &"Walk"
 [sub_resource type="BTAction" id="BTAction_n8pvf"]
 script = ExtResource("4_y07a7")
 max_chase_distance = 10000
-min_chase_distance = 500
+min_chase_distance = 300
 
 [sub_resource type="BTSequence" id="BTSequence_y07a7"]
 children = [SubResource("BTAction_udvrk"), SubResource("BTPlayAnimation_udvrk"), SubResource("BTAction_n8pvf")]
@@ -334,8 +396,8 @@ root_task = SubResource("BTSelector_4kiqy")
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_fuy26"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oc8rt"]
-radius = 18.0
-height = 60.767105
+radius = 23.770256
+height = 63.103043
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75tol"]
 size = Vector2(55, 46)
@@ -354,6 +416,7 @@ scale = Vector2(-1, 1)
 texture = SubResource("PortableCompressedTexture2D_udvrk")
 hframes = 6
 vframes = 6
+frame = 13
 metadata/_aseprite_wizard_interface_config_ = {
 "pending_changes": {}
 }
@@ -419,11 +482,12 @@ knockback_velocity = 700.0
 metadata/_custom_type_script = "uid://sbaeqqe6wi0e"
 
 [node name="CollisionShape2D2" type="CollisionPolygon2D" parent="JumpHitbox"]
-polygon = PackedVector2Array(45, -50, 88, -20, 70, 0, 32, -10, 45, 20, -19, 31, -3, 42, -6, 72, -33, 75, -48, 75, -55, 25, -95, 18, -96, 0, -53, 13, -40, -8, 17, -20)
+polygon = PackedVector2Array(45, -50, 88, -20, 70, 0, 32, -10, -28, 0, -31, 25, -18, 46, -13, 72, -44, 75, -48, 75, -55, 25, -50, 33, -52, 14, -53, 13, -40, -8, 17, -20)
 
 [node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("hurtbox")]
 script = ExtResource("4_fuy26")
 hurtbox = NodePath("../Hurtbox")
+max_health = 100
 metadata/_custom_type_script = "uid://btumjuy135r4w"
 
 [node name="ProjectileComponent" parent="." instance=ExtResource("6_fy21f")]
