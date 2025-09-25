@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=4 uid="uid://76ojbp4jmikh"]
+[gd_scene load_steps=67 format=4 uid="uid://76ojbp4jmikh"]
 
 [ext_resource type="Script" uid="uid://box5tsimem7l4" path="res://characters/enemy/enemy.gd" id="1_c0rcl"]
 [ext_resource type="Script" uid="uid://15spxrunflgd" path="res://ai/tasks/distance_to_target.gd" id="2_aa18g"]
@@ -79,6 +79,24 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3]
 }
 
+[sub_resource type="Animation" id="Animation_i627g"]
+resource_name = "Idle"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("JumpHitbox:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, false]
+}
+
 [sub_resource type="Animation" id="Animation_75tol"]
 length = 0.001
 tracks/0/type = "value"
@@ -121,24 +139,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [4, 5, 6, 7, 8, 9]
-}
-
-[sub_resource type="Animation" id="Animation_i627g"]
-resource_name = "Idle"
-length = 0.4
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("JumpHitbox:monitoring")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0001, 0.1, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [false, false, true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g53fc"]
@@ -206,11 +206,14 @@ animation_name = &"Jump"
 
 [sub_resource type="BTAction" id="BTAction_s4l4j"]
 script = ExtResource("2_y07a7")
-jump_time = 2
+
+[sub_resource type="BTCooldown" id="BTCooldown_udvrk"]
+duration = 3.0
+children = [SubResource("BTAction_s4l4j")]
 
 [sub_resource type="BTSequence" id="BTSequence_g53fc"]
 custom_name = "Jump"
-children = [SubResource("BTAction_f6apc"), SubResource("BTCheckVar_y07a7"), SubResource("BTCheckVar_g53fc"), SubResource("BTPlayAnimation_g53fc"), SubResource("BTAction_s4l4j")]
+children = [SubResource("BTAction_f6apc"), SubResource("BTCheckVar_y07a7"), SubResource("BTCheckVar_g53fc"), SubResource("BTPlayAnimation_g53fc"), SubResource("BTCooldown_udvrk")]
 
 [sub_resource type="BTWait" id="BTWait_g53fc"]
 duration = 0.25
@@ -231,6 +234,7 @@ animation_name = &"Walk"
 script = ExtResource("4_y07a7")
 max_chase_distance = 500
 min_chase_distance = 80
+pursue_speed = 150
 
 [sub_resource type="BTAction" id="BTAction_olmqp"]
 script = ExtResource("5_aa18g")
