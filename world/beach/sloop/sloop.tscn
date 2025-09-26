@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://u78v4vs7k273"]
+[gd_scene load_steps=7 format=3 uid="uid://u78v4vs7k273"]
 
 [ext_resource type="Script" uid="uid://cmu6xqbyapkcb" path="res://world/beach/sloop/sloop.gd" id="1_48s50"]
 [ext_resource type="Texture2D" uid="uid://daokp5orj0gmw" path="res://assets/ship masts.png" id="1_e75fp"]
 [ext_resource type="Texture2D" uid="uid://bujqycpg6cyrb" path="res://assets/ship.png" id="2_k48uo"]
+[ext_resource type="PackedScene" uid="uid://s2702h7h5u4q" path="res://components/button_prompt_component.tscn" id="4_10tn3"]
+[ext_resource type="Script" uid="uid://cqr86vajk6xoh" path="res://components/interaction_component.gd" id="5_edeu5"]
 
-[node name="Sloop" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_edeu5"]
+size = Vector2(26, 42)
+
+[node name="AnimatableBody2D" type="AnimatableBody2D"]
 script = ExtResource("1_48s50")
 
 [node name="ShipMasts" type="Sprite2D" parent="."]
@@ -12,12 +17,27 @@ z_index = -1
 texture_filter = 1
 texture = ExtResource("1_e75fp")
 
-[node name="Ship" type="StaticBody2D" parent="."]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-56, -7, 45, -5, 56, 3, 60, 14, 61, 39, 310, 40, 310, 48, 302, 52, 286, 55, 277, 106, 263, 127, 240, 137, 218, 140, 16, 140, 16, 125, 13, 119, -41, 119, -56, 107, -57, 98, -56, 1, -60, -2, -59, -6)
 
-[node name="Sprite2D" type="Sprite2D" parent="Ship"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
 texture_filter = 1
 texture = ExtResource("2_k48uo")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ship"]
-polygon = PackedVector2Array(-56, -7, 45, -5, 56, 3, 60, 14, 61, 39, 310, 40, 310, 48, 302, 52, 286, 55, 277, 106, 263, 127, 240, 137, 218, 140, 16, 140, 16, 125, 13, 119, -41, 119, -56, 107, -57, 98, -56, 1, -60, -2, -59, -6)
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="InteractionComponent" type="Node" parent="Area2D"]
+script = ExtResource("5_edeu5")
+signal_to_emit = "on_sloop_start"
+metadata/_custom_type_script = "uid://cqr86vajk6xoh"
+
+[node name="ButtonPromptComponent" parent="Area2D" node_paths=PackedStringArray("interact_area") instance=ExtResource("4_10tn3")]
+position = Vector2(34, -23)
+interact_area = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(33, -26)
+shape = SubResource("RectangleShape2D_edeu5")
