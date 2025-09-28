@@ -12,6 +12,7 @@ extends CharacterBody2D
 @export var stun_animation: StringName
 @export var flying: bool = false
 @export var components: Array[Node]
+@export var perma_death := false
 
 const hit_flash_shader = preload("res://characters/hitshader.tres")
 var current_dir := Vector2.RIGHT
@@ -75,9 +76,12 @@ func _on_health_component_dead() -> void:
 	current_speed = 0
 	flying = false
 	SignalBus.emit_signal("money_collected", null, doubloons_dropped)
+	if perma_death:
+		GameState.add_perma_dead_enemy(self)
 	if death_anim_name:
 		animation_player.play(death_anim_name)
-	else: queue_free()
+	else:
+		queue_free()
 
 func _on_hurtbox_on_hit(_damage: int, knockback_velocity: float, direction: Vector2, stun: bool) -> void:
 	knockback_force = knockback_velocity * direction
