@@ -10,18 +10,25 @@ var ray_length = 300
 var damage = 5
 var knockback_velocity = 150
 
+func _ready() -> void:
+    set_guard(shooting_allowed_check)
+
+func shooting_allowed_check() -> bool:
+    return owner.ammo > 0
+
 func _enter() -> void:
-	super._enter()
-	SoundManager.play_sound_with_pitch(shoot_sound, Rng.generate_random_pitch(1, 1.5))
+    super._enter()
+    SoundManager.play_sound_with_pitch(shoot_sound, Rng.generate_random_pitch(1, 1.5))
+    owner.ammo -= 1
 
-	var bullet_path: RayCast2D = owner.bullet_path
-	if bullet_path.is_colliding():
-		var collider = bullet_path.get_collider()
+    var bullet_path: RayCast2D = owner.bullet_path
+    if bullet_path.is_colliding():
+        var collider = bullet_path.get_collider()
 
-		if collider is Hurtbox:
-			var direction = (collider.global_position - owner.global_position).normalized()
-			collider.on_hurtbox_hit(bullet_hitbox, direction)
-		else:
-			var new_effect = bullet_effect.instantiate()
-			new_effect.global_position = bullet_path.get_collision_point()
-			get_root().add_child(new_effect)
+        if collider is Hurtbox:
+            var direction = (collider.global_position - owner.global_position).normalized()
+            collider.on_hurtbox_hit(bullet_hitbox, direction)
+        else:
+            var new_effect = bullet_effect.instantiate()
+            new_effect.global_position = bullet_path.get_collision_point()
+            get_root().add_child(new_effect)

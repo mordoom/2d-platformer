@@ -1,11 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://b6gem3jw1eo62"]
+[gd_scene load_steps=11 format=3 uid="uid://b6gem3jw1eo62"]
 
 [ext_resource type="Script" uid="uid://c5bni58bhmjlo" path="res://ui/hud/hud.gd" id="1_rbyyf"]
 [ext_resource type="PackedScene" uid="uid://bipon0wb0ovjw" path="res://ui/healthbar/healthbar.tscn" id="2_276te"]
 [ext_resource type="Theme" uid="uid://cqw1qi00p254h" path="res://ui_theme.tres" id="2_546lt"]
 [ext_resource type="Script" uid="uid://c66o6dhkgnilh" path="res://ui/rumbar/rumbar.gd" id="4_7ihmi"]
-[ext_resource type="Texture2D" uid="uid://dh5ypuj42igpe" path="res://assets/bottle of rum - small.png" id="5_en2x2"]
+[ext_resource type="Texture2D" uid="uid://bfrglsfnigh7b" path="res://assets/bottle of rum - small new.png" id="5_gfles"]
+[ext_resource type="Script" uid="uid://b41rrrx8uh1gg" path="res://ui/hud/ammo_display.gd" id="6_aixkq"]
 [ext_resource type="FontFile" uid="uid://b33ox0oj78and" path="res://assets/fonts/Minecraft.ttf" id="6_kwc50"]
+[ext_resource type="Texture2D" uid="uid://cdrr45b5lyr28" path="res://assets/pistol.png" id="7_cxhb7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_272bh"]
 
@@ -70,9 +72,34 @@ layout_mode = 2
 [node name="Sprite2D" type="Sprite2D" parent="Rumbar/Panel"]
 texture_filter = 1
 position = Vector2(3, 0)
-texture = ExtResource("5_en2x2")
+texture = ExtResource("5_gfles")
 
 [node name="Label" type="Label" parent="Rumbar"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_546lt")
+text = "0"
+horizontal_alignment = 2
+
+[node name="AmmoDisplay" type="HBoxContainer" parent="."]
+layout_direction = 2
+offset_left = 45.0
+offset_top = 32.0
+offset_right = 58.0
+offset_bottom = 48.0
+size_flags_horizontal = 0
+script = ExtResource("6_aixkq")
+
+[node name="Panel" type="Panel" parent="AmmoDisplay"]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="AmmoDisplay/Panel"]
+texture_filter = 1
+position = Vector2(3, 0)
+texture = ExtResource("7_cxhb7")
+
+[node name="Label" type="Label" parent="AmmoDisplay"]
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4

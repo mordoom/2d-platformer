@@ -1,6 +1,6 @@
 extends Node
 
-var rum_bottles: Array[String] = []
+var items: Array[String] = []
 var perma_dead_enemies: Array[String] = []
 var dead_enemies: Array[String] = []
 var dead_body: DeadBody
@@ -42,8 +42,8 @@ func get_node_unique_key(enemy: Node2D) -> String:
 
 func is_item_collected(node: Node2D) -> bool:
     var unique_key: String = get_node_unique_key(node)
-    return unique_key in rum_bottles
+    return unique_key in items
 
-func rum_bottle_collected(node: Node2D) -> void:
+func item_collected(node: Node2D) -> void:
     var unique_key: String = get_node_unique_key(node)
-    rum_bottles.append(unique_key)
+    items.append(unique_key)

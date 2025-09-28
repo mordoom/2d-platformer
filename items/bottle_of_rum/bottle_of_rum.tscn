@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cpbx41ergsr8t"]
 
-[ext_resource type="Texture2D" uid="uid://dh5ypuj42igpe" path="res://assets/bottle of rum - small.png" id="1_r1i5s"]
+[ext_resource type="Texture2D" uid="uid://b3uwvtpbeb4q4" path="res://assets/bottle of rum - small collectible.png" id="1_r1i5s"]
 [ext_resource type="Script" uid="uid://832xmughicl7" path="res://components/collection_component.gd" id="4_0hxvv"]
 [ext_resource type="PackedScene" uid="uid://s2702h7h5u4q" path="res://components/button_prompt_component.tscn" id="4_do1cl"]
 
@@ -17,12 +17,12 @@ shape = SubResource("RectangleShape2D_bla5d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
+position = Vector2(0, -1)
 texture = ExtResource("1_r1i5s")
 
-[node name="CollectionComponent" type="Node" parent="." node_paths=PackedStringArray("button_prompt_comp")]
+[node name="CollectionComponent" type="Node" parent="."]
 script = ExtResource("4_0hxvv")
 collection_signal = "on_bottle_rum_collected"
-button_prompt_comp = NodePath("../ButtonPromptComponent")
 metadata/_custom_type_script = "uid://832xmughicl7"
 
 [node name="ButtonPromptComponent" parent="." node_paths=PackedStringArray("interact_area") instance=ExtResource("4_do1cl")]

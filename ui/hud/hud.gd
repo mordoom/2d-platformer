@@ -4,7 +4,8 @@ extends CanvasLayer
 @onready var message: Label = $Message
 @onready var healthbar: ProgressBar = $Healthbar
 @onready var rumbar: HBoxContainer = $Rumbar
-@onready var player: CharacterBody2D = %Player
+@onready var ammo_display: HBoxContainer = $AmmoDisplay
+@onready var player: Player = %Player
 @onready var money_label: Label = $MoneyDisplay
 
 var money := 0:
@@ -24,6 +25,7 @@ func init() -> void:
 	message.visible = false
 	healthbar.init_health(player.get_health())
 	rumbar.init(player)
+	ammo_display.init(player)
 	money = player.money
 
 func on_game_over() -> void:

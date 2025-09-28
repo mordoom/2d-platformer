@@ -28,6 +28,7 @@ func _ready() -> void:
 	SignalBus.connect("character_died", on_character_died_handler)
 	SignalBus.connect("on_campfire_rested", on_campfire_rested_handler)
 	SignalBus.connect("on_bottle_rum_collected", on_bottle_rum_collected)
+	SignalBus.connect("on_pistol_collected", on_pistol_collected)
 	SignalBus.connect("on_health_changed", on_health_changed)
 
 func init() -> void:
@@ -40,6 +41,7 @@ func init() -> void:
 	else:
 		# If no data exists, set empty one.
 		MetSys.set_save_data()
+		save_game()
 	
 	hud.init()
 
@@ -68,10 +70,16 @@ func load_game(path: String) -> void:
 	var save_manager: SaveManager = SaveManager.new()
 	save_manager.load_from_text(path)
 
-	GameState.rum_bottles.assign(save_manager.get_value("rum_bottles"))
-	player.rum_bottles = GameState.rum_bottles.size()
-	player.max_rum_bottles = GameState.rum_bottles.size()
+	GameState.items.assign(save_manager.get_value("items"))
+	var max_rum_bottles = save_manager.get_value("max_rum_bottles")
+	player.rum_bottles = max_rum_bottles
+	player.max_rum_bottles = max_rum_bottles
 	player.money = save_manager.get_value("money", 0)
+
+	var max_ammo = save_manager.get_value("max_ammo")
+	player.ammo = max_ammo
+	player.max_ammo = max_ammo
+
 	if GameState.perma_dead_enemies.is_empty():
 		var loaded_dead_enemies: Array = save_manager.get_value("dead_enemies")
 		GameState.perma_dead_enemies.assign(loaded_dead_enemies if loaded_dead_enemies else [])
@@ -128,12 +136,19 @@ func on_campfire_rested_handler(_area: Area2D) -> void:
 	reset_map_starting_coords()
 	player.set_health(player.health_component.max_health)
 	player.rum_bottles = player.max_rum_bottles
+	player.ammo = player.max_ammo
 	GameState.reset_enemies()
 
 func on_bottle_rum_collected(area: Area2D, _amount: int) -> void:
 	player.add_rum_bottle()
-	GameState.rum_bottle_collected(area)
+	GameState.item_collected(area)
 	update_save()
+
+func on_pistol_collected(area: Area2D, _amount: int) -> void:
+	player.add_ammo()
+	GameState.item_collected(area)
+	update_save()
+
 
 func on_health_changed(_node: Node, amount: int) -> void:
 	if (amount < 0):
@@ -144,16 +159,20 @@ func update_save() -> void:
 	save_manager.load_from_text(SAVE_PATH)
 	save_manager.set_value("money", player.money)
 	save_manager.set_value("dead_body", GameState.dead_body)
-	save_manager.set_value("rum_bottles", GameState.rum_bottles)
+	save_manager.set_value("items", GameState.items)
 	save_manager.set_value("dead_enemies", GameState.perma_dead_enemies)
+	save_manager.set_value("max_ammo", player.max_ammo)
+	save_manager.set_value("max_rum_bottles", player.max_rum_bottles)
 	save_manager.save_as_text(SAVE_PATH)
 
 
 func save_game() -> void:
 	var save_manager: SaveManager = SaveManager.new()
 	save_manager.set_value("money", player.money)
-	save_manager.set_value("rum_bottles", GameState.rum_bottles)
+	save_manager.set_value("items", GameState.items)
 	save_manager.set_value("dead_enemies", GameState.perma_dead_enemies)
 	save_manager.set_value("current_room", MetSys.get_current_room_name())
 	save_manager.set_value("dead_body", GameState.dead_body)
+	save_manager.set_value("max_ammo", player.max_ammo)
+	save_manager.set_value("max_rum_bottles", player.max_rum_bottles)
 	save_manager.save_as_text(SAVE_PATH)

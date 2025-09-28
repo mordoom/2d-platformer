@@ -36,12 +36,16 @@ var knockback_force = Vector2.ZERO
 var roll_force = 0
 var climbing = false
 var double_jumped = false
-var money := 0
-var rum_bottles: int = 0
-var max_rum_bottles: int = 0
+
 var climbable_above: Area2D = null
 var climbable_below: Area2D = null
 var swingable_above: Area2D = null
+
+var money := 0
+var rum_bottles: int = 0
+var max_rum_bottles: int = 0
+var ammo := 0
+var max_ammo := 0
 
 func _ready() -> void:
     SignalBus.connect("money_collected", _on_money_collected)
@@ -107,8 +111,12 @@ func handle_interactions():
             collection_comp.collect()
 
 func add_rum_bottle() -> void:
-    rum_bottles = rum_bottles + 1
-    max_rum_bottles = max_rum_bottles + 1
+    rum_bottles += 1
+    max_rum_bottles += 1
+
+func add_ammo() -> void:
+    ammo += 1
+    max_ammo += 1
 
 func was_hit() -> void:
     hsm.dispatch(&"hit_started")

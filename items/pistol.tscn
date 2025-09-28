@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmlqt67lt0mw5"]
+
+[ext_resource type="Texture2D" uid="uid://cu6lkuofd2rjs" path="res://assets/pisto - collectible.png" id="1_g0r10"]
+[ext_resource type="Script" uid="uid://832xmughicl7" path="res://components/collection_component.gd" id="2_g0r10"]
+[ext_resource type="PackedScene" uid="uid://s2702h7h5u4q" path="res://components/button_prompt_component.tscn" id="3_7ob47"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4173i"]
+size = Vector2(20, 18)
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_g0r10")
+
+[node name="CollectionComponent" type="Node" parent="."]
+script = ExtResource("2_g0r10")
+collection_signal = "on_pistol_collected"
+metadata/_custom_type_script = "uid://832xmughicl7"
+
+[node name="ButtonPromptComponent" parent="." node_paths=PackedStringArray("interact_area") instance=ExtResource("3_7ob47")]
+interact_area = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_4173i")
