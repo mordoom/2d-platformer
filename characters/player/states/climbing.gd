@@ -51,7 +51,7 @@ func _update(_delta: float) -> void:
         else:
             animation_player.play()
 
-    elif action_pressed == &"jump" || InputBuffer.is_action_press_buffered(&"jump"):
+    elif action_pressed == &"jump" && not owner.head_check.is_colliding():
         hsm.dispatch(&"jump_started")
 
 func _exit() -> void:
