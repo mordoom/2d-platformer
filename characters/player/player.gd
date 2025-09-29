@@ -41,6 +41,7 @@ var climbable_above: Area2D = null
 var climbable_below: Area2D = null
 var swingable_above: Area2D = null
 
+var paused := false
 var money := 0
 var rum_bottles: int = 0
 var max_rum_bottles: int = 0
@@ -49,6 +50,9 @@ var max_ammo := 0
 
 func _ready() -> void:
     SignalBus.connect("money_collected", _on_money_collected)
+    Dialogic.timeline_started.connect(_on_timeline_started)
+    Dialogic.timeline_ended.connect(_on_timeline_ended)
+
     hsm.blackboard.bind_var_to_property(GameConstants.BlackboardVars.dir_var, self, &"dir")
     hsm.blackboard.bind_var_to_property(GameConstants.BlackboardVars.current_speed_var, self, &"current_speed")
     hsm.blackboard.bind_var_to_property(GameConstants.BlackboardVars.roll_force_var, self, &"roll_force")
@@ -161,3 +165,9 @@ func _on_hurtbox_component_on_hit(_damage: int, knockback_velocity: float, direc
 
 func _on_money_collected(_area: Area2D, amount: int):
     money += amount
+
+func _on_timeline_started() -> void:
+    paused = true
+
+func _on_timeline_ended() -> void:
+    paused = false

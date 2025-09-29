@@ -1,16 +1,41 @@
-[gd_scene load_steps=3 format=3 uid="uid://brbslkxnfap86"]
+[gd_scene load_steps=7 format=3 uid="uid://brbslkxnfap86"]
 
 [ext_resource type="Texture2D" uid="uid://dja013pf63kn1" path="res://assets/npc in cage.png" id="1_3lmxc"]
+[ext_resource type="PackedScene" uid="uid://s2702h7h5u4q" path="res://components/button_prompt_component.tscn" id="2_nba44"]
+[ext_resource type="Script" uid="uid://dju7nf2coetoi" path="res://components/dialog_component.gd" id="2_ooegc"]
+[ext_resource type="Script" uid="uid://cqr86vajk6xoh" path="res://components/interaction_component.gd" id="3_0hc4t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3lmxc"]
+size = Vector2(104, 131)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_utvve"]
 size = Vector2(64, 63)
 
-[node name="Cage" type="StaticBody2D"]
+[node name="Cage" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("2_ooegc")
+timeline_name = "man_in_cage"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 33.5)
+shape = SubResource("RectangleShape2D_3lmxc")
+
+[node name="InteractionComponent" type="Node" parent="."]
+script = ExtResource("3_0hc4t")
+signal_to_emit = "begin_dialog"
+global = false
+metadata/_custom_type_script = "uid://cqr86vajk6xoh"
 
 [node name="NpcInCage" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("1_3lmxc")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="ButtonPromptComponent" parent="." node_paths=PackedStringArray("interact_area") instance=ExtResource("2_nba44")]
+interact_area = NodePath("..")
+
+[node name="Cage" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cage"]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_utvve")
