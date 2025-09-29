@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0hngoedumcsm"]
+[gd_scene load_steps=6 format=3 uid="uid://b0hngoedumcsm"]
 
 [ext_resource type="Script" uid="uid://cmmevpj151rq2" path="res://items/dead_body.gd" id="1_q7xry"]
 [ext_resource type="PackedScene" uid="uid://s2702h7h5u4q" path="res://components/button_prompt_component.tscn" id="2_4qg68"]
 [ext_resource type="Script" uid="uid://c576wwc48iv8r" path="res://items/money_component.gd" id="3_4qg68"]
+[ext_resource type="Texture2D" uid="uid://bapmkrdiwi5gg" path="res://assets/jolly roger.png" id="4_c8dmn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8v7m7"]
 size = Vector2(40, 40)
@@ -15,10 +16,6 @@ script = ExtResource("1_q7xry")
 [node name="ButtonPromptComponent" parent="." node_paths=PackedStringArray("interact_area") instance=ExtResource("2_4qg68")]
 interact_area = NodePath("..")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(20, 20)
 shape = SubResource("RectangleShape2D_8v7m7")
@@ -27,3 +24,8 @@ shape = SubResource("RectangleShape2D_8v7m7")
 script = ExtResource("3_4qg68")
 collection_signal = "money_collected"
 metadata/_custom_type_script = "uid://832xmughicl7"
+
+[node name="JollyRoger" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(20, 20)
+texture = ExtResource("4_c8dmn")

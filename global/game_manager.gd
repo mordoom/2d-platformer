@@ -111,6 +111,7 @@ func on_character_died_handler(character: Node) -> void:
 		SignalBus.emit_signal("game_over")
 		start_death_timer()
 		GameState.store_dead_body(player)
+		player.money = 0
 		GameState.reset_enemies()
 		update_save()
 	else:
