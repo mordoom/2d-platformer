@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://kcyqg7naur7m"]
+[gd_scene load_steps=7 format=3 uid="uid://kcyqg7naur7m"]
 
 [ext_resource type="Script" uid="uid://d0ptqnbudhkyj" path="res://addons/dialogic/Modules/Character/node_portrait_container.gd" id="1_4jxq7"]
 [ext_resource type="Script" uid="uid://bk84r61kckpxa" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_SpeakerPortraitTextbox/speaker_portrait_textbox_layer.gd" id="1_7jt4d"]
 [ext_resource type="Script" uid="uid://bak74s0kcr0ao" path="res://addons/dialogic/Modules/Text/node_name_label.gd" id="2_y0h34"]
 [ext_resource type="Script" uid="uid://drhfq6rmdeuri" path="res://addons/dialogic/Modules/Text/node_dialog_text.gd" id="3_11puy"]
-[ext_resource type="Resource" uid="uid://cxu4b0oksgye2" path="res://assets/fonts/first mate.dch" id="3_hm0bw"]
 [ext_resource type="Script" uid="uid://dpv2dfiv5dhmr" path="res://addons/dialogic/Modules/Text/node_type_sound.gd" id="5_sr2qw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmg1w"]
@@ -88,14 +87,16 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 4.0
+offset_left = 21.0
+offset_top = 25.000008
+offset_right = -22.0
+offset_bottom = -31.287994
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_4jxq7")
 mode = 1
 container_ids = PackedStringArray("1")
-debug_character = ExtResource("3_hm0bw")
 debug_character_portrait = "speaker"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Anchor/Panel/HBox"]

@@ -34,7 +34,7 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={
-"first mate": "res://assets/fonts/first mate.dch"
+"first mate": "res://dialog/first mate.dch"
 }
 directories/dtl_directory={
 "man_in_cage": "res://dialog/man_in_cage.dtl"
@@ -78,6 +78,13 @@ audio/channel_defaults={
 }
 layout/style_list=["res://dialog/dialog theme.tres"]
 layout/default_style="res://dialog/dialog theme.tres"
+glossary/default_case_sensitive=true
+translation/enabled=false
+translation/original_locale="en"
+translation/file_mode=1
+translation/translation_folder=""
+translation/save_mode=0
+translation/add_separator=false
 
 [display]
 
