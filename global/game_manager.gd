@@ -149,7 +149,6 @@ func on_pistol_collected(area: Area2D, _amount: int) -> void:
 	GameState.item_collected(area)
 	update_save()
 
-
 func on_health_changed(_node: Node, amount: int) -> void:
 	if (amount < 0):
 		camera.get_node("ShakerComponent2D").play_shake()

@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://cwhqcko8p78o3"]
+
+[ext_resource type="Script" uid="uid://bsn2oj07rf5io" path="res://interactable/vendor.gd" id="1_gx6vw"]
+[ext_resource type="Texture2D" uid="uid://c18goyrbx42pn" path="res://assets/vendor.png" id="1_qbt3s"]
+[ext_resource type="PackedScene" uid="uid://s2702h7h5u4q" path="res://components/button_prompt_component.tscn" id="1_sya4h"]
+[ext_resource type="Script" uid="uid://cqr86vajk6xoh" path="res://components/interaction_component.gd" id="4_pearx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qbt3s"]
+size = Vector2(99, 64)
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_gx6vw")
+
+[node name="ButtonPromptComponent" parent="." node_paths=PackedStringArray("interact_area") instance=ExtResource("1_sya4h")]
+interact_area = NodePath("..")
+
+[node name="Vendor" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_qbt3s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_qbt3s")
+
+[node name="Wares" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="Wares"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.25
+offset_top = -44.5
+offset_right = 68.25
+offset_bottom = 44.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Wares/Panel"]
+layout_mode = 0
+offset_left = 7.5
+offset_top = 7.5
+offset_right = 92.5
+offset_bottom = 79.5
+
+[node name="Label" type="Label" parent="Wares/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Rum...........$500
+Bullets.......$600
+Bomb.......$1000"
+
+[node name="InteractionComponent" type="Node" parent="."]
+script = ExtResource("4_pearx")
+global = false
+metadata/_custom_type_script = "uid://cqr86vajk6xoh"
