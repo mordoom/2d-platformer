@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var gameOverMessage: Label = $GameOverMessage
+@onready var gameOverMessage: VBoxContainer = $GameOverContainer
 @onready var message: Label = $Message
 @onready var healthbar: ProgressBar = $Healthbar
 @onready var rumbar: HBoxContainer = $Rumbar
