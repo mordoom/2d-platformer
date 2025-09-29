@@ -168,6 +168,9 @@ func _on_money_collected(_area: Area2D, amount: int):
 
 func _on_timeline_started() -> void:
     paused = true
+    current_speed = 0
+    dir = Vector2.ZERO
+
 
 func _on_timeline_ended() -> void:
     paused = false
