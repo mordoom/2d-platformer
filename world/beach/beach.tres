@@ -85,6 +85,10 @@ texture = ExtResource("1_5v8jm")
 37:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(3.3157883, -5.0626435, 8, -4.0081263, 8, 2.830552, 3.412836, 3.2834406)
 37:0/0/physics_layer_0/polygon_0/one_way = true
 38:0/0 = 0
+39:0/0 = 0
+40:0/0 = 0
+41:0/0 = 0
+42:0/0 = 0
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_j5cxw"]
 resource_name = "collectables"
