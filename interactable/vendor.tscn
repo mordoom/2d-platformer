@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwhqcko8p78o3"]
+[gd_scene load_steps=7 format=3 uid="uid://cwhqcko8p78o3"]
 
 [ext_resource type="Script" uid="uid://bsn2oj07rf5io" path="res://interactable/vendor.gd" id="1_gx6vw"]
 [ext_resource type="Texture2D" uid="uid://c18goyrbx42pn" path="res://assets/vendor.png" id="1_qbt3s"]
 [ext_resource type="PackedScene" uid="uid://s2702h7h5u4q" path="res://components/button_prompt_component.tscn" id="1_sya4h"]
+[ext_resource type="Theme" uid="uid://cqw1qi00p254h" path="res://ui_theme.tres" id="4_mvlcy"]
 [ext_resource type="Script" uid="uid://cqr86vajk6xoh" path="res://components/interaction_component.gd" id="4_pearx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qbt3s"]
@@ -47,7 +48,9 @@ offset_right = 92.5
 offset_bottom = 79.5
 
 [node name="Label" type="Label" parent="Wares/Panel/VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
+theme = ExtResource("4_mvlcy")
 text = "Rum...........$500
 Bullets.......$600
 Bomb.......$1000"
