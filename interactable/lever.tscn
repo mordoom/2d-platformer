@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://dyoahdasy3pjx"]
+
+[ext_resource type="Script" uid="uid://bf6drisvovpwe" path="res://interactable/lever.gd" id="1_intpv"]
+[ext_resource type="Texture2D" uid="uid://cjbfoyss8h1g" path="res://assets/lever.png" id="1_y33kj"]
+[ext_resource type="Script" uid="uid://cqr86vajk6xoh" path="res://components/interaction_component.gd" id="2_yxjek"]
+[ext_resource type="PackedScene" uid="uid://s2702h7h5u4q" path="res://components/button_prompt_component.tscn" id="3_6varl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yxjek"]
+size = Vector2(57, 42)
+
+[node name="Lever" type="Area2D"]
+script = ExtResource("1_intpv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_y33kj")
+
+[node name="InteractionComponent" type="Node" parent="."]
+script = ExtResource("2_yxjek")
+signal_to_emit = "lever_pulled"
+global = false
+metadata/_custom_type_script = "uid://cqr86vajk6xoh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.5, 11)
+shape = SubResource("RectangleShape2D_yxjek")
+
+[node name="ButtonPromptComponent" parent="." node_paths=PackedStringArray("interact_area") instance=ExtResource("3_6varl")]
+interact_area = NodePath("..")
