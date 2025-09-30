@@ -10,6 +10,5 @@ func _physics_process(delta):
     if moving:
         position.x += speed * delta
 
-
 func on_sloop_start(_area: Area2D):
-    moving = true
+    Dialogic.start_timeline("sloop repair")

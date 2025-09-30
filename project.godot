@@ -34,10 +34,14 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={
-"first mate": "res://dialog/first mate.dch"
+"first mate": "res://dialog/first mate.dch",
+"vendor": "res://dialog/vendor.dch"
 }
 directories/dtl_directory={
-"man_in_cage": "res://dialog/man_in_cage.dtl"
+"man_in_cage": "res://dialog/man_in_cage.dtl",
+"rum tutorial": "res://dialog/rum tutorial.dtl",
+"shop": "res://dialog/shop.dtl",
+"sloop repair": "res://dialog/sloop repair.dtl"
 }
 layout/style_directory={
 "": "res://dialog/dialog theme.tres",
@@ -221,6 +225,7 @@ dialogic_default_action={
 2d_physics/layer_3="Enemy"
 3d_physics/layer_3="Enemy"
 2d_physics/layer_4="Interactable"
+2d_physics/layer_5="Collectible"
 
 [rendering]
 

@@ -43,13 +43,9 @@ var swingable_above: Area2D = null
 
 var paused := false
 var money := 0
+
 var max_rum_bottles := 0
-var rum_bottles := 0:
-    set(value):
-        if (value > max_rum_bottles):
-            rum_bottles = max_rum_bottles
-        else:
-            rum_bottles = value
+var rum_bottles := 0
 
 var max_ammo := 1
 var ammo := 1:

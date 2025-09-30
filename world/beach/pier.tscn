@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5vgmdvne22r3"]
+
+[ext_resource type="Texture2D" uid="uid://dxxv3whlcyh5c" path="res://assets/shipboarding pier.png" id="1_mp5m4"]
+
+[node name="Pier" type="StaticBody2D"]
+position = Vector2(128, -29)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_mp5m4")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-700, -486)
+polygon = PackedVector2Array(641, 477, 480, 561, 488, 562, 569.85254, 518.91974, 640, 482)
