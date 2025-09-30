@@ -37,3 +37,6 @@ func reset() -> void:
 
 func _on_hitbox_on_damage_area_hit() -> void:
 	reset()
+
+func _on_body_entered(body: Node2D) -> void:
+	reset()

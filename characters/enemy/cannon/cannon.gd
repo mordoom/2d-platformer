@@ -14,4 +14,5 @@ func _ready() -> void:
 
 func on_death() -> void:
 	GameState.add_perma_dead_enemy(self)
+	get_tree().get_root().get_node("GameManager").update_save()
 	queue_free()

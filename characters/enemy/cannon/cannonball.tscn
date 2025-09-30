@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://b33ws0ac72ddr"]
+[gd_scene load_steps=9 format=3 uid="uid://b33ws0ac72ddr"]
 
 [ext_resource type="Script" uid="uid://bnimfadgde2fw" path="res://characters/components/projectile.gd" id="1_xiwto"]
 [ext_resource type="Texture2D" uid="uid://ckkfk6cviqyl0" path="res://assets/Cañon_bala.png" id="2_xtlfa"]
 [ext_resource type="Script" uid="uid://sbaeqqe6wi0e" path="res://characters/components/hitbox.gd" id="3_5vlf7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ytakk"]
+size = Vector2(11, 11)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d8cjw"]
 atlas = ExtResource("2_xtlfa")
@@ -33,6 +36,10 @@ size = Vector2(11, 11)
 script = ExtResource("1_xiwto")
 hitbox = NodePath("Hitbox")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, -1.5)
+shape = SubResource("RectangleShape2D_ytakk")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.1, -0.1)
 sprite_frames = SubResource("SpriteFrames_b574o")
@@ -41,11 +48,14 @@ frame_progress = 0.108488
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 6
 script = ExtResource("3_5vlf7")
+damage = 25
 knockback_velocity = 600.0
 metadata/_custom_type_script = "uid://sbaeqqe6wi0e"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(-1.5, -1.5)
 shape = SubResource("RectangleShape2D_t12b7")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
