@@ -5,7 +5,8 @@ extends CharacterState
 var sword_swing_sound = preload("res://assets/sounds/zapsplat_sword_swing.mp3")
 
 var combo_count := 1
-var max_combo = 2
+var default_max_combo = 2
+var idle_max_combo = 3
 var advance_combo := false
 var combo_cooldown_time := 0.15
 var combo_cooldown_timer := 0.0
@@ -23,6 +24,10 @@ func _enter() -> void:
 
 func _update(delta: float) -> void:
     combo_cooldown_timer -= delta
+
+    var max_combo = default_max_combo
+    if hsm.get_previous_active_state().name == "Idle":
+        max_combo = idle_max_combo
 
     var action_pressed = blackboard.get_var(GameConstants.BlackboardVars.action_pressed_var)
     if advance_combo == false && combo_cooldown_timer <= 0 && action_pressed == &"attack":
