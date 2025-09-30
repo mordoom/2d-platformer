@@ -4,11 +4,16 @@ extends Node2D
 @export var offset_pos: Vector2
 @export var duration: float = 2
 @export var pause_duration: float = 1
+@export var enabled := true
 
 func _ready() -> void:
-	var tween: Tween = get_tree().create_tween().bind_node(self)
-	tween.tween_property(self, "position", start_pos + offset_pos, duration)
-	tween.tween_interval(pause_duration)
-	tween.tween_property(self, "position", start_pos, duration)
-	tween.tween_interval(pause_duration)
-	tween.set_loops()
+    if enabled:
+        begin_moving()
+
+func begin_moving() -> void:
+    var tween: Tween = get_tree().create_tween().bind_node(self)
+    tween.tween_property(self, "position", start_pos + offset_pos, duration)
+    tween.tween_interval(pause_duration)
+    tween.tween_property(self, "position", start_pos, duration)
+    tween.tween_interval(pause_duration)
+    tween.set_loops()

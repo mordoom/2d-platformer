@@ -18,7 +18,7 @@ func shooting_allowed_check() -> bool:
 
 func _enter() -> void:
     super._enter()
-    # SoundManager.play_sound_with_pitch(shoot_sound, Rng.generate_random_pitch(1, 1.5))
+    SoundManager.play_sound_with_pitch(shoot_sound, Rng.generate_random_pitch(1, 1.5))
     owner.ammo -= 1
 
     var bullet_path: RayCast2D = owner.bullet_path

@@ -14,6 +14,8 @@ extends CharacterBody2D
 @export var components: Array[Node]
 @export var perma_death := false
 
+signal dead
+
 const hit_flash_shader = preload("res://characters/hitshader.tres")
 var current_dir := Vector2.RIGHT
 var current_speed := 0
@@ -76,6 +78,7 @@ func _on_health_component_dead() -> void:
 	current_speed = 0
 	flying = false
 	SignalBus.emit_signal("money_collected", null, doubloons_dropped)
+	emit_signal("dead")
 	if perma_death:
 		GameState.add_perma_dead_enemy(self)
 	if death_anim_name:
