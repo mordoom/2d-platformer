@@ -6,10 +6,6 @@ extends CharacterState
 
 var shoot_sound = preload("res://assets/sounds/warfare_gunshot.mp3")
 
-var ray_length = 300
-var damage = 5
-var knockback_velocity = 150
-
 func _ready() -> void:
     set_guard(shooting_allowed_check)
 

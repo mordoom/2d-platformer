@@ -34,6 +34,9 @@ func enemy_is_dead(enemy: Node2D) -> bool:
 func add_perma_dead_enemy(enemy: Node2D) -> void:
     perma_dead_enemies.append(get_node_unique_key(enemy))
 
+func find_perma_dead_enemy(enemy: Node2D) -> int:
+    return perma_dead_enemies.find(get_node_unique_key(enemy))
+
 func add_dead_enemy(enemy: Node2D) -> void:
     dead_enemies.append(get_node_unique_key(enemy))
 

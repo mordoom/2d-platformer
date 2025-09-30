@@ -25,6 +25,9 @@ var knockback_force = Vector2.ZERO
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
+	if GameState.enemy_is_dead(self):
+		queue_free()
+		return
 	var new_material := hit_flash_shader.duplicate()
 	sprite.material = new_material
 	bt_player.blackboard.bind_var_to_property(&"current_dir", self, &"current_dir", true)
@@ -78,9 +81,8 @@ func _on_health_component_dead() -> void:
 	current_speed = 0
 	flying = false
 	SignalBus.emit_signal("money_collected", null, doubloons_dropped)
+	SignalBus.emit_signal("character_died", self)
 	emit_signal("dead")
-	if perma_death:
-		GameState.add_perma_dead_enemy(self)
 	if death_anim_name:
 		animation_player.play(death_anim_name)
 	else:

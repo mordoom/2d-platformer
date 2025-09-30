@@ -32,12 +32,12 @@ position = Vector2(1143, 285)
 [node name="Ladder3" parent="." instance=ExtResource("4_k126l")]
 position = Vector2(796, 257)
 
-[node name="Dinoskele" parent="." instance=ExtResource("5_d4ipq")]
-position = Vector2(1151, 392)
-
 [node name="FloatingPlatform" parent="." instance=ExtResource("6_s70sw")]
 position = Vector2(1216, -7)
 offset_pos = Vector2(0, 449)
 enabled = false
+
+[node name="Dinoskele" parent="." instance=ExtResource("5_d4ipq")]
+position = Vector2(1151, 392)
 
 [connection signal="dead" from="Dinoskele" to="." method="_on_dinoskele_dead"]
