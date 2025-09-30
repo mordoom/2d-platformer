@@ -83,12 +83,16 @@ func _on_health_component_dead() -> void:
 	else:
 		queue_free()
 
-func _on_hurtbox_on_hit(_damage: int, knockback_velocity: float, direction: Vector2, stun: bool) -> void:
+func _on_hurtbox_on_hit(damage: int, knockback_velocity: float, direction: Vector2, stun: bool) -> void:
 	knockback_force = knockback_velocity * direction
 	hit_flash()
-	if stun:
-		animation_player.play(stun_animation)
-		await animation_player.animation_finished
+	for component in components:
+		if component is HealthComponent:
+			var changed_health = component.health - damage
+			if changed_health > 0:
+					if stun:
+						animation_player.play(stun_animation)
+						await animation_player.animation_finished
 
 	bt_player.blackboard.set_var(&"target", get_tree().get_first_node_in_group("Player"))
 

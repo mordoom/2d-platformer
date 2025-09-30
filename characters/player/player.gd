@@ -45,8 +45,8 @@ var paused := false
 var money := 0
 var rum_bottles: int = 0
 var max_rum_bottles: int = 0
-var ammo := 0
-var max_ammo := 0
+var ammo := 20
+var max_ammo := 20
 
 func _ready() -> void:
     SignalBus.connect("money_collected", _on_money_collected)
