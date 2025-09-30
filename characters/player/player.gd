@@ -43,12 +43,38 @@ var swingable_above: Area2D = null
 
 var paused := false
 var money := 0
-var rum_bottles: int = 0
-var max_rum_bottles: int = 0
-var ammo := 20
-var max_ammo := 20
+var max_rum_bottles := 0
+var rum_bottles := 0:
+    set(value):
+        if (value > max_rum_bottles):
+            rum_bottles = max_rum_bottles
+        else:
+            rum_bottles = value
+
+var max_ammo := 1
+var ammo := 1:
+    set(value):
+        if (value > max_ammo):
+            ammo = max_ammo
+        else:
+            ammo = value
+        
+        if value == 0:
+            bullet_charge = 0
+
+var max_bullet_charge := 3
+var bullet_charge := 0:
+    set(value):
+        if (value > max_bullet_charge):
+            bullet_charge = max_bullet_charge
+        else:
+            bullet_charge = value
+        
+        if bullet_charge == max_bullet_charge:
+            ammo = 1
 
 func _ready() -> void:
+    hitbox.connect("hit", _on_hitbox_on_damage_area_hit)
     SignalBus.connect("money_collected", _on_money_collected)
     Dialogic.timeline_started.connect(_on_timeline_started)
     Dialogic.timeline_ended.connect(_on_timeline_ended)
@@ -162,6 +188,9 @@ func die() -> void:
 func _on_hurtbox_component_on_hit(_damage: int, knockback_velocity: float, direction: Vector2, _stun: bool) -> void:
     knockback_force = knockback_velocity * direction
     hsm.dispatch(&"hit_started")
+
+func _on_hitbox_on_damage_area_hit():
+    bullet_charge += 1
 
 func _on_money_collected(_area: Area2D, amount: int):
     money += amount
