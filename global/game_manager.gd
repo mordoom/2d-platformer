@@ -8,16 +8,9 @@ class_name GameManager
 
 const SaveManager = preload("res://addons/MetroidvaniaSystem/Template/Scripts/SaveManager.gd")
 
-var player_scene: PackedScene = References.player_scene
-var player_initial_position: Vector2 = GameConstants.PLAYER_INITIAL_POSITION
 var death_timer: Timer
-
 var initial_level: PackedScene = References.initial_level
 var starting_map: String = initial_level.resource_path
-var current_level: Node
-
-const cell_size: int = GameConstants.CELL_SIZE
-const starting_offset: int = GameConstants.STARTING_OFFSET
 
 const SAVE_PATH: String = "user://example_save_data.sav"
 var custom_run: bool
@@ -35,16 +28,16 @@ func _ready() -> void:
 func init() -> void:
 	MetSys.reset_state()
 	set_player(player_ref)
+	hud.init()
 
 
 	if FileAccess.file_exists(SAVE_PATH):
 		load_game(SAVE_PATH)
 	else:
-		# If no data exists, set empty one.
+		player.set_health(15)
 		MetSys.set_save_data()
 		save_game()
 	
-	hud.init()
 
 	# Initialize room when it changes.
 	room_loaded.connect(init_room, CONNECT_DEFERRED)
