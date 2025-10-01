@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://yq36i0nmliug"]
+[gd_scene load_steps=54 format=3 uid="uid://yq36i0nmliug"]
 
 [ext_resource type="Script" uid="uid://box5tsimem7l4" path="res://characters/enemy/enemy.gd" id="1_8n2xj"]
 [ext_resource type="Script" uid="uid://sbaeqqe6wi0e" path="res://characters/components/hitbox.gd" id="2_vj04c"]
@@ -109,16 +109,8 @@ script = ExtResource("13_oy8vk")
 sound_effect = ExtResource("14_huevs")
 animation_name = &"skeleanims/attack"
 
-[sub_resource type="BTAction" id="BTAction_vj04c"]
-script = ExtResource("13_oy8vk")
-sound_effect = ExtResource("14_huevs")
-animation_name = &"skeleanims/attack2"
-
-[sub_resource type="BTProbability" id="BTProbability_ctjj8"]
-children = [SubResource("BTAction_vj04c")]
-
 [sub_resource type="BTSequence" id="BTSequence_vom71"]
-children = [SubResource("BTAction_0sx34"), SubResource("BTProbability_ctjj8")]
+children = [SubResource("BTAction_0sx34")]
 
 [sub_resource type="BTCooldown" id="BTCooldown_vj04c"]
 duration = 0.5

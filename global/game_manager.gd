@@ -28,12 +28,12 @@ func _ready() -> void:
 func init() -> void:
 	MetSys.reset_state()
 	set_player(player_ref)
-	hud.init()
-
 
 	if FileAccess.file_exists(SAVE_PATH):
 		load_game(SAVE_PATH)
+		hud.init()
 	else:
+		hud.init()
 		player.set_health(15)
 		MetSys.set_save_data()
 		save_game()
@@ -70,7 +70,7 @@ func load_game(path: String) -> void:
 	var max_rum_bottles = save_manager.get_value("max_rum_bottles")
 	player.rum_bottles = max_rum_bottles
 	player.max_rum_bottles = max_rum_bottles
-	player.money = save_manager.get_value("money", 0)
+	player.money = save_manager.get_value("money")
 
 	var max_ammo = save_manager.get_value("max_ammo")
 	player.ammo = max_ammo
