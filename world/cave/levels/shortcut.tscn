@@ -39,6 +39,7 @@ script = ExtResource("6_866em")
 enabler = NodePath("../Lever")
 
 [node name="Ladder" parent="EnableComponent" instance=ExtResource("7_scga3")]
+visible = false
 position = Vector2(316, 355)
 
 [node name="SavePoint" parent="." instance=ExtResource("8_866em")]

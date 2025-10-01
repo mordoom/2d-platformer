@@ -6,14 +6,16 @@ class_name EnableComponent
 
 func _ready():
     if enabler_string:
-        if not GameState.env_is_changed(enabler_string):
-            get_child(0).visible = false
+        if GameState.env_is_changed(enabler_string):
+            get_child(0).visible = !get_child(0).visible
+        else:
             SignalBus.connect("on_env_change", _on_enable)
     else:
-        if not GameState.env_is_changed(enabler):
-            get_child(0).visible = false
+        if GameState.env_is_changed(enabler):
+            get_child(0).visible = !get_child(0).visible
+        else:
             SignalBus.connect("on_env_change", _on_enable)
 
 func _on_enable(node: Node2D) -> void:
     if node == enabler:
-        get_child(0).visible = true
+        get_child(0).visible = !get_child(0).visible

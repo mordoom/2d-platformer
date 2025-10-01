@@ -114,4 +114,5 @@ enabler = NodePath("")
 enabler_string = "res://world/cave/levels/shortcut.tscn/root/GameManager/Level/Lever"
 
 [node name="Ladder" parent="EnableComponent" instance=ExtResource("8_djhnr")]
+visible = false
 position = Vector2(316, 355)

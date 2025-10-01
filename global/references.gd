@@ -7,7 +7,6 @@ var landing_dust_anim: PackedScene = preload("res://effects/landing_dust_anim.ts
 var skeleton_scene: PackedScene = preload("res://characters/enemy/skeleton/enemy.tscn")
 var health_changed_label: PackedScene = preload("res://ui/damage_counter/damage_label.tscn")
 var cannonball: PackedScene = preload("res://characters/enemy/cannon/cannonball.tscn")
-# var dead_body: PackedScene = preload("res://items/dead_body.tscn")
 
 func instantiate(scene: PackedScene, global_position: Vector2) -> Node:
 	var new_thing: Node = scene.instantiate()
