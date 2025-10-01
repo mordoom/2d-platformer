@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://1oqljbi8et2h"]
+[gd_scene load_steps=8 format=4 uid="uid://1oqljbi8et2h"]
 
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="1_xmiqg"]
 [ext_resource type="TileSet" uid="uid://d3oc3t47pwqft" path="res://world/cave/cave.tres" id="2_xmiqg"]
 [ext_resource type="PackedScene" uid="uid://dtb6ujcdawf23" path="res://world/cave/parallax_background.tscn" id="3_xj735"]
 [ext_resource type="PackedScene" uid="uid://dikkltplokfed" path="res://breakable/box/box.tscn" id="4_ggv3p"]
 [ext_resource type="PackedScene" uid="uid://lv651gm64w3v" path="res://characters/enemy/cannon/cannon.tscn" id="5_xmiqg"]
-[ext_resource type="PackedScene" uid="uid://dyoahdasy3pjx" path="res://interactable/lever.tscn" id="6_7f6x1"]
 [ext_resource type="Script" uid="uid://bojumxk6dhrjj" path="res://components/enable_component.gd" id="7_h0ghr"]
 [ext_resource type="PackedScene" uid="uid://dmxcjqfiiabri" path="res://interactable/ladder/large_ladder.tscn" id="8_djhnr"]
 
@@ -108,17 +107,11 @@ position = Vector2(782.99994, 73)
 rotation = 1.5728556
 scale = Vector2(-1, 1)
 
-[node name="Lever" parent="." instance=ExtResource("6_7f6x1")]
-position = Vector2(390, 385)
-collision_layer = 8
-collision_mask = 2
-
-[node name="EnableComponent" type="Node2D" parent="."]
-position = Vector2(168, 0)
+[node name="EnableComponent" type="Node2D" parent="." node_paths=PackedStringArray("enabler")]
+position = Vector2(343, -2)
 script = ExtResource("7_h0ghr")
+enabler = NodePath("")
+enabler_string = "res://world/cave/levels/shortcut.tscn/root/GameManager/Level/Lever"
 
 [node name="Ladder" parent="EnableComponent" instance=ExtResource("8_djhnr")]
-visible = false
 position = Vector2(316, 355)
-
-[connection signal="lever_pulled" from="Lever" to="EnableComponent" method="_on_enable"]

@@ -1,5 +1,6 @@
 extends Node
 
+var env_changes: Array[String] = []
 var items: Array[String] = []
 var perma_dead_enemies: Array[String] = []
 var dead_enemies: Array[String] = []
@@ -50,3 +51,14 @@ func is_item_collected(node: Node2D) -> bool:
 func item_collected(node: Node2D) -> void:
     var unique_key: String = get_node_unique_key(node)
     items.append(unique_key)
+
+func env_changed(node: Node2D) -> void:
+    var unique_key: String = get_node_unique_key(node)
+    env_changes.append(unique_key)
+
+func env_is_changed(node) -> bool:
+    if node is String:
+        return node in env_changes
+
+    var unique_key: String = get_node_unique_key(node)
+    return unique_key in env_changes

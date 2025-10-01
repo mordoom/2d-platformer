@@ -1,0 +1,152 @@
+[gd_scene load_steps=13 format=4 uid="uid://djut00fjxo1cw"]
+
+[ext_resource type="Script" uid="uid://bgh31qn75n5u2" path="res://characters/components/hurtbox.gd" id="2_i3dhe"]
+[ext_resource type="Script" uid="uid://cs08c3rebdnqx" path="res://interactable/tnt.gd" id="2_soyop"]
+[ext_resource type="Script" uid="uid://btumjuy135r4w" path="res://characters/components/health_component.gd" id="3_6ewru"]
+[ext_resource type="Script" uid="uid://dpp6wyop03lna" path="res://components/explosion_component.gd" id="5_3bxh1"]
+[ext_resource type="Script" uid="uid://sbaeqqe6wi0e" path="res://characters/components/hitbox.gd" id="5_cir6l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ewru"]
+size = Vector2(20, 35)
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_soyop"]
+_data = PackedByteArray("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")
+size_override = Vector2(300, 300)
+
+[sub_resource type="Animation" id="Animation_3bxh1"]
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_cir6l"]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hitbox:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_22eq4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hitbox:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_22eq4"]
+_data = {
+&"Explode": SubResource("Animation_cir6l"),
+&"Idle": SubResource("Animation_3bxh1"),
+&"RESET": SubResource("Animation_22eq4")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3bxh1"]
+radius = 54.147945
+
+[node name="TNT" type="Node2D"]
+script = ExtResource("2_soyop")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 6
+script = ExtResource("2_i3dhe")
+metadata/_custom_type_script = "uid://bgh31qn75n5u2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_6ewru")
+
+[node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("hurtbox")]
+script = ExtResource("3_6ewru")
+hurtbox = NodePath("../Hurtbox")
+max_health = 1
+metadata/_custom_type_script = "uid://btumjuy135r4w"
+
+[node name="ExplosionComponent" type="Node" parent="."]
+script = ExtResource("5_3bxh1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_soyop")
+hframes = 3
+vframes = 3
+frame = 1
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "AnimationPlayer",
+"scale": "1.0",
+"slice": "",
+"source": "res://assets/tnt.aseprite",
+"source_uid": 2256592852188612398
+}
+metadata/_aseprite_wizard_source_file_hash_ = "dc3c7d4d6786c50908e54235d6328b24"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_22eq4")
+}
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 6
+script = ExtResource("5_cir6l")
+damage = 100
+knockback_velocity = 700.0
+can_be_deflected = false
+metadata/_custom_type_script = "uid://sbaeqqe6wi0e"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_3bxh1")
+
+[connection signal="dead" from="HealthComponent" to="." method="_on_health_component_dead"]

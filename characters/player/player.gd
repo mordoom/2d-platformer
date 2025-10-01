@@ -47,27 +47,11 @@ var money := 0
 var max_rum_bottles := 0
 var rum_bottles := 0
 
-var max_ammo := 1
-var ammo := 1:
-    set(value):
-        if (value > max_ammo):
-            ammo = max_ammo
-        else:
-            ammo = value
-        
-        if value == 0:
-            bullet_charge = 0
+var max_ammo := 0
+var ammo := 0
 
 var max_bullet_charge := 3
-var bullet_charge := 0:
-    set(value):
-        if (value > max_bullet_charge):
-            bullet_charge = max_bullet_charge
-        else:
-            bullet_charge = value
-        
-        if bullet_charge == max_bullet_charge:
-            ammo = 1
+var bullet_charge := 0
 
 func _ready() -> void:
     hitbox.connect("hit", _on_hitbox_on_damage_area_hit)
