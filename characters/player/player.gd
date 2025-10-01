@@ -128,9 +128,6 @@ func add_ammo() -> void:
     ammo += 1
     max_ammo += 1
 
-func was_hit() -> void:
-    hsm.dispatch(&"hit_started")
-
 func set_health(value: int) -> void:
     health_component.health = value
 
