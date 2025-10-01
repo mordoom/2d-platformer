@@ -45,7 +45,8 @@ directories/dtl_directory={
 }
 layout/style_directory={
 "": "res://dialog/dialog theme.tres",
-"dialog theme": "res://dialog/dialog theme.tres"
+"dialog theme": "res://dialog/dialog theme.tres",
+"tutorial": "res://dialog/tutorial.tres"
 }
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.01
@@ -80,7 +81,7 @@ audio/channel_defaults={
 "volume": 0.0
 }
 }
-layout/style_list=["res://dialog/dialog theme.tres"]
+layout/style_list=["res://dialog/dialog theme.tres", "res://dialog/tutorial.tres"]
 layout/default_style="res://dialog/dialog theme.tres"
 glossary/default_case_sensitive=true
 translation/enabled=false

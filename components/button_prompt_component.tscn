@@ -4,17 +4,14 @@
 [ext_resource type="Script" uid="uid://c3db1ow76qj73" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="2_hklwq"]
 
 [sub_resource type="Texture2D" id="Texture2D_x7x26"]
-resource_local_to_scene = false
+resource_local_to_scene = true
 resource_name = ""
 script = ExtResource("2_hklwq")
 path = "interact"
-show_mode = 0
-force_controller_icon_style = -1
-force_type = 0
-force_device = 16
 metadata/_custom_type_script = "uid://c3db1ow76qj73"
 
 [node name="ButtonPromptComponent" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_5od6s")
 
 [node name="Label" type="TextureRect" parent="."]

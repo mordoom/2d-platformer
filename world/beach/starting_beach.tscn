@@ -93,5 +93,3 @@ scale = Vector2(-1, 1)
 
 [node name="Mosquito2" parent="." instance=ExtResource("10_e3s7u")]
 position = Vector2(2241, 889)
-
-[connection signal="body_entered" from="BottleOfRum" to="." method="_on_bottle_of_rum_body_entered"]

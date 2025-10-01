@@ -4,9 +4,6 @@ func _update(_delta: float) -> void:
 	var dir: Vector2 = blackboard.get_var(GameConstants.BlackboardVars.dir_var)
 	var action_pressed: StringName = blackboard.get_var(GameConstants.BlackboardVars.action_pressed_var)
 	
-	if owner.paused:
-		return
-
 	if dir.y != 0:
 		hsm.dispatch(&"climb_started")
 

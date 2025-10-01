@@ -4,9 +4,6 @@ extends Node
 @export var hsm: LimboHSM
 
 func _input(_event):
-    if owner.paused:
-        return
-
     var dir: Vector2 = Input.get_vector(&"left", &"right", &"up", &"down")
     hsm.blackboard.set_var(GameConstants.BlackboardVars.dir_var, dir)
 
