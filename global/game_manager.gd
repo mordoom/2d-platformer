@@ -24,6 +24,7 @@ func _ready() -> void:
 	SignalBus.connect("on_pistol_collected", on_pistol_collected)
 	SignalBus.connect("on_health_changed", on_health_changed)
 	SignalBus.connect("on_env_change", on_env_changed)
+	SignalBus.connect("zoom_camera", zoom_camera)
 
 func init() -> void:
 	MetSys.reset_state()
@@ -182,3 +183,7 @@ func save_game() -> void:
 	save_manager.set_value("max_rum_bottles", player.max_rum_bottles)
 	save_manager.set_value("env_changes", GameState.env_changes)
 	save_manager.save_as_text(SAVE_PATH)
+
+func zoom_camera(amount: int) -> void:
+	camera.zoom.x -= amount
+	camera.zoom.y -= amount

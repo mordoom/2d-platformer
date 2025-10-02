@@ -1,6 +1,6 @@
 extends AnimatableBody2D
 
-var moving := false
+@export var moving := false
 @export var speed := 50
 @export var collision_shape: StaticBody2D
 
