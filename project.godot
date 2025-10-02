@@ -114,6 +114,7 @@ enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addon
 Player=""
 Ladder=""
 Interactable=""
+SafePoint=""
 
 [input]
 

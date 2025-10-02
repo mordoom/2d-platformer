@@ -1,11 +1,11 @@
-[gd_scene load_steps=54 format=3 uid="uid://yq36i0nmliug"]
+[gd_scene load_steps=57 format=3 uid="uid://yq36i0nmliug"]
 
 [ext_resource type="Script" uid="uid://box5tsimem7l4" path="res://characters/enemy/enemy.gd" id="1_8n2xj"]
 [ext_resource type="Script" uid="uid://sbaeqqe6wi0e" path="res://characters/components/hitbox.gd" id="2_vj04c"]
 [ext_resource type="AudioStream" uid="uid://s5214aembmjs" path="res://assets/sounds/zapsplat_sword_hit.mp3" id="3_ctjj8"]
 [ext_resource type="Script" uid="uid://bgh31qn75n5u2" path="res://characters/components/hurtbox.gd" id="4_vom71"]
 [ext_resource type="Script" uid="uid://btumjuy135r4w" path="res://characters/components/health_component.gd" id="5_sevdq"]
-[ext_resource type="Texture2D" uid="uid://3le6hlxbv7n0" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Attack1.png" id="6_vj04c"]
+[ext_resource type="Texture2D" uid="uid://cdqhlha8pefgq" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Attack2.png" id="6_ctjj8"]
 [ext_resource type="AnimationLibrary" uid="uid://p2meusl6rtfg" path="res://characters/enemy/skeleanims.res" id="7_6hewy"]
 [ext_resource type="Script" uid="uid://djo8043iycaf6" path="res://ai/tasks/check_for_player.gd" id="8_ed447"]
 [ext_resource type="Script" uid="uid://bgobfy4nln5cw" path="res://ai/tasks/patrol.gd" id="9_7bplv"]
@@ -112,9 +112,20 @@ animation_name = &"skeleanims/attack"
 [sub_resource type="BTSequence" id="BTSequence_vom71"]
 children = [SubResource("BTAction_0sx34")]
 
+[sub_resource type="BTAction" id="BTAction_vom71"]
+script = ExtResource("13_oy8vk")
+sound_effect = ExtResource("14_huevs")
+animation_name = &"skeleanims/attack2"
+
+[sub_resource type="BTSequence" id="BTSequence_sevdq"]
+children = [SubResource("BTAction_vom71")]
+
+[sub_resource type="BTRandomSelector" id="BTRandomSelector_txd13"]
+children = [SubResource("BTSequence_vom71"), SubResource("BTSequence_sevdq")]
+
 [sub_resource type="BTCooldown" id="BTCooldown_vj04c"]
 duration = 0.5
-children = [SubResource("BTSequence_vom71")]
+children = [SubResource("BTRandomSelector_txd13")]
 
 [sub_resource type="BTAlwaysSucceed" id="BTAlwaysSucceed_vj04c"]
 children = [SubResource("BTCooldown_vj04c")]
@@ -228,7 +239,7 @@ shape = SubResource("RectangleShape2D_vj04c")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("6_vj04c")
+texture = ExtResource("6_ctjj8")
 hframes = 11
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

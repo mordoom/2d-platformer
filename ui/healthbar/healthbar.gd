@@ -4,7 +4,7 @@ extends ProgressBar
 @onready var damage_indication_timer: Timer = $Timer
 @onready var low_health_timer: Timer = $Timer2
 
-var low_health_percentage := 0.5
+var low_health_percentage := 0.3
 var health: int = 0: set = set_health
 
 func set_health(new_health: int) -> void:

@@ -13,7 +13,11 @@ class DeadBody:
 
 func store_dead_body(player: Player) -> void:
     var new_body = DeadBody.new()
-    new_body.position = player.global_position
+    var nearest_safe_point = get_tree().get_nodes_in_group("SafePoint")[0]
+    if nearest_safe_point:
+        new_body.position = nearest_safe_point.global_position
+    else:
+        new_body.position = player.global_position
     new_body.scene = MetSys.get_current_room_name()
     new_body.money = player.money
     dead_body = new_body
