@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxqgkd0a5cou6"]
+
+[ext_resource type="Script" uid="uid://dju7nf2coetoi" path="res://components/dialog_component.gd" id="1_wa05c"]
+[ext_resource type="Texture2D" uid="uid://bswcumb1eum86" path="res://assets/first mate.png" id="1_x6hkv"]
+[ext_resource type="PackedScene" uid="uid://s2702h7h5u4q" path="res://components/button_prompt_component.tscn" id="2_abtac"]
+[ext_resource type="Script" uid="uid://cqr86vajk6xoh" path="res://components/interaction_component.gd" id="3_a24rl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x6hkv"]
+size = Vector2(54, 41)
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_wa05c")
+timeline_name = "man_escaped_cage"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_x6hkv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7.5)
+shape = SubResource("RectangleShape2D_x6hkv")
+
+[node name="ButtonPromptComponent" parent="." node_paths=PackedStringArray("interact_area") instance=ExtResource("2_abtac")]
+interact_area = NodePath("..")
+
+[node name="InteractionComponent" type="Node" parent="."]
+script = ExtResource("3_a24rl")
+signal_to_emit = "begin_dialog"
+global = false
+metadata/_custom_type_script = "uid://cqr86vajk6xoh"

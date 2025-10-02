@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://cmk6a5xv5wpy3"]
+[gd_scene load_steps=9 format=4 uid="uid://cmk6a5xv5wpy3"]
 
 [ext_resource type="TileSet" uid="uid://d3oc3t47pwqft" path="res://world/cave/cave.tres" id="1_d4ipq"]
 [ext_resource type="Script" uid="uid://b854pi22cva5m" path="res://world/cave/levels/skele_boss.gd" id="1_qany5"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b45tjtegdp6uo" path="res://interactable/ladder/ladder.tscn" id="4_k126l"]
 [ext_resource type="PackedScene" uid="uid://76ojbp4jmikh" path="res://characters/enemy/dinoskele/dinoskele-boss.tscn" id="5_d4ipq"]
 [ext_resource type="PackedScene" uid="uid://dostqrv2oq0q1" path="res://interactable/floating_platform/floating_platform.tscn" id="6_s70sw"]
+[ext_resource type="PackedScene" uid="uid://dmlqt67lt0mw5" path="res://items/pistol.tscn" id="8_k126l"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_qany5")
@@ -39,5 +40,8 @@ enabled = false
 
 [node name="Dinoskele" parent="." instance=ExtResource("5_d4ipq")]
 position = Vector2(1151, 392)
+
+[node name="Area2D" parent="." instance=ExtResource("8_k126l")]
+position = Vector2(161, 308)
 
 [connection signal="dead" from="Dinoskele" to="." method="_on_dinoskele_dead"]

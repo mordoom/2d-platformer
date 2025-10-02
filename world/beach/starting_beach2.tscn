@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dmlqt67lt0mw5" path="res://items/pistol.tscn" id="14_xvtnm"]
 [ext_resource type="Script" uid="uid://bojumxk6dhrjj" path="res://components/enable_component.gd" id="15_17mml"]
 [ext_resource type="PackedScene" uid="uid://b7gqdbnqsxgnd" path="res://world/beach/structure_holdign_cage.tscn" id="16_2eaic"]
-[ext_resource type="Texture2D" uid="uid://bswcumb1eum86" path="res://assets/first mate.png" id="17_2eaic"]
+[ext_resource type="PackedScene" uid="uid://bxqgkd0a5cou6" path="res://world/beach/first_mate.tscn" id="16_kdyyd"]
 
 [node name="StartingBeach" type="Node2D"]
 
@@ -106,15 +106,14 @@ position = Vector2(-10, 0)
 tile_map_data = PackedByteArray("AACNACgAAAAqAAAAAACNACcAAAAqAAAAAACNACYAAAAqAAAAAACNACUAAAAqAAAAAACNACQAAAAqAAAAAACNACMAAAAqAAAAAACNACIAAAAqAAAAAACNACEAAAAqAAAAAACNACAAAAAqAAAAAACNAB8AAAAqAAAAAACNAB4AAAAqAAAAAACNAB0AAAAqAAAAAACNABwAAAAqAAAAAACNABsAAAAqAAAAAACNABoAAAAqAAAAAACNABkAAAAqAAAAAACNABgAAAAqAAAAAACNABcAAAAqAAAAAACNABYAAAAqAAAAAACNABUAAAAqAAAAAACNABQAAAAqAAAAAACNABMAAAAqAAAAAACNABIAAAAqAAAAAACNABEAAAAqAAAAAACWABoAAAAfAAAAAACWABkAAAAfAAAAAACWABgAAAAfAAAAAACWABcAAAAfAAAAAACWABYAAAAfAAAAAACWABUAAAAfAAAAAACWABQAAAAfAAAAAACWABMAAAAfAAAAAACWABIAAAAfAAAAAACWABEAAAAfAAAAAACWABAAAAAhAAAAAACVABAAAAAkAAAAAACUABAAAAAkAAAAAACTABAAAAAkAAAAAACSABAAAAAkAAAAAACRABAAAAAkAAAAAACQABAAAAAkAAAAAACPABAAAAAkAAAAAACOABAAAAAkAAAAAACNABAAAAAhAAAAAACMABAAAAAlAAAAAACWAA8AAAAgAAAAAACWAA4AAAAjAAAAAACXABAAAAAiAAAAAACNAA8AAAAjAAAAAAAKAEkAAQAAAAAAAwA=")
 
 [node name="EnableComponent2" type="Node2D" parent="." node_paths=PackedStringArray("enabler")]
+position = Vector2(4, 0)
 script = ExtResource("15_17mml")
 enabler = NodePath("../Tnt")
 metadata/_custom_type_script = "uid://bojumxk6dhrjj"
 
-[node name="FirstMate" type="Sprite2D" parent="EnableComponent2"]
+[node name="FirstMate" parent="EnableComponent2" instance=ExtResource("16_kdyyd")]
 visible = false
-texture_filter = 1
 position = Vector2(2250, 740)
-texture = ExtResource("17_2eaic")
 
 [node name="EnableComponent3" type="Node2D" parent="." node_paths=PackedStringArray("enabler")]
 script = ExtResource("15_17mml")

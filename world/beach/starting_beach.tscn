@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://b7i8usyvf281d"]
+[gd_scene load_steps=16 format=4 uid="uid://b7i8usyvf281d"]
 
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="1_piv8q"]
 [ext_resource type="Script" uid="uid://d13ebioxh3sfb" path="res://world/beach/starting_beach.gd" id="1_w5ufm"]
@@ -10,8 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://dt3wpilsx1jor" path="res://characters/enemy/crab/crab.tscn" id="9_1olf1"]
 [ext_resource type="PackedScene" uid="uid://t5ui4i8omkee" path="res://characters/enemy/mosquito/mosquito.tscn" id="10_e3s7u"]
 [ext_resource type="PackedScene" uid="uid://u78v4vs7k273" path="res://world/beach/sloop/sloop.tscn" id="11_0wh2h"]
+[ext_resource type="Script" uid="uid://bojumxk6dhrjj" path="res://components/enable_component.gd" id="13_hwcao"]
 [ext_resource type="PackedScene" uid="uid://cpbx41ergsr8t" path="res://items/bottle_of_rum/bottle_of_rum.tscn" id="13_utvve"]
 [ext_resource type="PackedScene" uid="uid://b5vgmdvne22r3" path="res://world/beach/pier.tscn" id="13_w5ufm"]
+[ext_resource type="PackedScene" uid="uid://bxqgkd0a5cou6" path="res://world/beach/first_mate.tscn" id="14_tkvp2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fw2a7"]
 size = Vector2(52, 511)
@@ -81,8 +83,21 @@ position = Vector2(1525, 1175)
 [node name="Crab2" parent="." instance=ExtResource("9_1olf1")]
 position = Vector2(1826, 1063)
 
-[node name="Sloop" parent="." instance=ExtResource("11_0wh2h")]
+[node name="Sloop" parent="." node_paths=PackedStringArray("collision_shape") instance=ExtResource("11_0wh2h")]
 position = Vector2(58, 1094)
+speed = -50
+collision_shape = NodePath("../Invisible Wall")
+
+[node name="EnableComponent2" type="Node2D" parent="Sloop"]
+position = Vector2(-2144, -729)
+script = ExtResource("13_hwcao")
+enabler_string = "res://world/beach/starting_beach2.tscn/root/GameManager/StartingBeach/Tnt"
+metadata/_custom_type_script = "uid://bojumxk6dhrjj"
+
+[node name="FirstMate" parent="Sloop/EnableComponent2" instance=ExtResource("14_tkvp2")]
+visible = false
+position = Vector2(2250, 740)
+timeline_name = "ready_to_sail"
 
 [node name="BottleOfRum" parent="." instance=ExtResource("13_utvve")]
 position = Vector2(705, 1176)

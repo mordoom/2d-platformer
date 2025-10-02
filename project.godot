@@ -38,7 +38,9 @@ directories/dch_directory={
 "vendor": "res://dialog/vendor.dch"
 }
 directories/dtl_directory={
+"man_escaped_cage": "res://dialog/man_escaped_cage.dtl",
 "man_in_cage": "res://dialog/man_in_cage.dtl",
+"ready_to_sail": "res://dialog/ready_to_sail.dtl",
 "rum tutorial": "res://dialog/rum tutorial.dtl",
 "shop": "res://dialog/shop.dtl",
 "sloop repair": "res://dialog/sloop repair.dtl"
