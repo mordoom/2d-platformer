@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://lv651gm64w3v"]
+[gd_scene load_steps=9 format=3 uid="uid://lv651gm64w3v"]
 
 [ext_resource type="Script" uid="uid://dvbhlwfwsbskl" path="res://characters/enemy/cannon/cannon.gd" id="1_55v8w"]
 [ext_resource type="PackedScene" uid="uid://cu87nnob3ont0" path="res://components/projectile_component.tscn" id="2_4vdrb"]
 [ext_resource type="Texture2D" uid="uid://dmrr3jqhipmb8" path="res://assets/Cañon_quieto.png" id="2_t547e"]
+[ext_resource type="AudioStream" uid="uid://cl64yg7hn38qs" path="res://assets/sounds/zapsplat_explosion.mp3" id="3_e0bcf"]
 [ext_resource type="Script" uid="uid://bgh31qn75n5u2" path="res://characters/components/hurtbox.gd" id="5_uocle"]
 [ext_resource type="Script" uid="uid://btumjuy135r4w" path="res://characters/components/health_component.gd" id="5_y1v53"]
 
@@ -21,6 +22,7 @@ script = ExtResource("1_55v8w")
 [node name="ProjectileComponent" parent="." instance=ExtResource("2_4vdrb")]
 position = Vector2(-34, 0)
 rotation = 3.14159
+shooting_sound = ExtResource("3_e0bcf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 5.5)

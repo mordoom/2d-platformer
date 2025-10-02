@@ -18,8 +18,8 @@ tile_map_data = PackedByteArray("AAAAABwAAAAJAAAAAAAAAB0AAAAJAAAAAAAAAB4AAAAEAAA
 tile_set = ExtResource("2_xmiqg")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("3_xj735")]
-offset = Vector2(300, 250)
-transform = Transform2D(1, 0, 0, 1, 300, 250)
+offset = Vector2(0, 180)
+transform = Transform2D(1, 0, 0, 1, 0, 180)
 follow_viewport_scale = 0.5
 
 [node name="StaticBody2D" parent="." instance=ExtResource("4_ggv3p")]
@@ -107,10 +107,9 @@ position = Vector2(782.99994, 73)
 rotation = 1.5728556
 scale = Vector2(-1, 1)
 
-[node name="EnableComponent" type="Node2D" parent="." node_paths=PackedStringArray("enabler")]
+[node name="EnableComponent" type="Node2D" parent="."]
 position = Vector2(343, -2)
 script = ExtResource("7_h0ghr")
-enabler = NodePath("")
 enabler_string = "res://world/cave/levels/shortcut.tscn/root/GameManager/Level/Lever"
 
 [node name="Ladder" parent="EnableComponent" instance=ExtResource("8_djhnr")]

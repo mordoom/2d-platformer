@@ -3,6 +3,7 @@ extends Node2D
 
 @export var bullet_scene: PackedScene = References.cannonball
 @export var shoot_time: float = 2
+@export var shooting_sound: AudioStream
 
 @onready var shoot_timer: Timer = $ShootTimer
 @onready var projectile_aim: Marker2D = $Marker2D
@@ -28,6 +29,8 @@ func stop() -> void:
     shoot_timer.stop()
 
 func shoot() -> void:
+    if shooting_sound:
+        SoundManager.play_sound(shooting_sound)
     shoot_bullet()
     shoot_timer.start()
 

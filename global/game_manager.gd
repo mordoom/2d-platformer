@@ -184,6 +184,6 @@ func save_game() -> void:
 	save_manager.set_value("env_changes", GameState.env_changes)
 	save_manager.save_as_text(SAVE_PATH)
 
-func zoom_camera(amount: int) -> void:
+func zoom_camera(amount: float) -> void:
 	camera.zoom.x -= amount
 	camera.zoom.y -= amount

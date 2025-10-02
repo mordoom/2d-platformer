@@ -3,7 +3,7 @@ extends Node
 signal on_health_changed(node: Node, amount: int)
 signal game_over()
 signal character_died(node: Node)
-signal zoom_camera(amount: int)
+signal zoom_camera(amount: float)
 
 signal rum_consumed()
 signal on_bottle_rum_collected(area: Area2D, amount: int)

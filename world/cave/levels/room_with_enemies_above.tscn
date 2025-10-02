@@ -18,9 +18,10 @@ tile_map_data = PackedByteArray("AAAAABwAAAAJAAAAAAAAAB0AAAAJAAAAAAAAAB4AAAAEAAA
 tile_set = ExtResource("2_lns7a")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("3_lns7a")]
-offset = Vector2(300, 250)
-transform = Transform2D(1, 0, 0, 1, 300, 250)
+offset = Vector2(320, 180)
+transform = Transform2D(1, 0, 0, 1, 320, 180)
 follow_viewport_scale = 0.5
+scroll_base_scale = Vector2(1, 0)
 
 [node name="Skeleton2" parent="." instance=ExtResource("4_1en53")]
 position = Vector2(437, 320)

@@ -787,7 +787,7 @@ wait_time = 0.25
 one_shot = true
 
 [node name="DeflectPoint" type="Marker2D" parent="DeflectBox"]
-position = Vector2(30, -7)
+position = Vector2(30, -21)
 
 [node name="HeadCheck" type="RayCast2D" parent="."]
 position = Vector2(3, -9)
