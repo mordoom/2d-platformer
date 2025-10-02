@@ -53,6 +53,8 @@ var ammo := 0
 var max_bullet_charge := 3
 var bullet_charge := 0
 
+var last_safe_point: SafePoint
+
 func _ready() -> void:
     hitbox.connect("hit", _on_hitbox_on_damage_area_hit)
     SignalBus.connect("money_collected", _on_money_collected)
@@ -70,7 +72,7 @@ func _ready() -> void:
     on_enter()
 
 func on_enter() -> void:
-    pass
+    last_safe_point = null
 
 func _physics_process(delta: float) -> void:
     if is_on_floor():
@@ -180,3 +182,7 @@ func _on_timeline_started() -> void:
 
 func _on_timeline_ended() -> void:
     paused = false
+
+func _on_interact_area_area_entered(area: Area2D) -> void:
+    if area is SafePoint:
+        last_safe_point = area

@@ -707,7 +707,7 @@ hsm = NodePath("../LimboHSM")
 
 [node name="InteractArea" type="Area2D" parent="."]
 collision_layer = 2
-collision_mask = 24
+collision_mask = 56
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
 position = Vector2(4.5, -5)
@@ -794,6 +794,7 @@ position = Vector2(3, -9)
 target_position = Vector2(0, -20)
 hit_from_inside = true
 
+[connection signal="area_entered" from="InteractArea" to="." method="_on_interact_area_area_entered"]
 [connection signal="area_entered" from="ClimbableAreaAbove" to="." method="_on_climbable_area_above_area_entered"]
 [connection signal="area_exited" from="ClimbableAreaAbove" to="." method="_on_climbable_area_above_area_exited"]
 [connection signal="area_entered" from="ClimbableAreaBelow" to="." method="_on_climbable_area_below_area_entered"]

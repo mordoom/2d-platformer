@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bagjgopdimdcn"]
+
+[ext_resource type="Script" uid="uid://6m6q367yjw5n" path="res://world/safe_point.gd" id="1_vmmd1"]
+
+[node name="SafePoint" type="Area2D" groups=["SafePoint"]]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("1_vmmd1")

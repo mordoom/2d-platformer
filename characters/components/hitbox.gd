@@ -46,5 +46,4 @@ func _on_area_entered(area: Area2D) -> void:
 			timer.start()
 
 func _on_timer_timeout() -> void:
-	var nearest_safe_point = get_tree().get_nodes_in_group("SafePoint")[0]
-	last_hurt_player.global_position = nearest_safe_point.global_position
+	last_hurt_player.global_position = last_hurt_player.last_safe_point.global_position

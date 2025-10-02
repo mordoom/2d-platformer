@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://uwi8o7swos3m"]
+[gd_scene load_steps=10 format=4 uid="uid://uwi8o7swos3m"]
 
 [ext_resource type="TileSet" uid="uid://d3oc3t47pwqft" path="res://world/cave/cave.tres" id="1_d8cjw"]
 [ext_resource type="PackedScene" uid="uid://dtb6ujcdawf23" path="res://world/cave/parallax_background.tscn" id="3_6aqm0"]
@@ -7,7 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://lv651gm64w3v" path="res://characters/enemy/cannon/cannon.tscn" id="5_d8cjw"]
 [ext_resource type="PackedScene" uid="uid://cpbx41ergsr8t" path="res://items/bottle_of_rum/bottle_of_rum.tscn" id="7_5kuk4"]
 [ext_resource type="PackedScene" uid="uid://c38regkm775yq" path="res://interactable/barrel of rum.tscn" id="7_d8cjw"]
-[ext_resource type="Script" uid="uid://6m6q367yjw5n" path="res://world/safe_point.gd" id="8_5kuk4"]
+[ext_resource type="PackedScene" uid="uid://bagjgopdimdcn" path="res://world/safe_point.tscn" id="8_5kuk4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b574o"]
+size = Vector2(20, 257)
 
 [node name="Level" type="Node2D"]
 
@@ -36,16 +39,26 @@ position = Vector2(652, 376)
 [node name="SavePoint" parent="." instance=ExtResource("7_d8cjw")]
 position = Vector2(102, 366)
 
-[node name="SafePoint" type="Node2D" parent="." groups=["SafePoint"]]
-position = Vector2(393, 368)
-script = ExtResource("8_5kuk4")
+[node name="SafePoint" parent="." instance=ExtResource("8_5kuk4")]
+position = Vector2(406, 366)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SafePoint"]
+position = Vector2(0, -110.5)
+shape = SubResource("RectangleShape2D_b574o")
+
+[node name="SafePoint2" parent="." instance=ExtResource("8_5kuk4")]
+position = Vector2(590, 366)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SafePoint2"]
+position = Vector2(0, -110.5)
+shape = SubResource("RectangleShape2D_b574o")
 
 [connection signal="body_entered" from="TileMapLayer/Spike" to="TileMapLayer/Spike" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@76002" to="TileMapLayer/@Area2D@76002" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@76003" to="TileMapLayer/@Area2D@76003" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@76004" to="TileMapLayer/@Area2D@76004" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@76005" to="TileMapLayer/@Area2D@76005" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@76006" to="TileMapLayer/@Area2D@76006" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@76007" to="TileMapLayer/@Area2D@76007" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@76008" to="TileMapLayer/@Area2D@76008" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMapLayer/@Area2D@76009" to="TileMapLayer/@Area2D@76009" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@94296" to="TileMapLayer/@Area2D@94296" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@94297" to="TileMapLayer/@Area2D@94297" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@94298" to="TileMapLayer/@Area2D@94298" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@94299" to="TileMapLayer/@Area2D@94299" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@94300" to="TileMapLayer/@Area2D@94300" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@94301" to="TileMapLayer/@Area2D@94301" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@94302" to="TileMapLayer/@Area2D@94302" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMapLayer/@Area2D@94303" to="TileMapLayer/@Area2D@94303" method="_on_body_entered"]
