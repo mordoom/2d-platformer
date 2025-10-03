@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=4 uid="uid://ynhyq16703kq"]
+[gd_scene load_steps=60 format=4 uid="uid://ynhyq16703kq"]
 
 [ext_resource type="Script" uid="uid://dqaul3djxxb3b" path="res://characters/player/player.gd" id="1_i3pqv"]
 [ext_resource type="Material" uid="uid://bv2fvbsgt04xu" path="res://characters/hitshader.tres" id="2_fpo3a"]
@@ -29,6 +29,7 @@
 [ext_resource type="AudioStream" uid="uid://d0s4mj7ppgykf" path="res://assets/sounds/zapsplat_sword_strike_metal.mp3" id="21_5mkjs"]
 [ext_resource type="Script" uid="uid://dvrn0w6h53v8n" path="res://characters/player/heal.gd" id="21_e0pgg"]
 [ext_resource type="AudioStream" uid="uid://dx04mh537tyvj" path="res://assets/sounds/zapsplat_human_burp.mp3" id="22_sbttr"]
+[ext_resource type="AudioStream" uid="uid://bqnmqmksc84e" path="res://assets/sounds/zapsplat_human_swallow_gulp_male_003_75470.mp3" id="23_6pj1p"]
 
 [sub_resource type="Animation" id="Animation_lquwl"]
 resource_name = "Attack"
@@ -696,6 +697,7 @@ metadata/_custom_type_script = "uid://ccanlw8cuwyak"
 [node name="Heal" type="LimboState" parent="LimboHSM" node_paths=PackedStringArray("animation_player")]
 script = ExtResource("21_e0pgg")
 burp_sound = ExtResource("22_sbttr")
+gulp_sound = ExtResource("23_6pj1p")
 can_move = false
 animation_player = NodePath("../../AnimationPlayer")
 animation_name = &"Heal"

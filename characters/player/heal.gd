@@ -3,6 +3,7 @@ extends CharacterState
 var time := 0.0
 var burp_time := 0.6
 @export var burp_sound: AudioStream
+@export var gulp_sound: AudioStream
 
 func _ready() -> void:
     set_guard(healing_guard)
@@ -13,6 +14,7 @@ func healing_guard() -> bool:
 func _enter() -> void:
     blackboard.set_var(GameConstants.BlackboardVars.current_speed_var, 0)
     time = 0
+    SoundManager.play_sound(gulp_sound)
     super._enter()
 
 func _update(delta: float) -> void:
@@ -26,3 +28,6 @@ func _update(delta: float) -> void:
         owner.set_health(owner.get_health() + 20)
         owner.rum_bottles = owner.rum_bottles - 1
         dispatch(EVENT_FINISHED)
+
+func _exit() -> void:
+    SoundManager.stop_sound(gulp_sound)
