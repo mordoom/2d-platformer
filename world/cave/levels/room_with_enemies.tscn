@@ -16,8 +16,6 @@ tile_map_data = PackedByteArray("AAAMAB8AAAAJAAAAAAAMAB4AAAAJAAAAAAAMAB0AAAAJAAA
 tile_set = ExtResource("2_vme22")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("2_oq5dy")]
-offset = Vector2(300, 250)
-transform = Transform2D(1, 0, 0, 1, 300, 250)
 follow_viewport_scale = 0.5
 
 [node name="Ladder" parent="." instance=ExtResource("5_vme22")]

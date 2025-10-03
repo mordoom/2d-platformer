@@ -15,6 +15,5 @@ tile_set = ExtResource("1_oq5dy")
 offset = Vector2(320, 180)
 transform = Transform2D(1, 0, 0, 1, 320, 180)
 follow_viewport_scale = 0.5
-scroll_base_scale = Vector2(1, 0)
 
 [node name="RoomInstance" parent="." instance=ExtResource("4_oq5dy")]

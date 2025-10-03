@@ -36,7 +36,7 @@ func _on_area_entered(area: Area2D) -> void:
 		emit_signal("hit")
 		if contact_sound:
 			SoundManager.play_sound_with_pitch(contact_sound, Rng.generate_random_pitch())
-		if teleport_to_safety:
+		if teleport_to_safety && area.owner.last_safe_point:
 			last_hurt_player = area.owner
 			var timer = Timer.new()
 			timer.wait_time = teleport_time

@@ -5,11 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://bor2w6qh6wlq3" path="res://assets/cave/cave-bg-top.png" id="3_cke5d"]
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
-scroll_base_scale = Vector2(1, 0)
+offset = Vector2(320, 180)
+transform = Transform2D(1, 0, 0, 1, 320, 180)
+scroll_base_scale = Vector2(1, 0.1)
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.1, 0)
-motion_mirroring = Vector2(640, 0)
+motion_mirroring = Vector2(640, 360)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
 texture_filter = 1
@@ -17,7 +19,7 @@ texture = ExtResource("1_ulu1p")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.1, 0.1)
-motion_mirroring = Vector2(640, 0)
+motion_mirroring = Vector2(640, 360)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer2"]
 texture_filter = 1
@@ -25,7 +27,7 @@ texture = ExtResource("2_l4a0e")
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.4, 0.4)
-motion_mirroring = Vector2(640, 0)
+motion_mirroring = Vector2(640, 360)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer3"]
 texture_filter = 1
