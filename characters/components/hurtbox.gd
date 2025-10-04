@@ -27,7 +27,7 @@ func on_hurtbox_hit(hitbox: Hitbox, direction: Vector2) -> void:
     Engine.time_scale = 1
 
     if deflect_box != null:
-        if deflect_box.is_deflecting && direction.x != owner.current_direction:
+        if deflect_box.is_deflecting && sign(direction.x) != owner.current_direction:
             deflect_box.deflect()
             if hitbox.owner.get("animation_player"):
                 hitbox.owner.animation_player.stop()
