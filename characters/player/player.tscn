@@ -146,7 +146,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_fpo3a"]
 resource_name = "Attack"
-length = 0.4
+length = 0.22
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -154,7 +154,7 @@ tracks/0/path = NodePath("DeflectBox:is_deflecting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -560,7 +560,7 @@ position = Vector2(1, -8)
 texture = SubResource("PortableCompressedTexture2D_8v65i")
 hframes = 9
 vframes = 8
-frame = 52
+frame = 29
 metadata/_aseprite_wizard_interface_config_ = {
 "animation_section": true,
 "output_section": true,
@@ -659,6 +659,10 @@ can_move = false
 animation_player = NodePath("../../AnimationPlayer")
 animation_name = &"Deflect"
 metadata/_custom_type_script = "uid://ccanlw8cuwyak"
+
+[node name="Timer" type="Timer" parent="LimboHSM/Deflect"]
+wait_time = 0.4
+one_shot = true
 
 [node name="Air" type="LimboState" parent="LimboHSM" node_paths=PackedStringArray("animation_player")]
 script = ExtResource("7_dw050")
