@@ -164,8 +164,11 @@ func _on_health_component_dead() -> void:
 func die() -> void:
     hsm.dispatch(&"death_started")
 
-func _on_hurtbox_component_on_hit(_damage: int, knockback_velocity: float, direction: Vector2, _stun: bool) -> void:
+func apply_knockback_force(knockback_velocity: float, direction: Vector2) -> void:
     knockback_force = knockback_velocity * direction
+
+func _on_hurtbox_component_on_hit(_damage: int, knockback_velocity: float, direction: Vector2, _stun: bool) -> void:
+    apply_knockback_force(knockback_velocity, direction)
     hsm.dispatch(&"hit_started")
 
 func _on_hitbox_on_damage_area_hit():
