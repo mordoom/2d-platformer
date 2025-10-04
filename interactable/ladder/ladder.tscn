@@ -18,5 +18,5 @@ shape = SubResource("RectangleShape2D_sgfke")
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
 position = Vector2(-7, 0)
-tile_map_data = PackedByteArray("AAAAAPz/AAAcAAAAAAAAAAMAAAAdAAAAAAAAAAIAAAAeAAAAAAAAAAEAAAAeAAAAAAAAAAAAAAAeAAAAAAAAAP//AAAeAAAAAAAAAP7/AAAeAAAAAAAAAP3/AAAeAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAPz/AAAZAAAAAAAAAAMAAAAaAAAAAAAAAAIAAAAbAAAAAAAAAAEAAAAbAAAAAAAAAAAAAAAbAAAAAAAAAP//AAAbAAAAAAAAAP7/AAAbAAAAAAAAAP3/AAAbAAAAAAA=")
 tile_set = ExtResource("2_gchbr")
