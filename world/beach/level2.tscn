@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://bptd7rjktnxk1"]
+[gd_scene load_steps=7 format=4 uid="uid://bptd7rjktnxk1"]
 
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="1_fdu8g"]
 [ext_resource type="TileSet" uid="uid://dis6gvty4iluf" path="res://world/beach/beach.tres" id="2_jkcku"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://ckgghhhcnl5av" path="res://assets/beach/Clouds.png" id="4_pqdko"]
 [ext_resource type="PackedScene" uid="uid://b6on6ui1ojn" path="res://interactable/swing_rope.tscn" id="5_6kkrd"]
 [ext_resource type="PackedScene" uid="uid://b45tjtegdp6uo" path="res://interactable/ladder/ladder.tscn" id="6_tt1jm"]
-[ext_resource type="PackedScene" uid="uid://c38regkm775yq" path="res://interactable/barrel of rum.tscn" id="7_mtutw"]
 
 [node name="StartingBeach" type="Node2D"]
 
@@ -35,6 +34,3 @@ position = Vector2(929, 720)
 
 [node name="Area2D2" parent="." instance=ExtResource("6_tt1jm")]
 position = Vector2(601, 448)
-
-[node name="SavePoint" parent="." instance=ExtResource("7_mtutw")]
-position = Vector2(621, 974)

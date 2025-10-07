@@ -90,6 +90,7 @@ func load_game(path: String) -> void:
 func init_room() -> void:
 	MetSys.get_current_room_instance().adjust_camera_limits(camera)
 	player.on_enter()
+	Engine.time_scale = 1
 	
 	# Initializes MetSys.get_current_coords(), so you can use it from the beginning.
 	if MetSys.last_player_position.x == Vector2i.MAX.x:

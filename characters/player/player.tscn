@@ -746,7 +746,7 @@ collision_mask = 5
 [node name="BulletHitbox" type="Area2D" parent="."]
 script = ExtResource("17_aqrcq")
 damage = 5
-knockback_velocity = 200.0
+knockback_velocity = 300.0
 stun = true
 metadata/_custom_type_script = "uid://sbaeqqe6wi0e"
 

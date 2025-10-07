@@ -95,9 +95,12 @@ func _on_hurtbox_on_hit(damage: int, knockback_velocity: float, direction: Vecto
 		if component is HealthComponent:
 			var changed_health = component.health - damage
 			if changed_health > 0:
-					if stun:
+					if stun && stun_animation:
+						bt_player.active = false
+						current_speed = 0;
 						animation_player.play(stun_animation)
 						await animation_player.animation_finished
+						bt_player.active = true
 
 	bt_player.blackboard.set_var(&"target", get_tree().get_first_node_in_group("Player"))
 

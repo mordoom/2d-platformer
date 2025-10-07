@@ -18,7 +18,7 @@ texture_filter = 1
 texture = ExtResource("1_ulu1p")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.1, 0.1)
+motion_scale = Vector2(0.2, 0.1)
 motion_mirroring = Vector2(640, 360)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer2"]
