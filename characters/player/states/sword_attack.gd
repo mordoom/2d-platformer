@@ -10,6 +10,7 @@ var idle_max_combo = 3
 var advance_combo := false
 var combo_cooldown_time := 0.15
 var combo_cooldown_timer := 0.0
+var start_dir: Vector2
 
 func _enter() -> void:
     super._enter()
@@ -18,11 +19,14 @@ func _enter() -> void:
     combo_cooldown_timer = combo_cooldown_time
 
     SoundManager.play_sound_with_pitch(sword_swing_sound, Rng.generate_random_pitch())
+    start_dir = blackboard.get_var(GameConstants.BlackboardVars.dir_var)
 
     if stop_movement:
         blackboard.set_var(GameConstants.BlackboardVars.current_speed_var, 0)
 
 func _update(delta: float) -> void:
+    if blackboard.get_var(GameConstants.BlackboardVars.dir_var) == start_dir * -1:
+        blackboard.set_var(GameConstants.BlackboardVars.dir_var, Vector2.ZERO)
     combo_cooldown_timer -= delta
 
     var max_combo = default_max_combo

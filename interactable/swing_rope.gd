@@ -1,7 +1,6 @@
 class_name SwingRope
 extends Area2D
 
-@onready var rope: Line2D = $Line2D
 @onready var marker: Marker2D = $Marker2D
 
 @export var min_rotation := -70.0

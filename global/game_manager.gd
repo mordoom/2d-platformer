@@ -83,7 +83,7 @@ func load_game(path: String) -> void:
 	
 	if not custom_run:
 		var loaded_starting_map: String = save_manager.get_value("current_room")
-		if not loaded_starting_map.is_empty(): # Some compatibility problem.
+		if not loaded_starting_map.is_empty():
 			starting_map = loaded_starting_map
 
 
@@ -92,7 +92,6 @@ func init_room() -> void:
 	player.on_enter()
 	Engine.time_scale = 1
 	
-	# Initializes MetSys.get_current_coords(), so you can use it from the beginning.
 	if MetSys.last_player_position.x == Vector2i.MAX.x:
 		MetSys.set_player_position(player.position)
 	
@@ -135,7 +134,7 @@ func _physics_process(_delta: float) -> void:
 
 func on_campfire_rested_handler(_area: Area2D) -> void:
 	save_game()
-	# Starting coords for the delta vector feature.
+	load_room(MetSys.get_current_room_name())
 	reset_map_starting_coords()
 	player.set_health(player.health_component.max_health)
 	player.rum_bottles = player.max_rum_bottles
