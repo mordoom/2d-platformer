@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=4 uid="uid://ynhyq16703kq"]
+[gd_scene load_steps=61 format=4 uid="uid://ynhyq16703kq"]
 
 [ext_resource type="Script" uid="uid://dqaul3djxxb3b" path="res://characters/player/player.gd" id="1_i3pqv"]
 [ext_resource type="Material" uid="uid://bv2fvbsgt04xu" path="res://characters/hitshader.tres" id="2_fpo3a"]
@@ -26,6 +26,7 @@
 [ext_resource type="Script" uid="uid://sbaeqqe6wi0e" path="res://characters/components/hitbox.gd" id="17_aqrcq"]
 [ext_resource type="Script" uid="uid://bh0x4yq3uixk5" path="res://characters/components/deflect_box.gd" id="18_d2agh"]
 [ext_resource type="AudioStream" uid="uid://s5214aembmjs" path="res://assets/sounds/zapsplat_sword_hit.mp3" id="19_kyfeq"]
+[ext_resource type="AudioStream" uid="uid://c6vn5yln05kbg" path="res://assets/sounds/die.mp3" id="21_3a7m8"]
 [ext_resource type="AudioStream" uid="uid://d0s4mj7ppgykf" path="res://assets/sounds/zapsplat_sword_strike_metal.mp3" id="21_5mkjs"]
 [ext_resource type="Script" uid="uid://dvrn0w6h53v8n" path="res://characters/player/heal.gd" id="21_e0pgg"]
 [ext_resource type="AudioStream" uid="uid://dx04mh537tyvj" path="res://assets/sounds/zapsplat_human_burp.mp3" id="22_sbttr"]
@@ -693,6 +694,7 @@ metadata/_custom_type_script = "uid://ccanlw8cuwyak"
 
 [node name="Dead" type="LimboState" parent="LimboHSM" node_paths=PackedStringArray("animation_player")]
 script = ExtResource("12_gqopd")
+death_sound = ExtResource("21_3a7m8")
 can_move = false
 animation_player = NodePath("../../AnimationPlayer")
 animation_name = &"Dead"
