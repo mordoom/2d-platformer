@@ -11,10 +11,11 @@ func _update(_delta: float) -> void:
 	var has_double_jumped: bool = blackboard.get_var(GameConstants.BlackboardVars.has_double_jumped_var)
 	var action_pressed: StringName = blackboard.get_var(GameConstants.BlackboardVars.action_pressed_var)
 	var dir: Vector2 = blackboard.get_var(GameConstants.BlackboardVars.dir_var)
-	
-	if not has_double_jumped && Input.is_action_just_pressed(&"jump"):
-		character.velocity.y = character.jump_velocity
-		blackboard.set_var(GameConstants.BlackboardVars.has_double_jumped_var, true)
+
+	# temp disable: 
+	# if not has_double_jumped && Input.is_action_just_pressed(&"jump"):
+	# 	character.velocity.y = character.jump_velocity
+	# 	blackboard.set_var(GameConstants.BlackboardVars.has_double_jumped_var, true)
 
 	if Input.is_action_just_released(&"jump"):
 		character.velocity.y *= character.variable_height_jump_mult
