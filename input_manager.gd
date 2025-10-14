@@ -11,7 +11,7 @@ func _input(_event):
     
     if Input.is_action_just_pressed("drink_rum"):
         action_pressed = &"drink_rum"
-    elif Input.is_action_pressed(&"interact"):
+    elif Input.is_action_just_pressed(&"interact"):
         owner.handle_interactions()
     elif Input.is_action_just_pressed(&"roll"):
         action_pressed = &"roll"

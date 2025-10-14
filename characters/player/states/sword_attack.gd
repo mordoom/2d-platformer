@@ -8,7 +8,7 @@ var combo_count := 1
 var default_max_combo = 2
 var idle_max_combo = 3
 var advance_combo := false
-var combo_cooldown_time := 0.15
+var combo_cooldown_time := 0.00
 var combo_cooldown_timer := 0.0
 var start_dir: Vector2
 
@@ -33,8 +33,7 @@ func _update(delta: float) -> void:
     if hsm.get_previous_active_state().name == "Idle":
         max_combo = idle_max_combo
 
-    var action_pressed = blackboard.get_var(GameConstants.BlackboardVars.action_pressed_var)
-    if advance_combo == false && combo_cooldown_timer <= 0 && action_pressed == &"attack":
+    if advance_combo == false && combo_cooldown_timer <= 0 && Input.is_action_just_pressed("attack"):
         advance_combo = true
         combo_count += 1
 
