@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://b6gem3jw1eo62"]
+[gd_scene load_steps=14 format=3 uid="uid://b6gem3jw1eo62"]
 
 [ext_resource type="Script" uid="uid://c5bni58bhmjlo" path="res://ui/hud/hud.gd" id="1_rbyyf"]
+[ext_resource type="AudioStream" uid="uid://ciox2nivp1thi" path="res://assets/sounds/relief.mp3" id="2_5uuaq"]
 [ext_resource type="PackedScene" uid="uid://bipon0wb0ovjw" path="res://ui/healthbar/healthbar.tscn" id="2_276te"]
 [ext_resource type="Theme" uid="uid://cqw1qi00p254h" path="res://ui_theme.tres" id="2_546lt"]
 [ext_resource type="Script" uid="uid://c66o6dhkgnilh" path="res://ui/rumbar/rumbar.gd" id="4_7ihmi"]
@@ -9,6 +10,7 @@
 [ext_resource type="FontFile" uid="uid://b33ox0oj78and" path="res://assets/fonts/Minecraft.ttf" id="6_kwc50"]
 [ext_resource type="Texture2D" uid="uid://cdrr45b5lyr28" path="res://assets/pistol.png" id="7_cxhb7"]
 [ext_resource type="Texture2D" uid="uid://bapmkrdiwi5gg" path="res://assets/jolly roger.png" id="9_aixkq"]
+[ext_resource type="Texture2D" uid="uid://d3fuixhfdipu3" path="res://assets/bottle of rum.png" id="10_cxhb7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_272bh"]
 
@@ -27,6 +29,7 @@ Label/styles/normal = SubResource("StyleBoxEmpty_272bh")
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_rbyyf")
+heal_sound = ExtResource("2_5uuaq")
 
 [node name="Message" type="Label" parent="."]
 anchors_preset = -1
@@ -130,3 +133,31 @@ horizontal_alignment = 1
 texture_filter = 1
 position = Vector2(47.5, -30)
 texture = ExtResource("9_aixkq")
+
+[node name="HealContainer" type="VBoxContainer" parent="."]
+anchors_preset = -1
+anchor_top = 0.44400004
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 272.5
+offset_top = 0.1599884
+offset_right = -272.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HealContainer"]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("2_546lt")
+text = "RUM RESTORED"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="HealContainer"]
+texture_filter = 1
+position = Vector2(71.5, -30)
+texture = ExtResource("10_cxhb7")
+
+[node name="Timer" type="Timer" parent="HealContainer"]
+wait_time = 2.0
+one_shot = true

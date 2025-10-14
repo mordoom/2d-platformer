@@ -1,5 +1,9 @@
 extends CanvasLayer
 
+@export var heal_sound: AudioStream
+
+@onready var healMessage: VBoxContainer = $HealContainer
+@onready var healMessageTimer: Timer = $HealContainer/Timer
 @onready var gameOverMessage: VBoxContainer = $GameOverContainer
 @onready var message: Label = $Message
 @onready var healthbar: ProgressBar = $Healthbar
@@ -20,8 +24,11 @@ func _ready() -> void:
 	SignalBus.connect("on_remove_message", on_remove_message)
 	SignalBus.connect("on_health_changed", on_health_changed)
 	SignalBus.connect("money_collected", _on_money_collected)
+	SignalBus.connect("on_campfire_rested", _on_campfire_rested)
 
 func init() -> void:
+	healMessage.visible = false
+	healMessageTimer.timeout.connect(_hide_heal_message)
 	gameOverMessage.visible = false
 	message.visible = false
 	healthbar.init_health(player.get_health())
@@ -56,3 +63,11 @@ func _on_money_collected(_area: Area2D, amount: int):
 	target_money += amount
 	var tween := get_tree().create_tween()
 	tween.tween_property(self, "money", target_money, 1.0)
+
+func _on_campfire_rested(_area: Area2D) -> void:
+	healMessage.visible = true
+	healMessageTimer.start()
+	SoundManager.play_sound(heal_sound)
+
+func _hide_heal_message() -> void:
+	healMessage.visible = false
