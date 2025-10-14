@@ -34,7 +34,7 @@ position = Vector2(1143, 285)
 position = Vector2(796, 257)
 
 [node name="FloatingPlatform" parent="." instance=ExtResource("6_s70sw")]
-position = Vector2(1216, -7)
+position = Vector2(1216, -10)
 offset_pos = Vector2(0, 449)
 enabled = false
 
