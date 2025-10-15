@@ -65,9 +65,10 @@ func _on_money_collected(_area: Area2D, amount: int):
 	tween.tween_property(self, "money", target_money, 1.0)
 
 func _on_campfire_rested(_area: Area2D) -> void:
-	healMessage.visible = true
-	healMessageTimer.start()
-	SoundManager.play_sound(heal_sound)
+	if (healMessageTimer.is_stopped()):
+		healMessage.visible = true
+		healMessageTimer.start()
+		SoundManager.play_sound(heal_sound)
 
 func _hide_heal_message() -> void:
 	healMessage.visible = false
