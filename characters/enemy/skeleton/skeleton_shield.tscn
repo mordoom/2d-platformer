@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://ce2sk71cnrcbv"]
+[gd_scene load_steps=66 format=3 uid="uid://ce2sk71cnrcbv"]
 
 [ext_resource type="Script" uid="uid://box5tsimem7l4" path="res://characters/enemy/enemy.gd" id="1_6xy2a"]
 [ext_resource type="Script" uid="uid://sbaeqqe6wi0e" path="res://characters/components/hitbox.gd" id="2_6xuh3"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://c61fv4n4mdc02" path="res://ai/tasks/pursue.gd" id="9_l5pfr"]
 [ext_resource type="Script" uid="uid://g12wvgj8iisd" path="res://ai/tasks/stop.gd" id="10_4rr6g"]
 [ext_resource type="Script" uid="uid://fae0vc1pe7kt" path="res://ai/tasks/attack.gd" id="11_1u6rq"]
+[ext_resource type="Script" uid="uid://qww7y00iuaeu" path="res://ai/tasks/block.gd" id="11_6xuh3"]
 [ext_resource type="AudioStream" uid="uid://c8r35jyo2xhm4" path="res://assets/sounds/zapsplat_sword_swing.mp3" id="12_w0h3b"]
 [ext_resource type="Script" uid="uid://djo8043iycaf6" path="res://ai/tasks/check_for_player.gd" id="13_af6k0"]
 [ext_resource type="Script" uid="uid://bgobfy4nln5cw" path="res://ai/tasks/patrol.gd" id="14_wb4gg"]
@@ -143,12 +144,7 @@ script = ExtResource("9_l5pfr")
 script = ExtResource("10_4rr6g")
 
 [sub_resource type="BTAction" id="BTAction_m3yey"]
-script = ExtResource("11_1u6rq")
-sound_effect = ExtResource("12_w0h3b")
-animation_name = &"skeleanims/shield_attack"
-
-[sub_resource type="BTSequence" id="BTSequence_4utro"]
-children = [SubResource("BTAction_m3yey")]
+script = ExtResource("11_6xuh3")
 
 [sub_resource type="BBNode" id="BBNode_4utro"]
 saved_value = NodePath("AnimationPlayer")
@@ -165,24 +161,31 @@ resource_name = "AnimationPlayer"
 [sub_resource type="BTAwaitAnimation" id="BTAwaitAnimation_4utro"]
 animation_player = SubResource("BBNode_m3yey")
 animation_name = &"skeleanims/shield_block"
+max_time = 2.0
 
-[sub_resource type="BTAction" id="BTAction_16fve"]
+[sub_resource type="BTSequence" id="BTSequence_4utro"]
+children = [SubResource("BTAction_m3yey"), SubResource("BTPlayAnimation_16fve"), SubResource("BTAwaitAnimation_4utro")]
+
+[sub_resource type="BTAction" id="BTAction_4utro"]
 script = ExtResource("11_1u6rq")
 sound_effect = ExtResource("12_w0h3b")
-animation_name = &"skeleanims/shield_attack2"
+animation_name = &"skeleanims/shield_attack"
 
-[sub_resource type="BTSequence" id="BTSequence_3ooqf"]
-children = [SubResource("BTPlayAnimation_16fve"), SubResource("BTAwaitAnimation_4utro"), SubResource("BTAction_16fve")]
+[sub_resource type="BTSequence" id="BTSequence_m3yey"]
+children = [SubResource("BTAction_4utro")]
 
 [sub_resource type="BTRandomSelector" id="BTRandomSelector_1ik2c"]
-children = [SubResource("BTSequence_4utro"), SubResource("BTSequence_3ooqf")]
+children = [SubResource("BTSequence_m3yey")]
 
 [sub_resource type="BTCooldown" id="BTCooldown_t8im7"]
 duration = 0.5
 children = [SubResource("BTRandomSelector_1ik2c")]
 
+[sub_resource type="BTSelector" id="BTSelector_1ik2c"]
+children = [SubResource("BTSequence_4utro"), SubResource("BTCooldown_t8im7")]
+
 [sub_resource type="BTAlwaysSucceed" id="BTAlwaysSucceed_l5pfr"]
-children = [SubResource("BTCooldown_t8im7")]
+children = [SubResource("BTSelector_1ik2c")]
 
 [sub_resource type="BTSequence" id="BTSequence_k40fn"]
 custom_name = "Pursue And Attack"

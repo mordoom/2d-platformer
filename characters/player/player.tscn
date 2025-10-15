@@ -751,6 +751,7 @@ collision_mask = 5
 script = ExtResource("17_aqrcq")
 damage = 5
 knockback_velocity = 300.0
+can_be_deflected = false
 stun = true
 metadata/_custom_type_script = "uid://sbaeqqe6wi0e"
 
