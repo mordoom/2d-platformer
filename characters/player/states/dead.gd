@@ -4,7 +4,7 @@ extends CharacterState
 
 func _enter() -> void:
     super._enter()
-    owner.hitbox.monitoring = false
+    owner.hitbox.set_deferred("monitoring", false)
     SignalBus.emit_signal("character_died", owner)
     SoundManager.play_sound(death_sound)
 

@@ -7,7 +7,7 @@ func _update(_delta: float) -> void:
 	if dir.y != 0:
 		hsm.dispatch(&"climb_started")
 
-	if action_pressed == &"drink_rum":
+	if Input.is_action_just_pressed("drink_rum"):
 		hsm.dispatch(&"healing_started")
 	if action_pressed == &"deflect" || InputBuffer.is_action_press_buffered(&"deflect"):
 		hsm.dispatch(&"deflect_started")
