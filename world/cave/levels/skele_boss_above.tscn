@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c38regkm775yq" path="res://interactable/barrel of rum.tscn" id="5_ss0fe"]
 [ext_resource type="PackedScene" uid="uid://b6on6ui1ojn" path="res://interactable/swing_rope.tscn" id="6_s6ugu"]
 [ext_resource type="PackedScene" uid="uid://dostqrv2oq0q1" path="res://interactable/floating_platform/floating_platform.tscn" id="7_sgjxf"]
-[ext_resource type="PackedScene" uid="uid://yq36i0nmliug" path="res://characters/enemy/skeleton/enemy.tscn" id="8_hc2dw"]
+[ext_resource type="PackedScene" uid="uid://yq36i0nmliug" path="res://characters/enemy/skeleton/skeleton.tscn" id="8_hc2dw"]
 [ext_resource type="PackedScene" uid="uid://bagjgopdimdcn" path="res://world/safe_point.tscn" id="8_qjolm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qj2ur"]

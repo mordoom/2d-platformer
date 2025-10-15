@@ -113,6 +113,9 @@ func update_facing_direction(direction: float) -> void:
         hitbox.scale.x = 1
         deflect_box.scale.x = 1
 
+func get_facing_direction() -> float:
+    return current_direction
+
 func handle_interactions():
     for area: Area2D in interact_area.get_overlapping_areas():
         var interaction_comp: InteractionComponent = area.get_node_or_null(GameConstants.ComponentNames.INTERACTION)
@@ -158,8 +161,8 @@ func _on_climbable_area_below_area_exited(area: Area2D) -> void:
 
 func _on_health_component_dead() -> void:
     die()
-    hurtbox.monitorable = false
-    hurtbox.monitoring = false
+    hurtbox.set_deferred("monitorable", false)
+    hurtbox.set_deferred("monitoring", false)
 
 func die() -> void:
     hsm.dispatch(&"death_started")

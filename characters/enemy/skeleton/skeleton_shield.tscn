@@ -1,0 +1,348 @@
+[gd_scene load_steps=64 format=3 uid="uid://ce2sk71cnrcbv"]
+
+[ext_resource type="Script" uid="uid://box5tsimem7l4" path="res://characters/enemy/enemy.gd" id="1_6xy2a"]
+[ext_resource type="Script" uid="uid://sbaeqqe6wi0e" path="res://characters/components/hitbox.gd" id="2_6xuh3"]
+[ext_resource type="AudioStream" uid="uid://s5214aembmjs" path="res://assets/sounds/zapsplat_sword_hit.mp3" id="3_m3yey"]
+[ext_resource type="Script" uid="uid://bgh31qn75n5u2" path="res://characters/components/hurtbox.gd" id="4_4utro"]
+[ext_resource type="Script" uid="uid://btumjuy135r4w" path="res://characters/components/health_component.gd" id="5_16fve"]
+[ext_resource type="Texture2D" uid="uid://b37epjf1sx3tg" path="res://assets/Skeleton_Shield/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_03_Yellow_Idle.png" id="6_6xy2a"]
+[ext_resource type="AnimationLibrary" uid="uid://p2meusl6rtfg" path="res://characters/enemy/skeleanims.res" id="7_1ik2c"]
+[ext_resource type="Script" uid="uid://botkcxhs4svve" path="res://ai/tasks/get_first_in_group.gd" id="8_t8im7"]
+[ext_resource type="Script" uid="uid://c61fv4n4mdc02" path="res://ai/tasks/pursue.gd" id="9_l5pfr"]
+[ext_resource type="Script" uid="uid://g12wvgj8iisd" path="res://ai/tasks/stop.gd" id="10_4rr6g"]
+[ext_resource type="Script" uid="uid://fae0vc1pe7kt" path="res://ai/tasks/attack.gd" id="11_1u6rq"]
+[ext_resource type="AudioStream" uid="uid://c8r35jyo2xhm4" path="res://assets/sounds/zapsplat_sword_swing.mp3" id="12_w0h3b"]
+[ext_resource type="Script" uid="uid://djo8043iycaf6" path="res://ai/tasks/check_for_player.gd" id="13_af6k0"]
+[ext_resource type="Script" uid="uid://bgobfy4nln5cw" path="res://ai/tasks/patrol.gd" id="14_wb4gg"]
+[ext_resource type="Script" uid="uid://b7ov7os4iacqc" path="res://ai/tasks/flip_direction.gd" id="15_w7i1e"]
+[ext_resource type="Script" uid="uid://cv5rhtqh14anw" path="res://components/env_check_component.gd" id="16_xd3sg"]
+[ext_resource type="Script" uid="uid://bh0x4yq3uixk5" path="res://characters/components/deflect_box.gd" id="17_m3yey"]
+[ext_resource type="AudioStream" uid="uid://d0s4mj7ppgykf" path="res://assets/sounds/zapsplat_sword_strike_metal.mp3" id="18_4utro"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xaro"]
+size = Vector2(40, 61)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iuxou"]
+size = Vector2(25, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vj04c"]
+size = Vector2(25, 46)
+
+[sub_resource type="Animation" id="Animation_03nx6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitboxComponent:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_6xy2a")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:hframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DeflectBox:is_deflecting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2vq4o"]
+_data = {
+&"RESET": SubResource("Animation_03nx6")
+}
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_tlrvp"]
+var/current_dir/name = &"current_dir"
+var/current_dir/type = 2
+var/current_dir/value = 1
+var/current_dir/hint = 0
+var/current_dir/hint_string = ""
+var/current_speed/name = &"current_speed"
+var/current_speed/type = 3
+var/current_speed/value = 0.0
+var/current_speed/hint = 0
+var/current_speed/hint_string = ""
+var/target/name = &"target"
+var/target/type = 24
+var/target/hint = 0
+var/target/hint_string = ""
+
+[sub_resource type="BBVariant" id="BBVariant_vj04c"]
+saved_value = null
+resource_name = "<null>"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_ctjj8"]
+variable = &"target"
+check_type = 5
+value = SubResource("BBVariant_vj04c")
+
+[sub_resource type="BTWait" id="BTWait_k40fn"]
+duration = 0.25
+
+[sub_resource type="BBNode" id="BBNode_vj04c"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_ctjj8"]
+animation_player = SubResource("BBNode_vj04c")
+animation_name = &"skeleanims/shield_walk"
+
+[sub_resource type="BTAction" id="BTAction_k40fn"]
+script = ExtResource("8_t8im7")
+group = &"Player"
+
+[sub_resource type="BTAction" id="BTAction_iavur"]
+script = ExtResource("9_l5pfr")
+
+[sub_resource type="BTAction" id="BTAction_vwt86"]
+script = ExtResource("10_4rr6g")
+
+[sub_resource type="BTAction" id="BTAction_m3yey"]
+script = ExtResource("11_1u6rq")
+sound_effect = ExtResource("12_w0h3b")
+animation_name = &"skeleanims/shield_attack"
+
+[sub_resource type="BTSequence" id="BTSequence_4utro"]
+children = [SubResource("BTAction_m3yey")]
+
+[sub_resource type="BBNode" id="BBNode_4utro"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_16fve"]
+animation_player = SubResource("BBNode_4utro")
+animation_name = &"skeleanims/shield_block"
+
+[sub_resource type="BBNode" id="BBNode_m3yey"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTAwaitAnimation" id="BTAwaitAnimation_4utro"]
+animation_player = SubResource("BBNode_m3yey")
+animation_name = &"skeleanims/shield_block"
+
+[sub_resource type="BTAction" id="BTAction_16fve"]
+script = ExtResource("11_1u6rq")
+sound_effect = ExtResource("12_w0h3b")
+animation_name = &"skeleanims/shield_attack2"
+
+[sub_resource type="BTSequence" id="BTSequence_3ooqf"]
+children = [SubResource("BTPlayAnimation_16fve"), SubResource("BTAwaitAnimation_4utro"), SubResource("BTAction_16fve")]
+
+[sub_resource type="BTRandomSelector" id="BTRandomSelector_1ik2c"]
+children = [SubResource("BTSequence_4utro"), SubResource("BTSequence_3ooqf")]
+
+[sub_resource type="BTCooldown" id="BTCooldown_t8im7"]
+duration = 0.5
+children = [SubResource("BTRandomSelector_1ik2c")]
+
+[sub_resource type="BTAlwaysSucceed" id="BTAlwaysSucceed_l5pfr"]
+children = [SubResource("BTCooldown_t8im7")]
+
+[sub_resource type="BTSequence" id="BTSequence_k40fn"]
+custom_name = "Pursue And Attack"
+children = [SubResource("BTCheckVar_ctjj8"), SubResource("BTWait_k40fn"), SubResource("BTPlayAnimation_ctjj8"), SubResource("BTAction_k40fn"), SubResource("BTAction_iavur"), SubResource("BTAction_vwt86"), SubResource("BTAlwaysSucceed_l5pfr")]
+
+[sub_resource type="BTAction" id="BTAction_2vq4o"]
+script = ExtResource("13_af6k0")
+
+[sub_resource type="BBNode" id="BBNode_yeuqv"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_2vq4o"]
+animation_player = SubResource("BBNode_yeuqv")
+animation_name = &"skeleanims/walk"
+
+[sub_resource type="BTAction" id="BTAction_yeuqv"]
+script = ExtResource("14_wb4gg")
+
+[sub_resource type="BTSequence" id="BTSequence_ueybh"]
+custom_name = "Look for player"
+children = [SubResource("BTPlayAnimation_2vq4o"), SubResource("BTAction_yeuqv")]
+
+[sub_resource type="BTAction" id="BTAction_ueybh"]
+script = ExtResource("10_4rr6g")
+
+[sub_resource type="BBNode" id="BBNode_03nx6"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_yeuqv"]
+animation_player = SubResource("BBNode_03nx6")
+animation_name = &"skeleanims/shield_idle"
+
+[sub_resource type="BTWait" id="BTWait_03nx6"]
+duration = 2.0
+
+[sub_resource type="BTAction" id="BTAction_ctjj8"]
+script = ExtResource("15_w7i1e")
+
+[sub_resource type="BTWaitTicks" id="BTWaitTicks_vj04c"]
+
+[sub_resource type="BTFail" id="BTFail_iavur"]
+
+[sub_resource type="BTSequence" id="BTSequence_vwt86"]
+custom_name = "Idle"
+children = [SubResource("BTAction_ueybh"), SubResource("BTPlayAnimation_yeuqv"), SubResource("BTWait_03nx6"), SubResource("BTAction_ctjj8"), SubResource("BTWaitTicks_vj04c"), SubResource("BTFail_iavur")]
+
+[sub_resource type="BTSequence" id="BTSequence_iavur"]
+custom_name = "Patrol"
+children = [SubResource("BTSequence_ueybh"), SubResource("BTSequence_vwt86")]
+
+[sub_resource type="BTParallel" id="BTParallel_iavur"]
+num_failures_required = 3
+repeat = true
+children = [SubResource("BTAction_2vq4o"), SubResource("BTSequence_iavur")]
+
+[sub_resource type="BTSelector" id="BTSelector_vom71"]
+children = [SubResource("BTSequence_k40fn"), SubResource("BTParallel_iavur")]
+
+[sub_resource type="BehaviorTree" id="BehaviorTree_03nx6"]
+blackboard_plan = SubResource("BlackboardPlan_tlrvp")
+root_task = SubResource("BTSelector_vom71")
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_yeuqv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_16fve"]
+size = Vector2(44.5, 29)
+
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("components")]
+collision_layer = 4
+floor_stop_on_slope = false
+floor_max_angle = 0.87266463
+floor_snap_length = 20.0
+script = ExtResource("1_6xy2a")
+death_anim_name = "skeleanims/shield_death"
+stun_animation = &"skeleanims/shield_hit"
+components = [NodePath("HitboxComponent"), NodePath("Hurtbox"), NodePath("EnvCheckComponent"), NodePath("HealthComponent"), NodePath("DeflectBox")]
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+monitoring = false
+script = ExtResource("2_6xuh3")
+contact_sound = ExtResource("3_m3yey")
+damage = 20
+knockback_velocity = 200.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(28, 1)
+shape = SubResource("RectangleShape2D_7xaro")
+
+[node name="Hurtbox" type="Area2D" parent="." node_paths=PackedStringArray("deflect_box")]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("4_4utro")
+deflect_box = NodePath("../DeflectBox")
+metadata/_custom_type_script = "uid://bgh31qn75n5u2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0.5, 8)
+shape = SubResource("RectangleShape2D_iuxou")
+
+[node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("hurtbox")]
+script = ExtResource("5_16fve")
+hurtbox = NodePath("../Hurtbox")
+max_health = 30
+metadata/_custom_type_script = "uid://btumjuy135r4w"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 9)
+shape = SubResource("RectangleShape2D_vj04c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("6_6xy2a")
+hframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_2vq4o"),
+&"skeleanims": ExtResource("7_1ik2c")
+}
+
+[node name="BTPlayer" type="BTPlayer" parent="."]
+behavior_tree = SubResource("BehaviorTree_03nx6")
+blackboard_plan = SubResource("BlackboardPlan_yeuqv")
+
+[node name="EnvCheckComponent" type="Node2D" parent="."]
+script = ExtResource("16_xd3sg")
+metadata/_custom_type_script = "uid://cv5rhtqh14anw"
+
+[node name="player_check" type="RayCast2D" parent="EnvCheckComponent"]
+position = Vector2(0, 18)
+target_position = Vector2(400, 0)
+collision_mask = 2
+
+[node name="floor_check" type="RayCast2D" parent="EnvCheckComponent"]
+position = Vector2(12, 23)
+target_position = Vector2(0, 15)
+
+[node name="wall_check" type="RayCast2D" parent="EnvCheckComponent"]
+position = Vector2(5, -7)
+target_position = Vector2(28, 0)
+
+[node name="DeflectBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("17_m3yey")
+sound_effect = ExtResource("18_4utro")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeflectBox"]
+position = Vector2(20.25, -0.5)
+shape = SubResource("RectangleShape2D_16fve")
+
+[node name="Timer" type="Timer" parent="DeflectBox"]
+wait_time = 0.25
+one_shot = true
+
+[node name="DeflectPoint" type="Marker2D" parent="DeflectBox"]
+position = Vector2(30, -21)
+
+[connection signal="timeout" from="DeflectBox/Timer" to="DeflectBox" method="_on_timer_timeout"]

@@ -111,6 +111,7 @@ text = "$0"
 horizontal_alignment = 2
 
 [node name="GameOverContainer" type="VBoxContainer" parent="."]
+visible = false
 anchors_preset = -1
 anchor_top = 0.44400004
 anchor_right = 1.0
@@ -136,11 +137,11 @@ texture = ExtResource("9_aixkq")
 
 [node name="HealContainer" type="VBoxContainer" parent="."]
 anchors_preset = -1
-anchor_top = 0.44400004
+anchor_top = 0.33900002
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = 272.5
-offset_top = 0.1599884
+offset_top = 37.95999
 offset_right = -272.5
 offset_bottom = 20.0
 grow_horizontal = 2
@@ -150,12 +151,12 @@ grow_vertical = 2
 texture_filter = 1
 layout_mode = 2
 theme = ExtResource("2_546lt")
-text = "RUM RESTORED"
+text = "RUM REFILLED"
 horizontal_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="HealContainer"]
 texture_filter = 1
-position = Vector2(71.5, -30)
+position = Vector2(55.5, -30)
 texture = ExtResource("10_cxhb7")
 
 [node name="Timer" type="Timer" parent="HealContainer"]

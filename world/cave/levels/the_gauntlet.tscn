@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c38regkm775yq" path="res://interactable/barrel of rum.tscn" id="5_83un4"]
 [ext_resource type="PackedScene" uid="uid://t5ui4i8omkee" path="res://characters/enemy/mosquito/mosquito.tscn" id="5_ymed7"]
 [ext_resource type="PackedScene" uid="uid://b6on6ui1ojn" path="res://interactable/swing_rope.tscn" id="6_6t8gu"]
-[ext_resource type="PackedScene" uid="uid://yq36i0nmliug" path="res://characters/enemy/skeleton/enemy.tscn" id="7_hw4hr"]
+[ext_resource type="PackedScene" uid="uid://yq36i0nmliug" path="res://characters/enemy/skeleton/skeleton.tscn" id="7_hw4hr"]
 [ext_resource type="PackedScene" uid="uid://b45tjtegdp6uo" path="res://interactable/ladder/ladder.tscn" id="8_cm26g"]
 [ext_resource type="PackedScene" uid="uid://lv651gm64w3v" path="res://characters/enemy/cannon/cannon.tscn" id="9_ccjv3"]
 [ext_resource type="PackedScene" uid="uid://bagjgopdimdcn" path="res://world/safe_point.tscn" id="10_nwsxu"]

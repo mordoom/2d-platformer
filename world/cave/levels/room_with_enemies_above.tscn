@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=4 uid="uid://dsmgpvm6s1cy6"]
+[gd_scene load_steps=8 format=4 uid="uid://dsmgpvm6s1cy6"]
 
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="1_y63kf"]
 [ext_resource type="TileSet" uid="uid://d3oc3t47pwqft" path="res://world/cave/cave.tres" id="2_lns7a"]
 [ext_resource type="PackedScene" uid="uid://dtb6ujcdawf23" path="res://world/cave/parallax_background.tscn" id="3_lns7a"]
-[ext_resource type="PackedScene" uid="uid://yq36i0nmliug" path="res://characters/enemy/skeleton/enemy.tscn" id="4_1en53"]
+[ext_resource type="PackedScene" uid="uid://yq36i0nmliug" path="res://characters/enemy/skeleton/skeleton.tscn" id="4_1en53"]
 [ext_resource type="PackedScene" uid="uid://dmxcjqfiiabri" path="res://interactable/ladder/large_ladder.tscn" id="5_y63kf"]
 [ext_resource type="PackedScene" uid="uid://clal0ss1p0mk0" path="res://items/treasure_chest.tscn" id="7_1en53"]
+[ext_resource type="PackedScene" uid="uid://ce2sk71cnrcbv" path="res://characters/enemy/skeleton/skeleton_shield.tscn" id="7_qubp5"]
 
 [node name="Level" type="Node2D"]
 
@@ -23,11 +24,11 @@ scroll_base_scale = Vector2(1, 0)
 [node name="Skeleton2" parent="." instance=ExtResource("4_1en53")]
 position = Vector2(437, 320)
 
-[node name="Skeleton3" parent="." instance=ExtResource("4_1en53")]
-position = Vector2(1013, 352)
-
 [node name="Ladder" parent="." instance=ExtResource("5_y63kf")]
 position = Vector2(799, 1120)
 
 [node name="Collect On Contact" parent="." instance=ExtResource("7_1en53")]
 position = Vector2(98, 660)
+
+[node name="Enemy" parent="." instance=ExtResource("7_qubp5")]
+position = Vector2(994, 352)

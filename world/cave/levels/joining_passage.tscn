@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b6on6ui1ojn" path="res://interactable/swing_rope.tscn" id="5_ocyt8"]
 [ext_resource type="PackedScene" uid="uid://bagjgopdimdcn" path="res://world/safe_point.tscn" id="6_n5s1o"]
 [ext_resource type="PackedScene" uid="uid://t5ui4i8omkee" path="res://characters/enemy/mosquito/mosquito.tscn" id="7_amh6w"]
-[ext_resource type="PackedScene" uid="uid://yq36i0nmliug" path="res://characters/enemy/skeleton/enemy.tscn" id="8_0lqjj"]
+[ext_resource type="PackedScene" uid="uid://yq36i0nmliug" path="res://characters/enemy/skeleton/skeleton.tscn" id="8_0lqjj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l5c4i"]
 size = Vector2(20, 341)
