@@ -16,6 +16,7 @@ extends CharacterBody2D
 
 signal dead
 
+var is_dead := false
 const hit_flash_shader = preload("res://characters/hitshader.tres")
 var current_dir := Vector2.RIGHT
 var facing_direction := 1
@@ -41,6 +42,8 @@ func _ready():
         elif component is HealthComponent:
             bt_player.blackboard.bind_var_to_property(&"health", component, &"health", true)
             component.connect("dead", _on_health_component_dead)
+        elif component is PostureComponent:
+            component.connect("posture_break", _on_posture_break)
 
 func _physics_process(delta):
     velocity.x = current_speed * current_dir.x + knockback_force.x
@@ -78,6 +81,7 @@ func flip_direction() -> void:
     current_dir = - current_dir
 
 func _on_health_component_dead() -> void:
+    is_dead = true
     set_collision_layer_value(3, false)
     for component in components:
         if component.has_method("die"):
@@ -108,13 +112,17 @@ func _on_hurtbox_on_hit(damage: int, knockback_velocity: float, direction: Vecto
             var changed_health = component.health - damage
             if changed_health > 0:
                     if stun && stun_animation:
-                        bt_player.active = false
-                        current_speed = 0;
-                        animation_player.play(stun_animation)
-                        await animation_player.animation_finished
-                        bt_player.active = true
+                        stunned()
 
     bt_player.blackboard.set_var(&"target", get_tree().get_first_node_in_group("Player"))
+
+func stunned() -> void:
+    bt_player.active = false
+    current_speed = 0;
+    animation_player.play(stun_animation)
+    await animation_player.animation_finished
+    if not is_dead:
+        bt_player.active = true
 
 func hit_flash() -> void:
     sprite.material.set_shader_parameter("flash_value", 1.0)
@@ -132,3 +140,14 @@ func can_patrol() -> bool:
         if component is EnvCheckComponent:
             return component.can_patrol()
     return true
+
+func was_deflected() -> void:
+    for component in components:
+        if component is PostureComponent:
+            component.was_deflected()
+
+func _on_posture_break() -> void:
+    await stunned()
+    for component in components:
+        if component is PostureComponent:
+            component.reset()

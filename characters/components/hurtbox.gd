@@ -28,8 +28,10 @@ func on_hurtbox_hit(hitbox: Hitbox, direction: Vector2) -> void:
 		if deflect_box.is_deflecting && sign(direction.x) != owner.get_facing_direction() && hitbox.can_be_deflected:
 			deflect_box.deflect()
 			owner.apply_knockback_force(hitbox.knockback_velocity / 2, direction)
-			if hitbox.owner.get("animation_player"):
-				hitbox.owner.animation_player.stop()
+			if hitbox.owner.has_method("was_deflected"):
+				hitbox.owner.was_deflected()
+			# if hitbox.owner.get("animation_player"):
+			# 	hitbox.owner.animation_player.stop()
 			return
 	emit_signal("on_hit", hitbox.damage, hitbox.knockback_velocity, direction, hitbox.stun)
 

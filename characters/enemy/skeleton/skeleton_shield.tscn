@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://ce2sk71cnrcbv"]
+[gd_scene load_steps=67 format=3 uid="uid://ce2sk71cnrcbv"]
 
 [ext_resource type="Script" uid="uid://box5tsimem7l4" path="res://characters/enemy/enemy.gd" id="1_6xy2a"]
 [ext_resource type="Script" uid="uid://sbaeqqe6wi0e" path="res://characters/components/hitbox.gd" id="2_6xuh3"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://cv5rhtqh14anw" path="res://components/env_check_component.gd" id="16_xd3sg"]
 [ext_resource type="Script" uid="uid://bh0x4yq3uixk5" path="res://characters/components/deflect_box.gd" id="17_m3yey"]
 [ext_resource type="AudioStream" uid="uid://d0s4mj7ppgykf" path="res://assets/sounds/zapsplat_sword_strike_metal.mp3" id="18_4utro"]
+[ext_resource type="Script" uid="uid://dq1a6m83i75g0" path="res://characters/components/posture_component.gd" id="20_16fve"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xaro"]
 size = Vector2(40, 61)
@@ -263,7 +264,7 @@ floor_snap_length = 20.0
 script = ExtResource("1_6xy2a")
 death_anim_name = "skeleanims/shield_death"
 stun_animation = &"skeleanims/shield_hit"
-components = [NodePath("HitboxComponent"), NodePath("Hurtbox"), NodePath("EnvCheckComponent"), NodePath("HealthComponent"), NodePath("DeflectBox")]
+components = [NodePath("HitboxComponent"), NodePath("Hurtbox"), NodePath("EnvCheckComponent"), NodePath("HealthComponent"), NodePath("DeflectBox"), NodePath("PostureComponent")]
 
 [node name="HitboxComponent" type="Area2D" parent="."]
 collision_layer = 4
@@ -347,5 +348,8 @@ one_shot = true
 
 [node name="DeflectPoint" type="Marker2D" parent="DeflectBox"]
 position = Vector2(30, -21)
+
+[node name="PostureComponent" type="Node" parent="."]
+script = ExtResource("20_16fve")
 
 [connection signal="timeout" from="DeflectBox/Timer" to="DeflectBox" method="_on_timer_timeout"]
