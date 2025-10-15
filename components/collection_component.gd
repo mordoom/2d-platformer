@@ -10,6 +10,6 @@ func _ready() -> void:
 		get_parent().queue_free()
 
 func collect() -> void:
-	SignalBus.emit_signal(collection_signal, get_parent(), amount)
 	GameState.item_collected(owner)
+	SignalBus.emit_signal(collection_signal, get_parent(), amount)
 	get_parent().queue_free()
