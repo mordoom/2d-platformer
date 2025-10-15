@@ -195,20 +195,20 @@ children = [SubResource("BTCheckVar_ctjj8"), SubResource("BTWait_k40fn"), SubRes
 [sub_resource type="BTAction" id="BTAction_2vq4o"]
 script = ExtResource("13_af6k0")
 
-[sub_resource type="BBNode" id="BBNode_yeuqv"]
+[sub_resource type="BBNode" id="BBNode_16fve"]
 saved_value = NodePath("AnimationPlayer")
 resource_name = "AnimationPlayer"
 
-[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_2vq4o"]
-animation_player = SubResource("BBNode_yeuqv")
-animation_name = &"skeleanims/walk"
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_3ooqf"]
+animation_player = SubResource("BBNode_16fve")
+animation_name = &"skeleanims/shield_walk"
 
 [sub_resource type="BTAction" id="BTAction_yeuqv"]
 script = ExtResource("14_wb4gg")
 
 [sub_resource type="BTSequence" id="BTSequence_ueybh"]
 custom_name = "Look for player"
-children = [SubResource("BTPlayAnimation_2vq4o"), SubResource("BTAction_yeuqv")]
+children = [SubResource("BTPlayAnimation_3ooqf"), SubResource("BTAction_yeuqv")]
 
 [sub_resource type="BTAction" id="BTAction_ueybh"]
 script = ExtResource("10_4rr6g")
