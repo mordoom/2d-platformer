@@ -62,7 +62,6 @@ sound_effect = ExtResource("2_pivuy")
 script = ExtResource("2_tji7h")
 collection_signal = "money_collected"
 amount = 50
-metadata/_custom_type_script = "uid://832xmughicl7"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

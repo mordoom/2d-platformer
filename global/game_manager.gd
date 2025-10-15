@@ -143,12 +143,10 @@ func on_campfire_rested_handler(_area: Area2D) -> void:
 
 func on_bottle_rum_collected(area: Area2D, _amount: int) -> void:
 	player.add_rum_bottle()
-	GameState.item_collected(area)
 	update_save()
 
 func on_pistol_collected(area: Area2D, _amount: int) -> void:
 	player.add_ammo()
-	GameState.item_collected(area)
 	update_save()
 
 func on_health_changed(_node: Node, amount: int) -> void:
