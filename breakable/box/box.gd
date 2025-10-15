@@ -6,8 +6,8 @@ extends RigidBody2D
 @export var hit_force: float = 200
 
 func _on_health_component_dead() -> void:
-	hurtbox.monitoring = false
-	hurtbox.monitorable = false
+	hurtbox.set_deferred("monitoring", false)
+	hurtbox.set_deferred("monitorable", false)
 	var new_shape: Shape2D = null
 	collisionShape.set_deferred("shape", new_shape)
 	set_deferred("lock_rotation", true)

@@ -81,6 +81,8 @@ func _on_health_component_dead() -> void:
 	current_speed = 0
 	flying = false
 	SignalBus.emit_signal("money_collected", null, doubloons_dropped)
+	if doubloons_dropped > 0:
+		References.instantiate(References.coin_particles, global_position)
 	SignalBus.emit_signal("character_died", self)
 	emit_signal("dead")
 	if death_anim_name:

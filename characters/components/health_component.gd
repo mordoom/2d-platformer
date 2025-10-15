@@ -13,6 +13,8 @@ extends Node
 		else:
 			health = value
 
+var is_dead := false
+
 signal dead
 
 func _ready():
@@ -20,5 +22,6 @@ func _ready():
 
 func on_hit(damage: int, _knockback_velocity: float, _direction: Vector2, _stun: bool) -> void:
 	health -= damage
-	if health <= 0:
+	if health <= 0 && not is_dead:
+		is_dead = true
 		emit_signal("dead")

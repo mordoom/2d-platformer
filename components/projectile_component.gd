@@ -30,7 +30,7 @@ func stop() -> void:
 
 func shoot() -> void:
     if shooting_sound:
-        SoundManager.play_sound(shooting_sound)
+        SoundManager.play_sound_with_pitch(shooting_sound, Rng.generate_random_pitch(0.7, 1.8))
     shoot_bullet()
     shoot_timer.start()
 

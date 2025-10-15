@@ -5,7 +5,7 @@ extends Area2D
 @export var cooldown_time := 0.1
 
 var hit_stop_time_scale := 0.1
-var hit_stop_duration := 0.2
+@export var hit_stop_duration := 0.2
 var cooldown_timer: Timer
 
 func _ready():
@@ -22,9 +22,7 @@ func on_hurtbox_hit(hitbox: Hitbox, direction: Vector2) -> void:
 
     cooldown_timer.start()
 
-    Engine.time_scale = hit_stop_time_scale
-    await get_tree().create_timer(hit_stop_duration * hit_stop_time_scale).timeout
-    Engine.time_scale = 1
+    apply_hitstop()
 
     if deflect_box != null:
         if deflect_box.is_deflecting && sign(direction.x) != owner.current_direction:
@@ -43,3 +41,8 @@ func flip(current_direction: float) -> void:
 
 func die() -> void:
     set_deferred("monitorable", false)
+
+func apply_hitstop() -> void:
+    Engine.time_scale = hit_stop_time_scale
+    await get_tree().create_timer(hit_stop_duration * hit_stop_time_scale).timeout
+    Engine.time_scale = 1

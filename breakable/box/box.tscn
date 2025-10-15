@@ -62,6 +62,7 @@ metadata/_custom_type_script = "uid://btumjuy135r4w"
 collision_layer = 4
 collision_mask = 6
 script = ExtResource("8_nxhfi")
+hit_stop_duration = 0.0
 metadata/_custom_type_script = "uid://bgh31qn75n5u2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
