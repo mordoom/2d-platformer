@@ -2,6 +2,7 @@ extends CharacterState
 
 func _update(_delta: float) -> void:
 	var dir: Vector2 = blackboard.get_var(GameConstants.BlackboardVars.dir_var)
+	var can_riposte: bool = blackboard.get_var(GameConstants.BlackboardVars.can_riposte_var)
 	var action_pressed: StringName = blackboard.get_var(GameConstants.BlackboardVars.action_pressed_var)
 	
 	if dir.y != 0:
@@ -12,7 +13,10 @@ func _update(_delta: float) -> void:
 	if action_pressed == &"deflect" || InputBuffer.is_action_press_buffered(&"deflect"):
 		hsm.dispatch(&"deflect_started")
 	elif action_pressed == &"attack" || InputBuffer.is_action_press_buffered(&"attack"):
-		hsm.dispatch(&"ground_attack_started")
+		if can_riposte:
+			hsm.dispatch(&"riposte_started")
+		else:
+			hsm.dispatch(&"ground_attack_started")
 	elif action_pressed == &"shoot" || InputBuffer.is_action_press_buffered(&"shoot"):
 		hsm.dispatch(&"shoot_started")
 	elif action_pressed == &"jump" || InputBuffer.is_action_press_buffered(&"jump"):

@@ -45,6 +45,7 @@ class ComponentNames:
 
 class BlackboardVars:
     const dir_var = "dir"
+    const can_riposte_var = "can_riposte"
     const current_speed_var = "current_speed"
     const roll_force_var = "roll_force"
     const action_pressed_var = "action_pressed"

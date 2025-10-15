@@ -36,6 +36,7 @@ var knockback_force = Vector2.ZERO
 var roll_force = 0
 var climbing = false
 var double_jumped = false
+var can_riposte := false
 
 var climbable_above: Area2D = null
 var climbable_below: Area2D = null
@@ -62,6 +63,7 @@ func _ready() -> void:
     Dialogic.timeline_ended.connect(_on_timeline_ended)
 
     hsm.blackboard.bind_var_to_property(GameConstants.BlackboardVars.dir_var, self, &"dir")
+    hsm.blackboard.bind_var_to_property(GameConstants.BlackboardVars.can_riposte_var, self, &"can_riposte", true)
     hsm.blackboard.bind_var_to_property(GameConstants.BlackboardVars.current_speed_var, self, &"current_speed")
     hsm.blackboard.bind_var_to_property(GameConstants.BlackboardVars.roll_force_var, self, &"roll_force")
     hsm.blackboard.bind_var_to_property(GameConstants.BlackboardVars.climbing_var, self, &"climbing")
@@ -158,6 +160,12 @@ func _on_climbable_area_below_area_entered(area: Area2D) -> void:
 func _on_climbable_area_below_area_exited(area: Area2D) -> void:
     if area is Climbable:
         climbable_below = null
+
+func in_riposte_distance() -> void:
+    can_riposte = true
+
+func out_riposte_distance() -> void:
+    can_riposte = false
 
 func _on_health_component_dead() -> void:
     die()

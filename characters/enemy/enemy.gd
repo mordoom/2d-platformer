@@ -151,3 +151,5 @@ func _on_posture_break() -> void:
     for component in components:
         if component is PostureComponent:
             component.reset()
+        if component is RiposteBox:
+            component.on_posture_break_finish()
