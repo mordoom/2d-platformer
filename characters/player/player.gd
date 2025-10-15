@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var bullet_path: RayCast2D = $BulletPath
 @onready var hurtbox: Hurtbox = $HurtboxComponent
 @onready var hitbox: Hitbox = $Hitbox
+@onready var riposte_hitbox: Hitbox = $RiposteHitbox
 @onready var deflect_box: DeflectBox = $DeflectBox
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var interact_area: Area2D = $InteractArea
@@ -50,14 +51,9 @@ var rum_bottles := 0
 
 var max_ammo := 0
 var ammo := 0
-
-var max_bullet_charge := 3
-var bullet_charge := 0
-
 var last_safe_point: SafePoint
 
 func _ready() -> void:
-    hitbox.connect("hit", _on_hitbox_on_damage_area_hit)
     SignalBus.connect("money_collected", _on_money_collected)
     Dialogic.timeline_started.connect(_on_timeline_started)
     Dialogic.timeline_ended.connect(_on_timeline_ended)
@@ -107,12 +103,14 @@ func update_facing_direction(direction: float) -> void:
         sprite.flip_h = true
         bullet_path.rotation_degrees = 90
         hitbox.scale.x = -1
+        riposte_hitbox.scale.x = -1
         deflect_box.scale.x = -1
     elif direction > 0:
         current_direction = sign(direction)
         sprite.flip_h = false
         bullet_path.rotation_degrees = 270
         hitbox.scale.x = 1
+        riposte_hitbox.scale.x = 1
         deflect_box.scale.x = 1
 
 func get_facing_direction() -> float:
@@ -182,9 +180,6 @@ func _on_hurtbox_component_on_hit(_damage: int, knockback_velocity: float, direc
     apply_knockback_force(knockback_velocity, direction)
     hsm.dispatch(&"hit_started")
 
-func _on_hitbox_on_damage_area_hit():
-    bullet_charge += 1
-
 func _on_money_collected(_area: Area2D, amount: int):
     money += amount
 
@@ -192,7 +187,6 @@ func _on_timeline_started() -> void:
     paused = true
     current_speed = 0
     dir = Vector2.ZERO
-
 
 func _on_timeline_ended() -> void:
     paused = false
