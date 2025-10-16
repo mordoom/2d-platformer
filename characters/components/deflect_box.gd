@@ -12,3 +12,9 @@ func deflect():
 	new_effect.global_position = deflect_point.global_position
 	get_tree().get_root().add_child(new_effect)
 	SoundManager.play_sound_with_pitch(sound_effect, Rng.generate_random_pitch(1))
+
+func flip(current_direction: float) -> void:
+	if current_direction < 0:
+		scale.x = -1
+	elif current_direction > 0:
+		scale.x = 1
