@@ -605,7 +605,7 @@ position = Vector2(1, -8)
 texture = SubResource("PortableCompressedTexture2D_8v65i")
 hframes = 9
 vframes = 8
-frame = 22
+frame = 19
 metadata/_aseprite_wizard_interface_config_ = {
 "animation_section": true,
 "output_section": true,
