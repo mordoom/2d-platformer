@@ -269,6 +269,7 @@ collision_layer = 4
 collision_mask = 2
 script = ExtResource("12_w00b1")
 monitoring_default = true
+knockback_velocity = 300.0
 metadata/_custom_type_script = "uid://sbaeqqe6wi0e"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]

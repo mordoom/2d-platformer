@@ -91,7 +91,7 @@ func _physics_process(delta: float) -> void:
     if can_move:
         update_facing_direction(dir.x)
     
-    knockback_force = knockback_force.lerp(Vector2.ZERO, 0.2)
+    knockback_force = knockback_force.lerp(Vector2.ZERO, 0.1)
     move_and_slide()
 
 func calc_gravity() -> float:

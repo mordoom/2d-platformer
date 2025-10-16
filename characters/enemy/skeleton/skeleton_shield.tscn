@@ -252,7 +252,7 @@ monitoring = false
 script = ExtResource("2_6xuh3")
 contact_sound = ExtResource("3_m3yey")
 damage = 20
-knockback_velocity = 200.0
+knockback_velocity = 400.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(26.5, 1)
