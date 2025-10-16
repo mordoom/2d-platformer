@@ -358,6 +358,7 @@ animation_name = &"Jump"
 
 [sub_resource type="BTAction" id="BTAction_s4l4j"]
 script = ExtResource("2_y07a7")
+jump_velocity = 500
 
 [sub_resource type="BTCooldown" id="BTCooldown_udvrk"]
 duration = 3.0
@@ -514,7 +515,7 @@ scale = Vector2(-1, 1)
 texture = SubResource("PortableCompressedTexture2D_udvrk")
 hframes = 7
 vframes = 6
-frame = 14
+frame = 34
 metadata/_aseprite_wizard_interface_config_ = {
 "pending_changes": {}
 }
@@ -585,7 +586,7 @@ polygon = PackedVector2Array(45, -50, 88, -20, 70, 0, 32, -10, -28, 0, -31, 25, 
 [node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("hurtbox")]
 script = ExtResource("4_fuy26")
 hurtbox = NodePath("../Hurtbox")
-max_health = 100
+max_health = 150
 metadata/_custom_type_script = "uid://btumjuy135r4w"
 
 [node name="ProjectileComponent" parent="." instance=ExtResource("6_fy21f")]
