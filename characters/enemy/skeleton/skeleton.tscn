@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://s5214aembmjs" path="res://assets/sounds/zapsplat_sword_hit.mp3" id="3_ctjj8"]
 [ext_resource type="Script" uid="uid://bgh31qn75n5u2" path="res://characters/components/hurtbox.gd" id="4_vom71"]
 [ext_resource type="Script" uid="uid://btumjuy135r4w" path="res://characters/components/health_component.gd" id="5_sevdq"]
-[ext_resource type="Texture2D" uid="uid://dbx4fl4f4d2hd" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Hurt.png" id="6_ctjj8"]
+[ext_resource type="Texture2D" uid="uid://3le6hlxbv7n0" path="res://assets/Skeleton_Axe/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_02_Yellow_Attack1.png" id="6_vj1cc"]
 [ext_resource type="AnimationLibrary" uid="uid://p2meusl6rtfg" path="res://characters/enemy/skeleanims.res" id="7_6hewy"]
 [ext_resource type="Script" uid="uid://djo8043iycaf6" path="res://ai/tasks/check_for_player.gd" id="8_ed447"]
 [ext_resource type="Script" uid="uid://bgobfy4nln5cw" path="res://ai/tasks/patrol.gd" id="9_7bplv"]
@@ -20,7 +20,7 @@
 [ext_resource type="Script" uid="uid://dtwyrujptyfl2" path="res://characters/components/riposte_box.gd" id="18_anjaw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xaro"]
-size = Vector2(40, 61)
+size = Vector2(49, 61)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iuxou"]
 size = Vector2(25, 48)
@@ -220,7 +220,7 @@ damage = 15
 knockback_velocity = 200.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(28, 1)
+position = Vector2(23.5, 1)
 shape = SubResource("RectangleShape2D_7xaro")
 
 [node name="Hurtbox" type="Area2D" parent="."]
@@ -245,8 +245,8 @@ shape = SubResource("RectangleShape2D_vj04c")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("6_ctjj8")
-hframes = 5
+texture = ExtResource("6_vj1cc")
+hframes = 11
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -266,6 +266,7 @@ metadata/_custom_type_script = "uid://cv5rhtqh14anw"
 position = Vector2(0, 18)
 target_position = Vector2(400, 0)
 collision_mask = 2
+hit_from_inside = true
 
 [node name="floor_check" type="RayCast2D" parent="EnvCheckComponent"]
 position = Vector2(12, 23)

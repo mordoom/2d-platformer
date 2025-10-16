@@ -577,7 +577,6 @@ size = Vector2(44.5, 29)
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
 collision_layer = 2
-collision_mask = 5
 floor_stop_on_slope = false
 floor_max_angle = 0.87266463
 floor_snap_length = 20.0

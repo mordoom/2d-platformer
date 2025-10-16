@@ -5,10 +5,6 @@ extends BTAction
 @export var pursue_speed := 120
 
 func _tick(_delta: float) -> Status:
-	if not agent.can_patrol():
-		blackboard.set_var(&"target", null)
-		return FAILURE
-
 	var target = blackboard.get_var(&"target")
 	var position_difference: float = target.position.x - agent.position.x
 	var direction_to_player: float = sign(position_difference)
@@ -25,5 +21,9 @@ func _tick(_delta: float) -> Status:
 	elif distance_to_player <= min_chase_distance:
 		blackboard.set_var(&"current_speed", 0)
 		return SUCCESS
+
+	if not agent.can_patrol():
+		blackboard.set_var(&"target", null)
+		return FAILURE
 
 	return RUNNING

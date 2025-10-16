@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://bgh31qn75n5u2" path="res://characters/components/hurtbox.gd" id="4_4utro"]
 [ext_resource type="Script" uid="uid://btumjuy135r4w" path="res://characters/components/health_component.gd" id="5_16fve"]
 [ext_resource type="Texture2D" uid="uid://b37epjf1sx3tg" path="res://assets/Skeleton_Shield/Skeleton_Yellow/Skeleton_With_VFX/Skeleton_03_Yellow_Idle.png" id="6_6xy2a"]
-[ext_resource type="AnimationLibrary" uid="uid://p2meusl6rtfg" path="res://characters/enemy/skeleanims.res" id="7_1ik2c"]
+[ext_resource type="AnimationLibrary" uid="uid://bvlknnf6ukd3j" path="res://characters/enemy/skeleshieldanims.res" id="7_3ooqf"]
 [ext_resource type="Script" uid="uid://botkcxhs4svve" path="res://ai/tasks/get_first_in_group.gd" id="8_t8im7"]
 [ext_resource type="Script" uid="uid://c61fv4n4mdc02" path="res://ai/tasks/pursue.gd" id="9_l5pfr"]
 [ext_resource type="Script" uid="uid://g12wvgj8iisd" path="res://ai/tasks/stop.gd" id="10_4rr6g"]
@@ -127,12 +127,12 @@ value = SubResource("BBVariant_vj04c")
 [sub_resource type="BTWait" id="BTWait_k40fn"]
 duration = 0.25
 
-[sub_resource type="BBNode" id="BBNode_vj04c"]
+[sub_resource type="BBNode" id="BBNode_3ooqf"]
 saved_value = NodePath("AnimationPlayer")
 resource_name = "AnimationPlayer"
 
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_ctjj8"]
-animation_player = SubResource("BBNode_vj04c")
+animation_player = SubResource("BBNode_3ooqf")
 animation_name = &"skeleanims/shield_walk"
 
 [sub_resource type="BTAction" id="BTAction_k40fn"]
@@ -171,12 +171,12 @@ children = [SubResource("BTCheckVar_ctjj8"), SubResource("BTWait_k40fn"), SubRes
 [sub_resource type="BTAction" id="BTAction_2vq4o"]
 script = ExtResource("13_af6k0")
 
-[sub_resource type="BBNode" id="BBNode_16fve"]
+[sub_resource type="BBNode" id="BBNode_1ik2c"]
 saved_value = NodePath("AnimationPlayer")
 resource_name = "AnimationPlayer"
 
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_3ooqf"]
-animation_player = SubResource("BBNode_16fve")
+animation_player = SubResource("BBNode_1ik2c")
 animation_name = &"skeleanims/shield_walk"
 
 [sub_resource type="BTAction" id="BTAction_yeuqv"]
@@ -189,12 +189,12 @@ children = [SubResource("BTPlayAnimation_3ooqf"), SubResource("BTAction_yeuqv")]
 [sub_resource type="BTAction" id="BTAction_ueybh"]
 script = ExtResource("10_4rr6g")
 
-[sub_resource type="BBNode" id="BBNode_03nx6"]
+[sub_resource type="BBNode" id="BBNode_t8im7"]
 saved_value = NodePath("AnimationPlayer")
 resource_name = "AnimationPlayer"
 
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_yeuqv"]
-animation_player = SubResource("BBNode_03nx6")
+animation_player = SubResource("BBNode_t8im7")
 animation_name = &"skeleanims/shield_idle"
 
 [sub_resource type="BTWait" id="BTWait_03nx6"]
@@ -287,7 +287,7 @@ hframes = 8
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_2vq4o"),
-&"skeleanims": ExtResource("7_1ik2c")
+&"skeleanims": ExtResource("7_3ooqf")
 }
 
 [node name="BTPlayer" type="BTPlayer" parent="."]
