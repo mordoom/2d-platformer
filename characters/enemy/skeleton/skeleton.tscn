@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://yq36i0nmliug"]
+[gd_scene load_steps=60 format=3 uid="uid://yq36i0nmliug"]
 
 [ext_resource type="Script" uid="uid://box5tsimem7l4" path="res://characters/enemy/enemy.gd" id="1_8n2xj"]
 [ext_resource type="Script" uid="uid://sbaeqqe6wi0e" path="res://characters/components/hitbox.gd" id="2_vj04c"]
@@ -16,6 +16,8 @@
 [ext_resource type="Script" uid="uid://fae0vc1pe7kt" path="res://ai/tasks/attack.gd" id="13_oy8vk"]
 [ext_resource type="AudioStream" uid="uid://c8r35jyo2xhm4" path="res://assets/sounds/zapsplat_sword_swing.mp3" id="14_huevs"]
 [ext_resource type="Script" uid="uid://cv5rhtqh14anw" path="res://components/env_check_component.gd" id="16_ctjj8"]
+[ext_resource type="Script" uid="uid://dq1a6m83i75g0" path="res://characters/components/posture_component.gd" id="17_vj1cc"]
+[ext_resource type="Script" uid="uid://dtwyrujptyfl2" path="res://characters/components/riposte_box.gd" id="18_anjaw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xaro"]
 size = Vector2(40, 61)
@@ -195,6 +197,9 @@ root_task = SubResource("BTSelector_vom71")
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_yeuqv"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vikb4"]
+size = Vector2(20, 36)
+
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("components")]
 collision_layer = 4
 floor_stop_on_slope = false
@@ -203,7 +208,7 @@ floor_snap_length = 20.0
 script = ExtResource("1_8n2xj")
 death_anim_name = "skeleanims/death"
 stun_animation = &"skeleanims/hit"
-components = [NodePath("HitboxComponent"), NodePath("Hurtbox"), NodePath("EnvCheckComponent"), NodePath("HealthComponent")]
+components = [NodePath("HitboxComponent"), NodePath("Hurtbox"), NodePath("EnvCheckComponent"), NodePath("HealthComponent"), NodePath("PostureComponent"), NodePath("RiposteBox")]
 
 [node name="HitboxComponent" type="Area2D" parent="."]
 collision_layer = 4
@@ -269,3 +274,18 @@ target_position = Vector2(0, 15)
 [node name="wall_check" type="RayCast2D" parent="EnvCheckComponent"]
 position = Vector2(5, -7)
 target_position = Vector2(28, 0)
+
+[node name="PostureComponent" type="Node" parent="."]
+script = ExtResource("17_vj1cc")
+metadata/_custom_type_script = "uid://dq1a6m83i75g0"
+
+[node name="RiposteBox" type="Area2D" parent="." node_paths=PackedStringArray("posture_component")]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("18_anjaw")
+posture_component = NodePath("../PostureComponent")
+metadata/_custom_type_script = "uid://dtwyrujptyfl2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RiposteBox"]
+position = Vector2(19, 14)
+shape = SubResource("RectangleShape2D_vikb4")
