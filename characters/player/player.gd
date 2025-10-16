@@ -194,3 +194,7 @@ func _on_timeline_ended() -> void:
 func _on_interact_area_area_entered(area: Area2D) -> void:
     if area is SafePoint:
         last_safe_point = area
+
+func teleport_to_safety() -> void:
+    if get_health() > 0 && last_safe_point:
+        global_position = last_safe_point.global_position

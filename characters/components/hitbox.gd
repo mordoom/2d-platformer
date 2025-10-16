@@ -46,4 +46,5 @@ func _on_area_entered(area: Area2D) -> void:
 			timer.start()
 
 func _on_timer_timeout() -> void:
-	last_hurt_player.global_position = last_hurt_player.last_safe_point.global_position
+	if last_hurt_player.has_method("teleport_to_safety"):
+		last_hurt_player.teleport_to_safety()
