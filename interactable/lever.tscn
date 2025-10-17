@@ -1,26 +1,98 @@
-[gd_scene load_steps=5 format=3 uid="uid://dyoahdasy3pjx"]
+[gd_scene load_steps=9 format=4 uid="uid://dyoahdasy3pjx"]
 
-[ext_resource type="Texture2D" uid="uid://cjbfoyss8h1g" path="res://assets/lever.png" id="1_y33kj"]
+[ext_resource type="Script" uid="uid://bf6drisvovpwe" path="res://interactable/lever.gd" id="1_6varl"]
 [ext_resource type="Script" uid="uid://cqr86vajk6xoh" path="res://components/interaction_component.gd" id="2_yxjek"]
 [ext_resource type="PackedScene" uid="uid://s2702h7h5u4q" path="res://components/button_prompt_component.tscn" id="3_6varl"]
 
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_yxjek"]
+_data = PackedByteArray("AAADAAUAAAABAAAAgAAAAIAAAABQAwAAUklGRkgDAABXRUJQVlA4TDsDAAAvf8AfEGegJgCQhk0CHP/s/5nHBv70UBrJVvNjG1+hksNTOhXhchBqY9uUZEZEB0L9l7NmuvCX+Q8AEM72LzKt3z/PaCihyo6Z6VWW9tq424GuBUCOpKYbT9a1O5yNdjAb41107839AYXtBO/NbNKXYrcXv9k1/lLIkbSKW7a+ambE6656iqQgov8O3LZxJBkzvn7Klk+o/9ZjpiDMNCxqyVcf6mmYiOJ1LYt6uL1el6XeXnv/r8Zsr52TZT4VADaGIzdMwYQ1zUXZJIVpmMxzAVCWm5LgK2UuziVdjmHiuUqpa0mYsfeOrS6nYFTt11yPjeWU52CcG5aai6WUu3lN127YU2IocPNmWF7Uck8UOCh71+bkNqXqYQ+ufdOCmFKr/d+XBFGglLn8TXO9nJq2mLZUusW0ZRUTecWDcF1cUpnFsmUWC8J1cVnlFgfZxfAkuxi23DqZW/uTMdDJyv6D8I/oNC/Y30/1Wqm6AaiqU4jYGPB6GUhIweyF3UQii50U7F4vQ/D+D2rFZLwivXzqCSPZSEQiXoghnI1EGD+EP6yAV3cYjJHItwqrxS5mL2uROrGtnYQXIVlCjDYSRmwpuL0oUsQmRBZFvGxsLwz8QSp2L2riJ52ZVqsm7F4KEqIZvP7nHqOlmS5Kt180oCVXvaDrdckXa6fNOAQt16N5Va9nY3QOZdM+TPIweWd2oOux9/NZC2oPJofeyPm1rDb1PKiHoNO1BqVzeW1GoB6Mw86ct53TefRUe2EspnNxUM6rTIzz6xmYa3OlzqQcOO/DQjIbt+dAZWZQurGf18lTzY7o/Eu7dM7pjO7nr2uDkQMl2HBtXzmvBBtm1wCUYJuvt/taCbbZuN1MJtkbvx4BJdkbs2ZJtpk1g2V2/ocO6tzO/5AWbWjnkmwzu9ZP9IFu9t/uQzc62etgotdK1c3+gyvVKUSsKkjzKg6mehlISMHshd1EIoudFOxeL0Pw/g9qxWS8Ir186gkj2UhEIl6IIZyNRBg/hD+sgFd3GIyRyLcKq8UuZi9rkTqxrZ2EFyFZQow2EkZsKbi9KFLEJkQWRbxsbC8M/EEqdi9q4iedmVbbO4TdS0FCNJeXAgA=")
+size_override = Vector2(128, 128)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yxjek"]
-size = Vector2(57, 42)
+size = Vector2(63, 42)
+
+[sub_resource type="Animation" id="Animation_6varl"]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_intpv"]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 2, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_53yxv"]
+_data = {
+&"Starting position": SubResource("Animation_6varl"),
+&"Swing right": SubResource("Animation_intpv")
+}
 
 [node name="Lever" type="Area2D"]
+script = ExtResource("1_6varl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("1_y33kj")
+texture = SubResource("PortableCompressedTexture2D_yxjek")
+hframes = 2
+vframes = 2
+frame = 2
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "AnimationPlayer",
+"scale": "1.0",
+"slice": "",
+"source": "res://assets/lever.aseprite",
+"source_uid": 198996944887601681
+}
+metadata/_aseprite_wizard_source_file_hash_ = "cf5cf3f27c94bc502d64fd242e6ab1d2"
 
 [node name="InteractionComponent" type="Node" parent="."]
 script = ExtResource("2_yxjek")
 signal_to_emit = "on_env_change"
+one_shot = true
 metadata/_custom_type_script = "uid://cqr86vajk6xoh"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2.5, 11)
+position = Vector2(0.5, 11)
 shape = SubResource("RectangleShape2D_yxjek")
 
 [node name="ButtonPromptComponent" parent="." node_paths=PackedStringArray("interact_area") instance=ExtResource("3_6varl")]
 interact_area = NodePath("..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_53yxv")
+}
